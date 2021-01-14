@@ -1,0 +1,24 @@
+.modal-header.danger {
+  color: #fff;
+  background-color: #dd4b39;
+  border-color: #dd4b39;
+}
+
+.modal-header.success {
+  color: #fff;
+  background-color: #00a65a;
+  border-color: #00a65a;
+}
+
+.modal-header.primary {
+  color: #fff;
+  background-color: #3c8dbc;
+  border-color: #3c8dbc;
+}
+
+
+.modal-header.info {
+  color: #fff;
+  background-color: #00c0ef;
+  border-color: #00c0ef;
+}
