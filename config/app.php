@@ -2,31 +2,6 @@
 
 return [
 
-
-App::error(function(Exception $exception, $code)
-{
-    switch ($code)
-    {
-        case 404:
-
-
-            if (!Session::has('isIFrameSessionClosed'))
-            {
-                Session::put('isIFrameSessionClosed',1);
-
-                print("<script>parent.location.reload(true); </script>");
-
-            }  
-
-        default:
-            Log::error($exception);
-    }
-});
-
-
-
-
-
     /*
     |--------------------------------------------------------------------------
     | Application Name
@@ -63,8 +38,8 @@ App::error(function(Exception $exception, $code)
     | application. If disabled, a simple generic error page is shown.
     |
     */
-
-    'debug' => env('APP_DEBUG', false),
+    'debug' => (bool) env('APP_DEBUG', false),
+   
 
     /*
     |--------------------------------------------------------------------------
@@ -78,7 +53,7 @@ App::error(function(Exception $exception, $code)
     */
 
     'url' => env('APP_URL', 'http://localhost'),
-
+    'asset_url' => env('ASSET_URL', null),
     /*
     |--------------------------------------------------------------------------
     | Application Timezone
@@ -208,6 +183,7 @@ App::error(function(Exception $exception, $code)
     'aliases' => [
 
         'App' => Illuminate\Support\Facades\App::class,
+          'Arr' => Illuminate\Support\Arr::class,
         'Artisan' => Illuminate\Support\Facades\Artisan::class,
         'Auth' => Illuminate\Support\Facades\Auth::class,
         'Blade' => Illuminate\Support\Facades\Blade::class,
