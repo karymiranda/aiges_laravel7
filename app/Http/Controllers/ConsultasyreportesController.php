@@ -435,6 +435,7 @@ public function consultatrasladosactivo(Request $request)
 
  public function consultalistabienes(Request $request)
   {
+    //dd('lista');
 $estado=$request->estado;//estado del activo
 $categoria=$request->categoria;//estado del activo
 $activos=$this->activosrpt($estado,$categoria);  
@@ -443,6 +444,7 @@ $activos=$this->activosrpt($estado,$categoria);
 
  public function consultacatalogo(Request $request)
   {
+
 if($request->categoria==null)
 {
   $cuentas = Catalogodecuenta::orderBy('v_codigocuenta','ASC')->where([['v_codigocuenta','LIKE','12%'],['v_nivel',4]])->get();

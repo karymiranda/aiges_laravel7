@@ -190,7 +190,7 @@ Route::post('cuadroresumendegastos_pdf', [
 	'uses' => 'ConsultasyreportesController@cuadroresumendegastos_pdf'
 ]);
 
-Route::get('cuadroresumendegastos_pdf', ['as' => 'cuadroresumendegastos_pdf', 'uses' => 'ConsultasyreportesController@cuadroresumendegastos_pdf']);//filtros para llamar al pdf
+//Route::get('cuadroresumendegastos_pdf', ['as' => 'cuadroresumendegastos_pdf', 'uses' => 'ConsultasyreportesController@cuadroresumendegastos_pdf']);//filtros para llamar al pdf
 
 Route::get('librooperacionyfuncionamiento', ['as' => 'librooperacionyfuncionamiento', 'uses' => 'ConsultasyreportesController@librooperacionyfuncionamiento']);//filtros para llamar al pdf
 Route::post('librooperacionyfuncionamiento_pdf', [
@@ -332,8 +332,8 @@ Route::get('expedienterh_pdf/{id}', [
 
 
 //cuentausuario Recurso humano
-Route::get('crearcuentausuariorrhh', ['as' => 'crearusuariorh', 'uses' => 'CrearcuentausuariorrhhController@index']);
-Route::get('editarcuentausuariorrhh', ['as' => 'editarcuentausuariorh', 'uses' => 'CrearcuentausuariorrhhController@editarcuentausuario']);
+//Route::get('crearcuentausuariorrhh', ['as' => 'crearusuariorh', 'uses' => 'CrearcuentausuariorrhhController@index']);
+//Route::get('editarcuentausuariorrhh', ['as' => 'editarcuentausuariorh', 'uses' => 'CrearcuentausuariorrhhController@editarcuentausuario']);
 
 // Asistencias recurso humano
 Route::get('listaasistenciasrrhh', ['as' => 'listaasistenciasrh', 'uses' => 'AsistenciasrhController@index']);
@@ -363,7 +363,9 @@ Route::put('actualizarestudios', ['as' => 'actualizarestudios', 'uses' => 'Estud
 // Expedientes recurso humano
 Route::get('listaexpedientesrrhh', ['as' => 'listaexpedientesrh', 'uses' => 'ExpedientesrrhhController@index']);
 Route::get('crearexpedientesrrhh', ['as' => 'crearexpedientesrh', 'uses' => 'ExpedientesrrhhController@crearexpedienterh']);
-Route::get('crearusuariorrhh/{id}', ['as' => 'crearusuariorh', 'uses' => 'ExpedientesrrhhController@crearusuariorh']);
+
+Route::get('crearusuariorrhh/{id}', ['as' => 'crearusuariorh', 'uses' => 'ExpedientesrrhhController@crearusuariorh']);#crear clave
+
 Route::get('verexpedienterrhh/{id}', ['as' => 'verexpedienterh', 'uses' => 'ExpedientesrrhhController@verexpedienterh']);
 Route::get('editarexpedienterrhh/{id}', ['as' => 'editarexpedienterh', 'uses' => 'ExpedientesrrhhController@editarexpedienterh']);
 Route::get('editarusuariorrhh/{id}', ['as' => 'editarusuariorh', 'uses' => 'ExpedientesrrhhController@editarusuariorh']);
@@ -804,7 +806,8 @@ Route::get('nominarhpdf', ['as' => 'nominarhpdf', 'uses' => 'ConsultasyreportesC
 
 Route::group(['middleware'=>'ActivoFijoAdmin'], function(){
   Route::post("consultacatalogo","ConsultasyreportesController@consultacatalogo")->name("consultacatalogo");
-  Route::post("consultalistabienes","ConsultasyreportesController@consultalistabienes")->name("consultacatalogo");
+  Route::post("consultalistabienes","ConsultasyreportesController@consultalistabienes")->name("consultacatalogoAC");
+
    Route::post("consultatrasladosactivo","ConsultasyreportesController@consultatrasladosactivo")->name("consultatrasladosactivo");
 
 //subir archivo excel a base de datos

@@ -23,6 +23,7 @@ use App\Faltasestudiantes;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Str;#agregada
 
 class GestionexpedientesestudiantesController extends Controller
 { 
@@ -81,7 +82,7 @@ Flash::success('El estudiante '.$estudiante->v_nombres.' '. $estudiante->v_apell
 			$correlativo=1;//si la base esta vacia el correlativo del numero expediente sera 1
 		}
 		
-		$fecha = Carbon::create();
+		$fecha = Carbon::now();
 		$expediente = 'ES' . '' . $fecha->year . '-' . $correlativo;
 		return view('admin.academica.expedientesestudiantes.registrardatospersonalestudiante')->with('expediente',$expediente)->with('departamentos',$departamentos);	
 	}
@@ -116,7 +117,8 @@ return redirect()->route('registrarcuentadeusuarioestudiante',$estudiante->id);
 	{
 		
 		$estudiante=Expedienteestudiante::find($id);
-		$clave=str_random(8);
+		//$clave=str_random(8);
+		$clave = Str::random(8);
 		$rol=RolUsuario::orderBy('v_nombrerol')->where('i_estado','=','1')->where('v_nombrerol','Like','estudiante')->pluck('v_nombrerol','id');	
 	return view('admin.academica.expedientesestudiantes.registrarusuarioestudiante')->with('estudiante',$estudiante)->with('clave',$clave)->with('rol',$rol);	
 	}

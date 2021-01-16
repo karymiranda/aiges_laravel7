@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
 use Laracasts\Flash\Flash;
 use Carbon\Carbon;
+use Illuminate\Support\Str;#agregada
 
 
 class GestionpadresdefamiliaController extends Controller
@@ -23,7 +24,7 @@ class GestionpadresdefamiliaController extends Controller
 	{
 		//$listaparentesco=Parentesco::orderBy('parentesco','ASC')->pluck('parentesco','id');
 		$contador=Familiares::count();
-		$fecha = Carbon::create();
+		$fecha = Carbon::now();
 		if($contador!=0)//la base no esta vacia
 		{
 			$contExp=Familiares::all();
@@ -54,7 +55,8 @@ if($familiar->fechanacimiento!=null)
 	public function agregarusuariofamiliar($id)
 	{
 		$familiar=Familiares::find($id);
-		$clave=str_random(8);
+		//$clave=str_random(8);
+		$clave = Str::random(8);
 		$rol=RolUsuario::orderBy('v_nombrerol')->where('i_estado','=','1')->where('v_nombrerol','Like','Padre de familia')->pluck('v_nombrerol','id');
 		
 		return view('admin.academica.padresdefamilia.agregarusuariofamiliar')->with('familiar',$familiar)->with('clave',$clave)->with('rol',$rol);	

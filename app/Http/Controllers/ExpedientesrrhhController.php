@@ -1,5 +1,5 @@
 <?php
-
+ 
 namespace App\Http\Controllers;
 use App\Http\Requests\UsuarioRHRequest;
 use App\Http\Requests\EmpleadoRequest;
@@ -18,6 +18,7 @@ use App\RolUsuario;
 use Carbon\Carbon;
 use App\Usuario;
 use Laracasts\Flash\Flash;
+use Illuminate\Support\Str;#agregada
 
 class ExpedientesrrhhController extends Controller
 {
@@ -72,15 +73,19 @@ class ExpedientesrrhhController extends Controller
 		//$numeroEmpleados = Empleado::count()+1;
 		$numeroEmpleados=Empleado::max('id')+1;
 		//dd($numeroEmpleados);
-		$fecha = Carbon::create();
+		//$fecha = Carbon::create();
+
+       $fecha = Carbon::now();
 		$expediente = 'RH' . '' . $fecha->year . '-' . $numeroEmpleados;
 		
 		return view('admin.recursohumano.expedientes.crearexpedientesrrhh')->with('tiposPersonal',$tiposPersonal)->with('cargos',$cargos)->with('especialidades',$especialidades)->with('expediente',$expediente)->with('codigoC',$codigoC)->with('codigoE',$codigoE)->with('codigoT',$codigoT);	
 	}
 
+
 	public function crearusuariorh($id)
 	{
-		$contraseña = str_random(8);
+		//$contraseña = str_random(8);
+		$contraseña = Str::random(8);
 		$empleado = Empleado::find($id);
 		
 		return view('admin.recursohumano.expedientes.crearcuentausuariorrhh')->with('contraseña',$contraseña)->with('empleado',$empleado);	

@@ -421,6 +421,7 @@ public function addSaveCompetenciaadmin(Request $request)
 //COMPETENCIAS CIUDADANAS
 	public function asignarponderacioncompetencia($id)
 	{
+		$competenciasciudadanas=Competenciasciudadanas::all();
 		$seccion = Seccion::find($id);
 		$periodos = Periodoevaluacion::where('estado', 1)->get();
 		$hoy = Carbon::now()->format('Y-m-d');
