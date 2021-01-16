@@ -65,8 +65,8 @@ return [
     |
     */
 
-   # 'timezone' => 'UTC',
-    'timezone' => 'America/El Salvador',
+    'timezone' => 'UTC',
+    #'timezone' => 'America/El Salvador',
 
     /*
     |--------------------------------------------------------------------------
