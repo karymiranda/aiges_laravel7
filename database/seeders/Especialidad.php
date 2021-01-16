@@ -1,9 +1,9 @@
 <?php
-
+namespace Database\Seeders;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class Usuario extends Seeder
+class Especialidad extends Seeder
 {
     /**
      * Run the database seeds.
@@ -13,16 +13,12 @@ class Usuario extends Seeder
     public function run()
     {
         DB::statement('SET FOREIGN_KEY_CHECKS = 0;'); // Desactivamos la revisión de claves foráneas
-        DB::table('users')->truncate();
+        DB::table('tb_especialidaddocente')->truncate();
         DB::statement('SET FOREIGN_KEY_CHECKS = 1;'); // Reactivamos la revisión de claves foráneas
-
-        DB::table('users')->insert([
-            'name' => 'RH2019-1',
-            'email' => 'ctaadminCECSMC@gmail.com', 
-            'password' => bcrypt('AdminCECSMC2019'),
-            'personal_id' => 1,
+        
+        DB::table('tb_especialidaddocente')->insert([
+            'v_especialidad' => 'Licenciatura',
             'estado' => '1',
-            'foto' => 'nofound.jpg',
         ]);
     }
 }

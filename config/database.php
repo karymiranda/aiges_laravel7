@@ -1,5 +1,5 @@
 <?php
-
+use Illuminate\Support\Str;
 return [
 
     /*
@@ -52,6 +52,10 @@ return [
             'prefix' => '',
             'strict' => true,
             'engine' => null,
+            #esta linea le agregue con laravel8
+            'options' => extension_loaded('pdo_mysql') ? array_filter([
+                PDO::MYSQL_ATTR_SSL_CA => env('MYSQL_ATTR_SSL_CA'),
+            ]) : [],
         ],
 
         'pgsql' => [
@@ -106,9 +110,16 @@ return [
 
     'redis' => [
 
-        'client' => 'predis',
+        //'client' => 'predis',
+        'client' => env('REDIS_CLIENT', 'phpredis'),
+#esta ln tambien
+        'options' => [
+            'cluster' => env('REDIS_CLUSTER', 'redis'),
+            'prefix' => env('REDIS_PREFIX', Str::slug(env('APP_NAME', 'laravel'), '_').'_database_'),
+        ],
 
         'default' => [
+            'url' => env('REDIS_URL'),#esta le agregue laravel 8
             'host' => env('REDIS_HOST', '127.0.0.1'),
             'password' => env('REDIS_PASSWORD', null),
             'port' => env('REDIS_PORT', 6379),
@@ -116,6 +127,7 @@ return [
         ],
 
         'cache' => [
+             'url' => env('REDIS_URL'),#tambien
             'host' => env('REDIS_HOST', '127.0.0.1'),
             'password' => env('REDIS_PASSWORD', null),
             'port' => env('REDIS_PORT', 6379),
