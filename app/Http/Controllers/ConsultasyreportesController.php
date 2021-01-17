@@ -3507,7 +3507,7 @@ $fpdf->AddPage();
 $this->cabecerahorizontalrrhh($fpdf);
 $fpdf->SetFont('Helvetica','B','12');
 $fpdf->Ln(5);
-$fpdf->Cell(0,$this->height,"NOMINA",0,1,"C");
+$fpdf->Cell(0,$this->height,"NOMINA DE RECURSO HUMANO",0,1,"C");
 $fpdf->Ln(5);
 $fpdf->SetFont('Arial','','8');
  $fpdf->SetFillColor(0,0,0);
