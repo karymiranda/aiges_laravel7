@@ -3124,7 +3124,8 @@ if($permiso!=0)
         }else
         {
           $asistencia = AsistenciasRH::where('expedientepersonal_id','=',$docentes->id)->where('fecha', '=',$d)->first();
-          if(count($asistencia)>0)
+          $contador= $asistencia = AsistenciasRH::where('expedientepersonal_id','=',$docentes->id)->where('fecha', '=',$d)->count();
+          if($contador>0)
           {
 if($asistencia->asistenciaSN=='S')
 {

@@ -949,6 +949,7 @@ Route::post("docentesnotas/update", 'PersonaldocenteController@updateNota')->nam
 //COMPETENCIAS CIUDADANAS SUPER ADMIN
 Route::get("/asignarponderacion/{id}/competencia", "SeccionesController@asignarponderacioncompetencia")->name("asignarponderacioncompetencia");
 Route::post("/seccioncompetenciaadmin", "SeccionesController@agregarCompetenciaadmin")->name("agregarcompetenciaadmin");
+
 Route::get('/seccionescompetenciasadmin/{id}/view', 'SeccionesController@viewCompetenciasadmin')->name("ViewCompetenciasadmin");
 
 Route::post("/seccionescompetenciasadmin/add", 'SeccionesController@addSaveCompetenciaadmin')->name("addSaveCompetenciaadmin");
