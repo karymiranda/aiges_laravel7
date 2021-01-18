@@ -122,7 +122,7 @@ if(categoria==''){categoria=0;}
 
   switch (reporte_id){
       case '1':
-      $('#btngenerarexcel').attr("href", "/aiges/public/index.php/admin/exportListadoactivofijo_excel/"+categoria+"/"+estado); 
+      $('#btngenerarexcel').attr("href", "exportListadoactivofijo_excel/"+categoria+"/"+estado); 
       break;
       
       /*case '2':
@@ -130,11 +130,11 @@ if(categoria==''){categoria=0;}
       break;*/
 
        case '2':
-      $('#btngenerarexcel').attr("href", "/aiges/public/index.php/admin/exportcatalogoactivos_excel/"+categoria+"/"+estado); 
+      $('#btngenerarexcel').attr("href", "exportcatalogoactivos_excel/"+categoria+"/"+estado); 
       break; 
 
       case '3':
-      $('#btngenerarexcel').attr("href", "/aiges/public/index.php/admin/exportrasladosactivos_excel/"+categoria+"/"+estado); 
+      $('#btngenerarexcel').attr("href", "exportrasladosactivos_excel/"+categoria+"/"+estado); 
       break;
 
       default:
