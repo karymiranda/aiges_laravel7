@@ -50,7 +50,7 @@ class ExcelController extends Controller
     	$name = 'RecursoHumano_'.$today.'.xlsx';
         return Excel::download(new RrhhExport, $name);
     }
-
+ 
  public function permisosrrhh_excel($mes,$anio)
  {
  // dd('permisos');
@@ -224,7 +224,9 @@ $datos=array();
       {
         $asistencia = AsistenciasRH::where('expedientepersonal_id','=',$docentes->id)->where('fecha', '=',$d)->first();
 
-        if(count($asistencia)>0)
+        $c=AsistenciasRH::where('expedientepersonal_id','=',$docentes->id)->where('fecha', '=',$d)->count();
+
+        if($c>0)
         {
  if($asistencia->asistenciaSN=='S')
            {

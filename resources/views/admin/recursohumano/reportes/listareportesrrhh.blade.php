@@ -342,16 +342,14 @@ $('#rptAsistenciarh').attr("action",'asistenciamensualrh/'+mes+'/'+anioAA+'/pdf'
   $('#modalfiltrorptasistenciaexcel').modal('hide');
 var anioAs=$('#anioAs option:selected').val();
 var mes=$('#mesasistenciaexcel option:selected').val();
-//$('#btnasistenciaexcel').attr("href",'/aiges/public/index.php/admin/rptasistenciaexcelrrhh/'+mes+'/'+anioAs+'/excel'); 
-$('#btnasistenciaexcel').attr("href",'/rptasistenciaexcelrrhh/'+mes+'/'+anioAs+'/excel'); 
+$('#btnasistenciaexcel').attr("href",'rptasistenciaexcelrrhh/'+mes+'/'+anioAs+'/excel'); 
 });
 
 $('#permisosexcel').on('click', function(e){
 $('#modalfiltromesexcel').modal('hide');
 var anio=$('#anioexcel option:selected').val();
 var mes=$('#mesexcel option:selected').val();
-$('#permisosexcel').attr("href",'/rptpermisosexcelrrhh/'+mes+'/'+anio+'/excel');  
-//$('#permisosexcel').attr("href",'/aiges/public/index.php/admin/rptpermisosexcelrrhh/'+mes+'/'+anio+'/excel');  
+$('#permisosexcel').attr("href",'rptpermisosexcelrrhh/'+mes+'/'+anio+'/excel');    
 });
 
 $('#btnhorarioclases').on('click', function(e){
@@ -371,7 +369,7 @@ $('#permisos').on('click', function(e){
 $('#modalfiltromes').modal('hide');
 var anio=$('#anio option:selected').val();
 var mes=$('#mes option:selected').val();
-$('#permisos').attr("href",'/aiges/public/index.php/admin/rptpermisosrrhh/'+mes+'/'+anio+'/pdf');  
+$('#permisos').attr("href",'rptpermisosrrhh/'+mes+'/'+anio+'/pdf');  
 });
 
 $('#btngenerarexcel').on('click', function(e){

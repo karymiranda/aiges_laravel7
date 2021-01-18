@@ -3061,8 +3061,9 @@ return $response;
 
 }
 
-public function asistenciamensualrh($mes,$anio)
+public function asistenciamensualrh(Request $request,$mes,$anio)
 {
+
   $primer_dia=1;
   $ultimo_dia=$this->getUltimoDiaMes($anio,$mes);
   $fecha_inicial=date("Y-m-d", strtotime($anio."-".$mes."-".$primer_dia) );
@@ -3087,7 +3088,7 @@ $fpdf->Ln(2);
     $fpdf->Cell(7, $this->height,"No.", 1, 0, "C",1);
     $fpdf->Cell(70, $this->height,"Nombre completo", 1, 0, "C",1);
 
- 
+
  for($d=1;$d<=$ultimo_dia;$d++){
     $fpdf->Cell(5,$this->height,$d, 1, 0, "C",1);        
     }
@@ -3123,17 +3124,21 @@ if($permiso!=0)
           $fpdf->Cell(5,$this->height,'P', 1, 0, "C",1);
         }else
         {
-          $asistencia = AsistenciasRH::where('expedientepersonal_id','=',$docentes->id)->where('fecha', '=',$d)->first();
-          $contador= $asistencia = AsistenciasRH::where('expedientepersonal_id','=',$docentes->id)->where('fecha', '=',$d)->count();
-          if($contador>0)
+          $asistenciaDc = AsistenciasRH::where('expedientepersonal_id','=',$docentes->id)->where('fecha', '=',$d)->first();
+
+          $con= $asistencia = AsistenciasRH::where('expedientepersonal_id','=',$docentes->id)->where('fecha', '=',$d)->count();
+    
+
+    if($asistenciaDc!=null)
           {
-if($asistencia->asistenciaSN=='S')
+if($asistenciaDc->asistenciaSN=='S')
 {
  $fpdf->Cell(5,$this->height,'+', 1, 0, "C",0);
         $contadorasistencias++; 
 }
 else
   {
+   
  $fpdf->SetFillColor(255,128,128);   
  $contadorii++;
  $fpdf->Cell(5,$this->height,'-', 1, 0, "C",1); 
