@@ -407,15 +407,15 @@ $('#btnnotasexcel').attr("href",'calificacionesexcel/'+id+'/'+periodo+'/'+asigna
      $('#formulariorpt').attr("target",'_blank');      
      $('#formulariorpt').attr("action", "nominadeestudiantes_pdf");      
      $('#formulariorpt').submit(); 
-      break;
+      break; 
       case '2':
       $('#formulariorpt').attr("method",'POST');
-     $('#formulariorpt').attr("action", "../nominadepadresdefamilia_pdf");      
+     $('#formulariorpt').attr("action", "nominadepadresdefamilia_pdf");      
      $('#formulariorpt').submit();
       break;
       case '3':
      $('#formulariorpt').attr("method",'GET');
-     $('#formulariorpt').attr("action",'../horariosdeclases_pdf/'+id+'/acadrpt');      
+     $('#formulariorpt').attr("action",'horariosdeclases_pdf/'+id+'/acadrpt');      
      $('#formulariorpt').submit(); 
       
       break;
@@ -472,10 +472,10 @@ if(id!=null && id!='')//id seccion debe tener informacion sino no dejara hacer s
  switch (reporte_id)
     {
       case '1':
-$('#btngenerarexcel').attr("href",'../formato_nominaestudiantesExcel/'+id+'/excel');
+$('#btngenerarexcel').attr("href",'formato_nominaestudiantesExcel/'+id+'/excel');
       break;
       case '2':  
-$('#btngenerarexcel').attr("href",'../nominafamiliaresExcel/'+id+'/excel');
+$('#btngenerarexcel').attr("href",'nominafamiliaresExcel/'+id+'/excel');
       break;
       case '4':
   $("#modalfiltrorptasistenciaexcel").modal('show');
