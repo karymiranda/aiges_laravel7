@@ -11,7 +11,7 @@
               </tr>
                   </thead> 
               
-                <tbody>
+                <tbody> 
                  @foreach($listafamiliares as $key =>  $estudiante)
                   @foreach($estudiante->estudiante_familiares as $familiar)
                  <tr>
@@ -22,7 +22,7 @@
                   <td><span>----</span></td> 
                  @endif
                   <td>{{ $familiar->nombres}} {{ $familiar->apellidos}}</td> 
-                 <td>{{ $familiar->parentesco->parentesco}}</td>
+                 <td>{{($familiar->pivot->parentesco)}}</td>
                  @if($familiar->telefonocasa!=null)
                  <td>{{ $familiar->telefonocasa}}</td> 
                  @else

@@ -117,13 +117,20 @@ $q->where('tb_estudiante_familiar.encargado','like','SI')->get();}])->whereHas('
 //////////////////////////////
   public function nominafamiliares_excelView($idseccion)//esta es la que estoy usando
     {
-$id=$idseccion;
+$id=$idseccion; 
 $seccion=Seccion::find($id);
-$anio=$seccion->anio;
-$listafamiliares=Expedienteestudiante::with(['estudiante_familiares'=>function($q){
+$anio=$seccion->anio; 
+/*$listafamiliares=Expedienteestudiante::with(['estudiante_familiares'=>function($q){
 $q->with('parentesco')->where('tb_familiares.estado',1)->get();}])->whereHas('estudiante_seccion', function ($q) use ($anio,$id){
   $q->where([['tb_matriculaestudiante.anio','=',$anio],['v_estadomatricula','like','aprobada'],['tb_matriculaestudiante.seccion_id','=',$id]]);
-})->orderBy('v_apellidos','ASC')->get();
+})->orderBy('v_apellidos','ASC')->get();*/
+
+$listafamiliares=Expedienteestudiante::with(['estudiante_familiares'=>function($q){
+$q->where('tb_familiares.estado',1)->get();}])->whereHas('estudiante_seccion', function ($q) use ($anio,$id){
+  $q->where([['tb_matriculaestudiante.anio','=',$anio],['v_estadomatricula','like','aprobada'],['tb_matriculaestudiante.seccion_id','=',$id]]);
+})->get();
+
+//dd($listafamiliares);
 
 
         $today = Carbon::now()->format('d_m_Y');
