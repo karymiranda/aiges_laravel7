@@ -12,6 +12,7 @@ class DBController extends Controller
 $lista[]=null;
 $n=0;
 $thefolder = "/MySQLBackups/backupfiles";
+$archivos[]=null;
 if (is_dir($thefolder)){
         // Abre un gestor de directorios para la ruta indicada
         $gestor = opendir($thefolder);
@@ -49,10 +50,11 @@ $n++;
         // Cierra el gestor de directorios
         closedir($gestor);
        // echo "</ul>";
-    } else {
-        echo "No existe archivo .sql<br/>";
     }
-
+    // else {
+      //  echo "No existe archivo .sql<br/>";
+  //  }
+//dd($archivos,$n);
     	//$datosrespaldos=Usuario::get();
     	return view('admin.seguridad.database.backupdb',compact('archivos','n'));
     }
