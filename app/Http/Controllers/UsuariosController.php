@@ -20,7 +20,14 @@ class UsuariosController extends Controller
 {
 	public function prueba()
 	{
-		dd('entra a controlador');
+		$usuarios=Usuario::orderBy('id','ASC')->where('estado','=','1')->get();dd($usuarios);
+		$usuarios->each(function($usuarios){ 
+			$usuarios->usuario_rol;
+			$usuarios->familiar; 
+			$usuarios->empleado;
+			$usuarios->estudiante; 
+		});
+		
 	}
     public function index()
 	{
@@ -31,6 +38,7 @@ class UsuariosController extends Controller
 			$usuarios->empleado;
 			$usuarios->estudiante; 
 		});
+		dd($usuarios);
 
 		return view('admin.seguridad.listausuariosactivos')->with('usuarios',$usuarios);	
 	}
