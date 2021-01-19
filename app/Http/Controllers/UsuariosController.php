@@ -18,18 +18,20 @@ use Validator;
 
 class UsuariosController extends Controller
 {
-	public function prueba()
+	public function listadouser()
 	{
-		$usuarios=Usuario::orderBy('id','ASC')->where('estado','=','1')->get();dd($usuarios);
+		$usuarios=Usuario::orderBy('id','ASC')->where('estado','=','1')->get();
 		$usuarios->each(function($usuarios){ 
 			$usuarios->usuario_rol;
 			$usuarios->familiar; 
 			$usuarios->empleado;
 			$usuarios->estudiante; 
 		});
-		
+		return view('admin.seguridad.listausuariosactivos')->with('usuarios',$usuarios);
 	}
-    public function index()
+    
+
+   /* public function index()
 	{
 		$usuarios=Usuario::orderBy('id','ASC')->where('estado','=','1')->get();
 		$usuarios->each(function($usuarios){ 
@@ -41,7 +43,7 @@ class UsuariosController extends Controller
 		dd($usuarios);
 
 		return view('admin.seguridad.listausuariosactivos')->with('usuarios',$usuarios);	
-	}
+	}*/
 
 	public function verusuario($id)
 	{

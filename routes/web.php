@@ -774,7 +774,7 @@ Route::get('expedienteestudiante_pdf/{id}', [
 ///////////////////////////////////////////////////////////////////////////////
 
 
-Route::get('listausuariosactivos', ['as' => 'listausuariosactivos','uses' => 'UsuariosController@prueba']);
+Route::get('listausuariosactivos', ['as' => 'listausuariosactivos','uses' => 'UsuariosController@listadouser']);
 
 Route::get('listaroles', ['as' => 'listaroles','uses' => 'RolesController@index']);
 Route::get('verusuario/{id}', ['as' => 'verusuario', 'uses' => 'UsuariosController@verusuario']);
