@@ -1,6 +1,6 @@
 <?php
-
 namespace App\Http\Controllers;
+
 use Illuminate\Http\Request;
 use App\Usuario;
 use App\RolUsuario;
@@ -18,6 +18,10 @@ use Validator;
 
 class UsuariosController extends Controller
 {
+	public function prueba()
+	{
+		dd('entra a controlador');
+	}
     public function index()
 	{
 		$usuarios=Usuario::orderBy('id','ASC')->where('estado','=','1')->get();
