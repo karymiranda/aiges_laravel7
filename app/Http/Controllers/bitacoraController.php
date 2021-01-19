@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Bitacora;
 
-class bitacoraController extends Controller
+class BitacoraController extends Controller
 {
     public function indexbitacora()
     {
