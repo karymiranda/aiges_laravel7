@@ -782,7 +782,7 @@ Route::put('actualizarusuario/{id}', ['as' => 'actualizarusuario', 'uses' => 'Us
 Route::get('eliminarusuario/{id}', ['as' => 'eliminarusuario', 'uses' => 'UsuariosController@eliminarusuario']);
 Route::get('editarcuenta', ['as' => 'editarcuenta', 'uses' => 'UsuariosController@editarcuenta']);
 Route::put('actualizarcuenta', ['as' => 'actualizarcuenta', 'uses' => 'UsuariosController@actualizarcuenta']);
-Route::get('bitacoradelsistema', ['as' => 'bitacora', 'uses' => 'BitacoraController@indexbitacora']);
+Route::get('bitacoradelsistema', ['as' => 'bitacora', 'uses' => 'BitacoraNewController@index']);
 ////
 
 //PDF's
