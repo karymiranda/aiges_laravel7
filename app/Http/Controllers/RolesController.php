@@ -13,6 +13,6 @@ class RolesController extends Controller
     {
     	$roles=RolUsuario::orderBy('id','ASC')->where('i_estado','=','1')->get();
     	//dd($roles);
-return view('admin.seguridad.roles.rolesusuarios')->with('roles',$roles);
+return view('admin.seguridad.Roles.rolesusuarios')->with('roles',$roles);
     }
 }
