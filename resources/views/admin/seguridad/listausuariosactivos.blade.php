@@ -36,7 +36,7 @@
             <td>{{$usuario->name}}</td>
             <td>{{$usuario->email}}</td>
             <td>
-              {{$usuario->usuario_rol}}
+             
               
             </td>
             <td>
