@@ -21,26 +21,24 @@ class UsuariosController extends Controller
 	public function listadouser()
 	{
 		$usuarios=Usuario::orderBy('id','ASC')->where('estado','=','1')->get();
-		$objeto[]=null;
+		
 
- foreach($usuario->usuario_rol as $rol)
- {
-            array_push($objeto, $rol);  
-            }
-dd($objeto);
-
-	/*	$usuar=Usuario::orderBy('id','ASC')->count();
+		/*$usuar=Usuario::orderBy('id','ASC')->where('estado','=','1')->count();
 		$usu=Usuario::WhereHas('familiar')->count();
 		$usu1=Usuario::WhereHas('estudiante')->count();
 		$usu2=Usuario::WhereHas('empleado')->count();
 		dd($usu,$usu1,$usu2,$usuar);
 		//$ul=Familiares::where('estado','1')->get();
+	 
+		});
+
+		dd($usuarios);*/	
 		$usuarios->each(function($usuarios){ 
 			$usuarios->usuario_rol;
 			$usuarios->familiar; 
 			$usuarios->empleado;
-			$usuarios->estudiante; 
-		});*/
+			$usuarios->estudiante;
+		});
 		
 		return view('admin.seguridad.listausuariosactivos')->with('usuarios',$usuarios);
 	}
