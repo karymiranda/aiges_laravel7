@@ -20,7 +20,7 @@ class UsuariosController extends Controller
 {
 	public function listadouser()
 	{
-		$usuarios=Usuario::orderBy('id','ASC')->where('estado','=','1')->get();dd($usuarios);
+		$usuarios=Usuario::orderBy('id','ASC')->where('estado','=','1')->get();
 		//$ul=Familiares::where('estado','1')->get();
 		/*$usuarios->each(function($usuarios){ 
 			$usuarios->usuario_rol;
