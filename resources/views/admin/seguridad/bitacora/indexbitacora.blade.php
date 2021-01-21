@@ -20,7 +20,15 @@
                 </thead>
                 <tbody>
                 @foreach($bitacora as $key => $row)
-                
+                 <tr>
+                  <td>{{$key+1}}</td>
+                  <td>{{$row->created_at}}</td>
+                  <td>{{$row->bitacora_usuarios->name}}</td>
+                  <td>{{$row->usuario_nombre}}</td>
+                  <?php $obj=json_decode($row->operacion);
+                  ?>                  
+                  <td><?php print $obj->{'operacion'} ?></td>
+                </tr>
                 @endforeach 
               </tbody>
             </table>
