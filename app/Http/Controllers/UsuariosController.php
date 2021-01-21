@@ -25,7 +25,7 @@ class UsuariosController extends Controller
 
  foreach($usuario->usuario_rol as $rol)
  {
-            array_push($objeto, $rol)  
+            array_push($objeto, $rol);  
             }
 dd($objeto);
 
