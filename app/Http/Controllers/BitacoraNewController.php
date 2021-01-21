@@ -10,6 +10,7 @@ class BitacoraNewController extends Controller
     public function index()
     {
     	$bitacora=Bitacora::all();
+    	dd($bitacora);
     	return view('admin.seguridad.bitacora.indexbitacora',compact('bitacora'));
     }
 }
