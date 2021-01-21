@@ -22,20 +22,20 @@
         <hr>
       </div>
       <div class="form-group">                                           
-        {!! Form::label('lbusuario', 'Cuenta',['class'=>'col-sm-4 control-label']) !!}
+        {!! Form::label('lbusuario', 'Cuenta',['class'=>'col-sm-5 control-label']) !!}
         <div class="col-sm-2">
           {!! Form::text('name',$usuario->name,['class'=>'form-control pull-right','placeholder'=>'Cuenta de usuario','','readonly'=>'true']) !!}
         </div>
       </div>
       <div class="form-group">                                           
-        {!! Form::label('lbusuario', 'Usuario',['class'=>'col-sm-4 control-label']) !!}
-        <div class="col-sm-4">
+        {!! Form::label('lbusuario', 'Usuario',['class'=>'col-sm-5 control-label']) !!}
+        <div class="col-sm-2">
           <input type="text" name="usuario" value="<?php if($usuario->empleado!=null){ ?>{{$usuario->empleado->v_nombres . ' ' . $usuario->empleado->v_apellidos}}<?php }else{ if($usuario->estudiante!=null){ ?>{{$usuario->estudiante->v_nombres . ' ' . $usuario->estudiante->v_apellidos}}<?php }else{ ?>{{$usuario->familiar->nombres . ' ' . $usuario->familiar->apellidos}}<?php }}?>" readonly='true' class='form-control pull-right'>
         </div>
       </div>
       <div class="form-group">                                           
-        {!! Form::label('lbnivelusu', 'Niveles de usuario',['class'=>'col-sm-4 control-label']) !!}
-        <div class="col-sm-8">
+        {!! Form::label('lbnivelusu', 'Niveles de usuario',['class'=>'col-sm-5 control-label']) !!}
+        <div class="col-sm-5">
           <?php if($roles[0]==true){ ?>
           {!! Form::label('sup', 'Super Admin  ',['class'=>'control-label']) !!}
           <?php } ?>

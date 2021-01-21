@@ -36,7 +36,9 @@
             <td>{{$usuario->name}}</td>
             <td>{{$usuario->email}}</td>
             <td>
-             
+             @foreach($usuario->usuario_rol as $rol)
+                {{$rol->v_nombrerol}}<br>
+              @endforeach
               
             </td>
             <td>

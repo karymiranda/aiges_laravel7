@@ -39,24 +39,10 @@ class UsuariosController extends Controller
 			$usuarios->empleado;
 			$usuarios->estudiante;
 		});*/
-		
+
 		return view('admin.seguridad.listausuariosactivos')->with('usuarios',$usuarios);
 	}
-    
 
-   /* public function index()
-	{
-		$usuarios=Usuario::orderBy('id','ASC')->where('estado','=','1')->get();
-		$usuarios->each(function($usuarios){ 
-			$usuarios->usuario_rol;
-			$usuarios->familiar; 
-			$usuarios->empleado;
-			$usuarios->estudiante; 
-		});
-		dd($usuarios);
-
-		return view('admin.seguridad.listausuariosactivos')->with('usuarios',$usuarios);	
-	}*/
 
 	public function verusuario($id)
 	{
@@ -67,7 +53,8 @@ class UsuariosController extends Controller
 			$usuario->empleado;
 			$usuario->estudiante; 
 		});	    
-	    
+	  
+
 	    return view('admin.seguridad.verusuario')->with('roles',$roles)->with('usuario',$usuario);
 	}
 
@@ -126,7 +113,7 @@ class UsuariosController extends Controller
 		return redirect()->route('listausuariosactivos');	
 	}
 
-	protected function usuario_roles($id)
+	public function usuario_roles($id)
 	{
 		$roles=[false,false,false,false,false,false,false,false];
 	    $usuario=Usuario::find($id);	
