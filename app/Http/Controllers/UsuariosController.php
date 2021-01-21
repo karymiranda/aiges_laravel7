@@ -22,9 +22,11 @@ class UsuariosController extends Controller
 	{
 		$usuarios=Usuario::orderBy('id','ASC')->where('estado','=','1')->get();
 		$objeto[]=null;
+
  foreach($usuario->usuario_rol as $rol)
+ {
             array_push($objeto, $rol)  
-              endforeach
+            }
 dd($objeto);
 
 	/*	$usuar=Usuario::orderBy('id','ASC')->count();
