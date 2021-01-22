@@ -14,6 +14,7 @@ use App\InfoCentroEducativo;
 use App\Periodoevaluacion;
 use App\AsistenciasEstudiantes;
 use Laracasts\Flash\Flash;
+ use Illuminate\Support\Collection;
 
 class ResporteController extends Controller
 {
@@ -31,7 +32,7 @@ class ResporteController extends Controller
     }
 
     $itemsNotasEst = $this->orderStudentNota($notasEst);
-  dd($itemsNotasEst);
+    dd($itemsNotasEst);
     $evaluaciones = EvaluacionesPeriodo::orderby('codigo_eval', 'asc')->get();
 
     $profesor = $seccion->seccion_empleado;

@@ -220,6 +220,7 @@ return view('admin.personaldocente.gestionacademica.nominas.consultarinformacion
 
     public function orderStudentNota($varnotas = array())
   {
+    
     $result = array();
     foreach ($varnotas as $item) {
       foreach ($item->notas as $value) {
@@ -231,7 +232,7 @@ return view('admin.personaldocente.gestionacademica.nominas.consultarinformacion
 
       }
     }
-    return $result;
+    return collect($result);
   }
 
 //competencias ciudadanas individuales admin
