@@ -66,8 +66,8 @@ $competenciasEst= $this->getCompetencias($students,$seccion);
         "profesor"  => $profesor
       ]);
 
-    $pdf->asistenciaTable($asistenciaEst[$value->v_expediente]);
-/*
+/*    $pdf->asistenciaTable($asistenciaEst[$value->v_expediente]);
+
    $pdf->tableNotesBoleta([ 
         //"periodo" => $periodo->descripcion,
         "varnotasS"   => @$itemsNotasEst[$value->v_expediente]['notasEst'],
