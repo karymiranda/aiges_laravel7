@@ -35,12 +35,12 @@
             <?php endif ?>                        
             <td>{{$usuario->name}}</td>
             <td>{{$usuario->email}}</td>
-            <td>
+            <!--td>
              @foreach($usuario->usuario_rol as $rol)
                 {{$rol->v_nombrerol}}<br>
               @endforeach
               
-            </td>
+            </td-->
             <td>
               <a href="{{route('verusuario',$usuario->id)}}" class="btn btn-primary" title="Ver"><i class="fa fa-eye"></i></a>
               <?php if ($usuario->id==Auth::user()->id): ?>
