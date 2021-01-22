@@ -19,10 +19,11 @@ class ResporteController extends Controller
 {
   public function index($id)
   {
-    dd('llega');
+
     $centroEscolar = InfoCentroEducativo::first();
     $seccion = Seccion::find($id);
     $notasEst   = Notas::where('seccion_id', $id)->get();
+    dd($notasEst);
     if(!count($notasEst)>0)//si no hay notas entonces
     {
       Flash::error("No hay información para mostrar")->important();
