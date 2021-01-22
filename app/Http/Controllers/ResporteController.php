@@ -58,7 +58,7 @@ $competenciasEst= $this->getCompetencias($students,$seccion);
     
     foreach ($students as $value) {
       $pdf->AddPage();
-    //  $pdf->headerBoletaNotas($centroEscolar);
+    /*  $pdf->headerBoletaNotas($centroEscolar);
 
       $pdf->boletaTitulo([
         "seccion" =>  $seccion,
@@ -66,25 +66,25 @@ $competenciasEst= $this->getCompetencias($students,$seccion);
         "profesor"  => $profesor
       ]);
 
-   // $pdf->asistenciaTable($asistenciaEst[$value->v_expediente]);
+    $pdf->asistenciaTable($asistenciaEst[$value->v_expediente]);
 
-  //  $pdf->tableNotesBoleta([ 
+   $pdf->tableNotesBoleta([ 
         //"periodo" => $periodo->descripcion,
         "varnotasS"   => @$itemsNotasEst[$value->v_expediente]['notasEst'],
         "eva"     => $evaluaciones 
       ]);
 
-   //  $criterios=Competenciasciudadanas::where('estado',1)->get();
-     //$pdf->competenciasTable($competenciasEst[$value->v_expediente],$criterios);
+    $criterios=Competenciasciudadanas::where('estado',1)->get();
+     $pdf->competenciasTable($competenciasEst[$value->v_expediente],$criterios);
 
-    //  $pdf->footerNotesBoletas([
+      $pdf->footerNotesBoletas([
         "profesor"  => $profesor,
         "centro"    => $centroEscolar
-     // ]);
+      ]);
 
       $pdf->FooterConstancia();
     }
-
+*/
     return response()->make($pdf->Output(), 200, [
       'Content-Type' => 'application/pdf',
       'Content-Disposition' => 'inline; filename="doc.pdf"'
