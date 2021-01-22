@@ -30,6 +30,9 @@ class ResporteController extends Controller
 
     $itemsNotasEst = $this->orderStudentNota($notasEst);
     $evaluaciones = EvaluacionesPeriodo::orderby('codigo_eval', 'asc')->get();
+
+    //dd($itemsNotasEst,$evaluaciones);
+
     $profesor = $seccion->seccion_empleado;
     $students = DB::table('tb_expedienteestudiante')
       ->join('tb_matriculaestudiante', 'tb_matriculaestudiante.estudiante_id', '=', 'tb_expedienteestudiante.id')
@@ -48,9 +51,9 @@ class ResporteController extends Controller
 $asistenciaEst= $this->getAsistencia($students,$seccion);
 $competenciasEst= $this->getCompetencias($students,$seccion);
 
-dd($itemsNotasEst,$students);
 
-   /* $pdf = new PdfController("L");
+
+    $pdf = new PdfController("L");
     
     foreach ($students as $value) {
       $pdf->AddPage();
@@ -85,7 +88,7 @@ dd($itemsNotasEst,$students);
       'Content-Type' => 'application/pdf',
       'Content-Disposition' => 'inline; filename="doc.pdf"'
     ]);
-    */
+
   }
 
 
