@@ -137,6 +137,6 @@ private function getStudentConducta($id,$idseccion) {
       }
     }*/
 
-    return collect($result);
+    return collect($notasEst);
   }
 }
