@@ -30,10 +30,11 @@ class ResporteController extends Controller
       Flash::error("No hay información para mostrar")->important();
       return redirect()->route('listareportes/secciones');
     }
-
+$evaluaciones = EvaluacionesPeriodo::orderby('codigo_eval', 'asc')->get();
+dd($evaluaciones);
     $itemsNotasEst = $this->orderStudentNota($notasEst);
-    dd($itemsNotasEst);
-    $evaluaciones = EvaluacionesPeriodo::orderby('codigo_eval', 'asc')->get();
+    //dd($itemsNotasEst);
+    
 
     $profesor = $seccion->seccion_empleado;
     $students = DB::table('tb_expedienteestudiante')
@@ -54,7 +55,7 @@ $asistenciaEst= $this->getAsistencia($students,$seccion);
 $competenciasEst= $this->getCompetencias($students,$seccion);
 
 
-/*
+
     $pdf = new PdfController("L");
     
     foreach ($students as $value) {
@@ -90,7 +91,7 @@ $competenciasEst= $this->getCompetencias($students,$seccion);
       'Content-Type' => 'application/pdf',
       'Content-Disposition' => 'inline; filename="doc.pdf"'
     ]);
-    */
+    
 
   }
 
@@ -135,7 +136,7 @@ private function getStudentConducta($id,$idseccion) {
         $result[$value->alumno->v_expediente]['notasEst'][$item->asignatura->asignatura][$item->periodo->nombre][$item->evaluacion->codigo_eval] =  floatval($value->calificacion) * (floatval($item->evaluacion->d_porcentajeActividad)/100);
       }
     }
-  
+
     return collect($result);
   }
 }
