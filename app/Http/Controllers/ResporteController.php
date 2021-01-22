@@ -47,7 +47,10 @@ class ResporteController extends Controller
  
 $asistenciaEst= $this->getAsistencia($students,$seccion);
 $competenciasEst= $this->getCompetencias($students,$seccion);
-    $pdf = new PdfController("L");
+
+dd($itemsNotasEst,$students);
+
+   /* $pdf = new PdfController("L");
     
     foreach ($students as $value) {
       $pdf->AddPage();
@@ -82,6 +85,7 @@ $competenciasEst= $this->getCompetencias($students,$seccion);
       'Content-Type' => 'application/pdf',
       'Content-Disposition' => 'inline; filename="doc.pdf"'
     ]);
+    */
   }
 
 
