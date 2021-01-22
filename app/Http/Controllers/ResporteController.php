@@ -23,7 +23,7 @@ class ResporteController extends Controller
     $centroEscolar = InfoCentroEducativo::first();
     $seccion = Seccion::find($id);
     $notasEst   = Notas::where('seccion_id', $id)->get();
-    dd($notasEst);
+
     if(!count($notasEst)>0)//si no hay notas entonces
     {
       Flash::error("No hay información para mostrar")->important();
@@ -31,7 +31,7 @@ class ResporteController extends Controller
     }
 
     $itemsNotasEst = $this->orderStudentNota($notasEst);
-
+  dd($itemsNotasEst);
     $evaluaciones = EvaluacionesPeriodo::orderby('codigo_eval', 'asc')->get();
 
     $profesor = $seccion->seccion_empleado;
