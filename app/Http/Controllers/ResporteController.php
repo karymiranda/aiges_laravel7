@@ -83,8 +83,9 @@ $competenciasEst= $this->getCompetencias($students,$seccion);
       ]);
 
       $pdf->FooterConstancia();
+      */
     }
-*/
+
     return response()->make($pdf->Output(), 200, [
       'Content-Type' => 'application/pdf',
       'Content-Disposition' => 'inline; filename="doc.pdf"'
