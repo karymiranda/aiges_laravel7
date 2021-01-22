@@ -19,6 +19,7 @@ class ResporteController extends Controller
 {
   public function index($id)
   {
+    dd('llega');
     $centroEscolar = InfoCentroEducativo::first();
     $seccion = Seccion::find($id);
     $notasEst   = Notas::where('seccion_id', $id)->get();
@@ -29,9 +30,8 @@ class ResporteController extends Controller
     }
 
     $itemsNotasEst = $this->orderStudentNota($notasEst);
-    $evaluaciones = EvaluacionesPeriodo::orderby('codigo_eval', 'asc')->get();
 
-    dd($itemsNotasEst,$evaluaciones);
+    $evaluaciones = EvaluacionesPeriodo::orderby('codigo_eval', 'asc')->get();
 
     $profesor = $seccion->seccion_empleado;
     $students = DB::table('tb_expedienteestudiante')
