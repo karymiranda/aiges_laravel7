@@ -133,7 +133,7 @@ private function getStudentConducta($id,$idseccion) {
     $result = array();
     foreach ($notasEst as $item) {
       foreach ($item->notas as $value) {
-        $result[$value->alumno->v_expediente]['notasEst'][$item->asignatura->asignatura][$item->periodo->nombre][$item->evaluacion->codigo_eval] =  $value->calificacion * ($item->evaluacion->d_porcentajeActividad)/10);
+        $result[$value->alumno->v_expediente]['notasEst'][$item->asignatura->asignatura][$item->periodo->nombre][$item->evaluacion->codigo_eval] =  $value->calificacion * ($item->evaluacion->d_porcentajeActividad/100);
       }
     }
 
