@@ -76,14 +76,14 @@ $competenciasEst= $this->getCompetencias($students,$seccion);
 
     $criterios=Competenciasciudadanas::where('estado',1)->get();
      $pdf->competenciasTable($competenciasEst[$value->v_expediente],$criterios);
-
+*/
       $pdf->footerNotesBoletas([
         "profesor"  => $profesor,
         "centro"    => $centroEscolar
       ]);
 
       $pdf->FooterConstancia();
-      */
+      
     }
 
     return response()->make($pdf->Output(), 200, [
