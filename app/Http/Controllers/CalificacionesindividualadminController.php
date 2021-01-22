@@ -232,7 +232,7 @@ return view('admin.personaldocente.gestionacademica.nominas.consultarinformacion
 
       }
     }
-    return collect($result);
+    return $result;
   }
 
 //competencias ciudadanas individuales admin

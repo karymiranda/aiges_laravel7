@@ -54,7 +54,7 @@ $asistenciaEst= $this->getAsistencia($students,$seccion);
 $competenciasEst= $this->getCompetencias($students,$seccion);
 
 
-
+/*
     $pdf = new PdfController("L");
     
     foreach ($students as $value) {
@@ -90,6 +90,7 @@ $competenciasEst= $this->getCompetencias($students,$seccion);
       'Content-Type' => 'application/pdf',
       'Content-Disposition' => 'inline; filename="doc.pdf"'
     ]);
+    */
 
   }
 
@@ -134,6 +135,7 @@ private function getStudentConducta($id,$idseccion) {
         $result[$value->alumno->v_expediente]['notasEst'][$item->asignatura->asignatura][$item->periodo->nombre][$item->evaluacion->codigo_eval] =  floatval($value->calificacion) * (floatval($item->evaluacion->d_porcentajeActividad)/100);
       }
     }
-    return $result;
+  
+    return collect($result);
   }
 }
