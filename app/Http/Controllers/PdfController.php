@@ -388,7 +388,7 @@ $this->Cell(20,$this->height-2,isset($object[2]->criterio_5) ? $object[2]->crite
       $routeImage = __DIR__."..\..\..\..\public\logo-modificado.jpg";
       $this->Image($routeImage, 0.8, 0.3, 4.6);
     }else{
-      $routeImage = __DIR__."..\..\..\..\public\logo-modificado.jpg";
+      $routeImage = __DIR__."..\..\..\..\public\logo1-modificado.jpg";
       $this->Image($routeImage, 0.8, 0.3, 4.4);
     }
     
