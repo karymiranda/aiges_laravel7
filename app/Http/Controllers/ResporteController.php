@@ -31,7 +31,7 @@ class ResporteController extends Controller
     $itemsNotasEst = $this->orderStudentNota($notasEst);
     $evaluaciones = EvaluacionesPeriodo::orderby('codigo_eval', 'asc')->get();
 
-    //dd($itemsNotasEst,$evaluaciones);
+    dd($itemsNotasEst,$evaluaciones);
 
     $profesor = $seccion->seccion_empleado;
     $students = DB::table('tb_expedienteestudiante')
