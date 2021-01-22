@@ -31,9 +31,9 @@ class ResporteController extends Controller
       return redirect()->route('listareportes/secciones');
     }
 $evaluaciones = EvaluacionesPeriodo::orderby('codigo_eval', 'asc')->get();
-dd($evaluaciones);
-    $itemsNotasEst = $this->orderStudentNota($notasEst);
-    //dd($itemsNotasEst);
+
+ $itemsNotasEst = $this->orderStudentNota($notasEst);
+  dd($itemsNotasEst);
     
 
     $profesor = $seccion->seccion_empleado;
@@ -131,11 +131,11 @@ private function getStudentConducta($id,$idseccion) {
   public function orderStudentNota($notasEst = array())
   {
     $result = array();
-    foreach ($notasEst as $item) {
+   /* foreach ($notasEst as $item) {
       foreach ($item->notas as $value) {
         $result[$value->alumno->v_expediente]['notasEst'][$item->asignatura->asignatura][$item->periodo->nombre][$item->evaluacion->codigo_eval] =  floatval($value->calificacion) * (floatval($item->evaluacion->d_porcentajeActividad)/100);
       }
-    }
+    }*/
 
     return collect($result);
   }
