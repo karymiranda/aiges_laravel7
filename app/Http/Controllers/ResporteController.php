@@ -58,7 +58,7 @@ $competenciasEst= $this->getCompetencias($students,$seccion);
     
     foreach ($students as $value) {
       $pdf->AddPage();
-      $pdf->headerBoletaNotas($centroEscolar);
+     // $pdf->headerBoletaNotas($centroEscolar);
 
       $pdf->boletaTitulo([
         "seccion" =>  $seccion,
@@ -83,7 +83,7 @@ $competenciasEst= $this->getCompetencias($students,$seccion);
       ]);
 
       $pdf->FooterConstancia();
-      
+
     }
 
     return response()->make($pdf->Output(), 200, [
