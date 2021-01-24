@@ -16,6 +16,9 @@ class PdfController extends Fpdf
     $routeImage = __DIR__."..\..\..\..\public\logoce.jpg";
     $routeImageMINED = __DIR__."..\..\..\..\public\EscudoDeElSalvador.jpg";
 
+    //$fpdf->Image('imagenes/recursosrpt/escudoce.jpg',10,8,20);
+   // $fpdf->Image('imagenes/recursosrpt/escudo.png',185,8,20);
+
     //$this->Image($routeImage, 10, 4, 25);
     //$this->Image($routeImageMINED, 255, 6, 30);
 
