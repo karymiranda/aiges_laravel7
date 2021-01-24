@@ -62,7 +62,7 @@
                     <span class="sr-only">Toggle Dropdown</span>
                   </button>
                   <ul class="dropdown-menu" role="menu">
-                  <li><a id="horariodeclase" href="{{ route( 'horariosdeclases_pdf', ['id' => $seccion->id]) }}"  target="__blank">Generar PDF </a></li>
+                  <li><a id="horariodeclase" href="{{ route( 'horariosdeclases_pdf', $seccion->id) }}"  target="__blank">Generar PDF </a></li>
                   </ul>
           </div>
 
