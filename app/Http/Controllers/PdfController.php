@@ -512,7 +512,7 @@ $this->Cell(20,$this->height-2,isset($object[2]->criterio_5) ? $object[2]->crite
     $this->SetXY(20.65, $aumento + 1.0);
     $this->Cell(1, 3.4, '', 1, 0, 'C');
     //$this->Image("{$routeImage}\\conducta-1.png", 20.9, $aumento + 1, 0.53);
-     $this->Image("{$routeImage}/conducta-1.png", 20.9, $aumento + 1, 0.53);
+     $this->Image("conductas/conducta-1.png", 20.9, $aumento + 1, 0.53);
 
     $this->Cell(1, 3.4, '', 1, 0, 'C');
     $this->Image("{$routeImage}/conducta-2.png", 21.9, $aumento + 0.55, 0.6);
