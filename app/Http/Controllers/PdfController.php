@@ -511,18 +511,19 @@ $this->Cell(20,$this->height-2,isset($object[2]->criterio_5) ? $object[2]->crite
      $routeImage = 'conductas';
     $this->SetXY(20.65, $aumento + 1.0);
     $this->Cell(1, 3.4, '', 1, 0, 'C');
-    $this->Image("{$routeImage}\\conducta-1.png", 20.9, $aumento + 1, 0.53);
+    //$this->Image("{$routeImage}\\conducta-1.png", 20.9, $aumento + 1, 0.53);
+     $this->Image("{$routeImage}/conducta-1.png", 20.9, $aumento + 1, 0.53);
 
     $this->Cell(1, 3.4, '', 1, 0, 'C');
-    $this->Image("{$routeImage}\\conducta-2.png", 21.9, $aumento + 0.55, 0.6);
+    $this->Image("{$routeImage}/conducta-2.png", 21.9, $aumento + 0.55, 0.6);
 
     $this->Cell(1, 3.4, '', 1, 0, 'C');
-    $this->Image("{$routeImage}\\conducta-3.png", 22.9, $aumento + 0.96, 0.54);
+    $this->Image("{$routeImage}/conducta-3.png", 22.9, $aumento + 0.96, 0.54);
     
     $this->Cell(1, 3.4, '', 1, 0, 'C');
-    $this->Image("{$routeImage}\\conducta-4.png", 23.9, $aumento + 1, 0.53);
+    $this->Image("{$routeImage}/conducta-4.png", 23.9, $aumento + 1, 0.53);
     $this->Cell(1, 3.4, '', 1, 1, 'C');
-    $this->Image("{$routeImage}\\conducta-5.png", 24.85, $aumento + 1, 0.53);
+    $this->Image("{$routeImage}/conducta-5.png", 24.85, $aumento + 1, 0.53);
   }
 
   private function row($item, $num, $TercerNivel = false, $conducta = array(), $show = true) {
