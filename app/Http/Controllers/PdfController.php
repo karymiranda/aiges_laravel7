@@ -465,7 +465,7 @@ $this->Cell(20,$this->height-2,isset($object[2]->criterio_5) ? $object[2]->crite
    // $routeImage = __DIR__."..\..\..\..\public\materias";
      $routeImage='materias';
     if($TercerNivel)
-      $this->Image("{$routeImage}\lenguaje-tercer.png", 14.30, $aumento + 1.1, 0.37);
+      $this->Image("{$routeImage}/lenguaje-tercer.png", 14.30, $aumento + 1.1, 0.37);
     else
       $this->Image("{$routeImage}\lenguaje.png", 14.25, $aumento - 1.30, 0.45);
 
