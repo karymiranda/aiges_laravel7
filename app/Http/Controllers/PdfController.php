@@ -386,10 +386,12 @@ $this->Cell(20,$this->height-2,isset($object[2]->criterio_5) ? $object[2]->crite
     $this->Cell(7.0);
 
     if(@$array->nivel > 6 ) {
-      $routeImage = __DIR__."..\..\..\..\public\logo-modificado.jpg";
+      //$routeImage = __DIR__."..\..\..\..\public\logo-modificado.jpg";
+      $routeImage='logo-modificado.jpg';
       $this->Image($routeImage, 0.8, 0.3, 4.6);
     }else{
-      $routeImage = __DIR__."..\..\..\..\public\logo1-modificado.jpg";
+      //$routeImage = __DIR__."..\..\..\..\public\logo1-modificado.jpg";
+      $routeImage='logo1-modificado.jpg';
       $this->Image($routeImage, 0.8, 0.3, 4.4);
     }
     
@@ -440,7 +442,8 @@ $this->Cell(20,$this->height-2,isset($object[2]->criterio_5) ? $object[2]->crite
       $this->Ln(0.6);
     $this->SetFont('Arial','B', 9);
     $this->Cell(0.85, $height + 0.4, '', 1, 0, 'C');
-    $routeImage = __DIR__."..\..\..\..\public\\numero-orden.png";
+    //$routeImage = __DIR__."..\..\..\..\public\\numero-orden.png";
+     $routeImage='numero-orden.png';
     $this->Image($routeImage, 1.2, $aumento + 1.30);
 
     if ($TercerNivel) {
@@ -459,7 +462,8 @@ $this->Cell(20,$this->height-2,isset($object[2]->criterio_5) ? $object[2]->crite
     $this->SetXY(14, $aumento + 1.0);
     $this->Cell(0.95, 2.6, '', 1, 0, 'C');
 
-    $routeImage = __DIR__."..\..\..\..\public\materias";
+   // $routeImage = __DIR__."..\..\..\..\public\materias";
+     $routeImage='materias';
     if($TercerNivel)
       $this->Image("{$routeImage}\lenguaje-tercer.png", 14.30, $aumento + 1.1, 0.37);
     else
@@ -501,7 +505,8 @@ $this->Cell(20,$this->height-2,isset($object[2]->criterio_5) ? $object[2]->crite
     $this->SetFont('Arial','', 7);
     //$this->Cell(4.5, 0.5, 'Aspectos de la conducta', 0, 0, 'C');
 
-    $routeImage = __DIR__."..\..\..\..\public\conductas";
+    //$routeImage = __DIR__."..\..\..\..\public\conductas";
+     $routeImage = 'conductas';
     $this->SetXY(20.65, $aumento + 1.0);
     $this->Cell(1, 3.4, '', 1, 0, 'C');
     $this->Image("{$routeImage}\\conducta-1.png", 20.9, $aumento + 1, 0.53);
