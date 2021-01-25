@@ -5,6 +5,7 @@
       <!-- Small boxes (Stat box) -->
           
 <!-- FIN MENU DOCENTES -->
+
 @foreach(Auth::user()->usuario_rol as $rol)
     <?php if($rol->v_nombrerol=='Docente'):?><!-- si el rol es administrador rrhh o superusuario entrara en el if-->
  <div class="col-lg-3 col-xs-6">

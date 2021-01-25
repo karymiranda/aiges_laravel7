@@ -31,9 +31,9 @@ class ResporteController extends Controller
       Flash::error("No hay información para mostrar")->important();
       return redirect()->route('listareportes/secciones');
     }
-$evaluaciones = EvaluacionesPeriodo::orderby('codigo_eval', 'asc')->get();
+ $evaluaciones = EvaluacionesPeriodo::orderby('codigo_eval', 'asc')->get();
  $itemsNotasEst = $this->orderStudentNota($notasEst);
-  // dd($itemsNotasEst);
+
 
     $profesor = $seccion->seccion_empleado;
     $students = DB::table('tb_expedienteestudiante')
