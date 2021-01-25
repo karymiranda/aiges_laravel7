@@ -467,31 +467,33 @@ $this->Cell(20,$this->height-2,isset($object[2]->criterio_5) ? $object[2]->crite
     if($TercerNivel)
       $this->Image("{$routeImage}/lenguaje-tercer.png", 14.30, $aumento + 1.1, 0.37);
     else
-      $this->Image("{$routeImage}\lenguaje.png", 14.25, $aumento - 1.30, 0.45);
+      $this->Image("{$routeImage}/lenguaje.png", 14.25, $aumento - 1.30, 0.45);
 
     $this->Cell(0.95, 2.6, '', 1, 0, 'C');
-    $this->Image("{$routeImage}\matematica.png", 15.2, $aumento + 0.55, 0.45);
+    $this->Image("{$routeImage}/matematica.png", 15.2, $aumento + 0.55, 0.45);
 
     $this->Cell(0.95, 2.6, '', 1, 0, 'C');
-    $this->Image("{$routeImage}\ciencia-salud-medio-ambiente.png", 16, $aumento + 0.45, 0.8);
+    $this->Image("{$routeImage}/ciencia-salud-medio-ambiente.png", 16, $aumento + 0.45, 0.8);
 
     $this->Cell(0.95, 2.6, '', 1, 0, 'C');
     if($TercerNivel)
-      $this->Image("{$routeImage}\\estudio-sociales-tercer.png", 16.95, $aumento + 1.1, 0.7);
+      $this->Image("{$routeImage}/estudio-sociales-tercer.png", 16.95, $aumento + 1.1, 0.7);
     else
-      $this->Image("{$routeImage}\\estudio-sociales.png", 17.1, $aumento + 1.30, 0.39);
+      $this->Image("{$routeImage}/estudio-sociales.png", 17.1, $aumento + 1.30, 0.39);
     
     $this->Cell(0.95, 2.6, '', 1, 0, 'C');
     if($TercerNivel)
-      $this->Image("{$routeImage}\ingles.png", 17.9, $aumento, 0.9);
+      $this->Image("{$routeImage}/ingles.png", 17.9, $aumento, 0.9);
+   // $this->Image("{$routeImage}\ingles.png", 17.9, $aumento, 0.9);
     else
-      $this->Image("{$routeImage}\\educacion-artistica.png", 18.1, $aumento - 0.75, 0.4);
+      $this->Image("{$routeImage}//educacion-artistica.png", 18.1, $aumento - 0.75, 0.4);
+     //$this->Image("{$routeImage}\\educacion-artistica.png", 18.1, $aumento - 0.75, 0.4);
     
     $this->Cell(0.95, 2.6, '', 1, 0, 'C');
-    $this->Image("{$routeImage}\\educacion-fisica.png", 18.9, $aumento + 0.45, 0.8);
+    $this->Image("{$routeImage}/educacion-fisica.png", 18.9, $aumento + 0.45, 0.8);
 
     $this->Cell(0.95, 2.6, '', 1, 0, 'C');
-    $this->Image("{$routeImage}\moral-urbanidad-civica.png", 19.8, $aumento + 1.35, 0.75);
+    $this->Image("{$routeImage}/moral-urbanidad-civica.png", 19.8, $aumento + 1.35, 0.75);
 
     $this->SetFont('Arial','', 10);
     $this->SetXY(14, $aumento + 3.60);
