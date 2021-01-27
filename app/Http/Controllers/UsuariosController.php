@@ -22,23 +22,12 @@ class UsuariosController extends Controller
 	{
 		$usuarios=Usuario::orderBy('id','ASC')->where('estado','=','1')->get();
 		
-
-		/*$usuar=Usuario::orderBy('id','ASC')->where('estado','=','1')->count();
-		$usu=Usuario::WhereHas('familiar')->count();
-		$usu1=Usuario::WhereHas('estudiante')->count();
-		$usu2=Usuario::WhereHas('empleado')->count();
-		dd($usu,$usu1,$usu2,$usuar);
-		//$ul=Familiares::where('estado','1')->get();
-	 
-		});
-
-		*/	
-		$usuarios->each(function($usuarios){ 
+	/*	$usuarios->each(function($usuarios){ 
 			$usuarios->usuario_rol;
 			$usuarios->familiar; 
 			$usuarios->empleado;
 			$usuarios->estudiante;
-		});
+		});*/
 
 
 		return view('admin.seguridad.listausuariosactivos')->with('usuarios',$usuarios);
