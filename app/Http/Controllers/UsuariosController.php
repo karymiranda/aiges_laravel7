@@ -32,13 +32,14 @@ class UsuariosController extends Controller
 	 
 		});
 
-		dd($usuarios);*/	
+		*/	
 		$usuarios->each(function($usuarios){ 
 			$usuarios->usuario_rol;
 			$usuarios->familiar; 
 			$usuarios->empleado;
 			$usuarios->estudiante;
 		});
+
 
 		return view('admin.seguridad.listausuariosactivos')->with('usuarios',$usuarios);
 	}
