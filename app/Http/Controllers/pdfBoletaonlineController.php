@@ -7,7 +7,7 @@ use \Codedge\Fpdf\Fpdf\Fpdf;
 
 class pdfBoletaonlineController extends Fpdf
 {
-  var $height = 6; 
+  var $height = 4; 
 
   // Para la boleta de notas encabezado
   public function headerBoletaNotas($centro)

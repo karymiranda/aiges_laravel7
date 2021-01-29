@@ -34,8 +34,19 @@ if($sec!=null)//si esta matriculado
  
     if(!count($notasEst)>0)//si no hay notas registradas
     {
-      dd('nO HAY INFORMACION PÁRA MOSTRAR');
+       $pdf = new pdfBoletaonlineController("L","mm","letter");
+       $pdf->AddPage();
+       $pdf->headerBoletaNotas($centroEscolar);
+       $this->SetFont('Arial','B', 10);
+       $this->Cell(0,6, 'No hay calificaciones para mostrar.', 0, 1, 'C');
+       return response()->make($pdf->Output(), 200, [
+      'Content-Type' => 'application/pdf',
+      'Content-Disposition' => 'inline; filename="doc.pdf"'
+    ]);
+
     }
+
+
     $itemsNotasEst = $this->orderStudentNota($notasEst);
     $evaluaciones = EvaluacionesPeriodo::orderby('codigo_eval', 'asc')->get();
     $profesor = $sec->seccion_empleado;
