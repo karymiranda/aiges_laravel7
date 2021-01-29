@@ -21,7 +21,7 @@ class reporteBoletaonlineController extends Controller
 {
   public function index($id, $anio)
   {
-  	//dd($id);
+  	dd($id);
  $sec=Seccion::whereHas('seccion_estudiante', function($query) use ($anio,$id){
 $query->where([['tb_matriculaestudiante.anio','=',$anio],['tb_matriculaestudiante.estudiante_id','=',$id],['tb_matriculaestudiante.v_estadomatricula','aprobada']]);
 })->first();
