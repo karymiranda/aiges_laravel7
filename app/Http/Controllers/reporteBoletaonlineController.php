@@ -32,7 +32,7 @@ if($sec!=null)//si esta matriculado
     $seccion_id = $sec->id;
     $notasEst   = Notas::where('seccion_id', $seccion_id)->get();
  
-    if(!count($notasEst)>0)//si no hay notas registradas
+    if(count($notasEst)==0)//si no hay notas registradas
     {
        $pdf = new pdfBoletaonlineController("L","mm","letter");
        $pdf->AddPage();
