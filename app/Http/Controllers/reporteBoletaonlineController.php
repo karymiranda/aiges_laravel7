@@ -21,7 +21,7 @@ class reporteBoletaonlineController extends Controller
 {
   public function index($id, $anio)
   {
-  	dd($id);
+  	//dd($id);
  $sec=Seccion::whereHas('seccion_estudiante', function($query) use ($anio,$id){
 $query->where([['tb_matriculaestudiante.anio','=',$anio],['tb_matriculaestudiante.estudiante_id','=',$id],['tb_matriculaestudiante.v_estadomatricula','aprobada']]);
 })->first();
@@ -34,7 +34,7 @@ if($sec!=null)//si esta matriculado
  
     if(!count($notasEst)>0)//si no hay notas registradas
     {
-      
+      dd('nO HAY INFORMACION PÁRA MOSTRAR');
     }
     $itemsNotasEst = $this->orderStudentNota($notasEst);
     $evaluaciones = EvaluacionesPeriodo::orderby('codigo_eval', 'asc')->get();
