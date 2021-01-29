@@ -11,13 +11,13 @@ class pdfBoletaonlineController extends Fpdf
 
   // Para la boleta de notas encabezado
   public function headerBoletaNotas($centro)
-  {
+  { 
    // $routeImage = __DIR__."..\..\..\..\public\\".$centro['logo'];
-     $routeImage = __DIR__."..\..\..\..\public\logoce.jpg";
-    $routeImageMINED = __DIR__."..\..\..\..\public\EscudoDeElSalvador.jpg";
+   // $routeImage = __DIR__."..\..\..\..\public\logoce.jpg";
+    //$routeImageMINED = __DIR__."..\..\..\..\public\EscudoDeElSalvador.jpg";
 
-   $this->Image($routeImage, 10, 4, 15);
-    $this->Image($routeImageMINED, 255, 6, 20);
+   $this->Image('logoce.jpg', 10, 4, 15);
+    $this->Image('EscudoDeElSalvador.jpg', 255, 6, 20);
     
     $this->SetFont('Arial','', 11);
     $this->Cell(0, $this->height - 1, utf8_decode('Ministerio de Educación, Ciencia y Tecnologia'), 0, 1, 'C');
