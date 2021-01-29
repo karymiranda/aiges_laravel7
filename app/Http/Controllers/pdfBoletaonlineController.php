@@ -52,7 +52,7 @@ class pdfBoletaonlineController extends Fpdf
 
 public function asistenciaTable($object = array())
 {
- $this->Ln(4);
+ $this->Ln(2);
  $this->SetFillColor(210);
  $this->SetFont('Arial','',9);
  $this->Cell(70,$this->height,"Cuadro de Asistencia",1,0,'C',1);
@@ -167,12 +167,12 @@ foreach ($criterios as $key => $value)
 $this->Ln(2);
 $this->SetFillColor(210);
 $this->SetFont('Arial','B',10);
-$this->Cell(130,12,"ASPECTOS DE CONDUCTA DEL ESTUDIANTE",1,0,'C',1);
-$this->Cell(60,$this->height,"CALIFICACION POR PERIODO",1,1,'C',1);
+$this->Cell(130,10,"ASPECTOS DE CONDUCTA DEL ESTUDIANTE",1,0,'C',1);
+$this->Cell(60,$this->height-1,"CALIFICACION POR PERIODO",1,1,'C',1);
 $this->Cell(130);
-$this->Cell(20,$this->height,"P1",1,0,'C',1);
-$this->Cell(20,$this->height,"P2",1,0,'C',1);
-$this->Cell(20,$this->height,"P3",1,1,'C',1);
+$this->Cell(20,$this->height-1,"P1",1,0,'C',1);
+$this->Cell(20,$this->height-1,"P2",1,0,'C',1);
+$this->Cell(20,$this->height-1,"P3",1,1,'C',1);
 $this->SetFont('Arial','',10);
 //dd($a);
 $this->Cell(130,$this->height,utf8_decode($a[0]),1,0,'L',0);
@@ -200,7 +200,7 @@ $this->Cell(130,$this->height,utf8_decode($a[4]),1,0,'L',0);
 $this->Cell(20,$this->height,isset($object[0]->criterio_5) ? $object[0]->criterio_5 : '-',1,0,'C',0);
 $this->Cell(20,$this->height,isset($object[1]->criterio_5) ? $object[1]->criterio_5 : '-',1,0,'C',0);
 $this->Cell(20,$this->height,isset($object[2]->criterio_5) ? $object[2]->criterio_5 : '-',1,1,'C',0);
- $this->Ln(5);
+ $this->Ln(2);
 }
 
 
