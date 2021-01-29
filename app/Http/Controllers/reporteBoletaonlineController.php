@@ -32,13 +32,14 @@ if($sec!=null)//si esta matriculado
     $seccion_id = $sec->id;
     $notasEst   = Notas::where('seccion_id', $seccion_id)->get();
  
-    if(count($notasEst)==0)//si no hay notas registradas
+    if(!count($notasEst)>0)//si no hay notas registradas
     {
-       $pdf = new pdfBoletaonlineController("L","mm","letter");
+
+       $pdf = new pdfBoletaonlineController("L");
        $pdf->AddPage();
        $pdf->headerBoletaNotas($centroEscolar);
-       $this->SetFont('Arial','B', 10);
-       $this->Cell(0,6, 'No hay calificaciones para mostrar.', 0, 1, 'C');
+       $pdf->SetFont('Arial','B', 10);
+       $pdf->Cell(0,6, 'No hay calificaciones para mostrar.', 0, 1, 'C');
        return response()->make($pdf->Output(), 200, [
       'Content-Type' => 'application/pdf',
       'Content-Disposition' => 'inline; filename="doc.pdf"'
