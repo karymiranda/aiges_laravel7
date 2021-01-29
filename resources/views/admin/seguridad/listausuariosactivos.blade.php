@@ -39,6 +39,7 @@
              @foreach($usuario->usuario_rol as $rol)
                 {{$rol->v_nombrerol}}<br>
               @endforeach
+           
             </td>
             <td>
               <a href="{{route('verusuario',$usuario->id)}}" class="btn btn-primary" title="Ver"><i class="fa fa-eye"></i></a>

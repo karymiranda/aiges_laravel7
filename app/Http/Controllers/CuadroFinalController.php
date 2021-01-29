@@ -37,7 +37,7 @@ class CuadroFinalController extends Controller
            // dd($th);
             DB::rollBack();
             return redirect()->route('cuadroFinal.show', $params['id'])
-                ->with('error', 'Hemos tenido un problema con la base de datos, intenta más tarde por favor');
+                ->with('error', 'Hemos tenido un problema con la base de datos, intente más tarde por favor');
         }
     }
 

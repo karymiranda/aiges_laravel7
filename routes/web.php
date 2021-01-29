@@ -858,7 +858,7 @@ Route::post("reporteAsistencia/{idestudiante}/{anio}", ['as'=>'reporteAsistencia
 Route::post("reporteAsistenciamensual/{id}/{anio}", ['as'=>'reporteAsistenciamensual','uses'=>'ConsultasyreportesController@reporteAsistenciamensual']);//asistencia PDF
 
 //BOLETA INDIVIDUAL MODULOS ONLINE
-Route::get('reporteBoletaestudiante/{id}/{anio}',['as'=>'reporteBoletaestudiante','uses'=>'ReporteBoletaonlineController@index']);
+//Route::get('reporteBoletaestudiante/{id}/{anio}',['as'=>'reporteBoletaestudiante','uses'=>'ReporteBoletaonlineController@index']);
 //ASISTENCIA INDIVIDUAL ONLINE
 Route::get("reporteAsistenciaonline/{id}/{mes}", ['as'=>'reporteAsistenciaonline','uses'=>'ConsultasyreportesController@reporteAsistenciaonline']);
 
