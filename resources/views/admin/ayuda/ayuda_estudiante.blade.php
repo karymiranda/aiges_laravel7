@@ -11,7 +11,7 @@
 
 
                 <div class="col-sm-8">
-                      <iframe src="../imagenes/recursosrpt/ayuda/help_docente.pdf" width="800" height="780" style="border: none;"></iframe>
+                      <iframe src="../imagenes/recursosrpt/ayuda/help_estudiante.pdf" width="800" height="780" style="border: none;"></iframe>
                     
                 </div>
 
