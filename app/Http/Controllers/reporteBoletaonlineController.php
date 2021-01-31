@@ -36,6 +36,7 @@ if($sec!=null)//si esta matriculado
     {
 
        $pdf = new pdfBoletaonlineController("L");
+      
        $pdf->AddPage();
        $pdf->headerBoletaNotas($centroEscolar);
        $pdf->SetFont('Arial','B', 10);

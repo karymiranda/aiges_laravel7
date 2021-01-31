@@ -914,7 +914,7 @@ $anio=$anio->anio;
     });
 
   //CODIGO PARA REPORTE
-$fpdf=new Fpdf("L","mm","Letter");//Legal es pagina tamaño oficio, Letter para carta
+$fpdf=new Fpdf("L","mm","A4");//Legal es pagina tamaño oficio, Letter para carta
 $fpdf->AddPage();
 $fpdf->SetTitle("horariodeclases".date('_Ymd'));
 $this->cabecerahorizontal($fpdf);
@@ -1512,6 +1512,7 @@ else{
   $asesor=strtoupper(utf8_decode($seccion->seccion_empleado->v_nombres))." ".utf8_decode(strtoupper($seccion->seccion_empleado->v_apellidos));
 }
 $fpdf = new Fpdf("L", "mm", "Letter");//ORIENTACION DE LA PAGINA p es vrtical l horizontal
+
 $fpdf->AddPage();   
 $this->cabecerahorizontal($fpdf);
  /*$fpdf->Ln(5);
@@ -1526,7 +1527,7 @@ $fpdf->Cell(0, $this->height - 1, utf8_decode('NOMINA DE ESTUDIANTES'), 0, 1, 'C
 $fpdf->Ln(2);
 $fpdf->SetFont('Arial','',10);
 
-
+//14,80
 $fpdf->Cell(14, $this->height - 1, 'Grado: ', 0, 0, 'R');
 $fpdf->Cell(80, $this->height +1,utf8_decode($seccion->seccion_grado->grado), 'B');
 
@@ -1604,11 +1605,9 @@ $this->piedepagina($fpdf);
 }
 
   public function nominadeestudiantes_pdf(
-    Request $request
-    // \Codedge\Fpdf\Fpdf\Fpdf $pdf
-  )
+    Request $request)
   {
-   // dd($requ);
+
 $id=$request->seccion_id;
 $seccion=Seccion::find($id);
 $anio=Periodoactivo::find($request->periodo_id);//uso el scope para sacar el periodo activo
@@ -1643,7 +1642,7 @@ $fpdf->Cell(0, $this->height - 1, utf8_decode('NOMINA DE ESTUDIANTES'), 0, 1, 'C
 $fpdf->Ln(2);
 $fpdf->SetFont('Arial','',10);
 
-
+//14,80
 $fpdf->Cell(14, $this->height - 1, 'Grado: ', 0, 0, 'R');
 $fpdf->Cell(80, $this->height +1,utf8_decode($seccion->seccion_grado->grado), 'B');
 

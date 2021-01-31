@@ -9,17 +9,18 @@ class rendimientoescolarporasignaturaController extends Fpdf
 {
    var $height = 6;
     var $interlineado = 4;
-
+ 
   // Para la boleta de notas encabezado
   public function headerBoletaNotas($centro)
   {
+ 
+    // $routeImage = __DIR__."..\..\..\..\public\logoce.jpg";
+    //$routeImageMINED = __DIR__."..\..\..\..\public\EscudoDeElSalvador.jpg";
 
-     $routeImage = __DIR__."..\..\..\..\public\logoce.jpg";
-    $routeImageMINED = __DIR__."..\..\..\..\public\EscudoDeElSalvador.jpg";
-
-    $this->Image($routeImage, 10, 4, 15);
-    $this->Image($routeImageMINED, 250, 6, 20);
+    $this->Image('logoce.jpg', 10, 4, 15);
+    $this->Image('EscudoDeElSalvador.jpg', 250, 6, 20);
     
+
     $this->SetFont('Arial','', 11);
     $this->Cell(0, $this->height - 1, utf8_decode('Ministerio de Educación, Ciencia y Tecnologia'), 0, 1, 'C');
     $this->SetFont('Arial','B',12);
@@ -35,10 +36,10 @@ class rendimientoescolarporasignaturaController extends Fpdf
   public function boletaTitulo($object = array())
   {
     $this->Ln(3);
-    $this->SetFont('Arial','B', 10);
+    $this->SetFont('Helvetica','B', 13);
     $this->Cell(0, $this->height - 1, 'REGISTRO DE EVALUACION DEL RENDIMIENTO ESCOLAR', 0, 1, 'C');
     $this->Cell(0, $this->height - 1, 'EDUCACION BASICA', 0, 1, 'C');
-    $this->SetFont('Helvetica','BU', 13);
+    $this->SetFont('Helvetica','BU', 10);
     $this->Cell(0, $this->height - 1, utf8_decode($object['seccion']['descripcion']), 0, 1, 'C');
   }
 
@@ -52,11 +53,11 @@ class rendimientoescolarporasignaturaController extends Fpdf
    public function boletasubtitulo($datos,$seccion)
   {
     $this->Ln(2);
-    $this->SetFont('Arial','B', 10);
+    $this->SetFont('Arial','B', 11);
     $this->Cell(0, $this->height - 1, 'REGISTRO DE EVALUACION DEL RENDIMIENTO ESCOLAR - EDUCACION BASICA', 0, 1, 'C');
-   // $this->Cell(0, $this->height - 1, 'POR ASIGNATURA Y TRIMESTRE', 0, 1, 'C');
+    $this->Cell(0, $this->height - 1, 'POR ASIGNATURA Y TRIMESTRE', 0, 1, 'C');
     //$this->Cell(0, $this->height - 1, 'EDUCACION BASICA', 0, 1, 'C');
-    $this->SetFont('Helvetica','BU', 13);
+    $this->SetFont('Helvetica','BU', 10);
     $this->Cell(0, $this->height - 1, utf8_decode(mb_strtoupper($seccion->descripcion)), 0, 1, 'C');
 
     $this->SetFont('Arial','', 10);
@@ -67,70 +68,77 @@ class rendimientoescolarporasignaturaController extends Fpdf
     $this->Cell(0, $this->height,$seccion->anio, 'B', 1, 'C');
 
     $this->Cell(38, $this->height + 2, 'Profesor/a Encargado:  ', 0, 0, 'R');
-    $this->Cell(190, $this->height + 2, utf8_decode($datos->v_nombres)."  ".utf8_decode($datos->v_apellidos), 'B', 0);
-
-//$this->Cell(38, $this->height-1,utf8_decode("A1=Actividad 1 A=Actividad 2 A3=Actividad 3 PR.=Promedio"),0,1, "C",0);
+    $this->Cell(190, $this->height + 2, utf8_decode($datos->v_nombres)."  ".utf8_decode($datos->v_apellidos), 'B', 1);
+    $this->SetFont('Arial','', 8);
+    $this->Cell(0, $this->height+2,utf8_decode(" *A1=Actividad 1 A=Actividad 2 A3=Actividad 3 PR.=Promedio  PF=Promedio final"),0,1, "L",0);
+     $this->Ln(5);
   }
 
 public function headertablarendimientoescolar()
-{ 
-$this->SetFont('Arial','', 8);
+{ //$this->SetXY(10,65);
+  $altura=8;
+$this->SetXY(10,65+$altura);
 
-$this->SetXY(10,65);
-$this->SetFont('Arial','B',9);
+   // $this->SetFillColor(0,0,0);
+    //$this->SetTextColor(240, 255, 240); 
+
     $this->SetFillColor(229,229,229);
-    $this->SetFont('Arial','B','7');
+    $this->SetFont('Arial','B','8');
+
     $this->Cell(5, 15, "No", 1, 0, "C",1); 
     $this->Cell(20, 15, "NIE", 1, 0, "C",1); 
     $this->Cell(60, 15,"NOMBRE ALUMNO/A", 1, 0, "C",1); 
     $this->Cell(45, 5, utf8_decode("1° PERIODO"), 1, 0, "C",1);
-    $this->SetXY(95,70);
+    $this->SetXY(95,78);
     $this->Cell(45, 5, utf8_decode("ACTIVIDADES"), 1, 0, "C",1);
-    $this->SetXY(95,75); 
+    $this->SetXY(95,75+$altura); 
     $this->Cell(15, 5,"A1", 1, 0, "C",1);
     $this->Cell(15, 5,"A2", 1, 0, "C",1);
     $this->Cell(15, 5,"A3", 1, 1, "C",1);
-    $this->SetXY(140,65);
+    $this->SetXY(140,65+$altura);
      $this->SetFont('Arial','B','7');
     $this->Cell(10,15,"PROM", 1, 1, "C",1);
      $this->SetFont('Arial','B','7');
-   $this->SetXY(150,65);
+   $this->SetXY(150,65+$altura);
    $this->Cell(45, 5,utf8_decode("2° PERIODO"), 1, 0, "C",1);
-   $this->SetXY(150,70); 
+   $this->SetXY(150,70+$altura); 
    $this->Cell(45, 5, utf8_decode("ACTIVIDADES"), 1, 0, "C",1);
-   $this->SetXY(150,75); 
+   $this->SetXY(150,75+$altura); 
    $this->Cell(15, 5,"A1", 1, 0, "C",1);
    $this->Cell(15, 5,"A2", 1, 0, "C",1);
    $this->Cell(15, 5,"A3", 1, 1, "C",1);
-   $this->SetXY(195,65);
+   $this->SetXY(195,65+$altura);
    $this->SetFont('Arial','B','7');
    $this->Cell(10,15,"PROM", 1, 1, "C",1);
    $this->SetFont('Arial','B','7');
-    $this->SetXY(205,65);
+    $this->SetXY(205,65+$altura);
    $this->Cell(45, 5,utf8_decode("3° PERIODO"), 1, 1, "C",1);
-   $this->SetXY(205,70);     
+   $this->SetXY(205,70+$altura);     
    $this->Cell(45, 5, utf8_decode("ACTIVIDADES"), 1, 0, "C",1);
-   $this->SetXY(205,75); 
+   $this->SetXY(205,75+$altura); 
    $this->Cell(15, 5,"A1", 1, 0, "C",1);
    $this->Cell(15, 5,"A2", 1, 0, "C",1);
    $this->Cell(15, 5,"A3", 1, 1, "C",1);
-   $this->SetXY(225,65);
+   $this->SetXY(225,65+$altura);
    $this->SetFont('Arial','B','7');
-   $this->SetXY(250,65);
+   $this->SetXY(250,65+$altura);
    $this->Cell(10,15,"PROM", 1, 1, "C",1);
-   $this->SetXY(260,65);
+   $this->SetXY(260,65+$altura);
    $this->Cell(10,15,utf8_decode("PF"), 1, 1, "C",1);
 
 }
 
   public function tableNotesBoleta($object = array())
 	{
+$i=0;
 $cont=count($object ['notas']);
-//dd($object['students']);
-foreach ($object['students'] as $key => $estudiantes) {
+foreach ($object['students'] as $key => $estudiantes)
+ {
+$i++;
+ $this->SetFillColor( ($i % 2 == 0 ) ? 120 : 190 );
 
    $this->SetFont('Arial','', 8);
-   $this->Cell(5, $this->interlineado + 1,utf8_decode($key+1), 1, 0, 'L');
+   $this->Cell(5, $this->interlineado + 1,utf8_decode($key+1), 1, 0, 'L',1);
    $this->Cell(20, $this->interlineado + 1,utf8_decode($estudiantes->v_nie), 1, 0, 'L');
    $this->Cell(60, $this->interlineado + 1,utf8_decode($estudiantes->v_apellidos).", ".utf8_decode($estudiantes->v_nombres),1, 1, 'L',0);
 
@@ -138,7 +146,7 @@ foreach ($object['students'] as $key => $estudiantes) {
 
  
  //$this->SetXY(95,0);
- $this->SetY(80);
+ $this->SetY(88);//80
  //dd($object ['notas']); 
  foreach ($object ['notas'] as  $y => $value) { 
 

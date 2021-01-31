@@ -296,8 +296,8 @@ var fechadesde = rangofechas[0].split('/').reverse().join('-');
 var fechahasta = rangofechas[1].split('/').reverse().join('-');
 
 $('#modalfiltrorptasistenciaexcel').modal('hide');
-$('#btnasistenciaexcel').attr("href",'/aiges/public/index.php/admin/asistencia/'+fechadesde+'/'+fechahasta+'/'+id+'/excel');
-}); 
+$('#btnasistenciaexcel').attr("href",'asistencia/'+fechadesde+'/'+fechahasta+'/'+id+'/excel');
+});   
 
 $('#btnnotasexcel').on('click', function(e){//asistencia
 var periodo=$('#periodo_notasexcel').val(); 
@@ -305,7 +305,7 @@ var asignatura=$('#asignatura_notasexcel').val();
 
 
 $('#modalcalificacionesexcel').modal('hide');
-$('#btnnotasexcel').attr("href",'/aiges/public/index.php/admin/calificacionesexcel/'+id+'/'+periodo+'/'+asignatura+'/excel');
+$('#btnnotasexcel').attr("href",'calificacionesexcel/'+id+'/'+periodo+'/'+asignatura+'/excel');
 }); 
 
 
@@ -377,10 +377,10 @@ if(id!=null && id!='')//id seccion debe tener informacion sino no dejara hacer s
  switch (reporte_id)
     {
       case '1':
-$('#btngenerarexcel').attr("href",'/aiges/public/index.php/admin/formato_nominaestudiantesExcel/'+id+'/excel');
+$('#btngenerarexcel').attr("href",'formato_nominaestudiantesExcel/'+id+'/excel');
       break;
       case '2':  
-$('#btngenerarexcel').attr("href",'/aiges/public/index.php/admin/nominafamiliaresExcel/'+id+'/excel');
+$('#btngenerarexcel').attr("href",'nominafamiliaresExcel/'+id+'/excel');
       break;
        case '3':
   

@@ -56,6 +56,7 @@ if(count($notas)>0)
       ->get();
 
     $pdf = new rendimientoescolarporasignaturaController ("L","mm","Letter");
+     $pdf->SetMargins(10.0,10.0,10.0,10.0);
     $pdf->AddPage();
       $pdf->headerBoletaNotas($centroEscolar);     
      /* $pdf->boletaTitulo([
