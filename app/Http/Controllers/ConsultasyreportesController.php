@@ -1515,11 +1515,6 @@ $fpdf = new Fpdf("L", "mm", "Letter");//ORIENTACION DE LA PAGINA p es vrtical l 
 
 $fpdf->AddPage();   
 $this->cabecerahorizontal($fpdf);
- /*$fpdf->Ln(5);
-$fpdf->SetFont('Arial','B', 9);
-$fpdf->Cell(0, $this->height - 1, utf8_decode('"NOMINA DE ESTUDIANTES"'), 0, 1, 'C');
-//$fpdf->SetFont('Arial','',8);
-$fpdf->Cell(0, $this->height - 1, 'GRADO :  '.strtoupper($seccion->seccion_grado->grado)."   SECCION:  ".utf8_decode($seccion->seccion)."  TURNO:  ".utf8_decode($seccion->seccion_turno->turno), 0, 1, 'C');*/
 
 $fpdf->Ln(2);
 $fpdf->SetFont('Helvetica','BU', 12);
