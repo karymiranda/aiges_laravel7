@@ -82,7 +82,7 @@
                   </div>
                   <div class="form-group"><label for="inputSkills" class="col-sm-4 control-label">Dirección</i></label>
                     <div class="col-sm-6">
-                      <textarea class="form-control" id="inputExperience"  readonly="true" placeholder="Dirección">{{$value->v_direccion}}"</textarea>
+                      <textarea class="form-control" id="inputExperience"  readonly="true" placeholder="Dirección">{{$value->v_direccion}}</textarea>
                     </div>
                   </div>               
                   

@@ -93,9 +93,9 @@ else//SI NO HAY NOTAS PARA LA ASIGNATURA MANDO ESTO PARA QUE NO ME DE ERROR
  $pdf = new rendimientoescolarporasignaturaController ("L","mm","Letter");
     $pdf->AddPage();
       $pdf->headerBoletaNotas($centroEscolar);     
-      $pdf->boletaTitulo([
+    /*  $pdf->boletaTitulo([
         "seccion" =>  $seccion
-      ]); 
+      ]); */
     $pdf->boletasubtitulo($asig,$seccion);
     $pdf->headertablarendimientoescolar();
    $pdf->Cell(260, 50, 'NO HAY NOTAS REGISTRADAS PARA ESTA ASIGNATURA' , 1, 1, 'C');
