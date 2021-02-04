@@ -257,17 +257,16 @@ return redirect()->route('avisohorarioclases');
 
 public function calificacionesestudianteonline($id)
 {
-
 $ciclosacademicos=Periodoactivo::orderBy('anio','DESC')->where('tipo_periodo','like','ACADEMICO')->get();
 $estudiante=Expedienteestudiante::find($id);
 return view('admin.moduloenlineaestudiantes.calificacionesestudianteonline',compact('estudiante','ciclosacademicos'));
 }
 
 
-
+ 
 public function detallecalificacionesonline(Request $request)
 {
-//dd($request);
+
 	$anio=Periodoactivo::find($request->anio);
 	$anio=$anio->anio;	
 	$idestudiante=$request->idestudiante;
@@ -290,7 +289,9 @@ $criterios=Competenciasciudadanas::where('estado',1)->get();
 $a=[];
 foreach ($criterios as $key => $value) {
     array_push($a, $value->competencia);
-}
+} 
+
+dd($itemsNotas);
  $conducta=self::getStudentConducta($idestudiante,$idseccion); 
 return view('admin.moduloenlineaestudiantes.detallecalificacionesonline',compact('itemsNotas','idestudiante','exp','conducta','a'));
             }
