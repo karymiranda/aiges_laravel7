@@ -39,7 +39,7 @@ class CalificacionesindividualadminController extends Controller
     	$seccion=Expedienteestudiante::with(['estudiante_seccion'=>function ($query) use ($anio){
             $query->where([['tb_matriculaestudiante.v_estadomatricula','aprobada'],['tb_matriculaestudiante.anio',$anio]]);    		
     	}])->where('id',$id)->first();
-
+ 
         if(count($seccion->estudiante_seccion)>0)//esta matriculado este año
         {
             foreach ($seccion->estudiante_seccion as $value) {
@@ -185,7 +185,8 @@ return redirect('listnotessingleadmin/'. $request->get('estudiante_id').'/'.$req
 }
 
   public function vercalificacionesonline($idestudiante)
-    {  
+    { 
+
 $estudiante=Expedienteestudiante::find($idestudiante);
 $ciclosacademicos=Periodoactivo::orderBy('anio','DESC')->where([['tipo_periodo','like','ACADEMICO'],['estado',1]])->first();
 
@@ -198,6 +199,12 @@ $exp=$id_seccion[0]->v_expediente;
 $varnotas = Notas::with(['notas'=> function ($query) use ($idestudiante){
     $query->where('alumno_id',$idestudiante);
 }])->where('seccion_id',$idseccion)->get();
+
+if(!count($varnotas)>0)
+{
+Flash::error("No hay calificaciones registradas.")->important();
+return redirect()->route('nominadeestudiantes',$idseccion);
+}
 
 $itemsNotas= $this->orderStudentNota($varnotas);
 $criterios=Competenciasciudadanas::where('estado',1)->get();
