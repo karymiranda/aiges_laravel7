@@ -10,7 +10,29 @@
     {{ csrf_field() }}
     <div class="box-body">
 
-<div class="col-xs-6 col-sm-offset-3">
+
+  <div class="col-md-3 col-sm-offset-2">
+          <!-- Profile Image -->
+          <div class="box box-primary">
+            <div class="box-body box-profile">
+
+              <h4 class="profile-username text-center">Datos Generales</h4>
+              <ul class="list-group list-group-unbordered">
+                <li class="list-group-item">
+                  <b>Grado</b> <a class="pull-right">{{ $datosgenerales['grado'] }}</a>
+                </li>
+                <li class="list-group-item">
+                <b>Periodo</b> <a class="pull-right">{{ $datosgenerales['periodo'] }}</a>
+                </li>
+              </ul>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box --> 
+             </div>
+
+
+<div class="col-xs-6">
 <table class="table table-bordered table-striped">
           <thead>
             <th>Criterio</th>

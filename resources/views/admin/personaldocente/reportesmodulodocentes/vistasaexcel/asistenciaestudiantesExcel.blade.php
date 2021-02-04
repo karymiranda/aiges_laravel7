@@ -18,7 +18,7 @@
                       <td>{{ $asistencias->codigo }}</td>
                       <td>{{ $asistencias->f_fecha }}</td>
                       <td>{{ $asistencias->v_nie }}</td>
-                       @if($asistencias->v_asistenciaSN=='S')
+                       @if($asistencias->v_asistenciaSN=='N')
                        <td>Si</td> 
                        @else
                         <td>No</td> 

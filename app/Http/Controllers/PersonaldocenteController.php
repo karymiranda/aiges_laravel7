@@ -107,6 +107,7 @@ class PersonaldocenteController extends Controller
 	{
 
 		$params = $request->all();
+
 		$notaVerify = Notas::where('seccion_id', $params['seccion_id'])
 				->where('periodo_id', $params['periodo'] )
 				->where('asignatura_id', $params['materia'] )
@@ -121,10 +122,19 @@ class PersonaldocenteController extends Controller
 
 		$sqlQuery = "SELECT tb_matriculaestudiante.seccion_id, tb_matriculaestudiante.estudiante_id, tb_expedienteestudiante.v_apellidos, tb_expedienteestudiante.v_nombres, tb_expedienteestudiante.v_nie
 		FROM tb_expedienteestudiante INNER JOIN tb_matriculaestudiante ON tb_matriculaestudiante.estudiante_id = tb_expedienteestudiante.id where tb_matriculaestudiante.estado = 1 AND seccion_id = ".$request->get('seccion_id');
-
 		$students = DB::select( DB::raw($sqlQuery) );
 
-		return view('admin.personaldocente.gestionacademica.controlcalificaciones.agregar-notasteacher', compact('params', 'students'));
+		$datosgenerales=array();
+		$grado=Seccion::find($params['seccion_id']);
+		$asignatura=Asignaturas::find($params['materia']);
+		$periodo=Periodoevaluacion::find($params['periodo']);
+		$actividad=EvaluacionesPeriodo::find($params['evaluacion']);
+		$datosgenerales['grado']=$grado->descripcion;
+		$datosgenerales['asignatura']=$asignatura->asignatura;
+		$datosgenerales['periodo']=$periodo->descripcion;
+		$datosgenerales['evaluacion']=$actividad->nombre;		
+
+		return view('admin.personaldocente.gestionacademica.controlcalificaciones.agregar-notasteacher', compact('params', 'students','datosgenerales'));
 	}
 
 public function viewNotasteacher($id)
@@ -261,7 +271,13 @@ return redirect('/seccionescompetenciasteacher/'. $params['seccion_id'] .'/view/
 
 		$students = DB::select( DB::raw($sqlQuery) );
 
-		return view('admin.personaldocente.gestionacademica.controlcalificaciones.competenciasciudadanas.agregar-competenciasteacher', compact('params', 'students','comp'));
+		$datosgenerales=array();
+		$grado=Seccion::find($params['seccion_id']);
+		$periodo=Periodoevaluacion::find($params['periodo']);
+		$datosgenerales['grado']=$grado->descripcion;
+		$datosgenerales['periodo']=$periodo->descripcion;
+
+		return view('admin.personaldocente.gestionacademica.controlcalificaciones.competenciasciudadanas.agregar-competenciasteacher', compact('params', 'students','comp','datosgenerales'));
 	}
 
 	private function getStudentConducta($id, $periodo) {
