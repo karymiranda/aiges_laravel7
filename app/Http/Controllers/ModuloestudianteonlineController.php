@@ -291,7 +291,6 @@ foreach ($criterios as $key => $value) {
     array_push($a, $value->competencia);
 } 
 
-dd($itemsNotas);
  $conducta=self::getStudentConducta($idestudiante,$idseccion); 
 return view('admin.moduloenlineaestudiantes.detallecalificacionesonline',compact('itemsNotas','idestudiante','exp','conducta','a'));
             }
