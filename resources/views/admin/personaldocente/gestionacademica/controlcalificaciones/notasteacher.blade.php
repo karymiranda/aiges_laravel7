@@ -60,9 +60,11 @@
 $('#btnvernotas').on('click', function(e){ 
  // var url = "/aiges/public/index.php/admin/"; 
 var asig=$('select[name=materia]').val();
+
 $('#form').attr("method",'GET');
 $('#form').attr("target",'__blank');
-$('#form').attr("action",'cuadrorendimientoescolar_pdf/'+<?=$seccion->id?>+'/'+asig+'/view');  
+$('#form').attr("action",'cuadrorendimientoescolar_pdf/'+<?=$seccion->id?>+'/'+asig+'/view'); 
+//$('#form').attr("action",'cuadrorendimientoescolar_pdf/'+id+'/'+idmateria+'/view');  
  $('#form').submit(); 
 
 
