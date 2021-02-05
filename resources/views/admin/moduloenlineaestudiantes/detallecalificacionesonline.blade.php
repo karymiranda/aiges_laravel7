@@ -6,7 +6,7 @@
  <div class="col-md-12">
           <div class="box box-primary box-solid">
             <div class="box-header with-border">
-              <h3 class="box-title">CALIFICACIONES </h3>
+              <h3 class="box-title">CALIFICACIONES</h3>
               
             </div>
 
@@ -35,7 +35,7 @@
           <th >ACT3</th>                  
           <th >NR</th>
           <th>PR</th>
-
+ 
           <th>ACT1</th>
          <th >ACT2</th>
           <th>ACT3</th>                  
@@ -54,8 +54,8 @@
       <tbody> 
 <?php
 
-if(isset($itemsNotas[$exp]))
-{
+//if(isset($itemsNotas[$exp]))
+//{
  
  foreach ($itemsNotas[$exp] as $k=>$materia) 
        {
@@ -113,7 +113,7 @@ $promfinal=$promfinal+($promp1+$promp2+$promp3)/3;
 $class = ($promfinal < 5) ? 'red' : 'green';
 echo "<td class='{{ $class }}'> ";  print_r(number_format($promfinal,2));echo "</td>";
         echo "</tr>";
-        }
+        //}
     
  } 
 
