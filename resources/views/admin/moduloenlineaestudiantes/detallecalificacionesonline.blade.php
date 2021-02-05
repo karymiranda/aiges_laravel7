@@ -54,15 +54,14 @@
       <tbody> 
 <?php
 
-//if(isset($itemsNotas[$exp]))
-//{
- 
+if(isset($itemsNotas[$exp]))
+{
  foreach ($itemsNotas[$exp] as $k=>$materia) 
        {
              foreach ($materia as $ke=>$periodo)
         {  
           echo "<tr>";
-        }
+        
 echo "<td>"; print_r($ke); "</td>";  
 $promfinal=0;       
          
@@ -113,10 +112,9 @@ $promfinal=$promfinal+($promp1+$promp2+$promp3)/3;
 $class = ($promfinal < 5) ? 'red' : 'green';
 echo "<td class='{{ $class }}'> ";  print_r(number_format($promfinal,2));echo "</td>";
         echo "</tr>";
-        //}
-    
+        }    
  } 
-
+ } //cierro if
   ?>       
  
       </tbody>
@@ -139,7 +137,8 @@ echo "<td class='{{ $class }}'> ";  print_r(number_format($promfinal,2));echo "<
  <?php
 echo "<tr>"; 
 echo "<td>";
-for ($i=0; $i < count($a) ; $i++) { 
+for ($i=0; $i < count($a) ; $i++) 
+{ 
 print_r($a[$i]); echo"<br>";
 }
 echo"</td>";
