@@ -336,7 +336,7 @@ public function addSaveCompetenciateacher(Request $request)
 
 	public function misseccionesteacher()//INGRESO DE CALIFICACIONES
 	{
-		$secciones=$this->secciones_docente();
+		$secciones=$this->secciones_docente_horario();
 
 		return view('admin.personaldocente.gestionacademica.controlcalificaciones.listaseccionespordocente',compact('secciones'));
 	}
