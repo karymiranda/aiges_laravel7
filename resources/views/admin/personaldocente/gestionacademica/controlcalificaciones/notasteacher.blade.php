@@ -31,9 +31,11 @@
             <div class="col-sm-4">                                  
            <div class="input-group input-group">
                                {!! Form::select('materia', $asignaturas, null, ['class'=>'form-control','id'=>'asignatura','title'=>'Lista de asignaturas según carga académica definida en horario de clases','required'])!!}                                  
-           <span class="input-group-btn">
-            <a  class="btn btn-primary"                                                     id="btnvernotas">Ver calificaciones</a>
+    <span class="input-group-btn">
+    <form action="#" id="frmcali" method="GET">
+    <a  class="btn btn-primary" id="btnvernotas" >Ver calificaciones</a>
                    </span>
+    </form>
                   </div>
               </div>
             </div>
@@ -60,9 +62,9 @@
 $('#btnvernotas').on('click', function(e){ 
 var asig=$('select[name=materia]').val();
 
-$('#form').attr("method",'GET');
-$('#form').attr("target",'__blank');
-$('#form').attr("action",'admin/cuadrorendimientoescolar_pdf/'+<?=$seccion->id?>+'/'+asig+'/view');   
+$('#frmcali').attr("method",'GET');
+$('#frmcali').attr("target",'__blank');
+$('#frmcali').attr("action",'cuadrorendimientoescolar_pdf/'+<?=$seccion->id?>+'/'+asig+'/view');   
  $('#form').submit(); 
 
 
