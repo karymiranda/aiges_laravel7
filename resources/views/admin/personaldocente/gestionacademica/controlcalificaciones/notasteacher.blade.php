@@ -4,7 +4,7 @@
 
 <div class="box box-primary box-solid">
   <div class="box-header with-border">
-    <h3 class="box-title"><Strong>CALIFICACIONES: {{$seccion->descripcion}}</Strong></h3>
+    <h3 class="box-title"><Strong>CALIFICACIONES : {{$seccion->descripcion}}</Strong></h3>
   </div>
  
 
@@ -50,7 +50,6 @@
     </div>
     <div class="box-footer" align="right">
       <input type="hidden" name="seccion_id" value="{{ $id }}" />
-      <input type="submit" name="registrar" value="Registrar">
       {!! Form::submit('Registrar', ['class'=>'btn btn-primary ']) !!}
       <a href="{{route('misseccionesteacher')}}" class="btn btn-default">Cancelar</a>
     </div>
