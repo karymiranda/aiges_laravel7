@@ -6,11 +6,15 @@
   <div class="box-header with-border">
     <h3 class="box-title"><Strong>CALIFICACIONES : {{$seccion->descripcion}}</Strong></h3>
 
-     <form action="#" id="frmcali" method="GET"> 
-      <span class="input-group-btn">    
+    {!! 
+    Form::open(['method'=>'GET', 'class'=>'form-horizontal', 'id'=>'frmcali'
+    ]) !!}
+
+    <span class="input-group-btn">    
     <a  class="btn btn-default" id="btnvernotas" >Ver calificaciones</a>
                    </span>
-    </form>
+    
+      {!! Form::close() !!}
 
   </div>
  
