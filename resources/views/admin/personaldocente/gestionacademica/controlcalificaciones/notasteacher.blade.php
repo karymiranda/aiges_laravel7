@@ -63,7 +63,7 @@ $('#btnvernotas').on('click', function(e){
 var asig=$('select[name=materia]').val();
 $('#form').attr("method",'GET');
 $('#form').attr("target",'__blank');
-$('#form').attr("action",'cuadrorendimientoescolar_pdf/'+<?=$seccion->id?>+'/'+asig+'/view'); 
+$('#form').attr("action",'aiges.herokuapp/cuadrorendimientoescolar_pdf/'+<?=$seccion->id?>+'/'+asig+'/view'); 
  $('#form').submit(); 
 });
 
