@@ -30,7 +30,7 @@
             <div class="col-sm-4">                                  
            <div class="input-group input-group">
                                {!! Form::select('materia', $asignaturas, null, ['class'=>'form-control','id'=>'asignatura','title'=>'Lista de asignaturas según carga académica definida en horario de clases','required'])!!}                                  
-    <Form action="#" id="frmcali" method="GET"> 
+    <form  id="frmcali"> 
       <span class="input-group-btn">    
     <a  class="btn btn-primary" id="btnvernotas" >Ver calificaciones</a>
                    </span>
