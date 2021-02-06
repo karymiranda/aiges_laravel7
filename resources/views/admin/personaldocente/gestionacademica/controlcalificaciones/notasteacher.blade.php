@@ -4,13 +4,12 @@
 
 <div class="box box-primary box-solid">
   <div class="box-header with-border">
-    <h3 class="box-title"><Strong>CALIFICACIONES : {{$seccion->descripcion}}</Strong></h3>
+    <h3 class="box-title"><Strong>CALIFICACIONES uuuuu: {{$seccion->descripcion}}</Strong></h3>
   </div>
  
- 
+
  {!! 
-    Form::open([
-      'url' => '/seccionnotasteacher', 'method'=>'POST', 'class'=>'form-horizontal', 'id'=>'form'
+    Form::open(['url' => '/seccionnotasteacher', 'method'=>'POST', 'class'=>'form-horizontal', 'id'=>'form'
     ]) !!}
 
     <div class="box-body">
