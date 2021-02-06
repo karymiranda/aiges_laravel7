@@ -50,7 +50,7 @@
     </div>
     <div class="box-footer" align="right">
       <input type="hidden" name="seccion_id" value="{{ $id }}" />
-      <input type="button" class="btn btn-primary" name="" id="btnregistrar"></input> 
+      <input type="button" class="btn btn-primary" name="" id="btnregistrar" value="Registrar"></input> 
       <a href="{{route('misseccionesteacher')}}" class="btn btn-default">Cancelar</a>
     </div>
   {!! Form::close() !!}
