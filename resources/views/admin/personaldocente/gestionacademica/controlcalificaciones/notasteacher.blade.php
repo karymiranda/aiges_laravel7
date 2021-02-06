@@ -7,6 +7,7 @@
     <h3 class="box-title"><Strong>CALIFICACIONES : {{$seccion->descripcion}}</Strong></h3>
   </div>
  
+ 
  {!! 
     Form::open([
       'url' => '/seccionnotasteacher', 'method'=>'POST', 'class'=>'form-horizontal', 'id'=>'form'
@@ -68,6 +69,7 @@ $('#frmcali').attr("target",'__blank');
 $('#frmcali').attr("action",'cuadrorendimientoescolar_pdf/'+<?=$seccion->id?>+'/'+asig+'/view'); 
 $('#frmcali').submit(); 
 });
+
 
 </script>
 @endsection
