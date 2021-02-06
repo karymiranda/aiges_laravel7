@@ -5,17 +5,6 @@
 <div class="box box-primary box-solid">
   <div class="box-header with-border">
     <h3 class="box-title"><Strong>CALIFICACIONES : {{$seccion->descripcion}}</Strong></h3>
-
-    {!! 
-    Form::open(['method'=>'GET', 'class'=>'form-horizontal', 'id'=>'frmcali'
-    ]) !!}
-
-    <span class="input-group-btn">    
-    <a  class="btn btn-default" id="btnvernotas" >Ver calificaciones</a>
-                   </span>
-    
-      {!! Form::close() !!}
-
   </div>
  
   {!! 
@@ -42,11 +31,11 @@
             <div class="col-sm-4">                                  
            <div class="input-group input-group">
                                {!! Form::select('materia', $asignaturas, null, ['class'=>'form-control','id'=>'asignatura','title'=>'Lista de asignaturas según carga académica definida en horario de clases','required'])!!}                                  
-    <!--Form action="#" id="frmcali" method="GET"> 
+    <Form action="#" id="frmcali" method="GET"> 
       <span class="input-group-btn">    
     <a  class="btn btn-primary" id="btnvernotas" >Ver calificaciones</a>
                    </span>
-    </form-->
+    </form>
                   </div>
               </div>
             </div>
