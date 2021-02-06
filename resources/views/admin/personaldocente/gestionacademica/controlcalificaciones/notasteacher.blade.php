@@ -61,10 +61,9 @@
 <script>
 $('#btnvernotas').on('click', function(e){ 
 var asig=$('select[name=materia]').val();
-alert('llega');
 $('#frmcali').attr("method",'GET');
 $('#frmcali').attr("target",'__blank');
-$('#frmcali').attr("action",'cuadrorendimientoescolar_pdf/'+<?=$seccion->id?>+'/'+asig+'/view');   
+$('#frmcali').attr("href",'cuadrorendimientoescolar_pdf/'+<?=$seccion->id?>+'/'+asig+'/view');   
  $('#frmcali').submit(); 
 
 
