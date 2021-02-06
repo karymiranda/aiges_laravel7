@@ -63,13 +63,15 @@ var asig=$('select[name=materia]').val();
 $('#frmcali').attr("method",'GET');
 $('#frmcali').attr("target",'__blank');
 $('#frmcali').attr("action",'cuadrorendimientoescolar_pdf/'+<?=$seccion->id?>+'/'+asig+'/view'); 
+alert('frmcali');
 $('#frmcali').submit(); 
 });
 
 $('#btnregistrar').on('click', function(e){ 
 $('#form').attr("method",'POST');
-$('#form').attr("action",'/seccionnotasteacher'); 
-$('#frm').submit(); 
+$('#form').attr("action",'seccionnotasteacher'); 
+alert('form');
+$('#form').submit(); 
 });
 
 </script>
