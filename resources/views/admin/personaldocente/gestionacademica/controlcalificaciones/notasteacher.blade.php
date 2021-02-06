@@ -69,7 +69,7 @@ $('#frmcali').submit();
 
 $('#btnregistrar').on('click', function(e){ 
 $('#form').attr("method",'POST');
-$('#form').attr("action",'seccionnotasteacher'); 
+$('#form').attr("action",'/seccionnotasteacher'); 
 alert('form');
 $('#form').submit(); 
 });
