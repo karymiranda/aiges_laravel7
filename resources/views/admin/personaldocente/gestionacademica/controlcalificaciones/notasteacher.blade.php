@@ -8,8 +8,7 @@
   </div>
  
   {!! 
-    Form::open([
-      'url' => '/seccionnotasteacher', 'method'=>'POST', 'class'=>'form-horizontal', 'id'=>'form'
+    Form::open(['class'=>'form-horizontal', 'id'=>'form'
     ]) !!}
     <div class="box-body">
       <div class="form-group">
@@ -51,7 +50,7 @@
     </div>
     <div class="box-footer" align="right">
       <input type="hidden" name="seccion_id" value="{{ $id }}" />
-      {!! Form::submit('Registrar', ['class'=>'btn btn-primary']) !!}
+      <input type="button" class="btn btn-primary" name="" id="btnregistrar"></input> 
       <a href="{{route('misseccionesteacher')}}" class="btn btn-default">Cancelar</a>
     </div>
   {!! Form::close() !!}
@@ -65,6 +64,12 @@ $('#frmcali').attr("method",'GET');
 $('#frmcali').attr("target",'__blank');
 $('#frmcali').attr("action",'cuadrorendimientoescolar_pdf/'+<?=$seccion->id?>+'/'+asig+'/view'); 
 $('#frmcali').submit(); 
+});
+
+$('#btnregistrar').on('click', function(e){ 
+$('#form').attr("method",'POST');
+$('#form').attr("action",'/seccionnotasteacher'); 
+$('#frm').submit(); 
 });
 
 </script>
