@@ -68,10 +68,10 @@
 <script>
 $('#btnvernotas').on('click', function(e){ 
 var asig=$('select[name=materia]').val();
-$('#form').attr("method",'GET');
-$('#form').attr("target",'__blank');
+$('#frmcali').attr("method",'GET');
+$('#frmcali').attr("target",'__blank');
 $('#frmcali').attr("action",'cuadrorendimientoescolar_pdf/'+<?=$seccion->id?>+'/'+asig+'/view'); 
-$('#form').submit(); 
+$('#frmcali').submit(); 
 });
 
 </script>
