@@ -55,18 +55,21 @@
     </div>
   {!! Form::close() !!}
 
+
+{!! Form::open(['method'=>'GET', 'class'=>'form-horizontal', 'id'=>'frmcali' ]) !!}
+<button type="button" class="btn btn-primary" id="btnnotas">ver calificaciones</button>
+{!! Form::close() !!}
+
   @endsection
 
 @section('script')
 <script>
-$('#btnvernotas').on('click', function(e){ 
+$('#btnnotas').on('click', function(e){ 
 var asig=$('select[name=materia]').val();
-$('#frmcali').attr("method",'GET');
 $('#frmcali').attr("target",'__blank');
-$('#frmcali').attr("action",'cuadrorendimientoescolar_pdf/'+<?=$seccion->id?>+'/'+asig+'/view'); 
+$('#frmcali').attr("action",'cuadrorendimientoescolar_pdf/'+<?=$seccion->id?>+'/'+asig+'/view');
 $('#frmcali').submit(); 
 });
-
 
 </script>
 @endsection
