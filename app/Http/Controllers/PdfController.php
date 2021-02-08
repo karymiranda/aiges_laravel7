@@ -13,8 +13,8 @@ class PdfController extends Fpdf
   public function headerBoletaNotas($centro)
   {
  
-    $this->Image('logoce.jpg', 10, 4, 25);
-    $this->Image('EscudoDeElSalvador.jpg', 255, 6, 30);
+    $this->Image('logoce.jpg', 10, 4, 20);
+    $this->Image('EscudoDeElSalvador.jpg', 255, 6, 25);
 
     
     $this->SetFont('Arial','', 11);
