@@ -914,7 +914,7 @@ $anio=$anio->anio;
     });
 
   //CODIGO PARA REPORTE
-$fpdf=new Fpdf("L","mm","A4");//Legal es pagina tamaño oficio, Letter para carta
+$fpdf=new Fpdf("L","mm","Letter");//Legal es pagina tamaño oficio, Letter para carta
 $fpdf->AddPage();
 $fpdf->SetTitle("horariodeclases".date('_Ymd'));
 $this->cabecerahorizontal($fpdf);

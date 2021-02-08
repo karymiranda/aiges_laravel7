@@ -9,7 +9,7 @@
               </div>
       <div class="col-sm-12" align="right">          
         <a href="{{route('crearactivofijo')}}" class="btn btn-primary">Registrar activo</a>
-        <a href="{{route('subirarchivoactivofijo')}}" class="btn btn-primary" id="btnarchivo">Subir archivo</a>
+        <!--a href="{{route('subirarchivoactivofijo')}}" class="btn btn-primary" id="btnarchivo">Subir archivo</a-->
         <form id="formulariorpt">
       <?php @crsf ?>
         </form>
