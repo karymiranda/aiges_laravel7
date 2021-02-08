@@ -1820,7 +1820,8 @@ public function nominaestudiantesactivosCE_pdf()
 {
 $datos=Expedienteestudiante::orderBy('v_apellidos','ASC')->where('estado',1)->get();
 //
-$anio = Carbon::create()->year;
+//$anio = Carbon::create()->year;
+$anio = Carbon::now()->year;
 $fpdf = new Fpdf("L", "mm", "Letter");//ORIENTACION DE LA PAGINA p es vrtical l horizontal
 $fpdf->AddPage();   
 $this->cabecerahorizontal($fpdf);
