@@ -4,7 +4,7 @@
 <div class="box"> 
   <div class="box-header">
     <div class="col-sm-4">
-      <h2 class="box-title"><strong>GRAFICAS</strong></h2>
+      <h2 class="box-title"><strong>GRÁFICAS</strong></h2>
     </div>
   </div>
   <hr>

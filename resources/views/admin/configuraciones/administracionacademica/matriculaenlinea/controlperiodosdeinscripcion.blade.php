@@ -6,11 +6,11 @@
 <div class="box box-primary">
             <div class="box-header">
               <div class="col-sm-12" align="center">
-              <h2> <label class="text-primary">PERIODO DE INSCRIPCION EN LINEA</label></h2>
+              <h2> <label class="text-primary">PERIODO DE INSCRIPCIÓN EN LÍNEA</label></h2>
              </div>
 
               <div class="col-sm-12" align="right">          
-                <a href="{{route('agregarperiodo')}}" class="btn btn-primary">Agregar periodo</a>
+                <a href="{{route('agregarperiodo')}}" class="btn btn-primary">Agregar período</a>
           </div>
             </div>
             <HR>
@@ -18,7 +18,7 @@
             <div class="box-body table-responsive">
               <table class="table table-bordered table-striped" id="tablaBusqueda">
                 <thead> 
-                  <th>DESCRIPCION</th>
+                  <th>DESCRIPCIÓN</th>
                   <th>AÑO</th>
                   <th>DESDE</th>
                   <th>HASTA</th> 

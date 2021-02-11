@@ -5,7 +5,7 @@
   <div class="box box-primary box-solid">
       <div class="box-header with-border">
           <h3 class="box-title">
-            <Strong>VER SECCION</Strong>
+            <Strong>VER SECCIÓN</Strong>
           </h3>
           <!--div class="btn-group pull-right">
             <button type="button" class="btn btn-success">Reportes</button>

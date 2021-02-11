@@ -4,7 +4,7 @@
 
 <div class="box box-primary box-solid">
             <div class="box-header ">
-              <h3 class="box-title"><Strong>SOLICITUD MATRICULA</Strong></h3>
+              <h3 class="box-title"><Strong>SOLICITUD MATRÍCULA</Strong></h3>
             </div>
             <!-- /.box-header -->
             <!-- form start -->

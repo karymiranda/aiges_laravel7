@@ -4,7 +4,7 @@
 
 <div class="box box-primary box-solid">
             <div class="box-header with-border">
-              <h3 class="box-title"><Strong>ACTUALIZAR COTIZACION</Strong></h3>
+              <h3 class="box-title"><Strong>ACTUALIZAR COTIZACIÓN</Strong></h3>
             </div>
             <!-- /.box-header -->
             <!-- form start -->

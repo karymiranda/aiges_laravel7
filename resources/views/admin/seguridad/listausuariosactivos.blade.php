@@ -15,7 +15,7 @@
         <th>No.</th>        
           <th>NOMBRE DE USUARIO</th>
            <th>CUENTA</th>
-            <th>CORREO ELECTRONICO</th>
+            <th>CORREO ELECTRÓNICO</th>
           <th>ROLES</th>         
           <th>ACCIONES</th>
         </thead>

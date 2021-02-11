@@ -4,7 +4,7 @@
 <div class="box box-primary box-solid">
             <div class="box-header">
               <div class="col-sm-5">
-                <h2 class="box-title"><Strong>ACTUALIZAR DATOS MEDICOS: {{$estudiante->v_nombres}} {{$estudiante->v_apellidos}}</Strong></h2>
+                <h2 class="box-title"><Strong>ACTUALIZAR DATOS MÉDICOS: {{$estudiante->v_nombres}} {{$estudiante->v_apellidos}}</Strong></h2>
               </div> 
               </div>  
               

@@ -4,7 +4,7 @@
 
 <div class="box box-primary box-solid">
             <div class="box-header with-border">
-              <h2 class="box-title"><strong>REPORTES ASESOR DE SECCION </strong></h2>
+              <h2 class="box-title"><strong>REPORTES ASESOR DE SECCIÓN </strong></h2>
              </div> 
 
              <div class="box-body">

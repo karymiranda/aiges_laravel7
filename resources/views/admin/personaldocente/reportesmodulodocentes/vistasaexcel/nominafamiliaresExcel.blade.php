@@ -5,7 +5,7 @@
                   <th>DUI</th>
                   <th>NOMBRE DEL FAMILIAR</th>
                   <th>PARENTESCO</th>
-                  <th>TELEFONO CASA</th>
+                  <th>TELÉFONO CASA</th>
                   <th>CELULAR</th>
                   <th>NOMBRE DEL ESTUDIANTE</th> 
               </tr>

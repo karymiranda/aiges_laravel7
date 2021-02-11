@@ -14,7 +14,7 @@
   <div class="box-body" align="center">
     <table class="table table-bordered table-striped" id="tablaBusqueda" style="width: 75%">
       <thead>
-        <th>CODIGO</th>
+        <th>CÓDIGO</th>
         <th>TIPO PERSONAL</th>                  
         <th>ACCIONES</th>
       </thead>

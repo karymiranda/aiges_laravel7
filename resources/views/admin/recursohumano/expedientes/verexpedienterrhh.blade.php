@@ -21,8 +21,8 @@
           <th>DESDE</th> 
           <th>HASTA</th>
           <th>ESTUDIO</th>
-          <th>INSTITUCION</th>
-          <th>TITULO OBTENIDO</th>
+          <th>INSTITUCIÓN</th>
+          <th>TÍTULO OBTENIDO</th>
           <th>OBSERVACIONES</th>
         </thead>
         <tbody>

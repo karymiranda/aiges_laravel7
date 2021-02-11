@@ -16,9 +16,9 @@
             <div class="box-body table-responsive">
               <table class="table table-bordered table-striped" id="" style="width: 60%" align="center">
                 <thead>
-                <th>CODIGO</th> 
-                <th>NOMBRE EVALUACION</th>                
-                <th>PONDERACION</th>                                         
+                <th>CÓDIGO</th> 
+                <th>NOMBRE EVALUACIÓN</th>                
+                <th>PONDERACIÓN</th>                                         
                 </thead>
                 <tbody>                 
                    @foreach($eval as $evaluacion)                   

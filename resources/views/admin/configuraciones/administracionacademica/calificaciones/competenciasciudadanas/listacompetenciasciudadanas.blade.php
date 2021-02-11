@@ -17,7 +17,7 @@
               <table class="table table-bordered table-striped" id="tablaBusqueda" style="width: 60%" align="center">
                 <thead>
                 <th>No</th> 
-                <th>CODIGO</th> 
+                <th>CÓDIGO</th> 
                 <th>COMPETENCIA</th>                                         
                 </thead>
                 <tbody>

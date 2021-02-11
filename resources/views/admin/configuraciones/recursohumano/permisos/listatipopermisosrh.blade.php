@@ -15,9 +15,9 @@
   <div class="box-body" align="center">
     <table class="table table-bordered table-striped" id="tablaBusqueda" style="width: 75%">
       <thead>
-        <th>CODIGO</th>
+        <th>CÓDIGO</th>
         <th>TIPO MOTIVO</th>
-        <th>MAXIMO DIAS ANUAL</th>         
+        <th>MÁXIMO DIAS ANUAL</th>         
         <th>ACCIONES</th>
       </thead>
       <tbody>

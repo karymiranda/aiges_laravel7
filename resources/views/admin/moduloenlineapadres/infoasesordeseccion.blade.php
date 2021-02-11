@@ -6,7 +6,7 @@
 <div class="box box-primary box-solid">
  <div class="box-header">
     <div class="col-sm-10" align="left">
-        <h4> <label class="text-white">ASESOR DE SECCION</label></h4>
+        <h4> <label class="text-white">ASESOR DE SECCIÓN</label></h4>
     </div>
   </div>
   <div class="box box-body">

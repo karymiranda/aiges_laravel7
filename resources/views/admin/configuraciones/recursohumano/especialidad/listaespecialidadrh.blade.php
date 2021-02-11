@@ -16,7 +16,7 @@
   <div class="box-body" align="center">
     <table class="table table-bordered table-striped" style="width: 75%" id="tablaBusqueda">
       <thead>
-        <th>CODIGO</th>
+        <th>CÓDIGO</th>
         <th>ESPECIALIDAD</th>                  
         <th>ACCIONES</th>
       </thead>

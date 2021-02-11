@@ -4,7 +4,7 @@
 
 <div class="box box-primary box-solid">
   <div class="box-header with-border">
-    <h3 class="box-title"><Strong>GESTION DE DATOS MASIVOS</Strong></h3>
+    <h3 class="box-title"><Strong>GESTIÓN DE DATOS MASIVOS</Strong></h3>
   </div>
   <!-- /.box-header -->
 @if(session()->has('message'))

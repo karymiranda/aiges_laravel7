@@ -16,10 +16,10 @@
   <div class="box-body" align="center">
     <table class="table table-bordered table-striped" id="tablaBusqueda">
       <thead>
-        <th>CODIGO</th>
+        <th>CÓDIGO</th>
         <th>NOMBRE</th>                  
-        <th>DIRECCION</th>
-        <th>TELEFONO</th>                  
+        <th>DIRECCIÓN</th>
+        <th>TELÉFONO</th>                  
         <th>ACCIONES</th>
       </thead>
       <tbody>

@@ -15,10 +15,10 @@
     <table class="table table-bordered table-striped" id="tablaBusqueda">
       <thead>
         <th>GRADO</th>
-        <th>SECCION</th>
+        <th>SECCIÓN</th>
         <th>TURNO</th>
         <th>ASESOR</th>
-        <th>CUPO MAXIMO</th>
+        <th>CUPO MÁXIMO</th>
         <th>ACCIONES</th>
       </thead>
       <tbody>

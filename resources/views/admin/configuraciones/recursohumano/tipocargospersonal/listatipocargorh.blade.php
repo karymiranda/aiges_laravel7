@@ -16,7 +16,7 @@
   <div class="box-body" align="center">
      <table class="table table-bordered table-striped" id="tablaBusqueda" data-toggle="dataTable" data-form="deleteForm" style="width: 75%">
       <thead>
-        <th>CODIGO</th>
+        <th>CÓDIGO</th>
         <th>CARGO</th>                  
         <th>ACCIONES</th>
       </thead>

@@ -4,7 +4,7 @@
 
 <div class="box box-primary box-solid">
             <div class="box-header with-border">
-              <h2 class="box-title"><strong>MIS SECCIONES / NOMINA DE ESTUDIANTES</strong></h2>
+              <h2 class="box-title"><strong>MIS SECCIONES / NÓMINA DE ESTUDIANTES</strong></h2>
 
   <!--LISTA LAS SECCIONES EN LAS CUALES EL USUARIO LOGEADO ESTA  ASIGNADO COMO DOCENTE ASESOR-->
 

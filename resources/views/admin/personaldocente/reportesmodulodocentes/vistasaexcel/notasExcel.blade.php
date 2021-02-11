@@ -4,7 +4,7 @@
                   <th>Nie</th>
                   <th>Calificación</th>
                   <th>Fecha</th>
-                  <th>Observacion</th>                                 
+                  <th>Observación</th>                                 
                   <th>Nombre de estudiante</th>
                   <th>Asignatura</th> 
                   <th>Periodo</th>   

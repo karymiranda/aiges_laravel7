@@ -23,12 +23,12 @@
       <thead>
         <th>No</th>
         <th>GRADO</th>
-        <th>SECCION</th>
+        <th>SECCIÓN</th>
         <th>TURNO</th>
         <th>ASESOR</th>
-        <th>MATRICULAS</th>
+        <th>MATRÍCULAS</th>
         <!--th>CUPO MAXIMO</th-->
-        <th>SECCION INTEGRADA</th>
+        <th>SECCIÓN INTEGRADA</th>
         <th>ACCIONES</th>
       </thead>
       <tbody>

@@ -4,7 +4,7 @@ extends('admin.menuprincipal')
 
 <div class="box box-primary">
             <div class="box-header with-border">
-              <h2 class="box-title"><strong>MIS SECCIONES / NOMINA DE ESTUDIANTES</strong></h2>
+              <h2 class="box-title"><strong>MIS SECCIONES / NÓMINA DE ESTUDIANTES</strong></h2>
 
 
              </div> 

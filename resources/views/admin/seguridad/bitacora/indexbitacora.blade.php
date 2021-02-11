@@ -4,7 +4,7 @@
 <div class="box box-primary">
             <div class="box-header">
               <div class="col-sm-12" align="center">
-             <h2> <label class="text-primary">BITACORA</label></h2>
+             <h2> <label class="text-primary">BITÁCORA</label></h2>
               </div> 
              
             </div>

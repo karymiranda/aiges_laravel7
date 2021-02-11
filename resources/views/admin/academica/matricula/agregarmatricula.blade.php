@@ -5,7 +5,7 @@
 <div class="box box-primary box-solid">
             <div class="box-header with-border">
                <div class="col-sm-6">
-              <h3 class="box-title"><Strong>REGISTRAR MATRICULA</Strong></h3>
+              <h3 class="box-title"><Strong>REGISTRAR MATRÍCULA</Strong></h3>
               </div>
             <!--div class="col-sm-6" align="right">  
               <a href="{{route('listaexpedientes')}}" target="_blank" class="btn btn-success">Consultar Expediente de estudiante</a> 

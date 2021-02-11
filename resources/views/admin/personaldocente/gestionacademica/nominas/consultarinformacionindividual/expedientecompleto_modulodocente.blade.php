@@ -7,9 +7,9 @@
               <li class=""><a href="#tab_3-4" data-toggle="tab" aria-expanded="false">HISTORIAL CONDUCTA</a></li>
                <li class=""><a href="#tab_3-3" data-toggle="tab" aria-expanded="false">GRADOS CURSADOS</a></li>
               <li class=""><a href="#tab_3-2" data-toggle="tab" aria-expanded="false">GRUPO FAMILIAR</a></li>
-               <li class=""><a href="#tab_3-1-1" data-toggle="tab" aria-expanded="false" disabled="true">DATOS MEDICOS</a></li>
+               <li class=""><a href="#tab_3-1-1" data-toggle="tab" aria-expanded="false" disabled="true">DATOS MÉDICOS</a></li>
               <li class="active"><a href="#tab_3-1" data-toggle="tab" aria-expanded="true">DATOS GENERALES</a></li>
-              <li class="pull-left header box-header">EXPEDIENTE ACADEMICO</li>
+              <li class="pull-left header box-header">EXPEDIENTE ACADÉMICO</li>
             </ul>
 
   <div class="tab-content">

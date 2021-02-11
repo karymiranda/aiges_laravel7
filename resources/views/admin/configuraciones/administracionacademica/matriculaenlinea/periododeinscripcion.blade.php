@@ -4,7 +4,7 @@
 
 <div class="box box-primary box-solid">
             <div class="box-header ">
-              <h3 class="box-title"><Strong>HABILITAR PERIODO DE INSCRIPCION EN LINEA</Strong></h3>
+              <h3 class="box-title"><Strong>HABILITAR PERIODO DE INSCRIPCIÓN EN LÍNEA</Strong></h3>
             </div>
           
             

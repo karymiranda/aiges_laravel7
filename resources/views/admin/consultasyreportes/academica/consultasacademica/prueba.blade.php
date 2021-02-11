@@ -5,7 +5,7 @@
 <div class="box box-primary">
             <div class="box-header with-border">
               <div class="col-sm-12" align="center">
-              <h2> <label class="text-primary">BUSQUEDA AVANZADA</label></h2>
+              <h2> <label class="text-primary">BÚSQUEDA AVANZADA</label></h2>
               </div>
             </div> 
 

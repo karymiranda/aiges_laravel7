@@ -3,7 +3,7 @@
     <tr>
       <th>EXPEDIENTE</th> 
       <th>NOMBRE COMPLETO</th>
-      <th>DIRECCION</th>
+      <th>DIRECCIÓN</th>
       <th>DUI</th>
       <th>CARGO</th>
       <th>CELULAR</th>

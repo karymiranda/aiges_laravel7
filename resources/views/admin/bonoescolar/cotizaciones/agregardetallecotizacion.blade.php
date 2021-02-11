@@ -4,7 +4,7 @@
 @section('content')
 <div class="box box-primary box-solid">
             <div class="box-header with-border">
-              <h3 class="box-title"><Strong>DETALLE COTIZACION</Strong></h3>
+              <h3 class="box-title"><Strong>DETALLE COTIZACIÓN</Strong></h3>
             </div>
 <div class="box-body">
        {!! Form::open(['route'=>['guardardetallecotizacion',$id], 'method'=>'POST','class'=>'form-horizontal']) !!}

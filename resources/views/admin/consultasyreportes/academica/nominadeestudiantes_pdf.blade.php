@@ -4,7 +4,7 @@
 
 <div class="box box-primary">
             <div class="box-header with-border">
-              <h2 class="box-title"><strong>NOMINA DE ESTUDIANTES POR SECCION</strong></h2>
+              <h2 class="box-title"><strong>NÓMINA DE ESTUDIANTES POR SECCIÓN</strong></h2>
              </div> 
 
              <div class="box-body">

@@ -11,7 +11,7 @@ else
 
 <div class="box box-primary box-solid">
   <div class="box-header with-border">
-    <h3 class="box-title"><Strong>REFUERZO ACADEMICO</Strong></h3>
+    <h3 class="box-title"><Strong>REFUERZO ACADÉMICO</Strong></h3>
   </div>
 
   {!! Form::open(['route'=>'refuerzonotas', 'method'=>'POST','class'=>'form-horizontal']) !!}

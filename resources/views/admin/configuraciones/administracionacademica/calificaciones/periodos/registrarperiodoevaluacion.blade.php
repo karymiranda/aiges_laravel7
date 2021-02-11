@@ -4,7 +4,7 @@
 
 <div class="box box-primary box-solid">
             <div class="box-header ">
-              <h3 class="box-title"><Strong>REGISTRAR PERIODO DE EVALUACION</Strong></h3>
+              <h3 class="box-title"><Strong>REGISTRAR PERIODO DE EVALUACIÓN</Strong></h3>
             </div>         
             
              @if(count($errors) > 0)

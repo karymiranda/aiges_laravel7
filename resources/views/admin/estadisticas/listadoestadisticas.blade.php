@@ -4,7 +4,7 @@
 <div class="box">
   <div class="box-header">
     <div class="col-sm-4">
-      <h2 class="box-title"><strong>ESTADISTICAS Y GRAFICOS / ADMINISTRACION ACADEMICA</strong></h2>
+      <h2 class="box-title"><strong>ESTADÍSTICAS Y GRÁFICOS / ADMINISTRACIÓN ACADÉMICA</strong></h2>
     </div>
   </div>
   <hr>

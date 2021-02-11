@@ -4,7 +4,7 @@
 
 <div class="box box-primary box-solid">
             <div class="box-header with-border">
-              <h3 class="box-title"><Strong>REGISTRAR CICLO ACADEMICO</Strong></h3>
+              <h3 class="box-title"><Strong>REGISTRAR CICLO ACADÉMICO</Strong></h3>
             </div>         
             
              @if(count($errors) > 0)

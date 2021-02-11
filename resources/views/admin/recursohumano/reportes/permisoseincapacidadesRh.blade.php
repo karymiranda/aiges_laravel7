@@ -9,7 +9,7 @@
       <th>DIAS</th>
       <th>HORAS</th>
       <th>MINUTOS</th>
-      <th>DIAS SIN JUSTIFICACION</th>
+      <th>DIAS SIN JUSTIFICACIÓN</th>
       <th>TIPO PERMISO</th>
       <th>OBSERVACIONES</th>
     </tr>

@@ -19,7 +19,7 @@
         <table class="table table-bordered table-striped" id="tablaBusqueda">
         <thead>
             <th>CRITERIO </th>
-            <th>PONDERACION</th>
+            <th>PONDERACIÓN</th>
         </thead>
         <tbody>
           <tr >

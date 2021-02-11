@@ -19,7 +19,7 @@
               <table class="table table-bordered table-striped" id="tablaBusqueda" style="width: 80%" align="center">
                 <thead>
                   <th>No.</th> 
-                  <th>CODIGO</th> 
+                  <th>CÓDIGO</th> 
                   <th>ASIGNATURA</th> 
                    <th>NOMBRE CORTO</th> 
                    <th>ES ASIGNATURA DE CUADRO FINAL</th> 

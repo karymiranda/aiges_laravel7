@@ -4,7 +4,7 @@
 <div class="box box-primary">
             <div class="box-header">
                <div class="col-sm-12" align="center">
-              <h2> <label class="text-primary">CICLOS ACADEMICOS</label></h2>
+              <h2> <label class="text-primary">CICLOS ACADÉMICOS</label></h2>
               </div>
     {!! Form::open(['route'=>'registrarcicloacademico', 'method'=>'GET', 'class'=>'form-horizontal','id'=>'formulario']) !!}
     <input type="hidden" id="mostrarboton" value="{{$mostrarboton}}">

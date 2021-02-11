@@ -4,7 +4,7 @@
 
 <div class="box box-primary">
             <div class="box-header with-border">
-              <h3 class="box-title"><Strong>ASIGNATURAS A IMPARTIR POR SECCION </Strong></h3>
+              <h3 class="box-title"><Strong>ASIGNATURAS A IMPARTIR POR SECCIÓN </Strong></h3>
             </div>
             <!-- /.box-header -->
             <!-- form start -->
