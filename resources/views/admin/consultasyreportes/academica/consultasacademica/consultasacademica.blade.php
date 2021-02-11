@@ -776,12 +776,21 @@ cell.innerHTML = "<b>NIVEL EDUCATIVO</b>";
 var cell = row.insertCell(6);
 cell.innerHTML = "<b>ESTADO</b>";
 var cont=0;
+var es='';
+var prof='';
 
   $.get('filtropadresdefamilia/'+estado+'/'+genero+'/'+apellido+'/'+parentesco+'/'+profesion,function(padres){
 
   $(padres).each(function (key,value){
+
+    if (value.profesion==null) { prof="---";}
+    else  { prof=value.profesion;}
+
+    if (value.estado==1) { es="Activo";}
+    else  { es="Inactivo";}
+
     cont=cont+1;
-  $('#tablaBusqueda').append('<tr><td>' + cont + '</td><td>' + value.nombres +" "+ value.apellidos + '</td><td>'+ value.genero+ '</td><td>'+ value.parentesco +'</td><td>'+ value.profesion + '</td><td>'+ value.niveleducativo+'</td><td>'+value.estado+'</td></tr>'); 
+  $('#tablaBusqueda').append('<tr><td>' + cont + '</td><td>' + value.nombres +" "+ value.apellidos + '</td><td>'+ value.genero+ '</td><td>'+ value.parentesco +'</td><td>'+ prof + '</td><td>'+ value.niveleducativo+'</td><td>'+es+'</td></tr>'); 
      }); 
 table=$('#tablaBusqueda').DataTable(
     {
