@@ -53,7 +53,7 @@
           </div>
 
            <div class="form-group"> 
-            {!! Form::label('', 'Genero ',['class'=>'col-sm-4 control-label']) !!}                       
+            {!! Form::label('', 'Género ',['class'=>'col-sm-4 control-label']) !!}                       
              <div class="col-sm-8">
           {!! Form::label('', 'Todos',['class'=>'col- control-label']) !!}
           {!! Form::radio('estudiantesGenero','T',true, ['class'=>'','id'=>'estudiantesGeneroT'])!!}
@@ -150,7 +150,7 @@
           </div>
 
           <div class="form-group">
-          {!! Form::label('', 'Genero',['class'=>'col-sm-4 control-label']) !!}                        
+          {!! Form::label('', 'Género',['class'=>'col-sm-4 control-label']) !!}                        
              <div class="col-sm-6">
           {!! Form::label('', 'Todos',['class'=>'col- control-label']) !!}
           {!! Form::radio('padresGenero','T',true, ['class'=>'','id'=>'padresGeneroT'])!!}
@@ -191,8 +191,8 @@
              <option value="Madre">Madre</option>
              <option value="Abuelo">Abuelo</option>
              <option value="Abuela">Abuela</option>
-             <option value="Tio">Tio</option>
-             <option value="Tia">Tia</option>
+             <option value="Tio">Tío</option>
+             <option value="Tia">Tía</option>
              <option value="Hermano">Hermano</option>
              <option value="Hermana">Hermana</option>
              <option value="Otro">Otro</option>
@@ -206,7 +206,7 @@
  <div class="form-group"> 
  {!! Form::label('', '',['class'=>'col-sm-4 control-label']) !!}               
         <div class="col-sm-6">          
-        {!! Form::label('profesion', 'Buscar por profesion',['class'=>'control-label']) !!}  {!! Form::checkbox('padresprofesion', 'Buscar por profesión', false,['id'=>'profesion'])!!}        
+        {!! Form::label('profesión', 'Buscar por profesión',['class'=>'control-label']) !!}  {!! Form::checkbox('padresprofesion', 'Buscar por profesión', false,['id'=>'profesion'])!!}        
       </div>
   </div>
 
@@ -314,7 +314,7 @@
    <div class="col-sm-5">
     <select class="form-control" id="criteriocalificaciones">
               <option value="max">Calificación máxima</option>
-               <option value="min">Calificación minima</option>
+               <option value="min">Calificación mínima</option>
                <option value="prom">Calificación promedio</option>
     </select>
     </div>
@@ -479,7 +479,7 @@
                  <th>No.</th> 
                   <th>NIE</th>
                   <th>ESTUDIANTE</th>
-                   <th>GENERO</th>  
+                   <th>GÉNERO</th>  
                    <th>ESTATUS</th>   
                 </tr>
               </thead>
@@ -709,12 +709,20 @@ cell.innerHTML = "<b>EDAD (AÑOS)</b>";
 var cell = row.insertCell(5);
 cell.innerHTML = "<b>ESTADO</b>";
 
+var es='';
+var ni_e='';
   $.get('filtroestudiantes/'+estado+'/'+genero+'/'+ani+'/'+grado+'/'+seccion+'/'+edadinicio+'/'+edadfin,function(estudiantes){
 
   $(estudiantes).each(function (key,value){
     cont=cont+1;
     //console.log(value);
-  $('#tablaBusqueda').append('<tr><td>' + cont + '</td><td>' +value.v_nie +'</td><td>' + value.v_nombres +" "+ value.v_apellidos + '</td><td>'+ value.v_genero+ '</td><td>'+ value.edad +'</td><td>'+value.estado+'</td></tr>'); 
+
+if (value.v_nie==null) { ni_e="---";}
+    else  { ni_e=value.v_nie;}
+
+    if (value.estado==1) { es="Activo";}
+    else  { es="Inactivo";}
+  $('#tablaBusqueda').append('<tr><td>' + cont + '</td><td>' +ni_e +'</td><td>' + value.v_nombres +" "+ value.v_apellidos + '</td><td>'+ value.v_genero+ '</td><td>'+ value.edad +'</td><td>'+es+'</td></tr>'); 
      }); 
 table=$('#tablaBusqueda').DataTable(
     {
