@@ -460,7 +460,7 @@
 
  
   <div class="box-footer" align="right">
-  <input type="button" class="btn btn-primary" id="btnbuscar" value="Iniciar busqueda" /> 
+  <input type="button" class="btn btn-primary" id="btnbuscar" value="Iniciar búsqueda" /> 
   <a href="{{route('menu')}}" class="btn btn-default">Regresar</a>
       </div>         
 
@@ -766,11 +766,11 @@ cell.innerHTML = "<b>No.</b>";
 var cell = row.insertCell(1);
 cell.innerHTML = "<b>NOMBRE</b>";
 var cell = row.insertCell(2);
-cell.innerHTML = "<b>GENERO</b>";
+cell.innerHTML = "<b>GÉNERO</b>";
 var cell = row.insertCell(3);
 cell.innerHTML = "<b>PARENTESCO</b>";
 var cell = row.insertCell(4);
-cell.innerHTML = "<b>OCUPACION</b>";
+cell.innerHTML = "<b>OCUPACIÓN</b>";
 var cell = row.insertCell(5);
 cell.innerHTML = "<b>NIVEL EDUCATIVO</b>";
 var cell = row.insertCell(6);
@@ -817,7 +817,7 @@ cell.innerHTML = "<b>No.</b>";
 var cell = row.insertCell(1);
 cell.innerHTML = "<b>ESTUDIANTE</b>";
 var cell = row.insertCell(2);
-cell.innerHTML = "<b>GENERO</b>";
+cell.innerHTML = "<b>GÉNERO</b>";
 var cell = row.insertCell(3);
 cell.innerHTML = "<b>NUEVO INGRESO</b>";
 var cell = row.insertCell(4);
