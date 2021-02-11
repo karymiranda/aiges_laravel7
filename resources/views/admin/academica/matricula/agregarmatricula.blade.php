@@ -94,7 +94,11 @@
 
                                                  {!! Form::label('nie', 'NIE',['class'=>'col-sm-4 control-label']) !!}
                                                 <div class="col-sm-5">
-                                                {!! Form::text('NIE',null,['class'=>'form-control pull-right','placeholder'=>'Número de identificación del estudiante','id'=>'nie','readonly']) !!}
+                              
+                 
+                                      
+                               {!! Form::text('NIE',null,['class'=>'form-control pull-right','placeholder'=>'Número de identificación del estudiante','id'=>'nie','readonly']) !!}
+                                  
                                                 </div>
                                                 
                                                 
@@ -293,13 +297,15 @@
 
 function seleccion(id,expediente,nombres,apellidos,nie)
 {
- // alert("emtr"+id+expediente+nombres+apellidos+nie);
+   // alert("emtr"+id+expediente+nombres+apellidos+nie);
   document.getElementById("estudiante_id").value=""+id;
     document.getElementById("expediente").value=""+expediente;
     document.getElementById("nombres").value=""+nombres;
     document.getElementById("apellidos").value=""+apellidos;
-    document.getElementById("nie").value=""+nie;
-    
+    if(nie!='null'){
+      document.getElementById("nie").value=""+nie;
+    }
+   
     //guardar en un hidden el idcuenta
 }
 
