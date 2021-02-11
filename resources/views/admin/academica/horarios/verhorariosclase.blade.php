@@ -23,7 +23,7 @@
           <th style="width: 10%">HORARIO</th>
           <th style="width: 18%">LUNES</th>
           <th style="width: 18%">MARTES</th>
-          <th style="width: 18%">MIERCOLES</th>                  
+          <th style="width: 18%">MIÉRCOLES</th>                  
           <th style="width: 18%">JUEVES</th>
           <th style="width: 18%">VIERNES</th>
         </thead>

@@ -5,7 +5,7 @@
   <div class="box">
     <div class="box-header">
       <div class="col-sm-4">
-        <h2 class="box-title"><strong>Lista de Usuarios</strong></h2>
+        <h2 class="box-title"><strong>LISTA DE USUARIOS</strong></h2>
       </div>
     </div>
     <!-- /.box-header -->

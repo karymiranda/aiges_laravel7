@@ -5,7 +5,7 @@
 <div class="box col-sm-6 col-sm-offset-3" style="overflow: auto;width:50%;">
             <div class="box-header with-border">
               <div class="col-sm-12" align="center">
-              <h2> <label class="text-primary">BUSQUEDA AVANZADA</label></h2>
+              <h2> <label class="text-primary">BÚSQUEDA AVANZADA</label></h2>
               </div>
             </div> 
 
@@ -703,7 +703,7 @@ cell.innerHTML = "<b>NIE</b>";
 var cell = row.insertCell(2);
 cell.innerHTML = "<b>NOMBRE</b>";
 var cell = row.insertCell(3);
-cell.innerHTML = "<b>GENERO</b>";
+cell.innerHTML = "<b>GÉNERO</b>";
 var cell = row.insertCell(4);
 cell.innerHTML = "<b>EDAD (AÑOS)</b>";
 var cell = row.insertCell(5);
@@ -713,7 +713,7 @@ cell.innerHTML = "<b>ESTADO</b>";
 
   $(estudiantes).each(function (key,value){
     cont=cont+1;
-    console.log(value);
+    //console.log(value);
   $('#tablaBusqueda').append('<tr><td>' + cont + '</td><td>' +value.v_nie +'</td><td>' + value.v_nombres +" "+ value.v_apellidos + '</td><td>'+ value.v_genero+ '</td><td>'+ value.edad +'</td><td>'+value.estado+'</td></tr>'); 
      }); 
 table=$('#tablaBusqueda').DataTable(

@@ -5,7 +5,7 @@
   <div class="box box-primary">
     <div class="box-header">
       <div class="col-sm-12" align="center">
-              <h2> <label class="text-primary">GESTION ACTIVO FIJO</label></h2>
+              <h2> <label class="text-primary">GESTIÓN ACTIVO FIJO</label></h2>
               </div>
       <div class="col-sm-12" align="right">          
         <a href="{{route('crearactivofijo')}}" class="btn btn-primary">Registrar activo</a>
@@ -20,11 +20,11 @@
     <div class="box-body table-responsive">
       <table class="table table-bordered table-striped" id="tablaBusqueda">
         <thead>
-          <th>CODIGO</th>
-          <th>DESCRIPCION</th> 
-          <th>FECHA DE ADQUISICION</th>
+          <th>CÓDIGO</th>
+          <th>DESCRIPCIÓN</th> 
+          <th>FECHA DE ADQUISICIÓN</th>
           <th>VALOR ($)</th>                                   
-          <th>UBICACION</th>
+          <th>UBICACIÓN</th>
           <th>ACCIONES</th>
         </thead>
         <tbody>

@@ -5,7 +5,7 @@
 <div class="box box-primary">
             <div class="box-header">
                 <div class="col-sm-12" align="center">
-        <h2> <label class="text-primary">OPERACION Y FUNCIONAMIENTO</label></h2>
+        <h2> <label class="text-primary">OPERACIÓN Y FUNCIONAMIENTO</label></h2>
               </div>
             </div>
 <div class="box-body">

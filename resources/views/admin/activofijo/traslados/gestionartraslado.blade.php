@@ -16,10 +16,10 @@
   <div class="box-body table-responsive">
     <table class="table table-bordered table-striped" id="tablaBusqueda">
       <thead>
-        <th>CODIGO</th>
-        <th>CLASIFICACION</th> 
+        <th>CÓDIGO</th>
+        <th>CLASIFICACIÓN</th> 
         <th>FECHA TRASLADO</th>
-        <th>INSTITUCION</th>                                   
+        <th>INSTITUCIÓN</th>                                   
         <th>MOTIVO TRASLADO</th>
         <th>ACCIONES</th>
       </thead>

@@ -5,7 +5,7 @@
 <div class="box box-primary ">
             <div class="box-header with-border">
                <div class="col-sm-12" align="center">
-        <h2> <label class="text-primary">MATRICULAS {{$anio}}</label></h2>
+        <h2> <label class="text-primary">MATRÍCULAS {{$anio}}</label></h2>
     </div>
     <div class="col-sm-12" align="right">            
               

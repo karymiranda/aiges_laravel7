@@ -1,7 +1,7 @@
 <table>
   <thead>
     <tr> 
-      <th>CODIGO</th>
+      <th>CÓDIGO</th>
       <th>CUENTA</th>
       <th>NIVEL</th>      
       <th>TIPO SALDO</th>

@@ -1,9 +1,9 @@
 <table>
   <thead>
     <tr> 
-      <th>FECHA DE PRESTAMO</th>
-      <th>CODIGO DE ACTIVO</th>
-      <th>DESCRIPCION</th>
+      <th>FECHA DE PRÉSTAMO</th>
+      <th>CÓDIGO DE ACTIVO</th>
+      <th>DESCRIPCIÓN</th>
       <th>TIPO DE TRASLADO</th>      
       <th>DESTINO</th>
       <th>ENVIADO POR</th>

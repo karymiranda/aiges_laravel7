@@ -2,19 +2,19 @@
   <thead>
     <tr>
       <th>No</th> 
-      <th>CLASIFICACION DEL ACTIVO</th>
-      <th>CODIGO</th>
-      <th>DESCRIPCION</th>
-      <th>FECHA DE ADQUISICION</th>      
+      <th>CLASIFICACIÓN DEL ACTIVO</th>
+      <th>CÓDIGO</th>
+      <th>DESCRIPCIÓN</th>
+      <th>FECHA DE ADQUISICIÓN</th>      
       <th>VALOR</th>
-      <th>VIDA UTIL (Años)</th>
-      <th>NUMERO DE SERIE</th>
+      <th>VIDA ÚTIL (Años)</th>
+      <th>NÚMERO DE SERIE</th>
       <th>MODELO</th>
       <th>MARCA</th>
       <th>MEDIDA</th>
-      <th>MATERIAL DE CONSTRUCCION</th>
-      <th>CONDICION</th>
-      <th>UBICACION</th>
+      <th>MATERIAL DE CONSTRUCCIÓN</th>
+      <th>CONDICIÓN</th>
+      <th>UBICACIÓN</th>
       <th>OBSERVACIONES</th>
       <th>¿HA SIDO TRASLADADO?</th>
     </tr>

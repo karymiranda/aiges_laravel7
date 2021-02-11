@@ -3857,6 +3857,8 @@ else if($edadinicio=='-' && $edadfin!="-")
 
 $sqlQuery = "SELECT TIMESTAMPDIFF(YEAR,f_fnacimiento,CURDATE()) AS edad,id,v_nie,v_nombres,v_apellidos,v_genero,estado from tb_expedienteestudiante".$consultagenero.$consultaedad." and ".$consultaestado;
 $datos = DB::select( DB::raw($sqlQuery) );
+
+
 return response()->json($datos);
 }
 

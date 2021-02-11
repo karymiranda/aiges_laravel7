@@ -17,9 +17,9 @@
                  <th>No.</th>   
                   <th>DUI</th>
                   <th>NOMBRE DEL FAMILIAR</th>
-                   <th>DIRECCION</th> 
-                   <th>TELEFONO PERSONAL</th>  
-                   <th>TELEFONO CASA</th>                               
+                   <th>DIRECCIÓN</th> 
+                   <th>TELÉFONO PERSONAL</th>  
+                   <th>TELÉFONO CASA</th>                               
                  <th>ACCIONES</th>
                 </tr></thead>
                 <tbody>

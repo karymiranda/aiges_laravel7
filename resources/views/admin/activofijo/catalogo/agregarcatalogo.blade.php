@@ -4,7 +4,7 @@
 
 <div class="box box-primary box-solid">
   <div class="box-header with-border">
-    <h3 class="box-title"><Strong>AGREGAR CUENTA CATALOGO</Strong></h3>
+    <h3 class="box-title"><Strong>AGREGAR CUENTA CATÁLOGO</Strong></h3>
   </div>
   @if(count($errors) > 0)
       <div class="alert alert-danger" role="alert">

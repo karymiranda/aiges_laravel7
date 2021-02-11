@@ -5,7 +5,7 @@
   <div class="box box-primary">
     <div class="box-header">
       <div class="col-sm-12" align="center">
-              <h2> <label class="text-primary">CATALOGO DE CODIFICACION ACTIVO FIJO</label></h2>
+              <h2> <label class="text-primary">CATÁLOGO DE CODIFICACIÓN ACTIVO FIJO</label></h2>
               </div>
       <div class="col-sm-12" align="right">          
         <a href="{{route('crearcatalogoactivo')}}" class="btn btn-primary">Registrar cuenta</a>
@@ -16,7 +16,7 @@
     <div class="box-body table-responsive">
       <table class="table table-bordered table-striped" id="tablaBusqueda">
         <thead>
-          <th>CODIGO</th>
+          <th>CÓDIGO</th>
           <th>TIPO DE BIEN</th> 
           <th>NIVEL</th>
            <!--th>TIPO CUENTA</th>

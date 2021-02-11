@@ -17,7 +17,7 @@
     <table class="table table-bordered table-striped" style="width: 80%" id="tablaBusqueda">
       <thead>
         <th>GRADO</th>
-        <th>SECCION</th>
+        <th>SECCIÓN</th>
         <th>TURNO</th>                  
         <th>ENCARGADO</th>
         <th>ACCIONES</th>

@@ -53,12 +53,12 @@
                 <thead>
                 <tr> 
                   <th>No.</th> 
-                  <th>Código </th>
-                  <th>Descripción</th>
-                  <th>Fecha de adquisición</th>
-                  <th>Ubicación</th> 
-                  <th>Estado</th>                          
-                  <th>¿Trasladado?</th>
+                  <th>CÓDIGO </th>
+                  <th>DECRIPCIÓN</th>
+                  <th>FECHA DE ADQUISICIÓN</th>
+                  <th>UBICACIÓN</th> 
+                  <th>ETADO</th>                          
+                  <th>¿TRASLADO?</th>
                  
                 </tr></thead>
                 <tbody id="body">
