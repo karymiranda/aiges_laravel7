@@ -2005,7 +2005,7 @@ $this->cabecera($fpdf,$titulo,$subtitulo);
   $fpdf->Ln(5);
    $fpdf->SetTextColor(75,75,75);
    $fpdf->SetFont('Arial','B',12);
-   $fpdf->Cell(0, $this->height - 1, 'ADMINISTRACION ACADEMICA', 0, 1, 'C');
+   $fpdf->Cell(0, $this->height - 1, 'ADMINISTRACIÓN ACADÉMICA', 0, 1, 'C');
    $fpdf->SetFont('Arial','BU',12);
    $fpdf->Cell(0, $this->height - 1, 'EXPEDIENTE ESTUDIANTIL', 0, 1, 'C');
     $fpdf->Image('imagenes/Administracionacademica/Estudiantes/'.$user->foto,20,60,50);
@@ -2047,22 +2047,11 @@ $fpdf->SetFont('Arial','B',12);
     $fpdf->Ln(30);
 $fpdf->SetFillColor(100,107,99);
     $fpdf->SetFont('Arial','BU',12);
-    $fpdf->Cell(0, $this->height - 1,utf8_decode('1.INFORMACION PERSONAL'), 0, 1, "C", 0);   $fpdf->Ln(5);
+    $fpdf->Cell(0, $this->height - 1,utf8_decode('1.INFORMACIÓN PERSONAL'), 0, 1, "C", 0);   $fpdf->Ln(5);
 $fpdf->SetX(20);
 $fpdf->SetFillColor(229,229,229);
     $fpdf->SetFont('Arial','',12);
 
-
-
-     /*$fpdf->Cell(80, $this->height - 1,"Expediente",1, 0, "L", 1); $fpdf->Cell(0, 5, $estudiante->v_expediente, 1, 1, "L",0);
-   $fpdf->SetX(20);$fpdf->Cell(80, $this->height - 1,"NIE", 1, 0, "L", 1);
-    if($estudiante->v_nie!=null) {$fpdf->Cell(0, 5, $estudiante->v_nie, 1, 1, "L", 0); }
-    else {$fpdf->Cell(0,5,"---",1,1,"L");}    
-    $fpdf->SetX(20);$fpdf->Cell(80, $this->height - 1,"Nombres", 0, 0, "L", 0); $fpdf->Cell(0, 5, utf8_decode($estudiante->v_nombres), 0, 1, "L", 0); 
-    $fpdf->SetX(20);$fpdf->Cell(80, $this->height - 1,"Apellidos", 0, 0, "L", 0); $fpdf->Cell(0, 5, utf8_decode($estudiante->v_apellidos), 0, 1, "L", 0); 
-    $fpdf->SetX(20);$fpdf->Cell(80, $this->height - 1,utf8_decode('Género'), 0, 0, "L", 0); $fpdf->Cell(0, 5, $estudiante->v_genero, 0, 1, "L", 0); 
-   $fpdf->SetX(20); $fpdf->Cell(80, $this->height - 1,"Fecha de nacimiento", 0, 0, "L", 0); $fpdf->Cell(0, 5, $estudiante->f_fnacimiento, 0, 1, "L", 0); 
-*/
 
 
    $fpdf->SetX(20); $fpdf->Cell(90, $this->height - 1,utf8_decode("Dirección"), 0, 0, "L", 1);
@@ -2080,7 +2069,7 @@ $fpdf->SetFillColor(229,229,229);
     else {$fpdf->Cell(0,$this->height - 1,"---",0,1,"L");} 
     $fpdf->Ln(10);
     $fpdf->SetFont('Arial','BU',12);
-    $fpdf->Cell(0, $this->height - 1,utf8_decode("2. SITUACION FAMILIAR"), 0, 1, "C", 0);
+    $fpdf->Cell(0, $this->height - 1,utf8_decode("2. SITUACIÓN FAMILIAR"), 0, 1, "C", 0);
     $fpdf->Ln(5);
 
       $fpdf->SetFont('Arial','',12);
@@ -2094,7 +2083,7 @@ if($estudiante->i_catFamiliares!=null) {
 
     $fpdf->Ln(10); 
     $fpdf->SetFont('Arial','BU',12);
-    $fpdf->Cell(0, $this->height - 1,utf8_decode("3. SITUACION ECLESIAL"), 0, 1, "C", 0); 
+    $fpdf->Cell(0, $this->height - 1,utf8_decode("3. SITUACIÓN ECLESIAL"), 0, 1, "C", 0); 
     $fpdf->Ln(5);
     $fpdf->SetFont('Arial','',12);
      $fpdf->SetX(20);$fpdf->Cell(90, $this->height - 1,"Sacramentos recibidos", 0, 0, "L", 1);
@@ -2136,7 +2125,7 @@ if($estudiante->v_gradoingreso!=null)
 
     $fpdf->Ln(10);
     $fpdf->SetFont('Arial','BU',12);
-    $fpdf->Cell(0, 5,utf8_decode("5. INFORMACION MEDICA"), 0, 1, "C", 0);
+    $fpdf->Cell(0, 5,utf8_decode("5. INFORMACIÓN MÉDICA"), 0, 1, "C", 0);
     $fpdf->Ln(5);
 
      $fpdf->SetFont('Arial','',12); 
@@ -2204,7 +2193,7 @@ foreach ($familiares as $datos) {
 
  $fpdf->Ln(5);
     $fpdf->SetFont('Arial','BU',12);
-    $fpdf->Cell(0, 5,utf8_decode("7. HISTORIAL ACADEMICO"), 0, 1, "C", 0);
+    $fpdf->Cell(0, 5,utf8_decode("7. HISTORIAL ACADÉMICO"), 0, 1, "C", 0);
 $fpdf->Ln(5);
 $fpdf->SetFont('Arial','',12);
 foreach($grados as $g)
@@ -2273,7 +2262,7 @@ $fpdf=new Fpdf("L","mm","Letter");
 
    $centro = InfoCentroEducativo::first();  
     $fpdf->SetFont('Arial','',10); 
-     $fpdf->Cell(0, $this->height - 1, utf8_decode('MINISTERIO DE EDUCACION'), 0, 1, 'C');
+     $fpdf->Cell(0, $this->height - 1, utf8_decode('MINISTERIO DE EDUCACIÓN'), 0, 1, 'C');
     $fpdf->SetFont('Arial','B',9); 
     $fpdf->Cell(0, $this->height, utf8_decode("BOLETA DE CAPTURA DE DATOS PARA LA ASIGNACION DEL NIE"), 0, 1, 'C');
     $fpdf->Ln(5);
