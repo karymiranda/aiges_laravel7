@@ -7,6 +7,8 @@
               <div class="col-sm-12" align="center">
               <h2> <label class="text-primary">BÚSQUEDA AVANZADA</label></h2>
               </div>
+
+
             </div> 
 
              <div class="box-body">
@@ -64,47 +66,7 @@
               </div>                                              
           </div>
 
-            <!--div class="form-group"> 
-             {!! Form::label('', 'Año ',['class'=>'col-sm-4 control-label']) !!}                      
-             <div class="col-sm-8">
-          {!! Form::label('', 'Todos',['class'=>'col- control-label']) !!}
-          {!! Form::radio('estudianteanio','Todos',true, ['class'=>'','id'=>'criterioanioT'])!!}
-          {!! Form::label('', 'Por año',['class'=>'control-label']) !!}
-          {!! Form::radio('estudianteanio','Por año',false, ['class'=>'','id'=>'criterioanioG'])!!} 
-              </div>                                             
-          </div-->
-
-            <!--div class="form-group" id=
-            "divestudianteanio" style="display:none;">
-             {!! Form::label('', '',['class'=>'col-sm-4 control-label']) !!}               
-               <div class="col-sm-4">
-               <input type="text" class="form-control" id="anioestudiante" placeholder="Ingrese año">
-                </div>
-            </div-->
-
-            <!--div class="form-group" id="divestudianteanio" >
-             {!! Form::label('', 'Año',['class'=>'col-sm-4 control-label']) !!}               
-               <div class="col-sm-5">
-               <input type="text" class="form-control" id="anioestudiante" placeholder="Ingrese año">
-                </div>
-            </div>
-
-         
-            <div class="form-group">
-             {!! Form::label('', 'Grado- Sección',['class'=>'col-sm-4 control-label']) !!}          
-              <div class="col-sm-5">
-              <select class="form-control" name="filtrogradosestudiantes" id="filtrogradosestudiantes">
-                <option value="0">Todos</option>
-                <?php
-                foreach ($listasecciones as $key => $value)
-                 { ?>                 
-           <option value="{{$value->id}}">{{$value->descripcion}}</option>
-                  <?php } ?>
-              </select>
-           </div>  
-         </div-->
-
- 
+            
 
         <div class="form-group"> 
          {!! Form::label('', '',['class'=>'col-sm-4 control-label']) !!}               
@@ -418,31 +380,6 @@
 </div>
 
 
-
-  <!--div class="form-group">
-    {!! Form::label('parentesco', 'Sección',['class'=>'col-sm-4 control-label']) !!}
-   <div class="col-sm-8">
-    <select class="form-control" id="filtroseccionestadisticas">
-              <option value="0">Todos</option>
-               <option value="1">A</option>
-               <option value="2">B</option>
-               <option value="3">C</option>
-    </select>
-    </div>
-</div-->
-
-
-  <!--div class="form-group">
-    {!! Form::label('turno', 'Turno',['class'=>'col-sm-4 control-label']) !!}
-   <div class="col-sm-8">
-    <select class="form-control" id="filtroturnoestadisticas">
-              <option value="0">Todos</option>
-               <option value="1">Mañana</option>
-               <option value="2">Tarde</option>
-    </select>
-    </div>
-</div-->
-
 <div class="form-group">
   {!! Form::label('exp', 'Género ',['class'=>'col-sm-4 control-label']) !!}                        
              <div class="col-sm-6">
@@ -471,6 +408,23 @@
 
 <div class="box col-sm-12">
  <div class="box-body">
+
+
+<div class="box-tools pull-right">
+<div class="btn-group ">
+                  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-expanded="true" id="btnimprimir">
+                    <span class="fa fa-print"></span>
+                    <span class="sr-only">Toggle Dropdown</span>
+                  </button>
+                   <!--ul class="dropdown-menu" role="menu">
+<li><a href="#"><i class="fa fa-print"></i></a>
+                 </li>   
+                  </ul-->
+
+</div>
+</div>
+
+
  {!! Form::open(['method'=>'GET','id'=>'frmtabla','class'=>'form-horizontal','target'=>'blank']) !!}
  <div class="box-body table-responsive">
       <table class="table table-bordered table-striped" id="tablaBusqueda">
@@ -1005,6 +959,17 @@ table=$('#tablaBusqueda').DataTable(
   }//if filtros
 
   });
+
+
+$('#btnimprimir').on('click', function(){
+      if($('#filtros').val()!=0)
+      {
+var valores = $('#tablaBusqueda').serializeArray();
+alert(valores);
+
+      }
+    });
+ 
 
 </script>
 

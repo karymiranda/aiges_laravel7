@@ -89,9 +89,10 @@ class AsistenciasrhController extends Controller
 			$n++;
 		}
 		//return view('admin.recursohumano.asistencias.tomarasistenciarrhh')->with('empleado',$lista)->with('hoy',$hoyf)->with('n',$n);
-
-$verifyAsistencia=AsistenciasRH::where('fecha',$hoyc)->first();	
-	if(count($verifyAsistencia)>0)//ya se registro la asistencia ese dia
+//$verifyAsistencia=AsistenciasRH::where('fecha',$hoyc)->first();
+$verifyAsistencia=AsistenciasRH::where('fecha',$hoyc)->count();
+//dd($verifyAsistencia);	
+	if($verifyAsistencia>0)//ya se registro la asistencia ese dia
 	{
 return view('admin.recursohumano.asistencias.rrhh_viewasistencia')->with('empleado',$lista)->with('hoy',$hoyf)->with('n',$n);
 	}

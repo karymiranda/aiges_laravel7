@@ -28,6 +28,8 @@ use App\Exports\permisosRhExport;
 use App\Exports\ListaactivofijoExport;
 use App\Exports\CatalogoactivofijoExport;
 use App\Exports\TrasladoactivosExport;
+use App\Exports\NominaCEestudiantesExport;
+use App\Exports\NominaCEfamiliaresExport;
 use Illuminate\Support\Facades\DB;
 use Maatwebsite\Excel\Facades\Excel;
 use Carbon\Carbon;
@@ -36,6 +38,8 @@ use App\Http\Controllers\ResporteController;
 
 class ExcelController extends Controller
 {
+
+ 
 	public function exportUsuarios() 
     {
     	$today = Carbon::now()->format('d_m_Y');
@@ -350,5 +354,26 @@ public function exportBitacora()
       $name = 'BitacoraAIGES_'.$today.'.xlsx';
         return Excel::download(new BitacoraExport, $name);
     }
+
+
+public function nominaestudiantesactivosCE_excel()
+{
+ 
+$anio = Carbon::now()->year; 
+$today = Carbon::now()->format('d_m_Y');
+$name = 'Nominainstitucionalestudiantes_'.$today.'.xlsx';
+
+return Excel::download(new NominaCEestudiantesExport,$name);
+
+}
+
+public function nominafamiliaresactivosCE_excel()
+{
+$anio = Carbon::now()->year; 
+$today = Carbon::now()->format('d_m_Y');
+$name = 'Nominainstitucionalfamiliares_'.$today.'.xlsx';
+
+return Excel::download(new NominaCEfamiliaresExport,$name);
+}
 
 }

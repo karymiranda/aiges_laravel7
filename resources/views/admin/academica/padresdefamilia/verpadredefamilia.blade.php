@@ -160,7 +160,7 @@
             </div>        
                 
               <div class="box-footer" align="right">  
-              <a href="#" class="btn btn-primary">Imprimir expediente</a>
+              <a href="{{route('expedientefamiliar_pdf',$familiar->id)}}" class="btn btn-primary">Imprimir expediente</a>
               <a href="{{route('listafamiliares')}}" class="btn btn-default">Regresar</a>
               </div>
 

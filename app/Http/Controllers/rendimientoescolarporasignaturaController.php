@@ -17,8 +17,8 @@ class rendimientoescolarporasignaturaController extends Fpdf
     // $routeImage = __DIR__."..\..\..\..\public\logoce.jpg";
     //$routeImageMINED = __DIR__."..\..\..\..\public\EscudoDeElSalvador.jpg";
 
-    $this->Image('logoce.jpg', 10, 4, 15);
-    $this->Image('EscudoDeElSalvador.jpg', 250, 6, 20);
+    $this->Image('logoce.jpg', 15, 4, 20);
+    $this->Image('EscudoDeElSalvador.jpg', 240, 6, 25);
     
 
     $this->SetFont('Arial','', 11);
@@ -36,9 +36,9 @@ class rendimientoescolarporasignaturaController extends Fpdf
   public function boletaTitulo($object = array())
   {
     $this->Ln(3);
-    $this->SetFont('Helvetica','B', 13);
-    $this->Cell(0, $this->height - 1, 'REGISTRO DE EVALUACION DEL RENDIMIENTO ESCOLAR', 0, 1, 'C');
-    $this->Cell(0, $this->height - 1, 'EDUCACION BASICA', 0, 1, 'C');
+    $this->SetFont('Helvetica','', 13);
+    $this->Cell(0, $this->height - 1, 'REGISTRO DE EVALUACIÓN DEL RENDIMIENTO ESCOLAR', 0, 1, 'C');
+    $this->Cell(0, $this->height - 1, 'EDUCACIÓN BÁSICA', 0, 1, 'C');
     $this->SetFont('Helvetica','BU', 10);
     $this->Cell(0, $this->height - 1, utf8_decode($object['seccion']['descripcion']), 0, 1, 'C');
   }

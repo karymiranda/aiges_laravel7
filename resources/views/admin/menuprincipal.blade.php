@@ -976,7 +976,7 @@ desired effect
   <!-- Main Footer -->
   <footer class="main-footer" align="center"> 
     <!-- Default to the left -->
-    <strong>Todos los derechos reservados  <a href="#">2019 UES-FMP AIGES v1.0</a></strong>
+    <strong>Todos los derechos reservados  <a href="#">2021 UES-FMP AIGES v1.0</a></strong>
   </footer>
 
   <!-- Control Sidebar -->

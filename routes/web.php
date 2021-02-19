@@ -19,11 +19,16 @@ Route::group(['prefix'=>'admin/academica'], function(){
 });
 
 */
+
 use App\Expedienteestudiante;
 use App\Periodoactivo;
 use App\Seccion;
 use App\Empleado;
 use App\Transaccionesbono;
+use App\Http\Controllers\ConsultasyreportesController;
+use App\Http\Controllers\ExcelController;
+
+
 
 Route::get('/', function () {
    //
@@ -512,19 +517,23 @@ Route::get('listaestadisticas', ['as' => 'listaestadisticas', 'uses' => 'Estadis
   'as' => 'historialmatriculaescolarCE_pdf', 
   'uses' => 'ConsultasyreportesController@historialmatriculaescolarCE_pdf']);
 
-/*
-	//GRAFICOS CON FILTRO
-Route::get('listado_graficas', ['as' => 'estadisticasgraficas', 'uses' => 'GraficasController@index']);
-Route::get('grafica_registros/{anio}/{mes}', 'GraficasController@registros_mes');
-//GRAFICOS LOAD PAGINA DE INCIO
 
-Route::get('graficobarra_matriculasporgrado', ['as' => 'matriculasporgrado_graphics', 'uses' => 'GraficasController@matriculaporgrado_onload']);
-Route::get('graficadebarras_historialmatricula/{anio}', 'GraficasController@matriculaporanio_graphics');
-Route::get('graficadelineasmatriculaanual/{anio}', 'GraficasController@matriculasanuales_graphics');
-Route::get('graficadepastel_estudiantesactivos', 'GraficasController@estudiantesactivos_graphics');
-*/
 
- 	//Horarios-Clases
+Route::get('estadisticamatriculaescolarCE_excel/{anio}/document', [
+  'as' => 'estadisticamatriculaescolarCE_excel', 
+  'uses' => 'ExcelController@estadisticamatriculaescolarCE_excel']);
+
+
+Route::get('estudiantesCE_excel', [ExcelController::class,'nominaestudiantesactivosCE_excel']);
+
+Route::get('familiaresCE_excel', [ExcelController::class,'nominafamiliaresactivosCE_excel']);
+
+//Route::get('estudiantesCE_excel','ExcelController@nominaestudiantesactivosCE_excel')->name('estudiantesCE');
+//Route::get('familiaresCE_excel','ExcelController@nominafamiliaresactivosCE_excel')->name('familiaresCE');
+
+
+
+
 Route::get('listadohorariosclase', ['as' => 'listadohorariosclase', 'uses' => 'HorariosClaseController@index']);
 Route::get('crearhorariosclase', ['as' => 'crearhorariosclase', 'uses' => 'HorariosClaseController@crearhorariosclase']);	
 Route::get('cargarhorarios', ['as' => 'cargarhorarios','uses' => 'HorariosClaseController@cargarhorarios']);
@@ -730,6 +739,9 @@ Route::post('nominadeestudiantes_pdf', [
 	'as' => 'nominadeestudiantes_pdf', 
 	'uses' => 'ConsultasyreportesController@nominadeestudiantes_pdf'
 ]);
+
+Route::post('sinNIE_pdf',[ConsultasyreportesController::class,'sinNIE_pdf']);
+
 //ruta para cargar la nomina de estudiantes desde el formulario nomina de estudiantes, mis secciones en modulo docentes
 Route::get('/nominadeestudiantes_pdf/{idseccion}/view', [
 	'as' => 'docentesnominadeestudiantes_pdf', 
@@ -754,11 +766,9 @@ Route::get('/cuadrofinaldeevaluaciones_pdf/{idseccion}/view', [
 ]); 
 
 
-
-
 Route::get('nominaestudiantesactivosCE_pdf', [
-	'as' => 'nominaestudiantesactivosCE_pdf', 
-	'uses' => 'ConsultasyreportesController@nominaestudiantesactivosCE_pdf'
+  'as' => 'nominaestudiantesactivosCE_pdf', 
+  'uses' => 'ConsultasyreportesController@nominaestudiantesactivosCE_pdf'
 ]);
 
 Route::post('periodoevaluacionporaniolectivo', ['as' => 'periodoevaluacionporaniolectivo', 'uses' => 'ConsultasyreportesController@periodoevaluacionporaniolectivo']);
@@ -1050,6 +1060,8 @@ Route::get("/reportes", function (Codedge\Fpdf\Fpdf\Fpdf $fpdf) {
 /*Route::get('test', function() {
     Storage::disk('google')->put('test.txt', 'Hello World');
 });*/
+
+
 Route::get('respaldodb', 'DBController@respaldo')->name('respaldo');
 Route::get('restaurardb/{archivo}', 'DBController@restaurardb')->name('restaurardb');
 Route::get('acercade', 'AcercadeController@index')->name('acercade');
@@ -1062,6 +1074,7 @@ Route::get('ayuda_adminactivofijo', 'HelpController@ayuda_adminactivofijo')->nam
 Route::get('ayuda_padredefamilia', 'HelpController@ayuda_padredefamilia')->name('ayuda_padredefamilia');
 Route::get('ayuda_adminrrhh', 'HelpController@ayuda_adminrrhh')->name('ayuda_adminrrhh');
 Route::resource('reset', 'ResetPasswordController');
+
 
 
 

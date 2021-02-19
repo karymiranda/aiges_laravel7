@@ -15,14 +15,14 @@
              <div class="form-group">
                 {!! Form::label('', 'Reportes',['class'=>'col-sm-4 control-label']) !!}
                <div class="col-sm-4">
-            {!! Form::select('reporte_id',['1'=>'Nómina de estudiantes activos','2'=>'Nómina de padres de familia','3'=>'Estadística matrícula escolar anual','4'=>'Historial decenal matrícula escolar'],null,['class'=>'form-control','id'=>'reporte_id','required'])!!}
+            {!! Form::select('reporte_id',['1'=>'Nómina de estudiantes activos','1.1'=>'Nómina de estudiantes sin NIE','2'=>'Nómina de padres de familia','3'=>'Estadística matrícula escolar anual','4'=>'Historial decenal matrícula escolar'],null,['class'=>'form-control','id'=>'reporte_id','required'])!!}
                 </div>
             </div>
 
       <div class="col-sm-12"align="center">
      <div class="form-group"> 
   <a href="#" class="btn btn-primary" id="btngenerarreporte"><i class="fa fa-file-pdf-o"></i> Generar PDF</a> 
-  <a href="#" class="btn btn-success" id="btngenerarexcel"><i class="fa fa-download"></i> Generar Excel</a> 
+  <a href="#" class="btn btn-success" id="btngenerarexcel" ><i class="fa fa-download"></i> Generar Excel</a> 
 
            </div>
           </div><!--fin col sm12-->
@@ -116,6 +116,16 @@ $('#btngenerarreporte').on('click', function(e){
      $('#formulariorpt').attr("action", "nominaestudiantesactivosCE_pdf");      
      $('#formulariorpt').submit(); 
       break;
+
+      case '1.1': 
+
+     $('#formulariorpt').attr("method",'POST');
+     $('#formulariorpt').attr("target",'_blank');      
+     $('#formulariorpt').attr("action", "sinNIE_pdf");      
+     $('#formulariorpt').submit(); 
+      break; 
+
+
       case '2':
      $('#formulariorpt').attr("action", "nominafamiliaresactivosCE_pdf");      
      $('#formulariorpt').submit();    
@@ -134,5 +144,28 @@ $('#btngenerarreporte').on('click', function(e){
     }
  
     });
+
+$('#btngenerarexcel').on('click', function(e){
+ var reporte_id=$('#reporte_id').val();
+ var anio=$('#anio option:selected').val();
+
+  switch (reporte_id)
+  {
+
+
+    case '1':
+   $('#btngenerarexcel').attr("href",'estudiantesCE_excel');
+    break;
+
+    case '2':
+$('#btngenerarexcel').attr("href",'familiaresCE_excel');
+    break;
+
+
+
+
+  }
+});
+
 </script>
 @endsection

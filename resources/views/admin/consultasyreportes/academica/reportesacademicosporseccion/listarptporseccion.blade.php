@@ -408,6 +408,8 @@ $('#btnnotasexcel').attr("href",'calificacionesexcel/'+id+'/'+periodo+'/'+asigna
      $('#formulariorpt').attr("action", "nominadeestudiantes_pdf");      
      $('#formulariorpt').submit(); 
       break; 
+
+
       case '2':
       $('#formulariorpt').attr("method",'POST');
      $('#formulariorpt').attr("action", "nominadepadresdefamilia_pdf");      

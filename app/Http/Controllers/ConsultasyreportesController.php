@@ -43,7 +43,8 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
 class ConsultasyreportesController extends Controller
-{  
+{ 
+ 
 //REPORTES BONO ESCOLAR
 public function cuadroresumendegastos_pdf(Request $request)
 {
@@ -784,7 +785,7 @@ $familiar=Familiares::find($id);
     $this->cabecera($fpdf,$titulo,$subtitulo);
   $fpdf->Ln(5);
    $fpdf->SetFont('Arial','B',12);
-   $fpdf->Cell(0, $this->height - 1, 'ADMINISTRACION ACADEMICA', 0, 1, 'C');
+   $fpdf->Cell(0, $this->height - 1, utf8_decode('ADMINISTRACIÓN ACADÉMICA'), 0, 1, 'C');
    $fpdf->SetFont('Arial','BU',10);
     $fpdf->Cell(0, $this->height - 1, 'EXPEDIENTE FAMILIAR', 0, 1, 'C');
     //$fpdf->Line(30, 30, 205, 30);
@@ -1262,8 +1263,8 @@ function cabecera($fpdf,$titulo,$subtitulo)
     // Arial bold 15
     $fpdf->SetFont('Arial','',10); 
     // $fpdf->Cell(0, $this->height - 1, utf8_decode('Ministerio de Educación, Ciencia y Tecnologia'), 0, 1, 'C');
-     $fpdf->Cell(0, $this->height - 1, utf8_decode('REPUBLICA DE EL SALVADOR, CENTROAMERICA'), 0, 1, 'C');
-     $fpdf->Cell(0, $this->height - 1, utf8_decode('MINISTERIO DE EDUCACION CIENCIA Y TECNOLOGIA'), 0, 1, 'C');
+     $fpdf->Cell(0, $this->height - 1, utf8_decode('REPÚBLICA DE EL SALVADOR, CENTROAMERICA'), 0, 1, 'C');
+     $fpdf->Cell(0, $this->height - 1, utf8_decode('MINISTERIO DE EDUCACION CIENCIA Y TECNOLOGÍA'), 0, 1, 'C');
     // $fpdf->Cell(0, $this->height - 1, utf8_decode('(MINEDUCYT)'), 0, 1, 'C');
     $fpdf->SetFont('Arial','B',12); 
     $fpdf->Cell(0, $this->height, utf8_decode($centro->v_nombrecentro), 0, 1, 'C');
@@ -1282,8 +1283,8 @@ function cabecerahorizontal($fpdf)
     $fpdf->Image('imagenes/recursosrpt/escudo.png',230,8,30);
     // Arial bold 15
     $fpdf->SetFont('Arial','',10); 
-      $fpdf->Cell(0, $this->height - 1, utf8_decode('REPUBLICA DE EL SALVADOR, CENTROAMERICA'), 0, 1, 'C');
-     $fpdf->Cell(0, $this->height - 1, utf8_decode('MINISTERIO DE EDUCACION CIENCIA Y TECNOLOGIA'), 0, 1, 'C');
+      $fpdf->Cell(0, $this->height - 1, utf8_decode('REPÚBLICA DE EL SALVADOR, CENTROAMERICA'), 0, 1, 'C');
+     $fpdf->Cell(0, $this->height - 1, utf8_decode('MINISTERIO DE EDUCACIÓN CIENCIA Y TECNOLOGÍA'), 0, 1, 'C');
  
     $fpdf->SetFont('Arial','B',12); 
     $fpdf->Cell(0, $this->height, utf8_decode($centro->v_nombrecentro), 0, 1, 'C');
@@ -1331,12 +1332,12 @@ $this->cabecerahorizontal($fpdf);
 $fpdf->SetTitle('rendimientoescolar');
 $fpdf->Ln(2); 
 $fpdf->SetFont('Arial','', 9);
-$fpdf->Cell(0, $this->height - 1, "REGISTRO DE EVALUACION DEL  RENDIMIENTO ESCOLAR DE EDUCACION BASICA", 0, 1, 'C');
-$fpdf->Cell(0, $this->height - 1, 'GRADO :  '.strtoupper(utf8_decode($seccion->seccion_grado->grado))."   SECCION:  ".$seccion->seccion." ", 0, 1, 'C');
+$fpdf->Cell(0, $this->height - 1, "REGISTRO DE EVALUACIÓN DEL  RENDIMIENTO ESCOLAR DE EDUCACIÓN BÁSICA", 0, 1, 'C');
+$fpdf->Cell(0, $this->height - 1, 'GRADO :  '.strtoupper(utf8_decode($seccion->seccion_grado->grado))."   SECCIÓN:  ".$seccion->seccion." ", 0, 1, 'C');
 $fpdf->SetFont('Arial','b', 12);
 $fpdf->Cell(0, $this->height - 1,utf8_decode($asig->asignatura), 0, 1, 'C');
 $fpdf->SetFont('Arial','', 8);
-$fpdf->Cell(0,$this->height - 1,"RESPONSABLE ASIGNATURA:  ".utf8_decode($asig->v_nombres)." ".utf8_decode($asig->v_apellidos)."  ASESOR DE SECCION :  ".utf8_decode($seccion->seccion_empleado->v_nombres)." ".utf8_decode($seccion->seccion_empleado->v_apellidos), 0, 1, 'C');
+$fpdf->Cell(0,$this->height - 1,"RESPONSABLE ASIGNATURA:  ".utf8_decode($asig->v_nombres)." ".utf8_decode($asig->v_apellidos)."  ASESOR DE SECCIÓN :  ".utf8_decode($seccion->seccion_empleado->v_nombres)." ".utf8_decode($seccion->seccion_empleado->v_apellidos), 0, 1, 'C');
  }//cierre if
 //header TABLA
 $this->headertablarendimientoescolar($fpdf);
@@ -1629,11 +1630,13 @@ else{
 }
 date_default_timezone_set('America/El_Salvador');
 $fpdf = new Fpdf("L", "mm", "Letter");//ORIENTACION DE LA PAGINA p es vrtical l horizontal
-$fpdf->AddPage();   
+
+$fpdf->AddPage();
+$fpdf->SetMargins(10,30,20,20);   
 $this->cabecerahorizontal($fpdf);
 $fpdf->Ln(2);
 $fpdf->SetFont('Helvetica','BU', 12);
-$fpdf->Cell(0, $this->height - 1, utf8_decode('NOMINA DE ESTUDIANTES'), 0, 1, 'C');
+$fpdf->Cell(0, $this->height - 1, utf8_decode('NÓMINA DE ESTUDIANTES'), 0, 1, 'C');
 $fpdf->Ln(2);
 $fpdf->SetFont('Arial','',10);
 
@@ -1649,24 +1652,20 @@ $fpdf->Cell(80, $this->height +1,utf8_decode($seccion->seccion_turno->turno), 'B
 
 $fpdf->Ln(5);
 
-//$fpdf->Cell(0, $this->height - 1, 'GRADO :  '.utf8_decode($seccion->seccion_grado->grado)."   SECCION:  ".utf8_decode($seccion->seccion)."    TURNO:  ".utf8_decode($seccion->seccion_turno->turno), 0, 1, 'C');
-//$fpdf->Cell(0, $this->height - 1, 'GRADO :  '.utf8_decode($seccion->seccion_grado->grado)."   SECCION:  ".utf8_decode($seccion->seccion)."           DOCENTE ASESOR :  ".$asesor, 0, 1, 'C');
-//header tabla
-
     $fpdf->Ln(5);
     $fpdf->SetFillColor(229,229,229);
     $fpdf->SetFillColor(0,0,0);
      $fpdf->SetTextColor(240, 255, 240);   
     $fpdf->SetFont('Arial','B','8');
-    $fpdf->Cell(10, 5, "No.", 1, 0, "C",1); 
-    $fpdf->Cell(20, 5,"Nie", 1, 0, "C",1); 
-    $fpdf->Cell(40, 5,"Apellidos", 1, 0, "C",1);
-    $fpdf->Cell(40, 5, "Nombres", 1, 0, "C",1);
-    $fpdf->Cell(30, 5,"Fecha de nacimiento", 1, 0, "C",1);
-    $fpdf->Cell(15, 5, "Sexo", 1, 0, "C",1);
-    $fpdf->Cell(55, 5,"Nombre del responsable", 1, 0, "C",1);
-     $fpdf->Cell(25, 5,"Parentesco", 1, 0, "C",1);
-    $fpdf->Cell(25, 5,utf8_decode("Teléfono"), 1, 1, "C",1);
+    $fpdf->Cell(5, 6, "No.", 1, 0, "C",1); 
+    $fpdf->Cell(20, 6,"NIE", 1, 0, "C",1); 
+    $fpdf->Cell(40, 6,"APELLIDOS", 1, 0, "C",1);
+    $fpdf->Cell(40, 6, "NOMBRES", 1, 0, "C",1);
+    $fpdf->Cell(35, 6,"FECHA DE NACIMIENTO", 1, 0, "C",1);
+    $fpdf->Cell(15, 6, "SEXO", 1, 0, "C",1);
+    $fpdf->Cell(55, 6,"NOMBRE DEL REPONSABLE", 1, 0, "C",1);
+     $fpdf->Cell(25,6,"PARENTESCO", 1, 0, "C",1);
+    $fpdf->Cell(25, 6,utf8_decode("TELÉFONO"), 1, 1, "C",1);
 $fpdf->SetFont('Arial', '', 8);
 $fpdf->SetTextColor(3, 3, 3);
 if(count($datos)>0)
@@ -1680,7 +1679,7 @@ $i=0;
 
    $fpdf->SetFillColor( ($i % 2 == 0 ) ? 120 : 190 );
 
-    $fpdf->Cell(10, 5, $i, 1, 0, "C",1); 
+    $fpdf->Cell(5, 5, $i, 1, 0, "C",1); 
     if($estudiante->v_nie!=null){ $fpdf->Cell(20, 5,utf8_decode($estudiante->v_nie), 1, 0, "C",0);}else{$fpdf->Cell(20, 5,"---", 1, 0, "C",0);}
    $fpdf->Cell(40, 5,utf8_decode($estudiante->v_apellidos), 1, 0, "J",0);
     $fpdf->Cell(40, 5, utf8_decode($estudiante->v_nombres), 1, 0, "J",0); 
@@ -1689,7 +1688,7 @@ $i=0;
  $formato = Carbon::createFromFormat('Y-m-d',$estudiante->f_fnacimiento);
  $estudiante->f_fnacimiento = $formato->format('d/m/Y');
 
-    $fpdf->Cell(30, 5,$estudiante->f_fnacimiento, 1, 0, "C",0);
+    $fpdf->Cell(35, 5,$estudiante->f_fnacimiento, 1, 0, "C",0);
     if($estudiante->v_genero=="Femenino")
       {$fpdf->Cell(15, 5, utf8_decode("F"), 1, 0, "C",0);}
       else{$fpdf->Cell(15, 5, utf8_decode("M"), 1, 0, "C",0);}    
@@ -1717,6 +1716,11 @@ $this->piedepagina($fpdf);
 }
 
 
+public function sinNIE_pdf(Request $request)
+  {
+dd('llega');
+  }
+
 public function nominadepadresdefamilia_pdf(
     Request $request
     // \Codedge\Fpdf\Fpdf\Fpdf $pdf
@@ -1742,11 +1746,12 @@ else{
 }
 
 $fpdf = new Fpdf("L", "mm", "Letter");//ORIENTACION DE LA PAGINA p es vrtical l horizontal
-$fpdf->AddPage();   
+$fpdf->AddPage(); 
+$fpdf->SetMargins(10,30,20,20);
 $this->cabecerahorizontal($fpdf);
  $fpdf->Ln(5);
 $fpdf->SetFont('Helvetica','BU', 12);
-$fpdf->Cell(0, $this->height - 1, utf8_decode('NOMINA DE PADRES DE FAMILIA'), 0, 1, 'C');
+$fpdf->Cell(0, $this->height - 1, utf8_decode('NÓMINA DE PADRES DE FAMILIA'), 0, 1, 'C');
 $fpdf->SetFont('Arial','',10);
 //$fpdf->Cell(0, $this->height - 1,'GRADO :  '.$seccion->seccion_grado->grado."   SECCION:  ".$seccion->seccion."  TURNO :  ".utf8_decode(mb_strtoupper($seccion->seccion_turno->turno)), 0, 1, 'C');
 
@@ -1765,15 +1770,15 @@ $fpdf->Ln(5);
     $fpdf->SetFillColor(0,0,0);
     $fpdf->SetTextColor(240, 255, 240); //texto color blanco
     $fpdf->SetFont('Arial','B','9');
-    $fpdf->Cell(10, 5,"No.", 1, 0, "C",1); 
-    $fpdf->Cell(20, 5,"Dui", 1, 0, "C",1);
-    $fpdf->Cell(75, 5, "Nombre del familiar", 1, 0, "C",1); 
+    $fpdf->Cell(10, 6,"No.", 1, 0, "C",1); 
+    $fpdf->Cell(20, 6,"DUI", 1, 0, "C",1);
+    $fpdf->Cell(75, 6, "NOMBRE DEL FAMILIAR", 1, 0, "C",1); 
    // $fpdf->Cell(40, 5,"APELLIDOS", 1, 0, "C",1);
    // $fpdf->Cell(20, 5,"FECHA NAC.", 1, 0, "C",1);
-    $fpdf->Cell(25, 5, "Parentesco", 1, 0, "C",1);
-    $fpdf->Cell(30, 5,utf8_decode("Teléfono casa"), 1, 0, "C",1);
-    $fpdf->Cell(30, 5,"Celular", 1, 0, "C",1);
-    $fpdf->Cell(70, 5,"Nombre del estudiante", 1, 1, "C",1);
+    $fpdf->Cell(25, 6, "PARENTESCO", 1, 0, "C",1);
+    $fpdf->Cell(35, 6,utf8_decode("TELÉFONO DE CASA"), 1, 0, "C",1);
+    $fpdf->Cell(30, 6,utf8_decode("TELÉFONO"), 1, 0, "C",1);
+    $fpdf->Cell(65, 6,"NOMBRE DEL ESTUDIANTE", 1, 1, "C",1);
 $fpdf->SetFont('Arial', '', 9);
 $fpdf->SetTextColor(3, 3, 3);//texto color negro
 if(count($datos)>0)
@@ -1795,9 +1800,9 @@ $fpdf->Cell(75, 5,utf8_decode($familiar->apellidos)." ".utf8_decode($familiar->n
 $fpdf->Cell(20, 5,$familiar->fechanacimiento, 1, 0, "C",0);}*/
 
 $fpdf->Cell(25, 5,utf8_decode($familiar->pivot->parentesco), 1, 0, "C",0);
-if($familiar->telefonocasa!=null){ $fpdf->Cell(30, 5,utf8_decode($familiar->telefonocasa), 1, 0, "C",0);}else{$fpdf->Cell(30, 5,"---", 1, 0, "C",0);} 
+if($familiar->telefonocasa!=null){ $fpdf->Cell(35, 5,utf8_decode($familiar->telefonocasa), 1, 0, "C",0);}else{$fpdf->Cell(35, 5,"---", 1, 0, "C",0);} 
 if($familiar->celular!=null){ $fpdf->Cell(30, 5,utf8_decode($familiar->celular), 1, 0, "C",0);}else{$fpdf->Cell(30, 5,"---", 1, 0, "C",0);}  
-$fpdf->Cell(70, 5, utf8_decode($estudiante->v_nombres)." ".utf8_decode($estudiante->v_apellidos), 1, 1, "L",0); 
+$fpdf->Cell(65, 5, utf8_decode($estudiante->v_nombres)." ".utf8_decode($estudiante->v_apellidos), 1, 1, "L",0); 
         }
 }
 }//if
@@ -1818,6 +1823,7 @@ $this->piedepagina($fpdf);
 
 public function nominaestudiantesactivosCE_pdf()
 {
+
 $datos=Expedienteestudiante::orderBy('v_apellidos','ASC')->where('estado',1)->get();
 //
 //$anio = Carbon::create()->year;
@@ -1826,12 +1832,14 @@ $fpdf = new Fpdf("L", "mm", "Letter");//ORIENTACION DE LA PAGINA p es vrtical l 
 $fpdf->AddPage();   
 $this->cabecerahorizontal($fpdf);
 $fpdf->Ln(5);
-$fpdf->SetFont('Arial','B', 9);
-$fpdf->Cell(0, $this->height - 1, utf8_decode('NOMINA DE ESTUDIANTES ACTIVOS'), 0, 1, 'C');
+$fpdf->SetFont('Helvetica','B', 13);
+$fpdf->Cell(0, $this->height - 1, utf8_decode('NÓMINA DE ESTUDIANTES ACTIVOS'), 0, 1, 'C');
 $fpdf->Cell(0, $this->height - 1, utf8_decode('AÑO ESCOLAR '.$anio ), 0, 1, 'C');
 //header tabla
     $fpdf->Ln(5);
-    $fpdf->SetFillColor(229,229,229);
+    $fpdf->SetFillColor(0,0,0);
+    $fpdf->SetTextColor(240, 255, 240);
+
     $fpdf->SetFont('Arial','','8');
     $fpdf->Cell(10, 5, "No.", 1, 0, "C",1);
     $fpdf->Cell(20, 5,"EXPEDIENTE", 1, 0, "C",1);
@@ -1840,15 +1848,17 @@ $fpdf->Cell(0, $this->height - 1, utf8_decode('AÑO ESCOLAR '.$anio ), 0, 1, 'C'
     $fpdf->Cell(45, 5,"NOMBRES", 1, 0, "C",1);
     $fpdf->Cell(15, 5, "SEXO", 1, 0, "C",1);
     $fpdf->Cell(20, 5,"FECHA NAC.", 1, 0, "C",1);
-     $fpdf->Cell(80, 5,"DIRECCION", 1, 1, "C",1);
+     $fpdf->Cell(80, 5,utf8_decode("DIRECCIÓN"), 1, 1, "C",1);
 $fpdf->SetFont('Arial', '', 7);
+$fpdf->SetTextColor(3, 3, 3);
 if(count($datos)>0)
 {
 $i=0;
     foreach($datos as $estudiante)
     {    
     $i++;
-    $fpdf->Cell(10, 5, $i, 1, 0, "C",0); 
+    $fpdf->SetFillColor( ($i % 2 == 0 ) ? 120 : 190 );
+    $fpdf->Cell(10, 5, $i, 1, 0, "C",1); 
     $fpdf->Cell(20, 5, utf8_decode($estudiante->v_expediente), 1, 0, "C",0);
      if($estudiante->v_nie!=null)
       {$fpdf->Cell(20, 5,$estudiante->v_nie, 1, 0, "C",0);}
@@ -1859,7 +1869,7 @@ $i=0;
     if($estudiante->v_genero=="Femenino")
       {$fpdf->Cell(15, 5, utf8_decode("F"), 1, 0, "C",0);}
       else{$fpdf->Cell(15, 5, utf8_decode("M"), 1, 0, "C",0);} 
-      $fpdf->Cell(20, 5,"10-10-2019", 1, 0, "C",0);   
+      $fpdf->Cell(20, 5,$estudiante->f_fnacimiento, 1, 0, "C",0);   
     $fpdf->Cell(80, 5,utf8_decode($estudiante->v_direccion), 1, 1, "L",0); 
 }
 }
@@ -1884,13 +1894,14 @@ $fpdf = new Fpdf("L", "mm", "Letter");//ORIENTACION DE LA PAGINA p es vrtical l 
 $fpdf->AddPage();   
 $this->cabecerahorizontal($fpdf);
  $fpdf->Ln(5);
-$fpdf->SetFont('Arial','B', 10);
-$fpdf->Cell(0, $this->height - 1, utf8_decode('NOMINA DE PADRES DE FAMILIA'), 0, 1, 'C');
-//$fpdf->SetFont('Arial','',8);
-$fpdf->Cell(0, $this->height - 1,utf8_decode('AÑO: '.$anio), 0, 1, 'C');
+$fpdf->SetFont('Helvetica','B', 13);
+$fpdf->Cell(0, $this->height - 1, utf8_decode('NÓMINA DE PADRES DE FAMILIA'), 0, 1, 'C');
+$fpdf->Cell(0, $this->height - 1,utf8_decode('AÑO ESCOLAR: '.$anio), 0, 1, 'C');
 //header tabla
     $fpdf->Ln(5);
-    $fpdf->SetFillColor(229,229,229);
+   // $fpdf->SetFillColor(229,229,229);
+    $fpdf->SetFillColor(0,0,0);
+    $fpdf->SetTextColor(240, 255, 240); //texto color blanco
     $fpdf->SetFont('Arial','','8');
     $fpdf->Cell(10, 5,"No.", 1, 0, "C",1); 
     $fpdf->Cell(20, 5,"DUI", 1, 0, "C",1);
@@ -1902,6 +1913,8 @@ $fpdf->Cell(0, $this->height - 1,utf8_decode('AÑO: '.$anio), 0, 1, 'C');
     $fpdf->Cell(20, 5,"CELULAR", 1, 0, "C",1);
     $fpdf->Cell(65, 5,"NOMBRE DEL ESTUDIANTE", 1, 1, "C",1);
 $fpdf->SetFont('Arial', '', 7);
+$fpdf->SetTextColor(3,3,3);
+
 if(count($datos)>0)
 {
 $i=0;
@@ -1910,13 +1923,17 @@ $i=0;
       foreach($estudiante->estudiante_familiares as $familiar)
       {
        $i++;
-$fpdf->Cell(10, 5, $i, 1, 0, "C",0);
+        $fpdf->SetFillColor( ($i % 2 == 0 ) ? 120 : 190 );
+$fpdf->Cell(10, 5, $i, 1, 0, "C",1);
 if($familiar->dui!=null)
   { $fpdf->Cell(20, 5,utf8_decode($familiar->dui), 1, 0, "C",0);}
 else{$fpdf->Cell(20, 5,"---", 1, 0, "C",0);}
 $fpdf->Cell(80, 5,utf8_decode($familiar->nombres).' '.utf8_decode($familiar->apellidos), 1, 0, "L",0);
 //$fpdf->Cell(40, 5,utf8_decode($familiar->apellidos), 1, 0, "C",0);
-$fpdf->Cell(20, 5,$familiar->fechanacimiento, 1, 0, "C",0);
+
+if($familiar->fechanacimiento!=null){ $fpdf->Cell(20, 5,utf8_decode($familiar->fechanacimiento), 1, 0, "C",0);}else{$fpdf->Cell(20, 5,"---", 1, 0, "C",0);}
+
+
 $fpdf->Cell(25, 5,utf8_decode($familiar->pivot->parentesco), 1, 0, "C",0);
 if($familiar->telefonocasa!=null){ $fpdf->Cell(20, 5,utf8_decode($familiar->telefonocasa), 1, 0, "C",0);}else{$fpdf->Cell(20, 5,"---", 1, 0, "C",0);} 
 if($familiar->celular!=null){ $fpdf->Cell(20, 5,utf8_decode($familiar->celular), 1, 0, "C",0);}else{$fpdf->Cell(20, 5,"---", 1, 0, "C",0);}  
@@ -2708,15 +2725,15 @@ $fpdf = new Fpdf("L", "mm", "Letter");//ORIENTACION DE LA PAGINA p es vrtical l 
 $fpdf->AddPage();   
 $this->cabecerahorizontal($fpdf);
  $fpdf->Ln(5);
-$fpdf->SetFont('Arial','B', 12);
-$fpdf->Cell(0, $this->height - 1, utf8_decode('ESTADISTICA MATRICULA ESCOLAR'), 0, 1, 'C');
+$fpdf->SetFont('Helvetica','B', 12);
+$fpdf->Cell(0, $this->height - 1, utf8_decode('ESTADÍSTICA MATRICULA ESCOLAR'), 0, 1, 'C');
 $fpdf->Cell(0, $this->height - 1,utf8_decode('AÑO: '.$anio), 0, 1, 'C');
 //header tabla
     $fpdf->Ln(5);
     $fpdf->SetFillColor(229,229,229);
     $fpdf->SetFont('Arial','','8');    
     $fpdf->Cell(45, 5," ", 1, 0, "C",1);
-    $fpdf->Cell(36, 5,"MATRICULA INICIAL", 1, 0, "C",1);
+    $fpdf->Cell(36, 5,utf8_decode("MATRÍCULA INICIAL"), 1, 0, "C",1);
     $fpdf->Cell(36, 5, "DESERTORES", 1, 0, "C",1); 
     $fpdf->Cell(36, 5,"TRASLADOS", 1, 0, "C",1);
     $fpdf->Cell(36, 5,"RETENIDOS", 1, 0, "C",1);
