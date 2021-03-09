@@ -210,10 +210,10 @@ $fpdf->SetFont('Arial','', 8);
 //$fpdf->Cell(80, $this->height,strtoupper(utf8_decode($criterios[0]->competencia)), 1, 0, 'L', 1);
 
 $fpdf->Cell(80, $this->height+2,'', 1, 0, 'L', 1);
-$fpdf->Image('CC1.png',10,180,80);
+$fpdf->Image('CC1.png',10,182,80);
 
 
-$fpdf->Cell(35, $this->height,isset($conducta[$key]->criterio_1)?$conducta[$key]->criterio_1 :'-', 1, 0, 'C', 1);
+$fpdf->Cell(35, $this->height+2,isset($conducta[$key]->criterio_1)?$conducta[$key]->criterio_1 :'-', 1, 0, 'C', 1);
 
 
 if(isset($conducta[$key]->criterio_1)){
