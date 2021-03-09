@@ -30,11 +30,15 @@ class GestionexpedientesestudiantesController extends Controller
 
 	public function bitacora($operacion = array())
 	{
-		$usuario = Auth::user()->id;
+				$usuario = Auth::user()->id;
+		$user=Usuario::find(Auth::user()->id);
+		$usuarioname=$user->empleado->v_nombres ." ".$user->empleado->v_apellidos;
 		$item = new Bitacora;
 		$item->user_id = $usuario;
+		$item->usuario_nombre = $usuarioname;
 		$item->operacion = json_encode($operacion);
 		$item->save();
+
 	}
 
     public function index()

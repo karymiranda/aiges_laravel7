@@ -70,13 +70,13 @@
             <div class="box-footer" align="right" > 
    
 <div class="btn-group">
-                  <button type="button" class="btn btn-primary"><i class="fa fa-cogs"></i>  Opciones de seccion </button>
+                  <button type="button" class="btn btn-primary"><i class="fa fa-cogs"></i>  Opciones de sección </button>
                   <button type="button" class="btn btn-primary dropdown-toggle" data-toggle="dropdown">
                     <span class="caret"></span>
                     <span class="sr-only">Toggle Dropdown</span>
                   </button> 
                   <ul class="dropdown-menu" role="menu">
-                    <li><a href="{{route('periodorefuerzonotas', [ $seccion_id,'docente'])}}">Refuerzo academico</a></li>
+                    <li><a href="{{route('periodorefuerzonotas', [ $seccion_id,'docente'])}}">Refuerzo académico</a></li>
                     <li><a href="{{ route('cuadroFinal.show', $seccion_id) }}">Cuadro final</a></li>
                      <li class="divider"></li>
                     <li><a href="{{route('reporteBoleta',$seccion_id)}}" target="__blank">Boleta de notas<span class="pull-right-container">
@@ -86,7 +86,7 @@
  <a  data-toggle="modal" data-target="#modalrendimientoescolar">Rendimiento escolar<span class="pull-right-container">
       <small class="label pull-right bg-yellow"> Pdf</small>
       </span></a></li>
-         <li><a href="{{route('docentesnominadeestudiantes_pdf',$seccion_id)}}" target="_blank" target="__blank">Nomina<span class="pull-right-container">
+         <li><a href="{{route('docentesnominadeestudiantes_pdf',$seccion_id)}}" target="_blank" target="__blank">Nómina<span class="pull-right-container">
       <small class="label pull-right bg-yellow"> Pdf</small>
       </span></a></li>
        <li><a href="{{route('horariosdeclases_pdf',$seccion_id)}}" target="_blank" target="__blank">Horario<span class="pull-right-container">

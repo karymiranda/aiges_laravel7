@@ -175,9 +175,11 @@ public function addSaveNotateacher(Request $request)
 			}
 $secbitacora=Seccion::find($request->get('seccion_id'));
 $asigbitacora=Asignaturas::find($request->get('materia'));
+$peribitacora=Periodoevaluacion::find($request->get('periodo'));
+$actibitacora=EvaluacionesPeriodo::find($request->get('evaluacion'));
 
 $this->bitacora(array(
-			"operacion" => 'Guardar calificaciones para la sección '.$secbitacora->descripcion.', asignatura '.$asigbitacora->asignatura
+			"operacion" => 'Guardar calificaciones para la sección '.$secbitacora->descripcion.', asignatura '.$asigbitacora->asignatura.', periodo '.$peribitacora->decripcion.', evaluacion '.$actibitacora->nombre
 		));
 		}
 

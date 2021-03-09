@@ -2,13 +2,15 @@
 @section('tittle','Seguridad/Bitácora del sistema')
 @section('content')
 <div class="box box-primary">
-            <div class="box-header">
+            <div class="box-header"> 
               <div class="col-sm-12" align="center">
              <h2> <label class="text-primary">BITÁCORA</label></h2>
               </div> 
              
             </div>
              <!-- /.box-header -->
+
+
             <div class="box-body table-responsive">
               <table class="table table-bordered table-striped" id="tablaBusqueda">
                 <thead>

@@ -27,6 +27,7 @@ use App\Empleado;
 use App\Transaccionesbono;
 use App\Http\Controllers\ConsultasyreportesController;
 use App\Http\Controllers\ExcelController;
+use App\Http\Controllers\CertificadosController;
 
 
 
@@ -524,7 +525,9 @@ Route::get('estadisticamatriculaescolarCE_excel/{anio}/document', [
   'uses' => 'ExcelController@estadisticamatriculaescolarCE_excel']);
 
 
-Route::get('estudiantesCE_excel', [ExcelController::class,'nominaestudiantesactivosCE_excel']);
+Route::get('sinNIE_pdf', [ConsultasyreportesController::class,'sinNIE']);
+
+Route::post('estudiantesCE_excel', [ExcelController::class,'nominaestudiantesactivosCE_excel']);
 
 Route::get('familiaresCE_excel', [ExcelController::class,'nominafamiliaresactivosCE_excel']);
 
@@ -740,7 +743,6 @@ Route::post('nominadeestudiantes_pdf', [
 	'uses' => 'ConsultasyreportesController@nominadeestudiantes_pdf'
 ]);
 
-Route::post('sinNIE_pdf',[ConsultasyreportesController::class,'sinNIE_pdf']);
 
 //ruta para cargar la nomina de estudiantes desde el formulario nomina de estudiantes, mis secciones en modulo docentes
 Route::get('/nominadeestudiantes_pdf/{idseccion}/view', [
@@ -861,7 +863,13 @@ Route::get('cuentasnivel3',array('as'=>'cuentasnivel3','uses'=>'Gestionarcatalog
 
 
 //Route::get('reporteBoleta/{id}/{periodo_id}',['as'=>'reporteBoleta','uses'=>'ResporteController@index']);
-Route::post('certificados/{seccion_id}/{formato}',['as'=>'certificados','uses'=>'CertificadosController@generarcertificados']);
+Route::post('certificados/{seccion_id}', [CertificadosController::class,'generarcertificados']);
+
+//Route::post('certificados/{seccion_id}',['as'=>'certificados','uses'=>'CertificadosController@generarcertificados']);
+
+
+
+
 Route::get('reporteBoleta/{id}',['as'=>'reporteBoleta','uses'=>'ResporteController@index']);
 
 Route::post("reporteAsistencia/{idestudiante}/{anio}", ['as'=>'reporteAsistencia','uses'=>'ConsultasyreportesController@reporteAsistencia']);//asistencia PDF

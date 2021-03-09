@@ -18,9 +18,9 @@ use Luecano\NumeroALetras\NumeroALetras;
 class CertificadosController extends Controller
 {
      var $height = 6; 
-    public function generarcertificados($seccion_id,$formato)
+    public function generarcertificados($seccion_id)
     {
-     
+    
  $rc=new ResporteController();
 
  $centroEscolar = InfoCentroEducativo::first();
@@ -30,14 +30,15 @@ class CertificadosController extends Controller
  $conducta= self::getArrayConductaStudents($seccion_id,$seccion);
  $criterios=Competenciasciudadanas::where('estado',1)->get();
 
-switch ($formato) {
-	case '2'://estudiantes de primer y segundo ciclo
-	
-	if(!count($cuadroseccion)>0)
-	{
+
+
+if($seccion->nivel<9)//de primero a octavo
+{
+if(!count($cuadroseccion)>0)
+  {
     Flash::error("No es posible generar los certificados. Genere el cuadro final de su sección e intente nuevamente.")->important();
     return redirect()->route('listareportes/secciones');
-	}
+  }
 
 
  //$cuadros = CuadroFinal::where("seccion_id", $seccion_id)->first();
@@ -49,7 +50,7 @@ $fpdf->AddPage();
 $fpdf->SetMargins(10,30,10,10);
 $this->cabeceracertificadoprimerciclo($fpdf,$centroEscolar,$seccion,$value,$key);
 $this->subcabeceraprimerciclo($fpdf,$seccion,$cuadro,$key);
-$this->tabla($fpdf,$cuadro,$key,$criterios,$conducta);
+$this->tabla($fpdf,$cuadro,$key,$criterios,$conducta,$seccion);
 $this->footerbasica($fpdf);
 }
 
@@ -58,20 +59,31 @@ $response=response($fpdf->Output("s"));
 $response->header('Content-Type','application/pdf'); 
 return $response;
 
-		break;
+}
+  else // solo noveno
+{
+if(!count($cuadroseccion)>0)
+  {
+    Flash::error("No es posible generar los certificados. Genere el cuadro final de su sección e intente nuevamente.")->important();
+    return redirect()->route('listareportes/secciones');
+  }
 
-	case '3':
-		dd('segundo');
-		break;
+$fpdf= new Fpdf("P","mm","Letter");
 
-	case '4': 
-		dd('9');
-		break;
+foreach ($cuadro as $key => $value) 
+{
+$fpdf->AddPage();
+$fpdf->SetMargins(10,30,10,10);
+$this->cabeceracertificadoprimerciclo($fpdf,$centroEscolar,$seccion,$value,$key);
+$this->subcabeceraprimerciclo($fpdf,$seccion,$cuadro,$key);
+$this->tabla($fpdf,$cuadro,$key,$criterios,$conducta,$seccion);
+$this->footernoveno($fpdf);
+}
 
-	
-	default:
-		# code...
-		break;
+$fpdf->SetTitle("certificados".$seccion->descripcion.date('_Ymd'));
+$response=response($fpdf->Output("s"));  
+$response->header('Content-Type','application/pdf'); 
+return $response;
 }
 
 }
@@ -84,7 +96,7 @@ return  $res;
  }
 
 
-public function tabla($fpdf,$cuadro,$key,$criterios,$conducta)
+public function tabla($fpdf,$cuadro,$key,$criterios,$conducta,$seccion)
 {
 $formatter = new NumeroALetras();
 
@@ -141,6 +153,9 @@ if($cuadro[$key]->sociales>=5)
 {$fpdf->Cell(50, $this->height, "Aprobado", 1, 1, 'C', 1);}
 else
 {$fpdf->Cell(50, $this->height, "Reprobado", 1, 1, 'C', 1);}
+
+if($seccion->nivel<7)//si es seccion de tercer ciclo entonces mostrara ingles en lugar de artistica
+{
 $fpdf->Cell(80, $this->height, utf8_decode('EDUCACIÓN ARTISTICA'), 1, 0, 'L', 1);
 $fpdf->Cell(35, $this->height, number_format($cuadro[$key]->artistica,0), 1, 0, 'C', 1);
 $fpdf->Cell(30, $this->height, $formatter->toWords($cuadro[$key]->artistica, 0), 1, 0, 'C', 1);
@@ -148,7 +163,17 @@ if($cuadro[$key]->artistica>=5)
 {$fpdf->Cell(50, $this->height, "Aprobado", 1, 1, 'C', 1);}
 else
 {$fpdf->Cell(50, $this->height, "Reprobado", 1, 1, 'C', 1);}
-
+}
+else
+{ 
+$fpdf->Cell(80, $this->height, utf8_decode('INGLÉS'), 1, 0, 'L', 1);
+$fpdf->Cell(35, $this->height, number_format($cuadro[$key]->ingles,0), 1, 0, 'C', 1);
+$fpdf->Cell(30, $this->height, $formatter->toWords($cuadro[$key]->ingles, 0), 1, 0, 'C', 1);
+if($cuadro[$key]->ingles>=5)
+{$fpdf->Cell(50, $this->height, "Aprobado", 1, 1, 'C', 1);}
+else
+{$fpdf->Cell(50, $this->height, "Reprobado", 1, 1, 'C', 1);}
+}
 
 
 $fpdf->Cell(80, $this->height, utf8_decode('EDUCACIÓN FÍSICA'), 1, 0, 'L', 1);
@@ -183,54 +208,90 @@ $fpdf->Cell(50, $this->height, "", 1, 1, 'C', 1);
 
 $fpdf->SetFont('Arial','', 8);
 $fpdf->Cell(80, $this->height,strtoupper(utf8_decode($criterios[0]->competencia)), 1, 0, 'L', 1);
-$fpdf->Cell(35, $this->height,$conducta[$key]->criterio_1, 1, 0, 'C', 1);
+
+
+$fpdf->Cell(35, $this->height,isset($conducta[$key]->criterio_1)?$conducta[$key]->criterio_1 :'-', 1, 0, 'C', 1);
+if(isset($conducta[$key]->criterio_1)){
 if($conducta[$key]->criterio_1=='E'){
 $fpdf->Cell(30, $this->height, utf8_decode("EXCELENTE"), 1, 0, 'C', 1);
 }else if($conducta[$key]->criterio_1=='MB')
 {$fpdf->Cell(30, $this->height, utf8_decode("MUY BUENO"), 1, 0, 'C', 1);}
 else{$fpdf->Cell(30, $this->height, utf8_decode("BUENO"), 1, 0, 'C', 1);}
+}else
+{$fpdf->Cell(30, $this->height, '-', 1, 0, 'C', 1);}
 $fpdf->Cell(50, $this->height, "", 1, 1, 'C', 1);
 
 
+
 $fpdf->Cell(80, $this->height,strtoupper(utf8_decode($criterios[1]->competencia)), 1, 0, 'L', 1);
-$fpdf->Cell(35, $this->height,$conducta[$key]->criterio_2, 1, 0, 'C', 1);
+$fpdf->Cell(35, $this->height,isset($conducta[$key]->criterio_2)?$conducta[$key]->criterio_2 :'-', 1, 0, 'C', 1);
+if(isset($conducta[$key]->criterio_2)){
 if($conducta[$key]->criterio_2=='E'){
 $fpdf->Cell(30, $this->height, utf8_decode("EXCELENTE"), 1, 0, 'C', 1);
 }else if($conducta[$key]->criterio_2=='MB')
 {$fpdf->Cell(30, $this->height, utf8_decode("MUY BUENO"), 1, 0, 'C', 1);}
 else{$fpdf->Cell(30, $this->height, utf8_decode("BUENO"), 1, 0, 'C', 1);}
+}else{$fpdf->Cell(30, $this->height,'-', 1, 0, 'C', 1);}
 $fpdf->Cell(50, $this->height, "", 1, 1, 'C', 1);
 
 
 $fpdf->Cell(80, $this->height,utf8_decode(strtoupper($criterios[2]->competencia)), 1, 0, 'L', 1);
-$fpdf->Cell(35, $this->height,$conducta[$key]->criterio_3, 1, 0, 'C', 1);
+$fpdf->Cell(35, $this->height,isset($conducta[$key]->criterio_3)?$conducta[$key]->criterio_3:'-', 1, 0, 'C', 1);
+if(isset($conducta[$key]->criterio_3)){
 if($conducta[$key]->criterio_3=='E'){
 $fpdf->Cell(30, $this->height, utf8_decode("EXCELENTE"), 1, 0, 'C', 1);
 }else if($conducta[$key]->criterio_3=='MB')
 {$fpdf->Cell(30, $this->height, utf8_decode("MUY BUENO"), 1, 0, 'C', 1);}
 else{$fpdf->Cell(30, $this->height, utf8_decode("BUENO"), 1, 0, 'C', 1);}
+}else{$fpdf->Cell(30, $this->height,'-', 1, 0, 'C', 1);}
 $fpdf->Cell(50, $this->height, "", 1, 1, 'C', 1);
 
 
 $fpdf->Cell(80, $this->height,strtoupper(utf8_decode($criterios[3]->competencia)), 1, 0, 'L', 1);
-$fpdf->Cell(35, $this->height,$conducta[$key]->criterio_4, 1, 0, 'C', 1);
+$fpdf->Cell(35, $this->height,isset($conducta[$key]->criterio_4)?$conducta[$key]->criterio_4:'-', 1, 0, 'C', 1);
+if(isset($conducta[$key]->criterio_4)){
 if($conducta[$key]->criterio_4=='E'){
 $fpdf->Cell(30, $this->height, utf8_decode("EXCELENTE"), 1, 0, 'C', 1);
 }else if($conducta[$key]->criterio_4=='MB')
 {$fpdf->Cell(30, $this->height, utf8_decode("MUY BUENO"), 1, 0, 'C', 1);}
 else{$fpdf->Cell(30, $this->height, utf8_decode("BUENO"), 1, 0, 'C', 1);}
+}else{$fpdf->Cell(30, $this->height,'-', 1, 0, 'C', 1);}
 $fpdf->Cell(50, $this->height, "", 1, 1, 'C', 1);
 
 
 $fpdf->Cell(80, $this->height,strtoupper(utf8_decode($criterios[4]->competencia)), 1, 0, 'L', 1);
-$fpdf->Cell(35, $this->height,$conducta[$key]->criterio_2, 1, 0, 'C', 1);
+$fpdf->Cell(35, $this->height,isset($conducta[$key]->criterio_5)?$conducta[$key]->criterio_2:'-', 1, 0, 'C', 1);
+if(isset($conducta[$key]->criterio_5)){
 if($conducta[$key]->criterio_5=='E'){
 $fpdf->Cell(30, $this->height, utf8_decode("EXCELENTE"), 1, 0, 'C', 1);
 }else if($conducta[$key]->criterio_5=='MB')
 {$fpdf->Cell(30, $this->height, utf8_decode("MUY BUENO"), 1, 0, 'C', 1);}
 else{$fpdf->Cell(30, $this->height, utf8_decode("BUENO"), 1, 0, 'C', 1);}
+}
+else{$fpdf->Cell(30, $this->height,'-', 1, 0, 'C', 1);}
 $fpdf->Cell(50, $this->height, "", 1, 1, 'C', 1);
 
+}
+
+public function footernoveno($fpdf)
+{
+$fecha = Carbon::now()->locale('es');;
+  $mfecha = $fecha->monthName;
+  $dfecha = $fecha->day;
+  $afecha = $fecha->year;
+$fpdf->Ln(10);
+$fpdf->SetFont('Arial','','10');
+$fpdf->MultiCell(0,$this->height,utf8_decode("POR TANTO: queda facultado para matricularse en el nivel inmediato superior, se extiende la presente en el departamento de SAN VICENTE, el dia ").$dfecha ." de ".$mfecha." de ".$afecha.".",0,1,"L"); 
+
+$fpdf->Ln(15);
+//$fpdf->Cell(95, $this->height, "_________________________________", 0, 0, 'C');   
+//$fpdf->Cell(95, $this->height, "__________________________", 0, 1, 'C');
+$fpdf->SetFont('Arial','B','10');  
+$fpdf->Cell(95, $this->height, "  Director (a) del Centro Educativo", 0, 0, 'C');
+$fpdf->Cell(100, $this->height, "Persona Responsable", 0, 0, 'C');
+$fpdf->SetFont('Arial','','8'); 
+$fpdf->SetY(-30);
+//$fpdf->Cell(0, $this->height, "Obtenido del sistena AIGES", 0, 0, ' L');
 }
 
 
@@ -255,6 +316,16 @@ $fpdf->SetY(-30);
 //$fpdf->Cell(0, $this->height, "Obtenido del sistena AIGES", 0, 0, ' L');
 }
 
+/*public function subcabeceranoveno($fpdf,$seccion,$cuadro,$key)
+{
+$fpdf->Ln(10);
+$fpdf->SetFillColor(250);
+$fpdf->SetFont('Arial','','10');
+$fpdf->MultiCell(0,$this->height,utf8_decode("El(la) infrascrito Director(a) certifica que ".strtoupper($cuadro[$key]->v_nombres)." ".strtoupper($cuadro[$key]->v_apellidos)." con NIE ".$cuadro[$key]->v_nie." durante el año ".$seccion->anio.", ha cursado y aprobado el ".$seccion->seccion_grado->grado." Grado - de - Educación Básica - Regular obteniendo las siguientes calificaciones: "),0,1,"L");
+
+
+}*/
+
 public function subcabeceraprimerciclo($fpdf,$seccion,$cuadro,$key)
 {
 $fpdf->Ln(10);
@@ -264,7 +335,6 @@ $fpdf->MultiCell(0,$this->height,utf8_decode("El(la) infrascrito Director(a) cer
 
 
 }
-
 
 public function cabeceracertificadoprimerciclo($fpdf,$centroEscolar,$seccion,$value,$key)
  {

@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Auth;
   
 class MatriculasController extends Controller
 {
-
+  
 	public function bitacora($operacion = array())
 	{
 		$usuario = Auth::user()->id;
@@ -75,13 +75,12 @@ $query->where([['tb_matriculaestudiante.anio','=',$anio],['tb_matriculaestudiant
 
 	public function guardarmatricula(MatriculaRequest $request)
 	{
-		//dd($request);
+		$estudiante=Expedienteestudiante::find($request->estudiante_id);
 		$this->bitacora(array(
-			"operacion" => 'Matricular estudiante con id '.$request->estudiante_id
+			"operacion" => 'Matricular estudiante con expediente # '.$estudiante->v_expediente
 		));
-	$estudiante=Expedienteestudiante::find($request->estudiante_id);
+	
 	$formato = Carbon::createFromFormat('d/m/Y',$request->fecha);
-	//$anio=Periodoactivo::periodoescolar()->first();
 	$anio=$request->anio;
 	$f_fechamatricula = $formato->format('Y/m/d');
 

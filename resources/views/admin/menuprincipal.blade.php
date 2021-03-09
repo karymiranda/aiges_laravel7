@@ -234,7 +234,8 @@ desired effect
 
         </div>
         <div class="pull-left info">
-          <?php if(Auth::user()->empleado!=null): ?>
+
+        <?php if(Auth::user()->empleado!=null): ?>
           <p>{{Auth::user()->empleado->v_nombres}}</p>
           <?php endif ?>  
 
@@ -246,7 +247,15 @@ desired effect
           <p>{{Auth::user()->familiar->nombres}}</p>
           <?php endif ?>
           <!-- Status -->
-          <a href="#"><i class="fa fa-circle text-success"></i> Enlinea</a>
+
+          <?php if(Auth::user()->usuario_rol[0]!=null): ?>
+           <a href="#"><i class="fa fa-circle text-success">
+           </i> {{Auth::user()->usuario_rol[0]->v_nombrerol}}</a>
+          <?php endif ?>
+
+
+         
+          <!--p>{{Auth::user()->usuario_rol[0]->v_nombrerol}}</p-->
         </div>
       </div>
 
@@ -636,8 +645,7 @@ desired effect
               <ul class="treeview-menu" style="display: none;">
                 <li><a href="{{ route('listausuariosactivos') }}"><i class="fa fa-user"></i> Gestionar usuarios</a></li>
                 <li><a href="{{route('listaroles')}}"><i class="fa  fa-unlock-alt"></i>Gestionar roles</a></li>
-                
-        <li><a href="{{route('listadoconsultasyreportes')}}"><i class="fa fa-file-pdf-o"></i>Reportes</a></li>
+      
              </ul>
             </li>
    
@@ -651,7 +659,8 @@ desired effect
                 <li><a href="{{route('respaldo')}}"><i class="fa fa-arrow-circle-down"></i> Respaldo</a></li>                                
               </ul>
     </li>
-
+          
+  <li><a href="{{route('listadoconsultasyreportes')}}"><i class="fa fa-file-pdf-o"></i>Reportes</a></li>
 
 
 

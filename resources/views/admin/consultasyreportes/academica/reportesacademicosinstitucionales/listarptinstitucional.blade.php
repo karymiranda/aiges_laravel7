@@ -10,7 +10,7 @@
             </div> 
 
              <div class="box-body">
-              {!! Form::open(['method'=>'GET','id'=>'formulariorpt','class'=>'form-horizontal','target'=>'blank']) !!}
+              {!! Form::open(['id'=>'formulariorpt','class'=>'form-horizontal','target'=>'blank']) !!}
 
              <div class="form-group">
                 {!! Form::label('', 'Reportes',['class'=>'col-sm-4 control-label']) !!}
@@ -112,21 +112,21 @@ $('#selectaniomatricula').attr("action",'estadisticamatriculaescolarCE_pdf/'+ani
 $('#btngenerarreporte').on('click', function(e){
     var reporte_id=$('#reporte_id').val();
     switch (reporte_id){
-      case '1':      
+      case '1':  
+       $('#formulariorpt').attr("method",'GET');     
      $('#formulariorpt').attr("action", "nominaestudiantesactivosCE_pdf");      
      $('#formulariorpt').submit(); 
       break;
 
-      case '1.1': 
-
-     $('#formulariorpt').attr("method",'POST');
-     $('#formulariorpt').attr("target",'_blank');      
+      case '1.1':  
+      $('#formulariorpt').attr("method",'POST');     
      $('#formulariorpt').attr("action", "sinNIE_pdf");      
      $('#formulariorpt').submit(); 
       break; 
 
 
       case '2':
+      $('#formulariorpt').attr("method",'GET');  
      $('#formulariorpt').attr("action", "nominafamiliaresactivosCE_pdf");      
      $('#formulariorpt').submit();    
       break;
@@ -134,12 +134,13 @@ $('#btngenerarreporte').on('click', function(e){
       $("#modalaniomatricula").modal('show');
       break;
       case '4':
+      $('#formulariorpt').attr("method",'GET');  
      $('#formulariorpt').attr("action","historialmatriculaescolarCE_pdf");      
      $('#formulariorpt').submit(); 
       break;
       
       default:
-      console.log('Lo lamentamos, por el momento no disponemos de información ');
+      console.log('Lo sentimos, por el momento no disponemos de información ');
       break;
     }
  

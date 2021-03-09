@@ -224,7 +224,7 @@
       </div>
 
 
-<div class="modal fade" tabindex="-2" role="dialog" id="modalcertificados">
+<!--div class="modal fade" tabindex="-2" role="dialog" id="modalcertificados">
           <form  id="rptcertificados">
             @csrf
               <div class="modal-dialog" role="document">
@@ -260,15 +260,11 @@
               </div>
                   </div>
                   </form> 
-              </div>
+              </div-->
 
 
 
-
-
-
-
-       <div class="modal fade" tabindex="-1" role="dialog" id="modalfiltrorptasistencia">
+<div class="modal fade" tabindex="-1" role="dialog" id="modalfiltrorptasistencia">
           <form method="POST" id="rptAsistencia">
             @csrf
               <div class="modal-dialog" role="document">
@@ -451,7 +447,12 @@ $('#formulariorpt').submit();
       break;
 
       case '9'://certificados
-      $("#modalcertificados").modal('show');
+$('#formulariorpt').attr("method",'POST');
+//$('#formulariorpt').attr("target",'__blank');
+$('#formulariorpt').attr("action",'certificados/'+id);
+$('#formulariorpt').submit(); 
+
+      //$("#modalcertificados").modal('show');
       break;
       default:
       console.log('Lo lamentamos, por el momento no disponemos de información ');
