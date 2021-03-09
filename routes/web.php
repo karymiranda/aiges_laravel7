@@ -863,7 +863,7 @@ Route::get('cuentasnivel3',array('as'=>'cuentasnivel3','uses'=>'Gestionarcatalog
 
 
 //Route::get('reporteBoleta/{id}/{periodo_id}',['as'=>'reporteBoleta','uses'=>'ResporteController@index']);
-Route::post('certificados/{seccion_id}', [CertificadosController::class,'generarcertificados']);
+Route::post('certificados/{seccion_id}',[CertificadosController::class,'generarcertificados']);
 
 //Route::post('certificados/{seccion_id}',['as'=>'certificados','uses'=>'CertificadosController@generarcertificados']);
 
