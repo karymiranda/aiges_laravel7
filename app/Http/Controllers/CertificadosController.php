@@ -214,8 +214,6 @@ $fpdf->Image('CC1.png',10,182,80);
 
 
 $fpdf->Cell(35, $this->height+2,isset($conducta[$key]->criterio_1)?$conducta[$key]->criterio_1 :'-', 1, 0, 'C', 1);
-
-
 if(isset($conducta[$key]->criterio_1)){
 if($conducta[$key]->criterio_1=='E'){
 $fpdf->Cell(30, $this->height+2, utf8_decode("EXCELENTE"), 1, 0, 'C', 1);
@@ -227,8 +225,10 @@ else{$fpdf->Cell(30, $this->height+2, utf8_decode("BUENO"), 1, 0, 'C', 1);}
 $fpdf->Cell(50, $this->height+2, "", 1, 1, 'C', 1);
 
 
+//$fpdf->Cell(80, $this->height+2,strtoupper(utf8_decode($criterios[1]->competencia)), 1, 0, 'L', 1);
+$fpdf->Cell(80, $this->height+2,'', 1, 0, 'L', 1);
+$fpdf->Image('CC2.png',10,192,80);
 
-$fpdf->Cell(80, $this->height+2,strtoupper(utf8_decode($criterios[1]->competencia)), 1, 0, 'L', 1);
 $fpdf->Cell(35, $this->height+2,isset($conducta[$key]->criterio_2)?$conducta[$key]->criterio_2 :'-', 1, 0, 'C', 1);
 if(isset($conducta[$key]->criterio_2)){
 if($conducta[$key]->criterio_2=='E'){
