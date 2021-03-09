@@ -209,10 +209,8 @@ $fpdf->Cell(50, $this->height, "", 1, 1, 'C', 1);
 $fpdf->SetFont('Arial','', 8);
 //$fpdf->Cell(80, $this->height,strtoupper(utf8_decode($criterios[0]->competencia)), 1, 0, 'L', 1);
 
-$fpdf->Cell(80, $this->height,$fpdf->Image('CC1.png',10,210,70), 1, 0, 'L', 1);
-
-//$fpdf->SetXY(30,150);
-//$fpdf->Image('CC1.png',10,210,70);
+$fpdf->Cell(80, $this->height,'', 1, 0, 'L', 1);
+$fpdf->Image('CC1.png',10,170,70);
 
 
 $fpdf->Cell(35, $this->height,isset($conducta[$key]->criterio_1)?$conducta[$key]->criterio_1 :'-', 1, 0, 'C', 1);
