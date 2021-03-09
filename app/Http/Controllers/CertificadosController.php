@@ -209,7 +209,7 @@ $fpdf->Cell(50, $this->height, "", 1, 1, 'C', 1);
 $fpdf->SetFont('Arial','', 8);
 //$fpdf->Cell(80, $this->height,strtoupper(utf8_decode($criterios[0]->competencia)), 1, 0, 'L', 1);
 
-$fpdf->Cell(80, $this->height+3,'', 1, 0, 'L', 1);
+$fpdf->Cell(80, $this->height+2,'', 1, 0, 'L', 1);
 $fpdf->Image('CC1.png',10,180,80);
 
 
@@ -218,13 +218,13 @@ $fpdf->Cell(35, $this->height,isset($conducta[$key]->criterio_1)?$conducta[$key]
 
 if(isset($conducta[$key]->criterio_1)){
 if($conducta[$key]->criterio_1=='E'){
-$fpdf->Cell(30, $this->height, utf8_decode("EXCELENTE"), 1, 0, 'C', 1);
+$fpdf->Cell(30, $this->height+2, utf8_decode("EXCELENTE"), 1, 0, 'C', 1);
 }else if($conducta[$key]->criterio_1=='MB')
-{$fpdf->Cell(30, $this->height, utf8_decode("MUY BUENO"), 1, 0, 'C', 1);}
-else{$fpdf->Cell(30, $this->height, utf8_decode("BUENO"), 1, 0, 'C', 1);}
+{$fpdf->Cell(30, $this->height+2, utf8_decode("MUY BUENO"), 1, 0, 'C', 1);}
+else{$fpdf->Cell(30, $this->height+2, utf8_decode("BUENO"), 1, 0, 'C', 1);}
 }else
-{$fpdf->Cell(30, $this->height, '-', 1, 0, 'C', 1);}
-$fpdf->Cell(50, $this->height, "", 1, 1, 'C', 1);
+{$fpdf->Cell(30, $this->height+2, '-', 1, 0, 'C', 1);}
+$fpdf->Cell(50, $this->height+2, "", 1, 1, 'C', 1);
 
 
 
