@@ -342,7 +342,7 @@ $fpdf->MultiCell(0,$this->height,utf8_decode("El(la) infrascrito Director(a) cer
 
 public function subcabeceraprimerciclo($fpdf,$seccion,$cuadro,$key)
 {
-$fpdf->Ln(10);
+$fpdf->Ln(5);
 $fpdf->SetFillColor(250);
 $fpdf->SetFont('Arial','','10');
 $fpdf->MultiCell(0,$this->height,utf8_decode("El(la) infrascrito Director(a) certifica que ".strtoupper($cuadro[$key]->v_nombres)." ".strtoupper($cuadro[$key]->v_apellidos)." con NIE ".$cuadro[$key]->v_nie." durante el año ".$seccion->anio.", ha cursado y aprobado el ".$seccion->seccion_grado->grado." Grado - de - Educación Básica - Regular obteniendo las siguientes calificaciones: "),0,1,"L");
