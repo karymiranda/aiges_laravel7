@@ -297,7 +297,7 @@ $fpdf->Ln(10);
 $fpdf->SetFont('Arial','','10');
 $fpdf->MultiCell(0,$this->height,utf8_decode("POR TANTO: queda facultado para matricularse en el nivel inmediato superior, se extiende la presente en el departamento de SAN VICENTE, el dia ").$dfecha ." de ".$mfecha." de ".$afecha.".",0,1,"L"); 
 
-$fpdf->Ln(15);
+$fpdf->Ln(5);
 //$fpdf->Cell(95, $this->height, "_________________________________", 0, 0, 'C');   
 //$fpdf->Cell(95, $this->height, "__________________________", 0, 1, 'C');
 $fpdf->SetFont('Arial','B','10');  
