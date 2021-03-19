@@ -301,7 +301,7 @@ $fpdf->Ln(5);
 //$fpdf->Cell(95, $this->height, "_________________________________", 0, 0, 'C');   
 //$fpdf->Cell(95, $this->height, "__________________________", 0, 1, 'C');
 $fpdf->SetFont('Arial','B','10');  
-$fpdf->Cell(95, $this->height, "  Director (a) del Centro Educativo", 0, 0, 'C');
+$fpdf->Cell(95, $this->height, "  Director (a) del Centro Educativod", 0, 0, 'C');
 $fpdf->Cell(100, $this->height, "Persona Responsable", 0, 0, 'C');
 $fpdf->SetFont('Arial','','8'); 
 $fpdf->SetY(-30);
