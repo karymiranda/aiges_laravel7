@@ -240,7 +240,10 @@ else{$fpdf->Cell(30, $this->height+2, utf8_decode("BUENO"), 1, 0, 'C', 1);}
 $fpdf->Cell(50, $this->height+2, "", 1, 1, 'C', 1);
 
 
-$fpdf->Cell(80, $this->height+2,utf8_decode(strtoupper($criterios[2]->competencia)), 1, 0, 'L', 1);
+//$fpdf->Cell(80, $this->height+2,utf8_decode(strtoupper($criterios[2]->competencia)), 1, 0, 'L', 1);
+$fpdf->Cell(80, $this->height+2,'', 1, 0, 'L', 1);
+$fpdf->Image('CC3.png',10,192,80);
+
 $fpdf->Cell(35, $this->height+2,isset($conducta[$key]->criterio_3)?$conducta[$key]->criterio_3:'-', 1, 0, 'C', 1);
 if(isset($conducta[$key]->criterio_3)){
 if($conducta[$key]->criterio_3=='E'){
@@ -252,7 +255,10 @@ else{$fpdf->Cell(30, $this->height+2, utf8_decode("BUENO"), 1, 0, 'C', 1);}
 $fpdf->Cell(50, $this->height+2, "", 1, 1, 'C', 1);
 
 
-$fpdf->Cell(80, $this->height+2,strtoupper(utf8_decode($criterios[3]->competencia)), 1, 0, 'L', 1);
+//$fpdf->Cell(80, $this->height+2,strtoupper(utf8_decode($criterios[3]->competencia)), 1, 0, 'L', 1);
+$fpdf->Cell(80, $this->height+2,'', 1, 0, 'L', 1);
+$fpdf->Image('CC4.png',10,192,80);
+
 $fpdf->Cell(35, $this->height+2,isset($conducta[$key]->criterio_4)?$conducta[$key]->criterio_4:'-', 1, 0, 'C', 1);
 if(isset($conducta[$key]->criterio_4)){
 if($conducta[$key]->criterio_4=='E'){
@@ -264,7 +270,10 @@ else{$fpdf->Cell(30, $this->height+2, utf8_decode("BUENO"), 1, 0, 'C', 1);}
 $fpdf->Cell(50, $this->height+2, "", 1, 1, 'C', 1);
 
 
-$fpdf->Cell(80, $this->height+2,strtoupper(utf8_decode($criterios[4]->competencia)), 1, 0, 'L', 1);
+//$fpdf->Cell(80, $this->height+2,strtoupper(utf8_decode($criterios[4]->competencia)), 1, 0, 'L', 1);
+$fpdf->Cell(80, $this->height+2,'', 1, 0, 'L', 1);
+$fpdf->Image('CC5.png',10,192,80);
+
 $fpdf->Cell(35, $this->height+2,isset($conducta[$key]->criterio_5)?$conducta[$key]->criterio_2:'-', 1, 0, 'C', 1);
 if(isset($conducta[$key]->criterio_5)){
 if($conducta[$key]->criterio_5=='E'){
