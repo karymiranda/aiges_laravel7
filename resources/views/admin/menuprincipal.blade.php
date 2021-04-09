@@ -87,13 +87,15 @@ desired effect
     <!-- Header Navbar -->
     <nav class="navbar navbar-static-top" role="navigation">
       <!-- Sidebar toggle button-->
-      <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
+       <a href="#" class="sidebar-toggle" data-toggle="push-menu" role="button">
         <span class="sr-only">Panel Navegación</span>
       </a>
-      <!-- Navbar Right Menu -->
+
+       <!-- Navbar Right Menu -->
       <div class="navbar-custom-menu">
         <ul class="nav navbar-nav">
-          <!-- Notifications Menu -->
+
+              <!-- Notifications Menu -->
           <li class="dropdown notifications-menu">           
             <a href="https://www.facebook.com/Centro-Escolar-Catolico-Santa-M%C3%A1ria-del-camino-173803866027545" class="dropdown-toggle" title="facebook oficial" target="__blank">
               <i class="fa fa-facebook-square"></i>
@@ -111,7 +113,17 @@ desired effect
               <!-- The user image in the navbar--> 
       <?php if(Auth::user()->empleado!=null):?>      
      <img src="{{asset('/imagenes/Recursohumano/'.Auth::user()->foto)}}" class="user-image" alt="User Image">    
-              <span class="hidden-xs">{{Auth::user()->empleado->v_nombres}}</span>
+              <span class="hidden-xs">{{Auth::user()->empleado->v_nombres}} </span>
+              
+
+              <!--
+               <?php if(Auth::user()->usuario_rol[0]!=null): ?>
+           <a href="#"><i class="fa fa-circle text-success">
+           </i> {{Auth::user()->usuario_rol[0]->v_nombrerol}}</a>
+          <?php endif ?>
+-->
+
+          
             </a>  <?php endif ?>
 
              <?php if(Auth::user()->estudiante!=null):?>      
@@ -218,6 +230,7 @@ desired effect
     <section class="sidebar">
 
       <!-- Sidebar user panel (optional) -->
+     
       <div class="user-panel">
         <div class="pull-left image">
    <?php if(Auth::user()->empleado!=null):?> 
@@ -235,6 +248,7 @@ desired effect
         </div>
         <div class="pull-left info">
 
+
         <?php if(Auth::user()->empleado!=null): ?>
           <p>{{Auth::user()->empleado->v_nombres}}</p>
           <?php endif ?>  
@@ -246,7 +260,7 @@ desired effect
           <?php if(Auth::user()->familiar!=null): ?>
           <p>{{Auth::user()->familiar->nombres}}</p>
           <?php endif ?>
-          <!-- Status -->
+         
 
           <?php if(Auth::user()->usuario_rol[0]!=null): ?>
            <a href="#"><i class="fa fa-circle text-success">
@@ -255,7 +269,7 @@ desired effect
 
 
          
-          <!--p>{{Auth::user()->usuario_rol[0]->v_nombrerol}}</p-->
+        
         </div>
       </div>
 

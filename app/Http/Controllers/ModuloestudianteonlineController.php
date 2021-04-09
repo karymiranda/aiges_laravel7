@@ -266,7 +266,6 @@ return view('admin.moduloenlineaestudiantes.calificacionesestudianteonline',comp
  
 public function detallecalificacionesonline(Request $request)
 {
-
 	$anio=Periodoactivo::find($request->anio);
 	$anio=$anio->anio;	
 	$idestudiante=$request->idestudiante;
@@ -292,7 +291,7 @@ foreach ($criterios as $key => $value) {
 } 
 
  $conducta=self::getStudentConducta($idestudiante,$idseccion); 
-return view('admin.moduloenlineaestudiantes.detallecalificacionesonline',compact('itemsNotas','idestudiante','exp','conducta','a'));
+return view('admin.moduloenlineaestudiantes.detallecalificacionesonline',compact('itemsNotas','idestudiante','exp','conducta','a','anio','seccion'));
             }
         }
         else

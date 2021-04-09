@@ -8,6 +8,8 @@
 
 @foreach(Auth::user()->usuario_rol as $rol)
     <?php if($rol->v_nombrerol=='Docente'):?><!-- si el rol es administrador rrhh o superusuario entrara en el if-->
+
+
  <div class="col-lg-3 col-xs-6">
           <!-- small box -->
           <div class="small-box bg-aqua">
@@ -140,6 +142,23 @@
 
 
 <?php if($rol->v_nombrerol=='Administrador academico' || $rol->v_nombrerol=='Super Administrador'):?>
+
+
+
+<!--div class="col-md-12 col-sm-6 col-xs-12">
+          <div class="info-box">
+            <span class="info-box-icon bg-aqua"><i class="fa fa-envelope-o"></i></span>
+
+            <div class="info-box-content">
+              <span class="info-box-text">AVISO</span>
+              <span class="info-box-number">Se convoca a los padres de familia a la entrega de paquete de alimentos, plantilla de zapatos, guias impresas y autorización de retorno a clases.</span>
+              <span class="info-box-number">Viernes 26 de Marzo de 2021, instalaciones del Local #1 de 8:00 am a 11:00 am.</span>
+            </div>
+           
+          </div>        
+</div-->
+
+
 
         <div class="col-lg-3 col-xs-6">
           <!-- small box -->

@@ -2,6 +2,7 @@
 @section('tittle', 'Administración Académica/Matrícula/Registrar Matrícula')
 @section('content')
 
+
 <div class="box box-primary box-solid">
             <div class="box-header with-border">
                <div class="col-sm-6">
@@ -21,7 +22,7 @@
           @endforeach
         </ul>
       </div>
-    @endif 
+    @endif  
               <div class="box-body">
 
                  {!! Form::open(['route'=>'guardarmatricula', 'method'=>'POST','class'=>'form-horizontal']) !!}

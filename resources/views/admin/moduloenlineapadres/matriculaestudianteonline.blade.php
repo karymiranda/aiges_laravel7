@@ -2,8 +2,40 @@
 @section('tittle', 'Padres de Familia /Matrícula en línea')
 @section('content')
 
+<div class="col-md-4">
+          <!-- Profile Image -->
+          <div class="box box-primary">
+            <div class="box-body">
+              <h3 class="profile-username text-center">INDICACIONES</h3>
+              <ul class="list-group list-group-unbordered">
+                 <li class="list-group-item">
+                  <div class="callout callout-info">Si el nombre del estudiante en la solicitud de matricula o en el registro académico es diferente al de su partida de nacimiento deberá tramitar el correspondiente cambio de nombre en la administración académica del Centro Educativo.</div>
+                </li>
+                <li class="list-group-item">
+                  <b><i class="fa fa-list"></i> Pasos a seguir</b> 
+                </li> 
+                <li class="list-group-item">
+                  <b> Paso No.1: Completar el formulario solicitud de  matrícula.</b>
+                  <b><br><i class="fa fa-check"></i> Seleccionar la sección en la cual desea matricular al estudiante</b><br><i class="fa fa-check"></i><b>Enviar solicitud</b>
+                </li> 
+                <li class="list-group-item">
+                  <b> Paso No.2: Imprimir comprobante de matrícula en línea.</b>
+                   </li> 
+                  <li class="list-group-item"> 
+                  <b> Después de haber completado los pasos anteriores, el estudiante estará matriculado en el Centro Educativo. </b>
+                     </li>                      
+                  <li class="list-group-item">
+                   <div class="callout callout-warning"> <b>
+                  Si se presentasen excepciones con su proceso de inscripción, será contactado por un docente del Centro Educativo. </b></div>
+                </li>             
+              </ul>
+            </div>
+            <!-- /.box-body -->
+          </div>
+          <!-- /.box -->
+  </div>
 
-<div class="col-md-12">
+<div class="col-md-8">
 <div class="box box-primary box-solid">
             <div class="box-header with-border">
               <h3 class="box-title"><Strong>SOLICITUD DE MATRÍCULA</Strong></h3>

@@ -921,7 +921,7 @@ $fpdf->SetTitle("horariodeclases".date('_Ymd'));
 $this->cabecerahorizontal($fpdf);
 $fpdf->Ln(5);
 $fpdf->SetFont('Arial','B',12);
-$fpdf->Cell(0, $this->height - 1, 'ADMINISTRACION ACADEMICA', 0, 1, 'C');
+$fpdf->Cell(0, $this->height - 1, 'ADMINISTRACIÓN ACADÉMICA', 0, 1, 'C');
 $fpdf->SetFont('Arial','BU',12);
 $fpdf->Cell(0, $this->height - 1, 'HORARIO DE CLASES', 0, 1, 'C');
 $fpdf->Cell(0, $this->height - 1, utf8_decode('AÑO ESCOLAR ').$anio, 0, 1, 'C');
@@ -2710,7 +2710,7 @@ $this->cabecera($fpdf,$titulo,$subtitulo);
  $fpdf->Ln(5);
 $fpdf->SetFont('Arial','B', 10);
 $fpdf->Cell(0, $this->height - 1, utf8_decode('REGISTRO DE ASISTENCIAS'), 0, 1, 'C');
-$fpdf->Cell(0, $this->height - 1,'GRADO :  '.strtoupper($seccion->seccion_grado->grado)."   SECCION:  ".strtoupper($seccion->seccion)."  DOCENTE ASESOR :  ".strtoupper($seccion->seccion_empleado->v_nombres)." ".strtoupper($seccion->seccion_empleado->v_apellidos), 0, 1, 'C');
+$fpdf->Cell(0, $this->height - 1,'GRADO :  '.strtoupper($seccion->seccion_grado->grado)."   SECCIÓN:  ".strtoupper($seccion->seccion)."  DOCENTE ASESOR :  ".strtoupper($seccion->seccion_empleado->v_nombres)." ".strtoupper($seccion->seccion_empleado->v_apellidos), 0, 1, 'C');
 $fpdf->SetTextColor(59,131,189);
 $fpdf->SetFont('Arial','B', 9);
 $fpdf->Cell(0, $this->height - 1,"DEL ".$periodo[0]." AL ".$periodo[1], 0, 1, 'C');
@@ -2749,7 +2749,7 @@ return $response;
          
 }
 else{
-  Flash::error("Reporte Asistencia: debe seleccionar un rango de tiempo para iniciar la busqueda.")->important();
+  Flash::error("Reporte Asistencia: debe seleccionar un rango de tiempo para iniciar la búsqueda.")->important();
   return redirect()->route('listareportes');
 }
 

@@ -54,7 +54,7 @@ class rendimientoescolarporasignaturaController extends Fpdf
   {
     $this->Ln(2);
     $this->SetFont('Arial','B', 11);
-    $this->Cell(0, $this->height - 1, 'REGISTRO DE EVALUACION DEL RENDIMIENTO ESCOLAR - EDUCACION BASICA', 0, 1, 'C');
+    $this->Cell(0, $this->height - 1,utf8_decode('REGISTRO DE EVALUACIÓN DEL RENDIMIENTO ESCOLAR - EDUCACIÓN BÁSICA'), 0, 1, 'C');
     $this->Cell(0, $this->height - 1, 'POR ASIGNATURA Y TRIMESTRE', 0, 1, 'C');
     //$this->Cell(0, $this->height - 1, 'EDUCACION BASICA', 0, 1, 'C');
     $this->SetFont('Helvetica','BU', 10);

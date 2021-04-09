@@ -31,7 +31,8 @@
          
 
         </div-->
-       
+  
+
         <div class="col-md-12"><!-- /inicia slide -->
           <div id="myCarouselCustom" class="carousel slide" data-ride="carousel">
   

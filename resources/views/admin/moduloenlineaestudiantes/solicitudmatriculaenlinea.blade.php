@@ -1,7 +1,7 @@
 @extends('admin.menuprincipal')
 @section('tittle', 'Estudiante /Matrícula en línea')
 @section('content')
-
+ 
 <div class="col-md-4">
           <!-- Profile Image -->
           <div class="box box-primary">
@@ -152,7 +152,7 @@
                 
               <div class="box-footer" align="right">                
                  {!! Form::submit('Enviar',['class'=>'btn btn-primary ']) !!}
-                  <a href="{{route('listasecciones')}}" class="btn btn-default">Cancelar</a>
+                  <a href="{{route('menu')}}" class="btn btn-default">Cancelar</a>
               </div>
 
                 {!! Form::close() !!}

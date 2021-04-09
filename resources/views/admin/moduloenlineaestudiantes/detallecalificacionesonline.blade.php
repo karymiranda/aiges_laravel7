@@ -18,11 +18,31 @@
   .red { background-color: red !important; } .green { background-color: lime !important; }
 </style>
 
+
+ <div class="col-sm-6 col-sm-offset-3">
+        <table class="table table-bordered table-striped">
+          <thead>
+            <th>NIE</th>
+            <th>ALUMNO/@</th>
+            <th>SECCIÓN</th>
+            <th>AÑO</th>
+          </thead>
+       <tbody>     
+       <td>{{$seccion->v_nie}}</td> 
+       <td>{{$seccion->v_nombres}} {{$seccion->v_apellidos}}</td> 
+       <td>{{$seccion->v_gradoingreso}}</td>
+        <td>{{$anio}}</td>    
+       </tbody>
+        </table>
+      </div> 
+
+
+
 <div class="col-md-12">
 <div class="box-body table-responsive">    
       <table class="table table-bordered table-striped" >
         <thead style="background-color: #f39c12;color:white;">
-          <tr>
+          <tr> 
             <td rowspan="2" align="center">ASIGNATURA</td>
             <td colspan="5" align="center">PRIMER PERIODO</td>
             <td colspan="5" align="center">SEGUNDO PERIODO</td>
