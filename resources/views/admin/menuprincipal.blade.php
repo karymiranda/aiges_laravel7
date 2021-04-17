@@ -663,7 +663,7 @@ desired effect
              </ul>
             </li>
    
-  <li class="treeview">
+  <!--li class="treeview">
               <a href="#"><i class="fa fa-database"></i> Base de Datos
                 <span class="pull-right-container">
                   <i class="fa fa-angle-left pull-right"></i>
@@ -672,7 +672,7 @@ desired effect
               <ul class="treeview-menu" style="display: none;">
                 <li><a href="{{route('respaldo')}}"><i class="fa fa-arrow-circle-down"></i> Respaldo</a></li>                                
               </ul>
-    </li>
+    </li-->
           
   <li><a href="{{route('listadoconsultasyreportes')}}"><i class="fa fa-file-pdf-o"></i>Reportes</a></li>
 

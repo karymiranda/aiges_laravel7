@@ -921,7 +921,7 @@ $fpdf->SetTitle("horariodeclases".date('_Ymd'));
 $this->cabecerahorizontal($fpdf);
 $fpdf->Ln(5);
 $fpdf->SetFont('Arial','B',12);
-$fpdf->Cell(0, $this->height - 1, 'ADMINISTRACIÓN ACADÉMICA', 0, 1, 'C');
+$fpdf->Cell(0, $this->height - 1, utf8_decode('ADMINISTRACIÓN ACADÉMICA'), 0, 1, 'C');
 $fpdf->SetFont('Arial','BU',12);
 $fpdf->Cell(0, $this->height - 1, 'HORARIO DE CLASES', 0, 1, 'C');
 $fpdf->Cell(0, $this->height - 1, utf8_decode('AÑO ESCOLAR ').$anio, 0, 1, 'C');
@@ -2408,7 +2408,7 @@ public function listareportesmodulodocentes()
 $listasecciones=$this->secciones_docente()->pluck('grado','id');
 $aniolectivo=Periodoactivo::periodoescolar()->get();
 $aniolectivoactivo=$aniolectivo->pluck('anio','id');
-
+dd($aniolectivo);
 $periodos = Periodoevaluacion::where('estado', 1)->get();//para el preporte boleta de notas
 $asignaturas = Asignaturas::where('estado', 1)->get();
 return view('admin.personaldocente.reportesmodulodocentes.listareportesmodulodocentes')->with('periodos',$periodos)->with('listasecciones',$listasecciones)->with('aniolectivoactivo',$aniolectivoactivo)->with('asignaturas',$asignaturas);

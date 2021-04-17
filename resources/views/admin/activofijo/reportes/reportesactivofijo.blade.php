@@ -57,7 +57,7 @@
                   <th>DECRIPCIÓN</th>
                   <th>FECHA DE ADQUISICIÓN</th>
                   <th>UBICACIÓN</th> 
-                  <th>ETADO</th>                          
+                  <th>ESTADO</th>                          
                   <th>¿TRASLADO?</th>
                  
                 </tr></thead>

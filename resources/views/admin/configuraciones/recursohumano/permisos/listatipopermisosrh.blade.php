@@ -7,7 +7,7 @@
               <h2> <label class="text-primary">TIPO PERMISOS</label></h2>
     </div>
     <div class="col-sm-12" align="right">            
-      <a href="{{ route('creartipopermisosrh') }}" class="btn btn-primary">Registrar tipo motivo</a>
+      <a href="{{ route('creartipopermisosrh') }}" class="btn btn-primary">Registrar tipo permiso</a>
     </div>
   </div>
   <hr>
