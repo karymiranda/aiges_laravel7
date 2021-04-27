@@ -11,8 +11,7 @@ class ResetPasswordController extends Controller
 {
     public function index()
     {
-        
-         return view('admin.reset.index', []);
+    return view('admin.reset.index', []);
     }
 
     public function generate()
@@ -32,6 +31,7 @@ class ResetPasswordController extends Controller
     {
         $params = $request->all();
         $usuario = Usuario::where('name', $params['username'])->first();
+
         $password = $this->generate();
 
         if ($usuario->email) {
@@ -45,6 +45,7 @@ class ResetPasswordController extends Controller
 
                 return redirect('reset/1');
             } catch(\Exception $e) {
+                dd($e);
                 return redirect('reset/0');
             }
         }
