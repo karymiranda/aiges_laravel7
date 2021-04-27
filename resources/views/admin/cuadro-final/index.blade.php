@@ -265,7 +265,7 @@ var url = "/aiges/public/cuadroFinal/";
 
       
       $("#expediente1").on('click', function(e) {
-
+alert('llega');
           var elements = $("#frm input:checked");
           var url = "/aiges/public/cuadroFinal/";
            $.ajaxSetup({
