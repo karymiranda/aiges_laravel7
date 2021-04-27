@@ -268,7 +268,7 @@ var url = "/aiges/public/cuadroFinal/";
 
           var elements = $("#frm input:checked");
           var url = "/aiges/public/cuadroFinal/";
-          alert(url);
+          //alert(url);
            $.ajaxSetup({
         headers: {
           'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
