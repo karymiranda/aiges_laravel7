@@ -119,7 +119,7 @@ $('#btngenerarreporte').on('click', function(e){
       break;
 
       case '1.1':  
-      $('#formulariorpt').attr("method",'POST');     
+      $('#formulariorpt').attr("method",'GET');     
      $('#formulariorpt').attr("action", "sinNIE_pdf");      
      $('#formulariorpt').submit(); 
       break; 
