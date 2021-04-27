@@ -45,7 +45,7 @@ class ResetPasswordController extends Controller
 
                 return redirect('reset/1');
             } catch(\Exception $e) {
-                dd($e);
+                
                 return redirect('reset/0');
             }
         }
