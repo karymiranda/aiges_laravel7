@@ -1716,7 +1716,7 @@ $this->piedepagina($fpdf);
 }
 
 
-public function sinNIE()
+public function sinNIE_pdf()
   {
 $anio=Carbon::now()->year;
 /*$datos=Expedienteestudiante::with('estudiante_seccion')->whereHas('estudiante_seccion', function ($q) use ($anio){
