@@ -11,19 +11,19 @@ class ResetPasswordController extends Controller
 {
     public function index()
     {
-        return view('admin.reset.index', [
-
-        ]);
+        
+         return view('admin.reset.index', []);
     }
 
     public function generate()
     {
+
         $key = '';
         $pattern = '1234567890abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
         $max = strlen($pattern) - 1;
 
         for($i=0;$i < 8;$i++) 
-            $key .= $pattern{ mt_rand(0,$max) };
+            $key .= $pattern[ mt_rand(0,$max) ];
 
         return $key;
     }

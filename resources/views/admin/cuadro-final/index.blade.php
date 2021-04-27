@@ -248,7 +248,7 @@
 
       $("#recalcularcuadro").on('click', function(e) {
         //alert('recalcular')
-var url = "/aiges/public/cuadroFinal/";
+var url = "/cuadroFinal/";
   $.ajaxSetup({
         headers: {
           'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
