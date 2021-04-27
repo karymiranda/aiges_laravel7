@@ -358,7 +358,7 @@ public function exportBitacora()
 
 public function nominaestudiantesactivosCE_excel()
 {
- 
+ dd('lllll');
 $anio = Carbon::now()->year; 
 $today = Carbon::now()->format('d_m_Y');
 $name = 'Nominainstitucionalestudiantes_'.$today.'.xlsx';
