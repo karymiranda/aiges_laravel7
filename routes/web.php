@@ -527,7 +527,7 @@ Route::get('estadisticamatriculaescolarCE_excel/{anio}/document', [
 
 Route::get('sinNIE_pdf', [ConsultasyreportesController::class,'sinNIE_pdf']);
 
- Route::post('estudiantesCE_excel', [ExcelController::class,'nominaestudiantesactivosCE_excel']);
+ Route::get('estudiantesCE_excel', [ExcelController::class,'nominaestudiantesactivosCE_excel']);
 
 Route::get('familiaresCE_excel', [ExcelController::class,'nominafamiliaresactivosCE_excel']);
 
