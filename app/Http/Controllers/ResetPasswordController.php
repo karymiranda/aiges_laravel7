@@ -43,7 +43,7 @@ Mail::to($usuario->email)->send(new ResetPasswordMail($usuario, $password));
 
         return redirect('reset/1');
             } catch(\Exception $e) {
-             // dd($e);
+              dd($e);
                 return redirect('reset/0');
             }
         }
