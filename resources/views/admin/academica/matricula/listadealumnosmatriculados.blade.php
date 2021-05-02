@@ -23,7 +23,7 @@
                   <th>NIE</th> 
                   <th>ESTUDIANTE</th>
                    <th>GRADO</th>  
-                  <th>SECCION</th>
+                  <th>SECCIÓN</th>
                    <th>TURNO</th>                                     
                   <th>MODALIDAD</th>
                   <th>ACCIONES</th>

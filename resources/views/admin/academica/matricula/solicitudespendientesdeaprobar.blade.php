@@ -20,10 +20,10 @@
                   <th>NIE</th> 
                   <th>ESTUDIANTE</th>                                 
                   <th>GRADO</th>
-                  <th>SECCION</th>
+                  <th>SECCIÓN</th>
                   <th>TURNO</th> 
-                  <th>TELEFONO</th>                  
-                  <th>ACCION</th>
+                  <th>TELÉFONO</th>                  
+                  <th>ACCIÓN</th>
                 
               </thead>
                 <tbody>

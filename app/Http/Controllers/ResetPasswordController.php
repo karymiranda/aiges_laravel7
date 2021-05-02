@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Mail;
 use App\Usuario;
+use \App\Mail\ResetPasswordMail;
 
 class ResetPasswordController extends Controller
 {
@@ -31,21 +32,18 @@ class ResetPasswordController extends Controller
     {
         $params = $request->all();
         $usuario = Usuario::where('name', $params['username'])->first();
-
         $password = $this->generate();
-
+ 
         if ($usuario->email) {
-            try {
-                Mail::to($usuario->email)->send(
-                    new \App\Mail\ResetPasswordMail($usuario, $password)
-                );
+            try { 
+Mail::to($usuario->email)->send(new ResetPasswordMail($usuario, $password));
 
                 $usuario->password = Hash::make($password);
                 $usuario->save();
 
-                return redirect('reset/1');
+        return redirect('reset/1');
             } catch(\Exception $e) {
-                
+              dd($e);
                 return redirect('reset/0');
             }
         }

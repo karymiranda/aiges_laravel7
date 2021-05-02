@@ -34,7 +34,6 @@ use App\Http\Controllers\CertificadosController;
 Route::get('/', function () {
    //
    if(Auth::user()){
-
     return redirect('/admin/inicio');
    }
    return view('admin.login'); 

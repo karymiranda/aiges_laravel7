@@ -16,6 +16,7 @@
                 <thead>
                   <th>No.</th>
                   <th>FECHA</th>
+                   <th>HORA</th>
                    <th>EXPEDIENTE</th>                  
                   <th>USUARIO</th>
                   <th>OPERACIONES REALIZADAS</th>
@@ -24,7 +25,8 @@
                 @foreach($bitacora as $key => $row)
                  <tr>
                   <td>{{$key+1}}</td>
-                  <td>{{$row->created_at}}</td>
+                  <td>{{$row->created_at->format('d-m-Y')}}</td>
+                  <td>{{$row->created_at->format('H:i:s')}}</td>
                   <td>{{$row->bitacora_usuarios->name}}</td>
                   <td>{{$row->usuario_nombre}}</td>
                   <?php $obj=json_decode($row->operacion);

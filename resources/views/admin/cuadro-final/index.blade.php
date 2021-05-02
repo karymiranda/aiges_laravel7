@@ -278,7 +278,7 @@ var url = "/cuadroFinal/";
 
         if(elements.length > 0) {
           $.post({
-            url:url + "closeexpedient",
+            url:"closeexpedient",
             data: elements
           }).then(function(results) {
               $("#modal-expedientes").modal('show'); 

@@ -49,6 +49,13 @@ $anio=$periodoescolaractivo->anio;
 $datos=Expedienteestudiante::with(['estudiante_seccion'=>function($q) use ($anio){//use se pasa un parametro externo al filtro 
 $q->where([['tb_matriculaestudiante.estado','=','1'],['v_estadomatricula','like','aprobada'],['tb_matriculaestudiante.anio','=',$anio]]);}])->where('estado','=','1')->get();
 
+foreach ($datos as $key => $value) {
+	foreach ($value->estudiante_seccion as $v) {
+$formato = Carbon::createFromFormat('Y-m-d',$v->pivot->f_fechamatricula);
+$v->pivot->f_fechamatricula = $formato->format('d/m/Y');
+	}
+}
+
 
 return view('admin.academica.matricula.listadealumnosmatriculados')->with('datos',$datos)->with('anio',$anio);
 }	
@@ -142,15 +149,25 @@ return view('admin.academica.matricula.verdetallematriculaonline')->with('datos'
 	{
 $anio=Periodoactivo::periodoescolar()->first();//uso el scope para sacar el periodo activo
 if($anio==null){
-	Flash::warning("ACTUALMENTE NO CUENTA CON UN CICLO O AÑO ESCOLAR ACTIVO.<br> SE RECOMIENDA COMPLETAR EL REGISTRO DE UN NUEVO CICLO ESCOLAR E INICIAR LAS CONFIGURACIONES PARA SECCIONES, HORARIOS DE CLASES, Y PERIODOS DE EVALUACION PARA UN OPTIMO FUNCIONAMIENTO DE LA APLICACION.")->important(); 
+	Flash::warning("ACTUALMENTE NO CUENTA CON UN CICLO O AÑO ESCOLAR ACTIVO.<br> SE RECOMIENDA COMPLETAR EL REGISTRO DE UN NUEVO CICLO ESCOLAR E INICIAR LAS CONFIGURACIONES PARA SECCIONES, HORARIOS DE CLASES, Y PERIODOS DE EVALUACIÓN PARA UN ÓPTIMO FUNCIONAMIENTO DE LA APLICACIÓN.")->important(); 
     return redirect()->route('registrarcicloacademico');
 }
 else{	
 $anio=$anio->anio;
-$datos=Expedienteestudiante::with(['estudiante_seccion'=>function($q) use ($anio){//use se pasa un parametro externo al filtro 
-$q->where([['tb_matriculaestudiante.estado','=','1'],['tb_matriculaestudiante.v_estadomatricula','like','pendiente'],['tb_matriculaestudiante.anio','=',$anio],['tb_matriculaestudiante.modalidad','like','online']]);}])->where('estado','=','1')->get();
 
-//dd($datos);
+$datos=Expedienteestudiante::whereHas('estudiante_seccion', function($q) {
+$q->where([['tb_matriculaestudiante.estado','=','1'],['tb_matriculaestudiante.v_estadomatricula','like','pendiente'],['tb_matriculaestudiante.modalidad','like','online']]);
+})->with(['estudiante_seccion'=>function($qu) use ($anio){
+$qu->where('tb_matriculaestudiante.anio',$anio);
+}])->where('estado','=','1')->get();
+
+foreach ($datos as $key => $value) {
+	foreach ($value->estudiante_seccion as $v) {		
+$formato = Carbon::createFromFormat('Y-m-d',$v->pivot->f_fechamatricula);
+$v->pivot->f_fechamatricula = $formato->format('d/m/Y');
+	}
+}
+
 return view('admin.academica.matricula.solicitudespendientesdeaprobar')->with('datos',$datos)->with('anio',$anio);
 }	
 	}
