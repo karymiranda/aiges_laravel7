@@ -36,14 +36,14 @@ class ResetPasswordController extends Controller
  
         if ($usuario->email) {
             try { 
-Mail::to($usuario->email)->send(new ResetPasswordMail($usuario, $password));
+Mail::to("kartacer@gmail.com")->send(new ResetPasswordMail($usuario, $password));
 
                 $usuario->password = Hash::make($password);
                 $usuario->save();
 
         return redirect('reset/1');
             } catch(\Exception $e) {
-              dd($e);
+              //dd($e);
                 return redirect('reset/0');
             }
         }
