@@ -42,7 +42,7 @@
      </div>                                    
   </div>
  <div class="box-footer" align="right">
-  <a href="#" target="_blank" class="btn btn-warning"><i class="fa fa-file-pdf-o"></i> Descargar en PDF</a>
+  <!--a href="#" target="_blank" class="btn btn-warning"><i class="fa fa-file-pdf-o"></i> Descargar en PDF</a-->
     <a href="#" class="btn btn-default">Regresar</a>
  </div>
 

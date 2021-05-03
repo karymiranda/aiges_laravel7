@@ -18,23 +18,19 @@
             <div  class="col-sm-4">
               <ul>
                 
-         <h2 class="text-blue">¿En qué puedo ayudarle?</h2>
+         <h2 class="text-blue">¿En qué puedo ayudarte?</h2>
                 <h3 class="text-blue">Guía rápida</h3>
-                <li>Estudiante</li>
+                <li>Estudiantes</li>
                   <ul>
-                        <li>Expediente estudiantil</li>
-                              <ul>
-                                    <li>Información de estudiantes activos</li>
-                                    <li>Crear expediente estudiantil</li>
-                                         <ul>         
-                                         <li>Ingreso de datos generales</li>
-                                         <li>Ingreso de datos médicos</li>
-                                         <li>Creación de cuenta de usuario</li>
-                                         <li>Creación de círculo familiar</li>
-                                          </ul>
-                                                                      
-                              </ul>
-                       
+                        <li>Expediente </li>                              
+                        <li>Matrícula </li>  
+                       <ul>
+                       <li>Matrícula en linea (Pre-matrícula)</li>
+                       <li>Comprobante Pre-matrícula</li>
+                                                                                    
+                        </ul>
+                       <li>Historial de calificaciones</li>
+                       <li>Horario de clases</li>                       
                   </ul>
                 
               </ul>

@@ -33,10 +33,14 @@ class ResetPasswordController extends Controller
         $params = $request->all();
         $usuario = Usuario::where('name', $params['username'])->first();
         $password = $this->generate();
- 
+
+ if($usuario==null){
+    return redirect('reset/3');//no existe un usuario con ese name
+ }
+
         if ($usuario->email) {
             try { 
-Mail::to("kartacer@gmail.com")->send(new ResetPasswordMail($usuario, $password));
+        Mail::to($usuario->email)->send(new ResetPasswordMail($usuario, $password));
 
                 $usuario->password = Hash::make($password);
                 $usuario->save();

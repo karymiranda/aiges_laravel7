@@ -107,6 +107,11 @@
     <div class="col-sm-12" align="center">
     <a href="{{ route('iniciarsesion') }}" class="btn btn-primary">Iniciar sesión</a>
 </div>
+@elseif( $type == '3' )
+<h3>Lo sentimos pero el usuario ingresado no existe.</h3>
+    <div class="col-sm-12" align="center">
+    <a href="{{ route('iniciarsesion') }}" class="btn btn-primary">Iniciar sesión</a>
+</div>
 @else
     <h3>Tenemos un problema con el servidor por favor intente más tarde.</h3>
     <div class="col-sm-12" align="center">
