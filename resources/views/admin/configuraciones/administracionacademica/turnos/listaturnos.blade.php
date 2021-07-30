@@ -19,7 +19,7 @@
               <table class="table table-bordered table-striped" id="tablaBusqueda">
                 <thead>                  
                   <th>TURNO</th>
-                  <th>HORA INCIO</th>
+                  <th>HORA INICIO</th>
                   <th>HORA FIN</th>                     
                   <th>ACCIONES</th>
                 </thead>

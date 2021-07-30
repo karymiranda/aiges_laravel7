@@ -103,7 +103,7 @@
           </div>
         </div>
       </div>
-    </div> 
+
     <div class="box-footer" align="right">                
       <a class="btn btn-danger" data-toggle="modal" data-target="#descargar">
         Descargar
@@ -120,6 +120,7 @@
         <div class="modal-body">
           <p>¿Esta seguro, desea descargar el activo fijo {{$activo->v_codigoactivo}}?</p>
         </div>
+
         <div class="modal-footer">
             <input type="submit" value="Descargar" class="btn btn-sm btn-danger delete-btn">
             <button type="button" class="btn btn-sm btn-default cancel-btn" data-dismiss="modal">Cancelar</button>

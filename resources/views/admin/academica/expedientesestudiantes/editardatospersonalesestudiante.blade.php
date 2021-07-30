@@ -118,14 +118,14 @@
                 </div>
                 
      <div class="form-group">                                           
-                        {!! Form::label('lbldepto', 'Departamento de nacimiento',['class'=>'col-sm-4 control-label']) !!}
+                        {!! Form::label('lbldepto', 'Lugar de nacimiento (Departamento)',['class'=>'col-sm-4 control-label']) !!}
                          <div class="col-sm-5">
           {!! Form::select('departamento_id',$departamentos, $dept->id,['class'=>'form-control','id'=>'departamentos'])!!}
                         </div>
                         </div>
 
                  <div class="form-group">             
-            {!! Form::label('lbmunici', 'Municipio de nacimiento',['class'=>'col-sm-4 control-label']) !!}
+            {!! Form::label('lbmunici', 'Municipio ',['class'=>'col-sm-4 control-label']) !!}
                                                 <div class="col-sm-5">
               {!! Form::select('municipio_id',$listamunicipios, $municipios,['class'=>'form-control','id'=>'municipio_id','required'])!!}
                                                 </div>

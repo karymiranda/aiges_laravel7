@@ -22,13 +22,18 @@ class SolicitudespermisosrhController extends Controller
     {
       $q->where('estado', '=', '1'); 
     })->with('empleado')->with('motivoPermiso')->where('estado','!=','Denegada')->get();
+    
     foreach($permisos as $permiso)
     {
-    $formato = Carbon::createFromFormat('Y-m-d',$permiso->f_fechasolicitud);
-    $permiso->f_fechasolicitud = $formato->format('d/m/Y');
+   $formato1 = Carbon::createFromFormat('Y-m-d',$permiso->f_desde);
+    $permiso->f_desde = $formato1->format('d/m/Y');
+
+    $formato2 = Carbon::createFromFormat('Y-m-d',$permiso->f_hasta);
+    //$permiso->f_hasta = $formato2->format('d/m/Y');
     }
 
 $asesor = Empleado::select(DB::raw('CONCAT(v_nombres," ",v_apellidos) as nombrecompleto'),'id')->orderBy('v_numeroexp','ASC')->where([['estado','=','1'],['v_numeroexp','!=','RH0000-0']])->pluck('nombrecompleto','id');
+
 
     return view('admin.recursohumano.solicitudespermisos.listasolicitudespermiso',compact('permisos','asesor'));
 	}

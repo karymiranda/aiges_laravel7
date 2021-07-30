@@ -12,11 +12,22 @@ class GestionarcatalogoactivoController extends Controller
 {
     public function index()
 	{
-		$cuentas = Catalogodecuenta::orderBy('id','ASC')->whereBetween('v_nivel', [3, 4])->where([['estado','=','1'],['tipocuenta_id','=','1'],[\DB::raw('substr(v_codigocuenta, 1,2)'),'=','12']])->get();
+		/*$cuentas = Catalogodecuenta::orderBy('id','ASC')->whereBetween('v_nivel', [3, 4])->where([['estado','=','1'],['tipocuenta_id','=','1'],[\DB::raw('substr(v_codigocuenta, 1,2)'),'=','12']])->get();
 		$cuentas->each(function($cuentas){ 
 			$cuentas->clasificacioncuentacatalogo;
-		});
-		return view('admin.activofijo.catalogo.gestionarcatalogo')->with('cuentas',$cuentas);	
+		});*/
+
+		$cuentas = Catalogodecuenta::orderBy('id','ASC')->whereBetween('v_nivel', [3, 4])->where([['estado','=','1'],['tipocuenta_id','=','1'],[\DB::raw('substr(v_codigocuenta, 1,2)'),'=','12']])->get();
+
+		$result = array();
+		foreach ($cuentas as $item) 
+		{
+$result[]=$item;
+		}
+
+	//dd($result);
+
+		return view('admin.activofijo.catalogo.gestionarcatalogo',compact('cuentas','result'));	
 	}
 
 	public function crearcatalogoactivo()

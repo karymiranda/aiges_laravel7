@@ -5,10 +5,10 @@
   <div class="box box-primary">
     <div class="box-header">
       <div class="col-sm-12" align="center">
-              <h2> <label class="text-primary">GESTIÓN ACTIVO FIJO</label></h2>
+              <h2> <label class="text-primary">ACTIVO FIJO</label></h2>
               </div>
       <div class="col-sm-12" align="right">          
-        <a href="{{route('crearactivofijo')}}" class="btn btn-primary">Registrar activo</a>
+        <a href="{{route('crearactivofijo')}}" class="btn btn-primary">Cargar activo</a>
         <!--a href="{{route('subirarchivoactivofijo')}}" class="btn btn-primary" id="btnarchivo">Subir archivo</a-->
         <form id="formulariorpt">
       <?php @crsf ?>

@@ -414,7 +414,7 @@ desired effect
             </span>
           </a>
           <ul class="treeview-menu" style="display: none;"> 
-            <li><a href="{{route('listacotizaciones')}}"><i class="fa fa-list-alt"></i>Cotizaciones</a> </li>         
+            <!--li><a href="{{route('listacotizaciones')}}"><i class="fa fa-list-alt"></i>Cotizaciones</a> </li-->         
    <li class="treeview">
               <a href="#"><i class="fa fa-calculator"></i>Transacciones
                 <span class="pull-right-container">
@@ -450,8 +450,25 @@ desired effect
             </span>
           </a>
           <ul class="treeview-menu" style="display: none;">            
-            <li><a href="{{route('activofijo')}}"><i class="fa  fa-sign-in"></i> Gestión activo fijo</a></li>
-            <li><a href="{{route('listatraslado')}}"><i class="fa fa-truck"></i> Traslados</a></li>
+            <li><a href="{{route('activofijo')}}"><i class="fa  fa-sign-in"></i> Cargo de bienes</a></li>
+            <li><a href="{{route('prueba')}}"><i class="fa fa-download"></i> Descargo de bienes</a></li>
+            <li><a href="{{route('listatraslado')}}"><i class="fa fa-truck"></i> Traslado de bienes</a></li>
+
+
+<li class="treeview">
+              <a href="#"><i class="fa fa-cogs"></i> Procesos
+                  <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+              </a>
+              <ul class="treeview-menu" style="display: none;">
+  <li><a href="{{route('missecciones')}}"><i class="fa fa-hourglass-half"></i>Depreciación de bienes</a></li>                      
+          </ul>
+          </li>
+
+
+
+
              <li>
       <a href="{{route('reportesactivos_view')}}"><i class="fa fa-file-pdf-o"></i>Reportes</a>
         </li> 
@@ -1320,7 +1337,30 @@ $('.rangoPastYear').datepicker({
   })
 
 
+  $('#tablaAF').DataTable({
+    'paging'      : true,
+    'lengthChange': false,
+    'searching'   : true,
+    'ordering'    : false,
+    'info'        : false,
+    'autoWidth'   : false,
+    'iDisplayLength' : 20,
+    'language': {
+      "sZeroRecords":    "No se encontraron resultados",
+      "sEmptyTable":     "Ningún dato disponible en esta tabla",
+      'search': 'Buscar:',
+      'paginate': {
+        'previous': 'Anterior',
+        'next': 'Siguiente'
+      }
+    }
+  })
+
+
 });
+
+
+
 
 
 //Calculo de edad

@@ -69,7 +69,7 @@ $.ajax({
     $.each(data, function(key, value) {      
  document.getElementById("titulo").value="AÑO A LIQUIDAR: "+value.transaccion_fondodisponible.descripcion;
  document.getElementById("monto").value="MONTO A LIQUIDAR: $"+ value.transaccion_fondodisponible.monto_disponible;
-$('#tablaBusqueda').append('<tr id="'+value.id+'"><td>' + value.numero_cheque + '</td><td>' + value.fecha_transaccion +'</td><td>'+ value.concepto  +'</td><td>'+ value.transaccion_rubro.descripcion +'</td><td>'+ value.gasto +'</td></tr>'); 
+$('#tablaBusqueda').append('<tr id="'+value.id+'"><td>' + value.numero_cheque + '</td><td>' + value.fecha_transaccion +'</td><td>'+ value.concepto  +'</td><td>'+ value.transaccion_rubro.descripcion +'</td><td> $ '+ value.gasto +'</td></tr>'); 
 
         });
         table=$('#tablaBusqueda').DataTable(

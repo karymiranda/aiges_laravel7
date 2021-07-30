@@ -7,7 +7,7 @@
               <h2> <label class="text-primary">CLASIFICACION DE PERSONAL</label></h2>
     </div>
     <div class="col-sm-12" align="right">            
-      <a href="{{ route('creartipopersonalrh') }}" class="btn btn-primary">Agregar clasificación</a>
+      <a href="{{ route('creartipopersonalrh') }}" class="btn btn-primary">Registrar clasificación</a>
     </div>
   </div>
 <!-- /.box-header -->

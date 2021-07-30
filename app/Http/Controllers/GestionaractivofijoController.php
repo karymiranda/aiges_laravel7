@@ -1,5 +1,5 @@
 <?php
-
+ 
 namespace App\Http\Controllers;
 
 use App\Catalogodecuenta;
@@ -177,6 +177,11 @@ class GestionaractivofijoController extends Controller
 		$traslado->save();
 		Flash::success("El activo " . $activo->v_codigoactivo . " ha sido trasladado")->important();
 		return redirect()->route('activofijo');		
+	}
+
+	public function AFdescargados()
+	{
+		dd('llega');
 	}
 
 }

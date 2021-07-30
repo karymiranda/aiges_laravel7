@@ -495,7 +495,7 @@
             <div class="icon">
               <i class=" fa fa-sitemap"></i>
             </div>
-            <a href="{{route('listasecciones')}}" class="small-box-footer">Más información <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="{{route('catalogoactivo')}}" class="small-box-footer">Más información <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
@@ -512,7 +512,7 @@
             <div class="icon">
               <i class="fa fa-building-o"></i>
             </div>
-            <a href="#" class="small-box-footer">Más información <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="{{route('activofijo')}}" class="small-box-footer">Más información <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
@@ -529,7 +529,7 @@
             <div class="icon">
               <i class="fa fa-truck"></i>
             </div>
-            <a href="{{route('listaexpedientes')}}" class="small-box-footer">Más información  <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="{{route('listatraslado')}}" class="small-box-footer">Más información  <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->

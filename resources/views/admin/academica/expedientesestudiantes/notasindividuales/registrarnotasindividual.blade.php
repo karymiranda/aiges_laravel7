@@ -41,8 +41,8 @@ if($modulo=='docentes'){$titulo='Personal Docente / Ingreso Individual de Califi
  <div class="col-sm-6 col-sm-offset-3">
         <table class="table table-bordered table-striped" >
           <thead>
-            <th>EVALUACION</th>
-            <th>CALIFICACION</th>           
+            <th>EVALUACIÓN</th>
+            <th>CALIFICACIÓN</th>           
           </thead>
           <tbody>
             @foreach($evaluaciones as $eval)

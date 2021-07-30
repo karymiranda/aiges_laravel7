@@ -34,6 +34,7 @@ class CalificacionesindividualadminController extends Controller
     }
     public function index($id,$modulo)
     {
+       
         $periodoescolaractivo=Periodoactivo::where([['estado','=','1'],['tipo_periodo','like','ACADEMICO']])->first();
         $anio=$periodoescolaractivo->anio;
     	$seccion=Expedienteestudiante::with(['estudiante_seccion'=>function ($query) use ($anio){
@@ -246,6 +247,7 @@ return view('admin.personaldocente.gestionacademica.nominas.consultarinformacion
 
   public function periodocompetenciasingleadmin($id,$modulo)
   { 
+
         $periodoescolaractivo=Periodoactivo::where([['estado','=','1'],['tipo_periodo','like','ACADEMICO']])->first();
         $anio=$periodoescolaractivo->anio;
         $seccion=Expedienteestudiante::with(['estudiante_seccion'=>function ($query) use ($anio){
@@ -268,7 +270,7 @@ return redirect()->route('listaexpedientes');
         }
 
 $periodos = Periodoevaluacion::where('estado', 1)->get();
-return view('admin.academica.expedientesestudiantes.competenciasindividuales.selectperiodsingleadmin',compact('periodos','id','estudiante','info','idseccion','modulo'));
+return view('admin.academica.expedientesestudiantes.competenciasindividuales.selectperiodsingleadmin',compact('periodos','id','info','idseccion','modulo'));
   }
 
 public function addcompetenciassingleadmin(Request $request)
@@ -331,7 +333,7 @@ public function Editcompetenciasingleadmin($idestudiante,$idperiodo,$modulo)
 {
 $competencia = self::getStudentConductaPeriodo($idestudiante,$idperiodo);
 $comp=Competenciasciudadanas::all();
-return view('admin.academica.expedientesestudiantes.competenciasindividuales.editarcompetenciasingleadmin',compact('competencia','comp','idestudiante','idperiodo','criterios','modulo'));
+return view('admin.academica.expedientesestudiantes.competenciasindividuales.editarcompetenciasingleadmin',compact('competencia','comp','idestudiante','idperiodo','modulo'));
 
 }
 

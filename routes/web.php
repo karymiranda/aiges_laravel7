@@ -28,6 +28,7 @@ use App\Transaccionesbono;
 use App\Http\Controllers\ConsultasyreportesController;
 use App\Http\Controllers\ExcelController;
 use App\Http\Controllers\CertificadosController;
+use App\Http\Controllers\GestionaractivofijoController;
 
 
 
@@ -831,13 +832,20 @@ Route::get('gestionaractivofijo', ['as' => 'activofijo', 'uses' => 'Gestionaract
 Route::get('crearactivo', ['as' => 'crearactivofijo', 'uses' => 'GestionaractivofijoController@crearactivo']);
 Route::get('editaractivo/{id}', ['as' => 'editaractivofijo', 'uses' => 'GestionaractivofijoController@editaractivo']);
 Route::get('verdetalleactivo/{id}', ['as' => 'verdetalleactivofijo', 'uses' => 'GestionaractivofijoController@verdetalleactivo']);
-Route::get('descargaractivo/{id}', ['as' => 'descargaractivo', 'uses' => 'GestionaractivofijoController@descargaractivo']);
 Route::post('correlativoactivo',['as'=>'correlativoactivo','uses'=>'GestionaractivofijoController@correlativo']);
 Route::post('agregaractivo', ['as' => 'agregaractivo', 'uses' => 'GestionaractivofijoController@agregaractivo']);
 Route::put('actualizaractivo/{id}', ['as' => 'actualizaractivo', 'uses' => 'GestionaractivofijoController@actualizaractivo']);
-Route::post('guardardescargo', ['as' => 'guardardescargo', 'uses' => 'GestionaractivofijoController@guardardescargo']);
 Route::get('creartrasladoactivo/{id}', ['as' => 'creartrasladoactivo', 'uses' => 'GestionaractivofijoController@creartraslado']);
 Route::post('agregartraslado', ['as' => 'agregartraslado', 'uses' => 'GestionaractivofijoController@agregartraslado']);
+
+//descargo activos fijos
+
+Route::get('prueba',[GestionaractivofijoController::class,'AFdescargados']);
+
+Route::get('descargaractivo/{id}', ['as' => 'descargaractivo', 'uses' => 'GestionaractivofijoController@descargaractivo']);
+Route::post('guardardescargo', ['as' => 'guardardescargo', 'uses' => 'GestionaractivofijoController@guardardescargo']);
+
+
 
 //Rutas Traslados
 Route::get('listatraslado', ['as' => 'listatraslado', 'uses' => 'GestionartrasladoactivofijoController@index']);
@@ -859,7 +867,6 @@ Route::put('actualizarcatalogoactivo/{id}', ['as' => 'actualizarcatalogoactivo',
 Route::get('eliminarcatalogoactivo/{id}', ['as' => 'eliminarcatalogoactivo', 'uses' => 'GestionarcatalogoactivoController@eliminarcatalogoactivo']);
 Route::get('cuentasnivel3',array('as'=>'cuentasnivel3','uses'=>'GestionarcatalogoactivoController@cuentasnivel3'));
 });//cierro middleware AFijo
-
 
 //Route::get('reporteBoleta/{id}/{periodo_id}',['as'=>'reporteBoleta','uses'=>'ResporteController@index']);
 Route::post('certificados/{seccion_id}',[CertificadosController::class,'generarcertificados']);

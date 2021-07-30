@@ -7,7 +7,7 @@
               <h2> <label class="text-primary">CARGOS PERSONAL</label></h2>
     </div>
     <div class="col-sm-12" align="right">            
-      <a href="{{ route('creartipocargorh') }}" class="btn btn-primary">Agregar cargo</a>
+      <a href="{{ route('creartipocargorh') }}" class="btn btn-primary">Registrar cargo</a>
     </div>
   </div>
 

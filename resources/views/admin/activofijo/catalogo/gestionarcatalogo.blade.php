@@ -14,24 +14,27 @@
                       
     <!-- /.box-header -->
     <div class="box-body table-responsive">
-      <table class="table table-bordered table-striped" id="tablaBusqueda">
+      <table class="table table-bordered table-striped" id="tablaAF">
         <thead>
           <th>CÓDIGO</th>
           <th>TIPO DE BIEN</th> 
-          <th>NIVEL</th>
+          <!--th>NIVEL</th-->
            <!--th>TIPO CUENTA</th>
             <th>TIPO SALDO</th-->
           <th>ACCIONES</th>
         </thead>
         <tbody>
-          @foreach($cuentas as $cuenta)          
+          @foreach($result as $cuenta) 
+             
             <tr>            
-              <td>{{ $cuenta->v_codigocuenta }}</td>
-              <td>{{ $cuenta->v_nombrecuenta }}</td>
-              <td>{{ $cuenta->v_nivel }}</td>
-              <!--td>{{ $cuenta->clasificacioncuentacatalogo->v_tipocuenta }}</td>
-              <td>{{ $cuenta->v_tiposaldo }}</td-->
-              <td>                    
+              <td> 
+<?php
+$r=substr( $cuenta->v_codigocuenta,2);
+echo "$r"; 
+?>
+                  </td>              
+              <td>{{ $cuenta->v_nombrecuenta }} </td>
+             <td>                    
                 <a href="{{route('editarcatalogoactivo',$cuenta->id)}}" title="Actualizar" class="btn btn-success"><i class="fa fa-edit"></i></a>
                 <a class="btn btn-danger" data-toggle="modal" title="Deshabilitar" data-target="#cuenta_{{$cuenta->id}}">
                   <i class="fa fa-close"></i>
@@ -57,7 +60,7 @@
                     </div>
                   </div>
                 </div>
-              </td>                             
+              </td>                                                                
             </tr>
           @endforeach     
         </tbody>

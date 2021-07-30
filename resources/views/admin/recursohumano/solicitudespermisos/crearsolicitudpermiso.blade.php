@@ -33,12 +33,12 @@
 
         </div>
 
-         <div class="form-group">  
+         <!--div class="form-group">  
         {!! Form::label('exp', 'Expediente *',['class'=>'col-sm-4 control-label']) !!}
         <div class="col-sm-5">
           {!! Form::text('expediente',null,['class'=>'form-control pull-right','placeholder'=>'Expediente', 'readonly','id'=>'expediente','required']) !!}
         </div>
-      </div>
+      </div-->
 
 
         <div class="form-group">  

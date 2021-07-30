@@ -17,8 +17,7 @@ class TransaccionesbonoController extends Controller
 {
     public function index()
     {
- // $datos=Transaccionesbono::OrderBy('id','ASC')->with('transaccion_fondodisponible')->whereHas('transaccion_fondodisponible', function ($q){$q->where('estatus','like','ACTIVO');})->get();
-
+ 
  $ejercicio=Periodoactivo::where([['tipo_periodo','like','CONTABLE'],['estado','1']])->first();
  $fondoactivobono=Fondodisponible::where('estatus','like','ACTIVO')->first();
  $fondodisponible_id=Fondodisponible::where('estatus','like','ACTIVO')->pluck('descripcion','id');    
@@ -29,6 +28,7 @@ if(empty($ejercicio))//SI NO HAY FONDO ACTIVO
   }
 else{//SI HAY FONDO ACTIVO
   $datos=Transaccionesbono::OrderBy('id','ASC')->where('ciclocontable_id',$ejercicio->id)->get(); 
+
   return view('admin.bonoescolar.transacciones.historialtransacciones')->with('datos',$datos)->with('ejercicio',$ejercicio)->with('fondodisponible_id',$fondodisponible_id);
     }
     }

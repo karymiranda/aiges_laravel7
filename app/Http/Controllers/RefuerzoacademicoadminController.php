@@ -98,15 +98,21 @@ public function addrefuerzo($estudiante,$materia,$seccion,$periodo,$modulo)
 	$alumno=Expedienteestudiante::find($estudiante);
 	$periodoevaluado=Periodoevaluacion::find($periodo);
 	$asignatura=Asignaturas::where('asignatura',$materia)->first();
-$notaVerify = Notas::with('evaluacion')->whereHas('evaluacion',function($p){
+$notaVerifyy = Notas::with('evaluacion')->whereHas('evaluacion',function($p){
 $p->where('codigo_eval','RF');
 })->where('seccion_id', $seccion)
                 ->where('periodo_id', $periodo )
                 ->where('asignatura_id', $asignatura->id)
                 ->first();
+                $notaVerify = Notas::with('evaluacion')->whereHas('evaluacion',function($p){
+$p->where('codigo_eval','RF');
+})->where('seccion_id', $seccion)
+                ->where('periodo_id', $periodo )
+                ->where('asignatura_id', $asignatura->id)
+                ->count();
 $evalrefuerzo=EvaluacionesPeriodo::where('codigo_eval','RF')->first();//traigo los datos de la actividad refuerzo
 //dd(count($notaVerify));
-if(count($notaVerify)<=0)//No existe la nota
+if($notaVerify<=0)//No existe la nota
 {
 $nota=new Notas;
 $nid=$nota->id;
@@ -118,7 +124,7 @@ $nota->save();
 }
 else
 {
-$nid=$notaVerify->id;
+$nid=$notaVerifyy->id;
 }
 //dd($notaid);
 $calificacion=self::getNotesStudentsperiodo($estudiante,$seccion,$asignatura->id,$periodo);//saco el promedio del periodo

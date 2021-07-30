@@ -543,6 +543,8 @@ $this->cabecerabono($fpdf);
     {
     $id=$request->id;
     $datos=Transaccionesbono::OrderBy('id','ASC')->with('transaccion_fondodisponible')->whereHas('transaccion_fondodisponible', function ($q) use($id){$q->where('fondodisponible_id','=',$id);})->get();
+
+
     return response()->json($datos);
   }
 
@@ -3531,7 +3533,7 @@ function cabecerahorizontalAF($fpdf)
     $fpdf->Image('imagenes/recursosrpt/escudo.png',200,8,20);
     // Arial bold 15
     $fpdf->SetFont('Arial','',10); 
-     $fpdf->Cell(0, $this->height - 1, utf8_decode('ADMINISTRACION DE ACTIVO FIJO'), 0, 1, 'C');
+     $fpdf->Cell(0, $this->height - 1, utf8_decode('ADMINISTRACIÓN DE ACTIVO FIJO'), 0, 1, 'C');
     $fpdf->SetFont('Arial','B',10); 
     $fpdf->Cell(0, $this->height, utf8_decode($centro->v_nombrecentro), 0, 1, 'C');
    
@@ -3692,7 +3694,10 @@ $activos=$this->activosrpt($estado,$categoria);
    $this->cabecerahorizontalAF($fpdf);
    $fpdf->SetFont('Helvetica','B','12');
 $fpdf->Ln(5);
-$fpdf->Cell(0,$this->height,"LISTADO DE BIENES ".$anio,0,1,"C");
+$fpdf->Cell(0,$this->height,"FORMULARIO DE MOBILIARIO Y EQUIPO ",0,1,"C");
+$fpdf->SetFont('Helvetica','','10');
+$hoy=Carbon::now()->format('d/m/Y');
+$fpdf->Cell(0,$this->height,"Lugar y fecha: Apastepeque, ".$hoy,0,1,"C");
 $fpdf->Ln(5);
 $fpdf->SetFont('Helvetica','','8');
  $fpdf->SetFillColor(0,0,0);
@@ -3700,16 +3705,15 @@ $fpdf->SetFont('Helvetica','','8');
 
 $fpdf->Cell(7, $this->height,"No.", 1, 0, "C",1);
 //$fpdf->Cell(30, $this->height,"Clasificación", 1, 0, "C",1);
-$fpdf->Cell(35, $this->height,utf8_decode("Código"), 1, 0, "C",1);
+$fpdf->Cell(35, $this->height,utf8_decode("Inventario"), 1, 0, "C",1);
 $fpdf->Cell(53, $this->height,utf8_decode("Descripción"), 1, 0, "C",1);
-$fpdf->Cell(30, $this->height,utf8_decode("Fecha de adquisición"), 1, 0, "C",1);
-
-$fpdf->Cell(15, $this->height,"Valor", 1, 0, "C",1);
-//$fpdf->Cell(10, $this->height,utf8_decode("Vida útil"), 1, 0, "C",1);
-$fpdf->Cell(30, $this->height,utf8_decode("Número de Serie"), 1, 0, "C",1);
-$fpdf->Cell(20, $this->height,"Modelo", 1, 0, "C",1);
 $fpdf->Cell(20, $this->height,"Marca", 1, 0, "C",1);
-$fpdf->Cell(20, $this->height,utf8_decode("Traslado"), 1, 0, "C",1);
+$fpdf->Cell(20, $this->height,"Modelo", 1, 0, "C",1);
+$fpdf->Cell(30, $this->height,utf8_decode("Serie"), 1, 0, "C",1);
+$fpdf->Cell(30, $this->height,utf8_decode("Fecha de adquisición"), 1, 0, "C",1);
+$fpdf->Cell(15, $this->height,"Precio", 1, 0, "C",1);
+//$fpdf->Cell(10, $this->height,utf8_decode("Vida útil"), 1, 0, "C",1);
+$fpdf->Cell(20, $this->height,utf8_decode("Estado"), 1, 0, "C",1);
 $fpdf->Cell(30, $this->height,utf8_decode("Ubicación"), 1, 1, "C",1);
 
 
@@ -3723,14 +3727,28 @@ $fpdf->Cell(7,$this->height,$key+1,1,0,"C",1);
 //$fpdf->Cell(30,$this->height,$value->cuentacatalogo->v_nombrecuenta,1,0,"C",0);
 $fpdf->Cell(35,$this->height,$value->v_codigoactivo,1,0,"L",0);
 $fpdf->Cell(53,$this->height,$value->v_nombre,1,0,"L",0);
-$fpdf->Cell(30, $this->height,$value->f_fecha_adquisicion, 1, 0, "C",0);
+$fpdf->Cell(20,$this->height,utf8_decode($value->v_marca),1,0,"L",0);
+$fpdf->Cell(20,$this->height,utf8_decode($value->v_modelo),1,0,"L",0);
+$fpdf->Cell(30,$this->height,utf8_decode($value->v_serie),1,0,"L",0);
 
+
+$fecha = Carbon::createFromFormat('Y-m-d',$value->f_fecha_adquisicion)->format('d/m/Y');
+
+$fpdf->Cell(30, $this->height,$fecha, 1, 0, "C",0);
 $fpdf->Cell(15,$this->height,'$ '.number_format($value->d_valor,2),1,0,"C",0);
 //$fpdf->Cell(10,$this->height,utf8_decode($value->v_vidautil),1,0,"L",0);
-$fpdf->Cell(30,$this->height,utf8_decode($value->v_serie),1,0,"L",0);
-$fpdf->Cell(20,$this->height,utf8_decode($value->v_modelo),1,0,"L",0);
-$fpdf->Cell(20,$this->height,utf8_decode($value->v_marca),1,0,"L",0);
-$fpdf->Cell(20,$this->height,$value->v_trasladadoSN=='S'?'SI':'NO',1,0,"L",0);
+if($value->v_estado==1)
+  {$fpdf->Cell(20,$this->height,'Cargado',1,0,"L",0);}
+else if($value->v_estado==0)
+  {
+    if($value->v_trasladadoSN=='S')
+      { $fpdf->Cell(20,$this->height,'Trasladado',1,0,"L",0);}
+    else
+      {$fpdf->Cell(20,$this->height,'Descargado',1,0,"L",0);}
+   
+  }
+
+
 $fpdf->Cell(30,$this->height,$value->v_trasladadoSN=='S'?'---':utf8_decode($value->v_ubicacion),1,1,"L",0);
 
 }
@@ -4407,5 +4425,6 @@ $fpdf->SetXY(120,245);
 $fpdf->Cell(55, $this->height+3, "DIRECTOR CENTRO ESCOLAR", 0, 0, 'C');
 
 }
+
 
 }

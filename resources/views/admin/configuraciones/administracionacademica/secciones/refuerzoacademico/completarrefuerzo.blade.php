@@ -37,9 +37,9 @@ else
  <div class="col-sm-6 col-sm-offset-3">
         <table class="table table-bordered table-striped" >
           <thead align="center">
-            <th style="background-color: #49a6dc; color: white" >EVALUACION</th>
-            <th style="background-color: #49a6dc; color: white" >CALIFICACION</th> 
-             <th style="background-color: #49a6dc; color: white" >PONDERACION</th>      
+            <th style="background-color: #49a6dc; color: white" >EVALUACIÓN</th>
+            <th style="background-color: #49a6dc; color: white" >CALIFICACIÓN</th> 
+             <th style="background-color: #49a6dc; color: white" >PONDERACIÓN</th>      
           </thead>
           <tbody> 
          <?php $prom=0; ?>          	
