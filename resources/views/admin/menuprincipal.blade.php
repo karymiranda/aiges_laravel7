@@ -451,7 +451,7 @@ desired effect
           </a>
           <ul class="treeview-menu" style="display: none;">            
             <li><a href="{{route('activofijo')}}"><i class="fa  fa-sign-in"></i> Cargo de bienes</a></li>
-            <li><a href="{{route('prueba')}}"><i class="fa fa-download"></i> Descargo de bienes</a></li>
+            <li><a href="#"><i class="fa fa-download"></i> Descargo de bienes</a></li>
             <li><a href="{{route('listatraslado')}}"><i class="fa fa-truck"></i> Traslado de bienes</a></li>
 
 
