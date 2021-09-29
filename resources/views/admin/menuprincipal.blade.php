@@ -360,7 +360,7 @@ desired effect
          <ul class="treeview-menu" style="display: none;">
     <li><a href="{{route('listareportes/secciones')}}"><i class="fa fa-user"></i>Reportes por sección</a></li>
      <li><a href="{{route('listareportes/institucional')}}"><i class="fa fa-institution"></i>Reportes institucionales</a></li>
-     <li><a href="{{route('academicaconsultasadmin')}}"><i class="fa fa-database"></i>Busqueda avanzada</a></li>
+     <li><a href="{{route('academicaconsultasadmin')}}"><i class="fa fa-database"></i>Búsqueda avanzada</a></li>
         </ul>
       </li> 
 
@@ -451,7 +451,7 @@ desired effect
           </a>
           <ul class="treeview-menu" style="display: none;">            
             <li><a href="{{route('activofijo')}}"><i class="fa  fa-sign-in"></i> Cargo de bienes</a></li>
-            <li><a href="#"><i class="fa fa-download"></i> Descargo de bienes</a></li>
+            <li><a href="{{route('lista-solicitudes-descarga')}}"><i class="fa fa-download"></i> Descargo de bienes</a></li>
             <li><a href="{{route('listatraslado')}}"><i class="fa fa-truck"></i> Traslado de bienes</a></li>
 
 
@@ -462,16 +462,22 @@ desired effect
                 </span>
               </a>
               <ul class="treeview-menu" style="display: none;">
-  <li><a href="{{route('missecciones')}}"><i class="fa fa-hourglass-half"></i>Depreciación de bienes</a></li>                      
+  <li><a href="{{route('depreciacionactivos')}}"><i class="fa fa-hourglass-half"></i>Depreciación de bienes</a></li>
+  <li><a href="{{route('descargopendientedeaprobar')}}"><i class="fa fa-hourglass-half"></i>Aprobar solicitud descargo</a></li>                      
           </ul>
           </li>
 
-
-
-
-             <li>
-      <a href="{{route('reportesactivos_view')}}"><i class="fa fa-file-pdf-o"></i>Reportes</a>
-        </li> 
+<li class="treeview">
+              <a href="#"><i class="fa  fa-file-pdf-o"></i> Consultas y reportes
+                <span class="pull-right-container">
+                  <i class="fa fa-angle-left pull-right"></i>
+                </span>
+              </a>
+         <ul class="treeview-menu" style="display: none;">
+     <li><a href="{{route('formulariosAF')}}"><i class="fa fa-institution"></i>Reportes</a></li>
+     <li><a href="{{route('reportesactivos_view')}}"><i class="fa fa-database"></i>Búsqueda avanzada</a></li>
+        </ul>
+      </li> 
 
         
           </ul>

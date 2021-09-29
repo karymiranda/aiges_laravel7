@@ -23,8 +23,10 @@
           <th>CÓDIGO</th>
           <th>DESCRIPCIÓN</th> 
           <th>FECHA DE ADQUISICIÓN</th>
-          <th>VALOR ($)</th>                                   
-          <th>UBICACIÓN</th>
+          <th>VALOR DE ADQUISICIÓN($)</th>
+          <th>ASIGNADO A</th>
+          <th>ESTADO</th>                                   
+          
           <th>ACCIONES</th>
         </thead>
         <tbody>
@@ -33,25 +35,22 @@
             <td>{{ $activo->v_codigoactivo }}</td>
             <td>{{ $activo->v_nombre }}</td>
             <td>{{ $activo->f_fecha_adquisicion }}</td>
-            <td>{{ number_format($activo->d_valor,2) }}</td>
+            <td>$ {{ number_format($activo->d_valor,2) }}</td>
             <td>{{ $activo->v_ubicacion }}</td>
+            <td>{{ $activo->v_estadoaf }}</td>
             <td>                   
               <a href="{{ route('verdetalleactivofijo',$activo->id) }}" title="Ver" class="btn btn-primary" ><i class="fa fa-eye"></i></a>
-              <?php if ($activo->v_trasladadoSN=='N'){ ?>
+              <?php if ($activo->v_trasladadoSN=='N' && $activo->v_estadoaf=="EXISTENTE"){ ?>
                 <a href="{{ route('editaractivofijo',$activo->id) }}" title="Actualizar" class="btn btn-success"><i class="fa fa-edit"></i></a>
               <?php }else{ ?>
                 <a title="Actualizar" disabled='true' class="btn btn-success"><i class="fa fa-edit"></i></a>
               <?php } ?>
-              <?php if ($activo->v_trasladadoSN=='N'){ ?>
+              <?php if ($activo->v_trasladadoSN=='N'  && $activo->v_estadoaf=="EXISTENTE"){ ?>
                 <a href="{{route('creartrasladoactivo',$activo->id)}}" title="Trasladar" class="btn btn-warning"><i class="fa fa-truck"></i></a>
               <?php }else{ ?>
                 <a title="Trasladado" disabled='true' class="btn btn-warning"><i class="fa fa-truck"></i></a>
               <?php } ?>
-              <?php if ($activo->v_trasladadoSN=='N'){ ?>              
-                <a href="{{route('descargaractivo',$activo->id)}}" title="Descargar" class="btn btn-danger"><i class="fa fa-trash"></i></a>
-              <?php }else{ ?>
-                <a title="Descargar" disabled='true' class="btn btn-danger"><i class="fa fa-trash"></i></a>
-              <?php } ?>
+             
             </td>                   
           </tr>
           @endforeach

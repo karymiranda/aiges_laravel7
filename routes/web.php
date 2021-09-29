@@ -827,6 +827,9 @@ Route::group(['middleware'=>'ActivoFijoAdmin'], function(){
 Route::get('subirarchivoactivofijo', ['as' => 'subirarchivoactivofijo', 'uses' => 'ImportsController@subirarchivoactivofijo']);
 Route::post('subirarchivoAF','ImportsController@store')->name('store');
 
+
+Route::get("formulariosAF","ConsultasyreportesController@formulariosAF")->name("formulariosAF");
+
 //Activo fijo
 Route::get('gestionaractivofijo', ['as' => 'activofijo', 'uses' => 'GestionaractivofijoController@index']);
 Route::get('crearactivo', ['as' => 'crearactivofijo', 'uses' => 'GestionaractivofijoController@crearactivo']);
@@ -838,9 +841,35 @@ Route::put('actualizaractivo/{id}', ['as' => 'actualizaractivo', 'uses' => 'Gest
 Route::get('creartrasladoactivo/{id}', ['as' => 'creartrasladoactivo', 'uses' => 'GestionaractivofijoController@creartraslado']);
 Route::post('agregartraslado', ['as' => 'agregartraslado', 'uses' => 'GestionaractivofijoController@agregartraslado']);
 
-//descargo activos fijos
+//depreciacion activo fijo
+Route::get('verhistorialdepreciacion/{id}',[GestionaractivofijoController::class,'verhistorialdepreciacion'])->name('verhistorialdepreciacion');
+Route::get('registrarcalculo/{anio}',[GestionaractivofijoController::class,'registrarcalculo'])->name('registrarcalculo');
+Route::get('calculardepreciacion/{id}',[GestionaractivofijoController::class,'calculardepreciacion'])->name('calculardepreciacion');
+Route::get('depreciacionactivos',[GestionaractivofijoController::class,'depreciacionactivos'])->name('depreciacionactivos');
 
-Route::get('prueba',[GestionaractivofijoController::class,'AFdescargados']);
+//REPORTES ACTIVO FIJO
+Route::get('trasladosAF9/{id}',[ConsultasyreportesController::class,'trasladosAF9'])->name('trasladosAF9');
+
+Route::get('rptdepreciacionAF',[ConsultasyreportesController::class,'rptdepreciacionAF'])->name('rptdepreciacionAF');
+Route::get('imprimiretiqueta',[ConsultasyreportesController::class,'imprimiretiqueta'])->name('imprimiretiqueta');
+
+Route::get('imprimirsolicituddescarga/{id}',[ConsultasyreportesController::class,'imprimirsolicituddescarga'])->name('imprimirsolicituddescarga');
+Route::get('reporteF8/{desde}/{hasta}',[ConsultasyreportesController::class,'reporteF8'])->name('reporteF8');
+
+//descargo activos fijos
+Route::post('guardaractadeaprobacion',[GestionaractivofijoController::class,'guardaractadeaprobacion'])->name('guardaractadeaprobacion');
+Route::post('negaractadeaprobacion',[GestionaractivofijoController::class,'negaractadeaprobacion'])->name('negaractadeaprobacion');
+Route::get('subiractadeaprobacion/{id}',[GestionaractivofijoController::class,'subiractadeaprobacion'])->name('subiractadeaprobacion');
+Route::post('agregaritemsolicituddescarga',[GestionaractivofijoController::class,'agregaritemsolicituddescarga'])->name('agregaritemsolicituddescarga');
+Route::post('eliminaritemsolicituddescarga',[GestionaractivofijoController::class,'eliminaritemsolicituddescarga'])->name('eliminaritemsolicituddescarga');
+Route::get('editarsolicituddescargo/{id}',[GestionaractivofijoController::class,'editarsolicituddescargo'])->name('editarsolicituddescargo');
+Route::get('versolicituddescargo/{id}/{origen}',[GestionaractivofijoController::class,'versolicituddescargo'])->name('versolicituddescargo');
+Route::post('guardarsolicituddescargo',[GestionaractivofijoController::class,'guardarsolicituddescargo'])->name('guardarsolicitusdescargo');
+Route::get('descargopendientedeaprobar',[GestionaractivofijoController::class,'descargopendientedeaprobar'])->name('descargopendientedeaprobar');
+Route::get('listasolicitudesdescarga',[GestionaractivofijoController::class,'listasolicitudesdescarga'])->name('lista-solicitudes-descarga');
+Route::get('crearsolicituddescarga',[GestionaractivofijoController::class,'crearsolicituddescarga'])->name('crearsolicituddescarga');
+Route::get('listaactivos',[GestionaractivofijoController::class,'listaactivos'])->name('listaactivos');
+
 
 Route::get('descargaractivo/{id}', ['as' => 'descargaractivo', 'uses' => 'GestionaractivofijoController@descargaractivo']);
 Route::post('guardardescargo', ['as' => 'guardardescargo', 'uses' => 'GestionaractivofijoController@guardardescargo']);
@@ -1074,7 +1103,6 @@ Route::get("/reportes", function (Codedge\Fpdf\Fpdf\Fpdf $fpdf) {
 /*Route::get('test', function() {
     Storage::disk('google')->put('test.txt', 'Hello World');
 });*/
-
 
 Route::get('respaldodb', 'DBController@respaldo')->name('respaldo');
 Route::get('restaurardb/{archivo}', 'DBController@restaurardb')->name('restaurardb');

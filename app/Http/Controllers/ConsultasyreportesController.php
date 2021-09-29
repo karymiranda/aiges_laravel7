@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\ActivoFijo;
+use App\TipoDescargoActivo;
+use App\DescargosActivo;
 use App\TrasladosActivo;
 use App\Catalogodecuenta;
 use App\Permiso;
@@ -1478,10 +1480,34 @@ return view('admin.consultasyreportes.academica.nominadeestudiantes_pdf')->with(
 
   public function footer($fpdf)
 {
-      $fpdf->SetFont('Courier','',8);
+$fpdf->setY(-30);
+date_default_timezone_set('America/El_Salvador');
+$fecha=Carbon::now();
+$fpdf->Write(5,date('d-M-y H:i:s', strtotime($fecha)));
+$fpdf->setY(-30);
+$fpdf->setX(180);
+$fpdf->AliasNbPages();
+$fpdf->Write(5,utf8_decode("Página ") . $fpdf->PageNo() ." de ". '{nb}');
+/*      $fpdf->SetFont('Courier','',8);
     $fpdf->SetY(-20);    
-    $fpdf->Write(0,'Pag.# '.$fpdf->PageNo(),0,0,'R');
+    $fpdf->Write(0,'Pag.# '.$fpdf->PageNo(),0,0,'R');*/
 }
+
+public function footerhorizontalAF($fpdf)
+{
+$fpdf->setY(-30);
+date_default_timezone_set('America/El_Salvador');
+$fecha=Carbon::now();
+$fpdf->Write(5,date('d-M-y H:i:s', strtotime($fecha)));
+$fpdf->setY(-30);
+$fpdf->setX(240);
+$fpdf->AliasNbPages();
+$fpdf->Write(5,utf8_decode("Página ") . $fpdf->PageNo() ." de ". '{nb}');
+/*      $fpdf->SetFont('Courier','',8);
+    $fpdf->SetY(-20);    
+    $fpdf->Write(0,'Pag.# '.$fpdf->PageNo(),0,0,'R');*/
+}
+
 
 public function footerfirmashorizontal($fpdf,$director,$asesor)
   {
@@ -2410,7 +2436,7 @@ public function listareportesmodulodocentes()
 $listasecciones=$this->secciones_docente()->pluck('grado','id');
 $aniolectivo=Periodoactivo::periodoescolar()->get();
 $aniolectivoactivo=$aniolectivo->pluck('anio','id');
-dd($aniolectivo);
+
 $periodos = Periodoevaluacion::where('estado', 1)->get();//para el preporte boleta de notas
 $asignaturas = Asignaturas::where('estado', 1)->get();
 return view('admin.personaldocente.reportesmodulodocentes.listareportesmodulodocentes')->with('periodos',$periodos)->with('listasecciones',$listasecciones)->with('aniolectivoactivo',$aniolectivoactivo)->with('asignaturas',$asignaturas);
@@ -3509,6 +3535,9 @@ $response->header('Content-Type','application/pdf');
 return $response;
 }
 
+
+
+
 function cabecerahorizontalrrhh($fpdf)
 {
     $centro = InfoCentroEducativo::first();
@@ -3532,16 +3561,18 @@ function cabecerahorizontalAF($fpdf)
     $fpdf->Image('imagenes/recursosrpt/escudoce.jpg',60,8,20);
     $fpdf->Image('imagenes/recursosrpt/escudo.png',200,8,20);
     // Arial bold 15
-    $fpdf->SetFont('Arial','',10); 
+    $fpdf->SetFont('Helvetica','',12); 
      $fpdf->Cell(0, $this->height - 1, utf8_decode('ADMINISTRACIÓN DE ACTIVO FIJO'), 0, 1, 'C');
-    $fpdf->SetFont('Arial','B',10); 
+    $fpdf->SetFont('Helvetica','B',10); 
     $fpdf->Cell(0, $this->height, utf8_decode($centro->v_nombrecentro), 0, 1, 'C');
    
-    $fpdf->SetFont('Arial','I',10);
+    $fpdf->SetFont('Helvetica','',10);
     $fpdf->Cell(0, $this->height-2, utf8_decode($centro->v_direccion), 0, 1, 'C');    
     $fpdf->Cell(0, $this->height-2, utf8_decode('Teléfono '.$centro->v_telefono.' E-mail: '.$centro->correo_electronico), 0, 1, 'C');
     $fpdf->Cell(0, $this->height, '', 'B', 1, 'C');
 }
+
+
 
 public function listadoconsultasyreportes()
 {
@@ -3610,6 +3641,435 @@ $response->header('Content-Type','application/pdf');
 return $response;
 }
 
+public function formulariosAF()
+{
+  $solicitudes=DescargosActivo::orderBy('numsolicitud')->get();
+  $traslados=TrasladosActivo::where('v_estado',1)->get();
+ return view('admin.activofijo.reportes.formulariosAF.formulariosAF',compact('solicitudes','traslados'));
+}
+
+public function imprimirsolicituddescarga($id)
+{
+$fpdf=new Fpdf("L","mm","Letter");
+$fpdf->AddPage();
+$fpdf->SetFont('Helvetica','','12');
+$fpdf->Image('logoce.jpg',10,4,20);
+    $fpdf->Image('EscudoDeElSalvador.jpg',240,6,25);
+$fpdf->Ln(4);
+$fpdf->Cell(0,$this->height,utf8_decode("Administración de Activo Fijo"),0,1,"C");
+$fpdf->SetFont('Helvetica','B','12');
+$fpdf->Cell(0,$this->height,utf8_decode("FORMULARIO DE DESCARGO DE MOBILIARIO Y EQUIPO AF-10"),0,1,"C");
+$fpdf->Ln(10);
+$this->encabezadodescargoAF($fpdf);
+
+$solicitud=DescargosActivo::find($id);
+$res=DescargosActivo::orderBy('f_fechasolicitud')->with('descargo_detalle')->withCount(['descargo_detalle'=> function($q) use ($id){
+  $q->where('tb_detallesolicituddescargo_activofijo.solicitud_id','=',$id); }])->where('id',$id)->get();
+$motivo=TipoDescargoActivo::all()->pluck('v_descripcion','id');
+ 
+$fpdf->Ln(5);
+ $fpdf->SetFillColor(210);
+ $fpdf->SetFont('Arial','',9);
+ $fpdf->Cell(70,$this->height,"Solicitud No.",1,0,'L',1);
+ $fpdf->Cell(55,$this->height,$solicitud->numsolicitud,1,0,'C',0);
+ $fpdf->Cell(70,$this->height,"Fecha de solicitud",1,0,'L',1);
+ $datecompra = date_create($solicitud->f_fechasolicitud);
+ $fpdf->Cell(0,$this->height,date_format($datecompra,"d/m/Y"),1,1,'C',0);
+ $fpdf->Cell(70,$this->height,utf8_decode("Fecha de Aprobación"),1,0,'L',1);
+ if($solicitud->f_fechaaprobacion!=null){
+ $dateapro = date_create($solicitud->f_fechaaprobacion);
+ $fpdf->Cell(55,$this->height,date_format($dateapro,"d/m/Y"),1,0,'C',0);
+}
+else{$fpdf->Cell(55,$this->height," - ",1,0,'C',0);}
+ $fpdf->Cell(70,$this->height,"Estado de solicitud",1,0,'L',1);
+ $fpdf->Cell(0,$this->height,$solicitud->estado,1,1,'C',0);
+ $fpdf->Cell(70,$this->height,"Observaciones",1,0,'L',1);
+ $fpdf->Cell(0,$this->height,$solicitud->observaciones,1,1,'C',0);
+  
+$fpdf->Ln(5);
+$fpdf->Cell(10, $this->height,"No.", 1, 0, "C",1);
+$fpdf->Cell(30, $this->height,"Tipo de descargo", 1, 0, "C",1);
+$fpdf->Cell(35, $this->height,utf8_decode("Código de inventario"), 1, 0, "C",1);
+$fpdf->Cell(75, $this->height,utf8_decode("Caracteristicas (Marca - Modelo - Serie)"), 1, 0, "C",1);
+$fpdf->Cell(35, $this->height,utf8_decode("Fecha de adquisición"), 1, 0, "C",1);
+$fpdf->Cell(20, $this->height,utf8_decode("Cantidad"), 1, 0, "C",1);
+$fpdf->Cell(30, $this->height,utf8_decode("Valor unitario $"), 1, 0, "C",1);
+$fpdf->Cell(25, $this->height,utf8_decode("Valor total $"), 1, 1, "C",1);
+
+ $sum=0;  
+         foreach($res as $value)
+         {
+          foreach($value->descargo_detalle as $key=>  $item)
+            {
+
+$fpdf->Cell(10, $this->height,$key+1, 1, 0, "C",0);
+$fpdf->Cell(30, $this->height,utf8_decode($motivo[$item->pivot->tipodescargo_id]), 1, 0, "C",0);
+$fpdf->Cell(35, $this->height,$item->v_codigoactivo, 1, 0, "C",0);
+$fpdf->Cell(75, $this->height,utf8_decode($item->v_nombre )." / ".$item->v_serie, 1, 0, "C",0);
+$date = date_create($item->f_fecha_adquisicion);
+$fpdf->Cell(35, $this->height,date_format($date,"d/m/Y"), 1, 0, "C",0);
+$fpdf->Cell(20, $this->height,"1", 1, 0, "C",0);
+$fpdf->Cell(30, $this->height,number_format($item->d_valor,2), 1, 0, "C",0);
+$fpdf->Cell(0, $this->height,number_format($item->d_valor,2), 1, 1, "C",0);
+$sum=$sum+$item->d_valor;
+
+            }
+      }
+
+$fpdf->Cell(235, $this->height,"Monto Total $", 1, 0, "R",1);
+$fpdf->Cell(25, $this->height,number_format($sum,2), 1, 1, "C",1);
+$this->footerAF($fpdf);
+$response=response($fpdf->Output("s"));
+$response->header('Content-Type','application/pdf');
+return $response;
+}
+
+
+public function cabeceraverticalAF($fpdf)
+{
+$centro = InfoCentroEducativo::first();
+$fpdf->SetFont('Helvetica','','12');
+$fpdf->Image('logoce.jpg',10,4,20);
+$fpdf->Image('EscudoDeElSalvador.jpg',180,6,25);
+$fpdf->Cell(0, $this->height - 1, utf8_decode('ADMINISTRACIÓN DE ACTIVO FIJO'), 0, 1, 'C');
+$fpdf->SetFont('Helvetica','B',10); 
+$fpdf->Cell(0, $this->height, utf8_decode($centro->v_nombrecentro), 0, 1, 'C');
+$fpdf->SetFont('Helvetica','',10);
+$fpdf->Cell(0, $this->height-2, utf8_decode($centro->v_direccion), 0, 1, 'C');    
+$fpdf->Cell(0, $this->height-2, utf8_decode('Teléfono '.$centro->v_telefono.' E-mail: '.$centro->correo_electronico), 0, 1, 'C');
+$fpdf->Cell(0, $this->height, '', 'B', 1, 'C');
+
+}
+
+public function imprimiretiqueta()
+{
+$fpdf=new Fpdf("L","mm","Letter");
+$fpdf->AddPage();
+$fpdf->SetFont('Helvetica','','12');
+$fpdf->SetFillColor(210);
+$this->cabecerahorizontalAF($fpdf);
+$fpdf->ln(5);
+$fpdf->SetFont('Helvetica','B','12');
+$fpdf->Cell(0,$this->height,utf8_decode("IMPRESIÓN DE CODIFICACIÓN ACTIVO FIJO"),0,1,"C");
+
+$activos=ActivoFijo::where('v_estadoaf','like','EXISTENTE')->get();
+$fpdf->SetFont('Helvetica','','12');
+$fpdf->ln(5);
+$fpdf->Cell(50, $this->height,utf8_decode("Código activo"), 1, 0, "",1);
+$fpdf->Cell(120, $this->height,utf8_decode("Descripción"), 1, 0, "",1);
+$fpdf->Cell(0, $this->height,utf8_decode("Número de serie"), 1, 1, "",1); 
+foreach ($activos as $key => $value)
+ {
+$fpdf->Cell(50, $this->height,$value->v_codigoactivo, 1, 0, "",0);
+$fpdf->Cell(120, $this->height,utf8_decode($value->v_nombre), 1, 0, "",0);
+$fpdf->Cell(0, $this->height,$value->v_serie, 1, 1, "",0);
+}
+$fpdf->SetFont('Helvetica','','10');
+
+$this->footerhorizontalAF($fpdf);
+
+$response=response($fpdf->Output("s"));
+$response->header('Content-Type','application/pdf');
+return $response;
+}
+
+public function trasladosAF9($id)
+{
+
+$fpdf=new Fpdf("L","mm","Letter");
+$fpdf->AddPage();
+$fpdf->SetFont('Helvetica','','12');
+$fpdf->Image('logoce.jpg',10,4,20);
+$fpdf->Image('EscudoDeElSalvador.jpg',240,6,25);
+$fpdf->Ln(4);
+$fpdf->Cell(0,$this->height,utf8_decode("Administración de Activo Fijo"),0,1,"C");
+$fpdf->SetFont('Helvetica','B','12');
+$fpdf->Cell(0,$this->height,utf8_decode("CENTRO ESCOLAR CATÓLICO SANTA MARÍA DEL CAMINO"),0,1,"C");
+$fpdf->SetFont('Helvetica','','10');
+
+$traslados=TrasladosActivo::with('activofijo')->where('id',$id)->first();
+
+ $fpdf->ln(5);
+ $fpdf->Cell(30, $this->height + 1, 'Procedencia: ', 0, 0, 'L');
+ $fpdf->Cell(100, $this->height,utf8_decode($traslados->procedencia->v_nombrecentro), 'B',0,'C');
+ $fpdf->Cell(30, $this->height, utf8_decode('Código:'), 0, 0,'R');
+ $fpdf->Cell(20, $this->height, $traslados->procedencia->v_codigoinfraestructura,'B',0,'C');
+
+ $fpdf->Cell(60, $this->height + 1, utf8_decode('Reparación'), 0, 0, 'R');
+  $fpdf->Cell(0, $this->height + 1, ($traslados->tipotraslado->id==3)?"x":"", 0, 1, 'C');
+
+
+ $fpdf->Cell(30, $this->height + 1, 'Destino: ', 0, 0, 'L');
+ $fpdf->Cell(100, $this->height,utf8_decode($traslados->destino->nombre_institucion), 'B',0,'C');
+ $fpdf->Cell(30, $this->height, utf8_decode('Código:'), 0, 0,'R');
+ $fpdf->Cell(20, $this->height,utf8_decode($traslados->destino->codigo_institucion),'B',0,'C');
+
+//if($traslados->tipotraslado->id==1){}
+ $fpdf->Cell(60, $this->height + 1, utf8_decode('Préstamo'), 0, 0, 'R');
+  $fpdf->Cell(0, $this->height + 1,($traslados->tipotraslado->id==1)?"x":"", 0, 1, 'C');
+
+$fpdf->Cell(180, $this->height + 1, "", 0, 0, 'L');
+ $fpdf->Cell(60, $this->height + 1, utf8_decode('Traslado definitivo'), 0, 0, 'R');
+  $fpdf->Cell(0, $this->height + 1, ($traslados->tipotraslado->id==2)?"x":"", 0, 1, 'C');
+
+
+$fpdf->ln(5);
+$fpdf->SetFont('Helvetica','B','12');
+$fpdf->Cell(0,$this->height,utf8_decode("REPORTE DE TRASLADO DE BIENES"),0,1,"C");
+
+$fpdf->SetFont('Helvetica','','10');
+ $fpdf->Cell(35, $this->height + 1, 'Fecha de solicitud: ', 0, 0, 'L');
+ $fpdf->Cell(40, $this->height,$traslados->f_fechatraslado, 'B',0,'L');
+ $fpdf->Cell(165,  $this->height, "",'',0,'C');
+  $fpdf->Cell(0, $this->height, "AF-9",0,1,'C');
+
+ $fpdf->Cell(35, $this->height + 1, 'Observaciones: ', 0, 0, 'L');
+ $fpdf->Cell(220, $this->height,utf8_decode($traslados->v_observaciones), 'B',1,'L');
+ //$fpdf->Cell(20, $this->height, utf8_decode('Lugar y fecha'), 0, 0,'L');
+ 
+$fpdf->ln(5);
+
+$fpdf->SetFillColor(210);
+$fpdf->Cell(15, $this->height,"No.", 1, 0, "C",1);
+$fpdf->Cell(50, $this->height,utf8_decode("Código de inventario"), 1, 0, "C",1);
+$fpdf->Cell(90, $this->height,utf8_decode("Descripción"), 1, 0, "C",1);
+$fpdf->Cell(50, $this->height,utf8_decode("Marca"), 1, 0, "C",1);
+$fpdf->Cell(50, $this->height,utf8_decode("Serie"), 1, 1, "C",1);
+
+$fpdf->Cell(15, $this->height,1, 1, 0, "C",0);
+$fpdf->Cell(50, $this->height,utf8_decode($traslados->activofijo->v_codigoactivo), 1, 0, "C",0);
+$fpdf->Cell(90, $this->height,utf8_decode($traslados->activofijo->v_nombre), 1, 0, "C",0);
+$fpdf->Cell(50, $this->height,utf8_decode($traslados->activofijo->v_marca), 1, 0, "C",0);
+$fpdf->Cell(50, $this->height,utf8_decode($traslados->activofijo->v_serie), 1, 1, "C",0);
+
+
+$fpdf->SetFont('Helvetica','','8');
+$this->footertrasladosAF($fpdf);
+$this->footerhorizontal($fpdf);
+$response=response($fpdf->Output("s"));
+$response->header('Content-Type','application/pdf');
+return $response;
+}
+
+public function footerhorizontal($fpdf)
+{
+$fpdf->setY(-30);
+date_default_timezone_set('America/El_Salvador');
+$fecha=Carbon::now();
+$fpdf->Write(5,date('d-M-y H:i:s', strtotime($fecha)));
+$fpdf->setY(-30);
+$fpdf->setX(240);
+$fpdf->AliasNbPages();
+$fpdf->Write(5,utf8_decode("Página ") . $fpdf->PageNo() ." de ". '{nb}');
+/*      $fpdf->SetFont('Courier','',8);
+    $fpdf->SetY(-20);    
+    $fpdf->Write(0,'Pag.# '.$fpdf->PageNo(),0,0,'R');*/
+}
+
+public function footertrasladosAF($fpdf)
+  {
+    $fpdf->Ln(10);
+
+  $fpdf->SetFont('Helvetica','B','8');
+  $fpdf->Cell(70, $this->height, "Encargado de la Unidad que Autoriza el Traslado", 0, 0, 'C');
+  $fpdf->Cell(115, $this->height, "Encargado o Persona que Recive", 0, 0, 'C');
+  $fpdf->Cell(0, $this->height, "Unidad de Activo Fijo Central o Departamental", 0, 1, 'C');
+
+  $fpdf->Ln(5);
+  $fpdf->SetFont('Helvetica','','8');
+  $fpdf->Cell(70, $this->height, "Firma y Sello_____________________________", 0, 0, 'C');
+  $fpdf->Cell(115, $this->height, "Firma y Sello_____________________________", 0, 0, 'C');
+  $fpdf->Cell(0, $this->height, "Firma y Sello_____________________________", 0, 1, 'C');
+  $fpdf->Cell(70, $this->height, "Nombre        _____________________________", 0, 0, 'C');
+  $fpdf->Cell(115, $this->height, "Nombre        _____________________________", 0, 0, 'C');
+  $fpdf->Cell(0, $this->height, "Nombre         _____________________________", 0, 1, 'C');
+
+     }
+
+
+public function rptdepreciacionAF()
+{
+$fpdf=new Fpdf("P","mm","Letter");
+$fpdf->AddPage();
+//$fpdf->SetAutoPageBreak(true, 30);
+$this->cabeceraverticalAF($fpdf);
+$fpdf->ln(5);
+$fpdf->SetFont('Helvetica','B','10');
+$fpdf->Cell(0,$this->height,utf8_decode("HISTORIAL DEPRECIACIÓN ACTIVO FIJO"),0,1,"C");
+$fecha=Carbon::now();
+$fpdf->SetFont('Helvetica','','10');
+$fpdf->Cell(0,$this->height,utf8_decode("A la fecha: ".date('d-M-y', strtotime($fecha))),0,1,"C");
+
+
+$historial=array();
+$activos=ActivoFijo::where('v_estadoaf','like','EXISTENTE')->get();
+  foreach ($activos as $activo) 
+  {
+$cod=$activo->id; 
+$historial[$activo->id]=ActivoFijo::with(['activo_depreciacion'=>function ($q) use ($cod){
+$q->where('tb_depreciacionanual.activofijo_id','=',$cod);
+}])->where([['v_estadoaf','like','EXISTENTE'],['id',$cod]])->first();
+  }
+
+
+foreach($historial as  $key => $depreciacion)
+{
+
+$fpdf->Ln(5);
+$fpdf->SetFillColor(210);
+$fpdf->SetFont('Helvetica','',8);
+$fpdf->Cell(35, $this->height,utf8_decode("Código activo"), 1, 0, "",1);
+$fpdf->Cell(75, $this->height,utf8_decode($depreciacion->v_codigoactivo), 1, 1, "",0);
+
+$fpdf->Cell(35, $this->height,utf8_decode("Descripción"), 1, 0, "",1);
+$fpdf->Cell(75, $this->height,utf8_decode($depreciacion->v_nombre), 1, 1, "",0);
+
+$fpdf->Cell(35, $this->height,utf8_decode("Fecha de adquisición"), 1, 0, "",1);
+$fpdf->Cell(75, $this->height,date('d-M-y', strtotime($depreciacion->f_fecha_adquisicion)), 1, 1, "",0);
+
+$fpdf->Cell(35, $this->height,utf8_decode("Valor de adquisición"), 1, 0, "",1);
+$fpdf->Cell(75, $this->height,"$ " . number_format($depreciacion->d_valor,2), 1, 1, "",0);
+
+$fpdf->Cell(35, $this->height,utf8_decode("Valor de recuperación"), 1, 0, "",1);
+$fpdf->Cell(75, $this->height,"$ " . number_format($depreciacion->d_valorrecuperacion,2), 1, 1, "",0);
+
+$fpdf->Cell(35, $this->height,utf8_decode("Vida útil"), 1, 0, "",1);
+$fpdf->Cell(75, $this->height,$depreciacion->v_vidautil . utf8_decode(" años"), 1, 1, "",0);
+
+$fpdf->Ln(5);
+$fpdf->SetFillColor(210);
+$fpdf->Cell(10, $this->height,"No.", 1, 0, "C",1);
+$fpdf->Cell(25, $this->height,utf8_decode("Periodo"), 1, 0, "C",1);
+$fpdf->Cell(25, $this->height,utf8_decode("Fecha"), 1, 0, "C",1);
+$fpdf->Cell(50, $this->height,utf8_decode("Depreciación anual"), 1, 0, "C",1);
+$fpdf->Cell(50, $this->height,utf8_decode("Depreciación acumulada"), 1, 0, "C",1);
+$fpdf->Cell(33, $this->height,utf8_decode("Valor en libros"), 1, 1, "C",1);
+
+
+ foreach ($depreciacion->activo_depreciacion as $key => $value) 
+{
+$fpdf->Cell(10, $this->height,$key+1, 1, 0, "",0);
+$fpdf->Cell(25, $this->height,$value->anio, 1, 0, "",0);
+$fpdf->Cell(25, $this->height,date('d-M-y', strtotime($value->f_fechamovimiento)), 1, 0, "",0);
+$fpdf->Cell(50, $this->height,"$ ". number_format($value->d_depreciacionanual,2), 1, 0, "C",0);
+$fpdf->Cell(50, $this->height,"$ ". number_format($value->d_depreciacionacumulada,2), 1, 0, "C",0);
+$fpdf->Cell(33, $this->height,"$ ". number_format($value->d_valoenlibros,2), 1, 1, "C",0);
+}
+$fpdf->Ln(5);
+
+}
+
+$this->footer($fpdf);
+$response=response($fpdf->Output("s"));
+$response->header('Content-Type','application/pdf');
+return $response;
+}
+
+
+
+public function reporteF8($desde,$hasta)
+{
+
+$fpdf=new Fpdf("L","mm","Letter");
+$fpdf->AddPage();
+$fpdf->SetFont('Helvetica','','12');
+$fpdf->Image('logoce.jpg',10,4,20);
+$fpdf->Image('EscudoDeElSalvador.jpg',240,6,25);
+$fpdf->Ln(4);
+$fpdf->Cell(0,$this->height,utf8_decode("Administración de Activo Fijo"),0,1,"C");
+$fpdf->SetFont('Helvetica','B','12');
+$fpdf->Cell(0,$this->height,utf8_decode("FORMULARIO DE MOBILIARIO Y EQUIPO"),0,1,"C");
+$fpdf->SetFont('Helvetica','','10');
+$desde=date_create($desde);
+$hasta=date_create($hasta);
+$fpdf->Cell(0,$this->height,utf8_decode("Inventario del ").date_format($desde,"d/m/Y")." hasta ".date_format($hasta,"d/m/Y"),0,1,"C");
+$fpdf->Ln(5);
+$this->encabezadodescargoAF($fpdf);
+
+$fpdf->Ln(5);
+$fpdf->SetFillColor(210);
+ $fpdf->SetFont('Helvetica','',8);
+$fpdf->Cell(10, $this->height,"No.", 1, 0, "C",1);
+$fpdf->Cell(30, $this->height,utf8_decode("Código de inventario"), 1, 0, "C",1);
+$fpdf->Cell(55, $this->height,utf8_decode("Descripción"), 1, 0, "C",1);
+$fpdf->Cell(20, $this->height,utf8_decode("Marca"), 1, 0, "C",1);
+$fpdf->Cell(20, $this->height,utf8_decode("Modelo"), 1, 0, "C",1);
+$fpdf->Cell(20, $this->height,utf8_decode("Serie"), 1, 0, "C",1);
+$fpdf->Cell(35, $this->height,utf8_decode("Fecha de adquisición"), 1, 0, "C",1);
+$fpdf->Cell(20, $this->height,utf8_decode("Valor $"), 1, 0, "C",1);
+$fpdf->Cell(25, $this->height,utf8_decode("Calidad"), 1, 0, "C",1);
+$fpdf->Cell(25, $this->height,utf8_decode("Asignado a"), 1, 1, "C",1);
+
+$activos=ActivoFijo::where('v_estadoaf','like','EXISTENTE')->whereBetween('f_fecha_adquisicion',[$desde,$hasta])->get();
+ $fpdf->SetFont('Helvetica','',6);
+ foreach($activos as $key =>  $item)
+            {
+$fpdf->Cell(10, $this->height,$key+1, 1, 0, "C",0);
+$fpdf->Cell(30, $this->height,$item->v_codigoactivo, 1, 0, "C",0);
+$fpdf->Cell(55, $this->height,utf8_decode($item->v_nombre), 1, 0, "",0);
+$fpdf->Cell(20, $this->height,utf8_decode($item->v_marca), 1, 0, "",0);
+$fpdf->Cell(20, $this->height,utf8_decode($item->v_modelo), 1, 0, "",0);
+$fpdf->Cell(20, $this->height,$item->v_serie, 1, 0, "",0);
+$date = date_create($item->f_fecha_adquisicion);
+$fpdf->Cell(35, $this->height,date_format($date,"d-m-Y"), 1, 0, "C",0);
+$fpdf->Cell(20, $this->height,number_format($item->d_valor,2), 1, 0, "C",0);
+$fpdf->Cell(25, $this->height,$item->v_condicionactivo, 1, 0, "C",0);
+$fpdf->MultiCell(0, $this->height,utf8_decode($item->v_ubicacion), 1, 1, "",0);            }
+$this->footerhorizontal($fpdf);
+$response=response($fpdf->Output("s"));
+$response->header('Content-Type','application/pdf');
+return $response;
+}
+
+
+public function encabezadodescargoAF($fpdf)
+{
+$centro = InfoCentroEducativo::first();
+if($centro!=null){
+$fpdf->SetFont('Arial','', 10);
+    $fpdf->Cell(50, $this->height + 1, 'Nombre del Centro Educativo ', 0, 0, 'R');
+    $fpdf->Cell(120, $this->height, utf8_decode($centro->v_nombrecentro), 'B',0,'C');
+    $fpdf->Cell(45, $this->height, utf8_decode('Código de infraestructura'), 0, 0,'R');
+    $fpdf->Cell(0, $this->height, $centro->v_codigoinfraestructura,'B',1,'C');
+     $fpdf->Cell(20, $this->height,utf8_decode('Teléfono:'),0,0,'R');
+    $fpdf->Cell(45, $this->height, $centro->v_telefono,'B',0,'C');
+    $fpdf->Cell(30, $this->height,utf8_decode("Dirección:"),0,0, 'R');
+     $fpdf->Cell(0, $this->height, utf8_decode($centro->v_direccion),'B',1,'C');
+     $fpdf->Cell(20, $this->height, utf8_decode("Municipio:"),0,0,'R');
+     $fpdf->Cell(45, $this->height, "Apastepeque",'B',0,'C');
+     $fpdf->Cell(30, $this->height, "Departamento:", 0,0, 'R');
+     $fpdf->Cell(45, $this->height, "San Vicente",'B',0,'C'); 
+     $fpdf->Cell(0, $this->height, " ",0,1,'R'); 
+}
+}
+
+
+  public function footerAF($fpdf)
+  {
+    $fpdf->Ln(5);
+    $fpdf->SetFont('Arial','', 10);
+    $fpdf->Cell(95, $this->height, "F._____________________________________", 0, 0, 'C');
+    $fpdf->Cell(84);
+    $fpdf->Cell(85, $this->height, "F._____________________________________", 0, 1, 'C');
+    
+    $fpdf->Cell(95, $this->height, "", 0, 0, 'C');
+    $fpdf->Cell(84);
+    $fpdf->Cell(90, $this->height, "", 0, 1, 'C');
+    
+    $fpdf->Cell(95, $this->height, "  Director del Centro Escolar", 0, 0, 'C');
+    $fpdf->Cell(84);
+   $fpdf->Cell(90, $this->height, " Encargado de Activo Fijo", 0, 0, 'C');
+
+   $fpdf->Ln(5);
+    $fpdf->SetFont('Arial','', 10);
+    //$fpdf->Cell(270, $this->height, "F._____________________________________", 0, 0, 'C');
+   
+    //$fpdf->Cell(95, $this->height, "", 0, 0, 'C');
+    //$fpdf->Cell(84);
+    //$fpdf->Cell(90, $this->height, "", 0, 1, 'C');    
+    //$fpdf->Cell(270, $this->height, " Encargado de Activo Fijo", 0, 0, 'C');
+     }
+
 
 public function listareportesactivofijo()
 {
@@ -3637,24 +4097,24 @@ public function activosrpt($estado,$categoria)
   case '1'://activos
   if($categoria==null)
       {//buscare todos los activos
-  $activos = ActivoFijo::orderBy('v_codigoactivo','desc')->where('v_estado',1)->get();
+  $activos = ActivoFijo::orderBy('v_codigoactivo','desc')->where('v_estadoaf','like','EXISTENTE')->get();
       }
       else
       {
     //buscaremos activos de una sola categoria
-    $activos = ActivoFijo::orderBy('v_codigoactivo','desc')->whereHas('cuentacatalogo', function ($q) use($categoria){$q->where([['v_codigocuenta','LIKE',$categoria.'%'],['v_nivel',4]]);})->where('v_estado',1)->get();
+    $activos = ActivoFijo::orderBy('v_codigoactivo','desc')->whereHas('cuentacatalogo', function ($q) use($categoria){$q->where([['v_codigocuenta','LIKE',$categoria.'%'],['v_nivel',4]]);})->where('v_estadoaf','like','EXISTENTE')->get();
       }
   break;
   
   case '2'://inactivos
     if($categoria==null)
       {//buscare todos los activos
-     $activos = ActivoFijo::orderBy('v_codigoactivo','desc')->where('v_estado',0)->get();
+     $activos = ActivoFijo::orderBy('v_codigoactivo','desc')->where('v_estadoaf','like','DESCARGADO')->get();
       }
       else
       {
     //buscaremos activos de una sola categoria
-    $activos = ActivoFijo::orderBy('v_codigoactivo','desc')->whereHas('cuentacatalogo', function ($q) use($categoria){$q->where([['v_codigocuenta','LIKE',$categoria.'%'],['v_nivel',4]]);})->where('v_estado',0)->get();
+    $activos = ActivoFijo::orderBy('v_codigoactivo','desc')->whereHas('cuentacatalogo', function ($q) use($categoria){$q->where([['v_codigocuenta','LIKE',$categoria.'%'],['v_nivel',4]]);})->where('v_estadoaf','like','DESCARGADO')->get();
       }
   break;
 
@@ -3662,7 +4122,7 @@ public function activosrpt($estado,$categoria)
 
      if($categoria==null)
       {//buscare todos los activos
-     $activos = ActivoFijo::orderBy('v_codigoactivo','desc')->where([['v_estado',1],['v_trasladadoSN','S']])->get();
+     $activos = ActivoFijo::orderBy('v_codigoactivo','desc')->where([['v_estadoaf','like','TRASLADADO'],['v_trasladadoSN','S']])->get();
       }
       else
       {
@@ -3684,10 +4144,6 @@ public function listadoactivofijo_pdf(Request $request)
 $estado=$request->estado;//estado del activo
 $categoria=$request->categoria;//estado del activo
 $activos=$this->activosrpt($estado,$categoria);
-  //$activos=ActivoFijo::Orderby('v_codigoactivo','Desc')->where('v_estado',1)->get();
-
-
-
    $anio=Carbon::today()->year;
    $fpdf=new Fpdf("L",'mm',"Letter");
    $fpdf->AddPage();
@@ -3705,7 +4161,7 @@ $fpdf->SetFont('Helvetica','','8');
 
 $fpdf->Cell(7, $this->height,"No.", 1, 0, "C",1);
 //$fpdf->Cell(30, $this->height,"Clasificación", 1, 0, "C",1);
-$fpdf->Cell(35, $this->height,utf8_decode("Inventario"), 1, 0, "C",1);
+$fpdf->Cell(35, $this->height,utf8_decode("Código inventario"), 1, 0, "C",1);
 $fpdf->Cell(53, $this->height,utf8_decode("Descripción"), 1, 0, "C",1);
 $fpdf->Cell(20, $this->height,"Marca", 1, 0, "C",1);
 $fpdf->Cell(20, $this->height,"Modelo", 1, 0, "C",1);
@@ -3714,7 +4170,7 @@ $fpdf->Cell(30, $this->height,utf8_decode("Fecha de adquisición"), 1, 0, "C",1)
 $fpdf->Cell(15, $this->height,"Precio", 1, 0, "C",1);
 //$fpdf->Cell(10, $this->height,utf8_decode("Vida útil"), 1, 0, "C",1);
 $fpdf->Cell(20, $this->height,utf8_decode("Estado"), 1, 0, "C",1);
-$fpdf->Cell(30, $this->height,utf8_decode("Ubicación"), 1, 1, "C",1);
+$fpdf->Cell(30, $this->height,utf8_decode("Asignado a"), 1, 1, "C",1);
 
 
 $fpdf->SetFont('Arial', '', 7);
@@ -3726,7 +4182,7 @@ $fpdf->SetFillColor(($key%2==0)?120:190);
 $fpdf->Cell(7,$this->height,$key+1,1,0,"C",1);
 //$fpdf->Cell(30,$this->height,$value->cuentacatalogo->v_nombrecuenta,1,0,"C",0);
 $fpdf->Cell(35,$this->height,$value->v_codigoactivo,1,0,"L",0);
-$fpdf->Cell(53,$this->height,$value->v_nombre,1,0,"L",0);
+$fpdf->Cell(53,$this->height,utf8_decode($value->v_nombre),1,0,"L",0);
 $fpdf->Cell(20,$this->height,utf8_decode($value->v_marca),1,0,"L",0);
 $fpdf->Cell(20,$this->height,utf8_decode($value->v_modelo),1,0,"L",0);
 $fpdf->Cell(30,$this->height,utf8_decode($value->v_serie),1,0,"L",0);
@@ -3736,8 +4192,10 @@ $fecha = Carbon::createFromFormat('Y-m-d',$value->f_fecha_adquisicion)->format('
 
 $fpdf->Cell(30, $this->height,$fecha, 1, 0, "C",0);
 $fpdf->Cell(15,$this->height,'$ '.number_format($value->d_valor,2),1,0,"C",0);
+$fpdf->Cell(20,$this->height,$value->v_estadoaf,1,0,"L",0);
 //$fpdf->Cell(10,$this->height,utf8_decode($value->v_vidautil),1,0,"L",0);
-if($value->v_estado==1)
+
+/*if($value->v_estado==1)
   {$fpdf->Cell(20,$this->height,'Cargado',1,0,"L",0);}
 else if($value->v_estado==0)
   {
@@ -3746,10 +4204,10 @@ else if($value->v_estado==0)
     else
       {$fpdf->Cell(20,$this->height,'Descargado',1,0,"L",0);}
    
-  }
+  }*/
 
 
-$fpdf->Cell(30,$this->height,$value->v_trasladadoSN=='S'?'---':utf8_decode($value->v_ubicacion),1,1,"L",0);
+$fpdf->Cell(30,$this->height,utf8_decode($value->v_ubicacion),1,1,"L",0);
 
 }
 }
@@ -3758,6 +4216,7 @@ else
  $fpdf->SetFont('Helvetica','',10);
 $fpdf->MultiCell(0, $this->height - 1, utf8_decode('No hay información para mostrar.'), 0, 'L', 0, 0, '', '', true); 
 }
+$this->footerhorizontalAF($fpdf);
    $response=response($fpdf->Output("s"));
    $response->header('Content-Type','application/pdf');
    return $response; 
@@ -3784,7 +4243,7 @@ if($request->categoria==null)
    $this->cabecerahorizontalAF($fpdf);
    $fpdf->SetFont('Helvetica','B','12');
 $fpdf->Ln(5);
-$fpdf->Cell(0,$this->height,"CATALOGO DE CLASIFICACION ACTIVO FIJO ".$anio,0,1,"C");
+$fpdf->Cell(0,$this->height,utf8_decode("CATÁLOGO DE CLASIFICACIÓN ACTIVO FIJO ").$anio,0,1,"C");
 $fpdf->Ln(5);
 $fpdf->SetFont('Helvetica','','8');
  $fpdf->SetFillColor(0,0,0);

@@ -10,8 +10,11 @@ class TipoDescargoActivo extends Model
 
     protected $fillable = ['v_descripcion'];
 
+    //relacion muchos a muchos
     public function descargos()
     {
-    	return $this->hasMany('App\DescargosActivo');
+    	//return $this->hasMany('App\DescargosActivo');
+        return $this->belongsToMany(DescargosActivo::class);
 	}
+
 }

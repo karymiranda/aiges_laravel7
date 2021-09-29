@@ -92,7 +92,7 @@
                       <input type="hidden" name="id" value="{{$datos->id}}">  
                       <input type="hidden" name="idestu" value="{{$exp->id}}" id="idestu">
 
-                        <input type="submit" value="Eliminar" class="btn btn-sm btn-danger delete-btn"' >                               
+                        <input type="submit" value="Eliminar" class="btn btn-sm btn-danger delete-btn">                               
                           <button type="button" class="btn btn-sm btn-default cancel-btn" data-dismiss="modal">Cancelar
                           </button>
         </form>

@@ -5,7 +5,7 @@
 
 <div class="box box-primary ">
             <div class="col-sm-12" align="center">
-              <h2><label class="text-primary">REPORTES ACTIVO FIJO</label></h2>
+              <h2><label class="text-primary">BÚSQUEDA AVANZADA ACTIVO FIJO</label></h2>
  </div> 
 
              <div class="box-body">
@@ -25,7 +25,7 @@
 
                 {!! Form::label('', 'Estado del activo',['class'=>'col-sm-1 control-label','id'=>'labelestado']) !!}
                <div class="col-sm-3" id="filtros2">
-                 {!! Form::select('estado',['0'=>'Todos ','1'=>'Cargados','2'=>'Descargados [fuera de uso]','3'=>'Trasladados'],null,['class'=>'form-control','id'=>'estado','required'])!!}
+                 {!! Form::select('estado',['0'=>'Todos ','1'=>'Existentes','2'=>'Descargados','3'=>'Trasladados'],null,['class'=>'form-control','id'=>'estado','required'])!!}
                 </div>
 
                 <div class="col-sm-1" id="btnbuscar">
@@ -56,9 +56,8 @@
                   <th>CÓDIGO </th>
                   <th>DECRIPCIÓN</th>
                   <th>FECHA DE ADQUISICIÓN</th>
-                  <th>UBICACIÓN</th> 
-                  <th>ESTADO</th>                          
-                  <th>¿TRASLADO?</th>
+                  <th>ASIGNADO A</th> 
+                  <th>ESTADO</th>  
                  
                 </tr></thead>
                 <tbody id="body">
@@ -154,8 +153,8 @@ if(categoria==''){categoria=0;}
       $('#estado').empty();
      document.getElementById('labelestado').innerHTML= 'Estado del activo';
       $('#estado').append('<option value="'+ '0' +'">'+ "Todos" +'</option>');
-      $('#estado').append('<option value="'+ '1' +'">'+ "Cargados" +'</option>');
-      $('#estado').append('<option value="'+ '2' +'">'+ "Descargados [fuera de uso]" +'</option>'); 
+      $('#estado').append('<option value="'+ '1' +'">'+ "Existentes" +'</option>');
+      $('#estado').append('<option value="'+ '2' +'">'+ "Descargados " +'</option>'); 
       $('#estado').append('<option value="'+ '3' +'">'+ "Trasladados" +'</option>');
            break;
 //////////////////////////////
@@ -188,7 +187,7 @@ if(categoria==''){categoria=0;}
     switch (reporte_id)
    {
     case '1'://listado     
-  $('#tablaBusqueda thead').append('<tr role="row"><th>' + '<b>No</b>' + '</th><th>' + '<b>Código</b>' + '</th><th>' + '<b>Descripción</b>' +  '</th><th>' +'<b>Fecha de adquisición</b>'+'</th><th>' + '<b>Ubicación</b>' + '</th><th>' + '<b>Estado</b>' +  '</th><th>' +'<b>¿Trasladado?</b>'+'</th></tr>'); 
+  $('#tablaBusqueda thead').append('<tr role="row"><th>' + '<b>No</b>' + '</th><th>' + '<b>Código</b>' + '</th><th>' + '<b>Descripción</b>' +  '</th><th>' +'<b>Fecha de adquisición</b>'+'</th><th>' + '<b>Asignado a</b>' + '</th><th>' + '<b>Estado</b>'  +'</th></tr>'); 
  
         $.ajax({
         type: 'POST',
@@ -204,10 +203,10 @@ if(categoria==''){categoria=0;}
      {
       var estado;
       var traslado;
-      if(value.v_estado==1){estado='Activo';}else{estado='Descargado';}
+      if(value.v_estadoaf=='EXISTENTE'){estado='EXISTENTE';}else{estado='Descargado';}
       if(value.v_trasladadoSN=='S'){traslado='Si';}else{traslado='No';}
 
-$('#tablaBusqueda').append('<tr id="'+value.id+'"><td>'+key+1 + '</td><td>' + value.v_codigoactivo + '</td><td>'+ value.v_nombre + '</td><td>' + value.f_fecha_adquisicion  + '</td><td>' + value.v_ubicacion + '</td><td>'+ estado + '</td><td>'+ traslado + '</td></tr>'); 
+$('#tablaBusqueda').append('<tr id="'+value.id+'"><td>'+key+1 + '</td><td>' + value.v_codigoactivo + '</td><td>'+ value.v_nombre + '</td><td>' + value.f_fecha_adquisicion  + '</td><td>' + value.v_ubicacion + '</td><td>'+ value.v_estadoaf + '</td></tr>'); 
     });
 
 propiedadestabla();

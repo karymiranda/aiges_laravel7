@@ -4,7 +4,7 @@
 
 <div class="box box-primary box-solid">
   <div class="box-header with-border">
-    <h3 class="box-title"><Strong>AGREGAR RETORNO</Strong></h3>
+    <h3 class="box-title"><Strong>REGISTRAR RETORNO ACTIVO FIJO</Strong></h3>
   </div>
   <!-- /.box-header -->
   <!-- form start -->
@@ -22,7 +22,7 @@
     {!! Form::hidden('traslado_id',$traslado->id) !!}
      
         <div class="form-group">                                           
-          {!! Form::label('fecha', 'Fecha Retorno',['class'=>'col-sm-4 control-label']) !!}
+          {!! Form::label('fecha', 'Fecha de retorno *',['class'=>'col-sm-4 control-label']) !!}
           <div class="col-sm-5"> 
             <div class="input-group date">
               <div class="input-group-addon">
@@ -34,14 +34,14 @@
         </div><!--fin form group-->
      
         <div class="form-group">                                           
-          {!! Form::label('lbretorna', 'Retorna',['class'=>'col-sm-4 control-label']) !!}
+          {!! Form::label('lbretorna', 'Origen *',['class'=>'col-sm-4 control-label']) !!}
           <div class="col-sm-5">
             {!! Form::text('txtretorna',$traslado->destino->codigo_institucion .' '. $traslado->destino->nombre_institucion,['class'=>'form-control pull-right','placeholder'=>'Retorna el Activo','readonly','id'=>'destino']) !!}
           </div>
           </div>
       
         <div class="form-group"> 
-          {!! Form::label('fecha', 'Fecha Traslado',['class'=>'col-sm-4 control-label']) !!}
+          {!! Form::label('fecha', 'Fecha de retorno *',['class'=>'col-sm-4 control-label']) !!}
           <div class="col-sm-5"> 
             <div class="input-group date">
               <div class="input-group-addon">
@@ -81,23 +81,23 @@
         </div>
      
         <div class="form-group">                                           
-          {!! Form::label('lbpautoriza', 'Autoriza',['class'=>'col-sm-4 control-label']) !!}
+          {!! Form::label('lbpautoriza', 'Autoriza *',['class'=>'col-sm-4 control-label']) !!}
           <div class="col-sm-5">
             {!! Form::text('persona_autoriza',null,['class'=>'form-control pull-right','placeholder'=>'Persona que autoriza traslado','required']) !!}
           </div>
           </div>
       
         <div class="form-group"> 
-          {!! Form::label('lbrecibe', 'Recibe',['class'=>'col-sm-4 control-label']) !!}
+          {!! Form::label('lbrecibe', 'Recibe *',['class'=>'col-sm-4 control-label']) !!}
           <div class="col-sm-5">
             {!! Form::text('persona_recibe',null,['class'=>'form-control pull-right','placeholder'=>'Persona que recibe','required']) !!}
           </div>
         </div>
       
         <div class="form-group"> 
-          {!! Form::label('lbobserv', 'Observaciones',['class'=>'col-sm-4 control-label']) !!}
+          {!! Form::label('lbobserv', 'Observaciones *',['class'=>'col-sm-4 control-label']) !!}
           <div class="col-sm-5">
-            {!! Form::textarea('observaciones',null,['class'=>'form-control pull-right','rows'=>'2','placeholder'=>'Observaciones']) !!}
+            {!! Form::textarea('observaciones',null,['class'=>'form-control pull-right','rows'=>'2','placeholder'=>'Observaciones','required']) !!}
           </div>
         </div>
       </div>                                                       

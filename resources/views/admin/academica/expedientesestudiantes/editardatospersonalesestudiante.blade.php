@@ -21,7 +21,7 @@
   <div class="box-body">
      {!! Form::open(['route'=>['actualizardatospersonalesestudiante',$estudiante->id], 'method'=>'PUT','class'=>'form-horizontal','enctype'=>'multipart/form-data']) !!}
 
-            
+         <h4 align="center">DATOS GENERALES</h4><hr>    
           <div class="col-sm-12" align="center">
           <output id="list">  
           @foreach($user as $user)                   
@@ -91,7 +91,24 @@
           </div> 
           </div>
 
-            <div class="form-group">                                           
+ <div class="form-group">
+                {!! Form::label('lbedad', 'Edad',['class'=>'col-sm-4 control-label']) !!}
+                                                <div class="col-sm-5">
+                {!! Form::text('txtedad',$edad,['class'=>'form-control pull-right','id'=>'edad','placeholder'=>'Años','required','readonly']) !!}
+                                                </div>                                               
+              </div>
+              
+          <div class="form-group">                                           
+                                                {!! Form::label('direccion', 'Dirección',['class'=>'col-sm-4 control-label']) !!}
+                                                <div class="col-sm-5">
+                                                {!! Form::textarea('v_direccion',$estudiante->v_direccion,['class'=>'form-control pull-right','rows'=>'2','placeholder'=>'Dirección de residencia','required']) !!}
+                                                </div>
+                </div>
+                
+
+ <hr>
+<h4 align="center">LUGAR Y FECHA DE NACIMIENTO</h4><hr>
+            <div class="form-group">                                          
                     {!! Form::label('lblfec', 'Fecha de nacimiento',['class'=>'col-sm-4 control-label']) !!}
             <div class="col-sm-5">
               <div class="input-group date">
@@ -101,24 +118,10 @@
                </div>
                </div>
 
-                 <div class="form-group">
-                {!! Form::label('lbedad', 'Edad',['class'=>'col-sm-4 control-label']) !!}
-                                                <div class="col-sm-5">
-                {!! Form::text('txtedad',$edad,['class'=>'form-control pull-right','id'=>'edad','placeholder'=>'Años','required','readonly']) !!}
-                                                </div>                                               
-              </div>
-              
-
                 
-                <div class="form-group">                                           
-                                                {!! Form::label('direccion', 'Dirección',['class'=>'col-sm-4 control-label']) !!}
-                                                <div class="col-sm-5">
-                                                {!! Form::textarea('v_direccion',$estudiante->v_direccion,['class'=>'form-control pull-right','rows'=>'2','placeholder'=>'Dirección de residencia','required']) !!}
-                                                </div>
-                </div>
-                
+             
      <div class="form-group">                                           
-                        {!! Form::label('lbldepto', 'Lugar de nacimiento (Departamento)',['class'=>'col-sm-4 control-label']) !!}
+                        {!! Form::label('lbldepto', 'Departamento',['class'=>'col-sm-4 control-label']) !!}
                          <div class="col-sm-5">
           {!! Form::select('departamento_id',$departamentos, $dept->id,['class'=>'form-control','id'=>'departamentos'])!!}
                         </div>
@@ -132,7 +135,8 @@
                                                
           </div>
 
-            
+     <hr> 
+<h4 align="center">INFORMACIÓN DE CONTACTO</h4><hr>        
            <div class="form-group">                                           
                         {!! Form::label('lbltel', 'Teléfono de residencia',['class'=>'col-sm-4 control-label']) !!}
                          <div class="col-sm-5">
@@ -159,7 +163,7 @@
                 </div>
              
 <hr>
-<h4 align="center">SITUACION FAMILIAR</h4>
+<h4 align="center">SITUACIÓN FAMILIAR</h4><hr>
                 <div class="form-group">                                           
                    {!! Form::label('cantfam', 'Miembros',['class'=>'col-sm-4 control-label']) !!}
                                                 <div class="col-sm-5">
@@ -182,8 +186,8 @@
                      {!! Form::select('v_dependeDe',['Padre y madre'=>'Padre y madre','Madre'=>'Madre','Padre'=>'Padre','Otros'=>'Otros'], $estudiante->v_dependeDe,['class'=>'form-control'])!!}
                                                 </div>
                 </div> 
-
-      <h4 align="center">SITUACION ECLESIAL</h4><hr>
+<hr>
+      <h4 align="center">SITUACIÓN ECLESIAL</h4><hr>
 
      <div class="col-sm-12">
                   <div class="form-group"> 

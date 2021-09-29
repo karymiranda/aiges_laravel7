@@ -16,8 +16,8 @@
   <div class="box-body table-responsive">
     <table class="table table-bordered table-striped" id="tablaBusqueda">
       <thead>
-        <th>CÓDIGO</th>
-        <th>CLASIFICACIÓN</th> 
+        <th>CÓDIGO ACTIVO</th>
+        <th>DESCRIPCIÓN</th> 
         <th>FECHA TRASLADO</th>
         <th>INSTITUCIÓN</th>                                   
         <th>MOTIVO TRASLADO</th>
@@ -27,7 +27,7 @@
         @foreach($traslados as $traslado)
         <tr>            
           <td>{{ $traslado->activofijo->v_codigoactivo }}</td>
-          <td>{{ $traslado->activofijo->cuentacatalogo->v_nombrecuenta }}</td>
+          <td>{{ $traslado->activofijo->v_nombre }}</td>
           <td>{{ $traslado->f_fechatraslado }}</td>
           <td>{{ $traslado->destino->nombre_institucion }}</td>
           <td>{{ $traslado->tipotraslado->v_descripcion }}</td>
@@ -35,9 +35,9 @@
             <a href="{{ route('verdetalletraslado',$traslado->id) }}" title="Ver" class="btn btn-primary" ><i class="fa fa-eye"></i></a>
             <a href="{{ route('editartraslado',$traslado->id) }}" title="Actualizar" class="btn btn-success"><i class="fa fa-edit"></i></a>
             <a href="{{ route('crearretorno',$traslado->id) }}" title="Retornar" class="btn btn-warning"><i class="fa fa-reply"></i></a>
-            <a class="btn btn-danger" data-toggle="modal" title="Eliminar" data-target="#tras_{{$traslado->id}}">
+            <!--a class="btn btn-danger" data-toggle="modal" title="Eliminar" data-target="#tras_{{$traslado->id}}">
               <i class="fa fa-close"></i>
-            </a>
+            </a-->
             <div class="modal fade" id="tras_{{$traslado->id}}">
               <div class="modal-dialog">
                 <div class="modal-content">

@@ -26,7 +26,8 @@
 <input type="text" name="caseselected" id="caseselected" value="{{old('caseselected')}}">  
 </div>
       
-                        
+
+<h4 align="center">DATOS GENERALES</h4><hr>                       
        <div class="form-group">                                           
                                                 {!! Form::label('exp', 'Expediente *',['class'=>'col-sm-4 control-label']) !!}
                                                 <div class="col-sm-5">
@@ -69,6 +70,16 @@
           </div> 
           </div>
 
+           <div class="form-group">                                           
+                                                {!! Form::label('direccion', 'Dirección *',['class'=>'col-sm-4 control-label']) !!}
+                                                <div class="col-sm-5">
+                                                {!! Form::textarea('v_direccion',null,['class'=>'form-control pull-right','rows'=>'2','placeholder'=>'Dirección de residencia','required']) !!}
+                                                </div>
+                </div>
+               
+ <hr>
+<h4 align="center">LUGAR Y FECHA DE NACIMIENTO</h4><hr>
+
                  <div class="form-group">                                           
                                                 {!! Form::label('lblfec', 'Fecha de nacimiento *',['class'=>'col-sm-4 control-label']) !!}
                               <div class="col-sm-5">
@@ -89,15 +100,9 @@
 
                                                
               </div>              
-                <div class="form-group">                                           
-                                                {!! Form::label('direccion', 'Dirección *',['class'=>'col-sm-4 control-label']) !!}
-                                                <div class="col-sm-5">
-                                                {!! Form::textarea('v_direccion',null,['class'=>'form-control pull-right','rows'=>'2','placeholder'=>'Dirección de residencia','required']) !!}
-                                                </div>
-                </div>
                 
         <div class="form-group">                                           
-                        {!! Form::label('lbldepto', 'Lugar de nacimiento (Departamento) *',['class'=>'col-sm-4 control-label']) !!}
+                        {!! Form::label('lbldepto', 'Departamento *',['class'=>'col-sm-4 control-label']) !!}
                          <div class="col-sm-5">
           {!! Form::select('departamento_id',$departamentos, null,['class'=>'form-control','id'=>'departamentos','placeholder'=>'Seleccione','required'])!!}
                         </div>
@@ -105,14 +110,15 @@
               </div>
 
                 <div class="form-group">
-                {!! Form::label('lbmunici', 'Municipio ',['class'=>'col-sm-4 control-label']) !!}
+                {!! Form::label('lbmunici', 'Municipio *',['class'=>'col-sm-4 control-label']) !!}
                                                 <div class="col-sm-5">
               {!! Form::select('municipio_id',['0'=>'Seleccione'], null,['class'=>'form-control','id'=>'municipio_id','required'])!!}
                                                 </div>
 
                                                
           </div>
-            
+  <hr> 
+<h4 align="center">INFORMACIÓN DE CONTACTO</h4><hr>          
            <div class="form-group">                                           
                         {!! Form::label('lbltel', 'Teléfono de residencia',['class'=>'col-sm-4 control-label']) !!}
                          <div class="col-sm-5">
@@ -153,7 +159,7 @@
 
                     
 <hr>
-<h4 align="center">SITUACION FAMILIAR</h4><hr>
+<h4 align="center">SITUACIÓN FAMILIAR</h4><hr>
                 <div class="form-group">                                           
                                                 {!! Form::label('cantfam', 'Miembros ',['class'=>'col-sm-4 control-label']) !!}
                                                 <div class="col-sm-5">
@@ -178,7 +184,7 @@
                 </div> 
 
       <hr>
-      <h4 align="center">SITUACION ECLESIAL</h4>
+      <h4 align="center">SITUACIÓN ECLESIAL</h4><hr>
      
 
      <div class="col-sm-12">
@@ -279,7 +285,7 @@
             </div>        
                 
               <div class="box-footer" align="right">                
-                  {!! Form::submit('Siguiente >>',['class'=>'btn btn-primary ']) !!}
+                  {!! Form::submit('Siguiente',['class'=>'btn btn-primary ']) !!}
                    <a href="{{route('listaexpedientes')}}" class="btn btn-default">Cancelar</a> 
               </div>
 

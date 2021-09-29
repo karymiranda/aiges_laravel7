@@ -24,7 +24,7 @@
     {!! Form::hidden('activo_id',$traslado->activo_id,['id'=>'activo_id']) !!}
       
         <div class="form-group">                                           
-          {!! Form::label('fecha', 'Fecha',['class'=>'col-sm-4 control-label']) !!}
+          {!! Form::label('fecha', 'Fecha *',['class'=>'col-sm-4 control-label']) !!}
           <div class="col-sm-5"> 
             <div class="input-group date">
               <div class="input-group-addon">
@@ -36,21 +36,21 @@
            </div>
     
         <div class="form-group"> 
-          {!! Form::label('lbtipoTRASLADO', 'Motivo de traslado',['class'=>'col-sm-4 control-label']) !!}
+          {!! Form::label('lbtipoTRASLADO', 'Motivo de traslado *',['class'=>'col-sm-4 control-label']) !!}
           <div class="col-sm-5">
             {!! Form::select('tipotraslado_id',$tipotraslado, $traslado->tipotraslado_id,['class'=>'form-control'])!!}
           </div> 
         </div><!--fin form group-->
     
         <div class="form-group">                                           
-          {!! Form::label('lborigen', 'Origen',['class'=>'col-sm-4 control-label']) !!}
+          {!! Form::label('lborigen', 'Origen *',['class'=>'col-sm-4 control-label']) !!}
           <div class="col-sm-5">
             {!! Form::text('txtorigen',$traslado->procedencia->v_codigoinfraestructura .' - '.$traslado->procedencia->v_nombrecentro,['class'=>'form-control pull-right','placeholder'=>'Origen del activo','readonly']) !!}
           </div>
            </div>
     
         <div class="form-group">
-          {!! Form::label('lbdestino', 'Destino',['class'=>'col-sm-4 control-label']) !!}
+          {!! Form::label('lbdestino', 'Destino *',['class'=>'col-sm-4 control-label']) !!}
           <div class="col-sm-5">
             <div class="input-group">
               {!! Form::text('txtdestino',$traslado->destino->codigo_institucion .' '. $traslado->destino->nombre_institucion,['class'=>'form-control pull-right','placeholder'=>'Destino del activo','readonly','required','id'=>'destino']) !!}
@@ -62,7 +62,7 @@
         </div>
     
         <div class="form-group">                                           
-          {!! Form::label('lbcodigo', 'Código',['class'=>'col-sm-4 control-label']) !!}
+          {!! Form::label('lbcodigo', 'Código *',['class'=>'col-sm-4 control-label']) !!}
           <div class="col-sm-5">
             <div class="input-group">
               {!! Form::text('txtcodigo',$traslado->activofijo->v_codigoactivo,['class'=>'form-control pull-right','placeholder'=>'Código activo','readonly','id'=>'codigo']) !!}
@@ -109,21 +109,21 @@
         </div>
      
         <div class="form-group">                                           
-          {!! Form::label('lbpautoriza', 'Autoriza',['class'=>'col-sm-4 control-label']) !!}
+          {!! Form::label('lbpautoriza', 'Autoriza *',['class'=>'col-sm-4 control-label']) !!}
           <div class="col-sm-5">
             {!! Form::text('v_personaautoriza',$traslado->v_personaautoriza,['class'=>'form-control pull-right','placeholder'=>'Persona que autoriza traslado','required']) !!}
           </div>
            </div>
     
         <div class="form-group">
-          {!! Form::label('lbrecibe', 'Recibe',['class'=>'col-sm-4 control-label']) !!}
+          {!! Form::label('lbrecibe', 'Recibe *',['class'=>'col-sm-4 control-label']) !!}
           <div class="col-sm-5">
             {!! Form::text('v_personarecibe',$traslado->v_personarecibe,['class'=>'form-control pull-right','placeholder'=>'Persona que recibe','required']) !!}
           </div>
         </div>
     
         <div class="form-group"> 
-          {!! Form::label('lbobserv', 'Observaciones',['class'=>'col-sm-4 control-label']) !!}
+          {!! Form::label('lbobserv', 'Observaciones *',['class'=>'col-sm-4 control-label']) !!}
           <div class="col-sm-5">
             {!! Form::textarea('v_observaciones',$traslado->v_observaciones,['class'=>'form-control pull-right','rows'=>'2','placeholder'=>'Observaciones']) !!}
           </div>
@@ -140,15 +140,15 @@
         <div class="modal-content">
           <div class="modal-header primary">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-            <h4 class="modal-title">BUSCAR INSTITUCION DESTINO</h4>
+            <h4 class="modal-title">BUSCAR INSTITUCIÓN DESTINO</h4>
           </div>
           <div class="modal-body">
             <table class="table table-bordered table-striped" id="tablaBusqueda">
               <thead>
-                <th>CODIGO</th> 
+                <th>CÓDIGO</th> 
                 <th>NOMBRE</th>
-                <th>DIRECCION</th>
-                <th>TELEFONO</th>
+                <th>DIRECCIÓN</th>
+                <th>TELÉFONO</th>
                 <th>ACEPTAR</th>
               </thead>
               <tbody>
@@ -174,21 +174,19 @@
         <div class="modal-content">
           <div class="modal-header primary">
             <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-            <h4 class="modal-title">BUSCAR ACTIVO</h4>
+            <h4 class="modal-title">SELECCIONAR ACTIVO A TRASLADAR</h4>
           </div>
           <div class="modal-body">
             <table class="table table-bordered table-striped" id="tablaBusqueda">
               <thead>
-                <th>CODIGO</th> 
-                <th>CLASIFICACION</th>
-                <th>DESCRIPCION</th>
+                <th>CÓDIGO</th> 
+                <th>DESCRIPCIÓN</th>
                 <th>ACEPTAR</th>
               </thead>
               <tbody>
                 @foreach($activos as $activo)          
                   <tr>            
                     <td>{{ $activo->v_codigoactivo }}</td>
-                    <td>{{ $activo->cuentacatalogo->v_nombrecuenta }}</td>
                     <td>{{ $activo->v_nombre }}</td>
                     <td>
                       <a data-type="{{$activo->id}}" data-type2="{{$activo->v_codigoactivo}}/{{$activo->v_nombre}}/{{$activo->v_condicionactivo}}/ {{$activo->v_serie}}/ {{$activo->v_modelo}}/ {{$activo->v_marca}}" class="btn btn-primary seleccionarA"><i class="fa fa-check"></i></a>

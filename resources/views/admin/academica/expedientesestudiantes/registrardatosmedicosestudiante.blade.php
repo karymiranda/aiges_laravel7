@@ -252,7 +252,7 @@
  </div>         
                 
               <div class="box-footer" align="right">                
-                 {!! Form::submit('Siguiente >>',['class'=>'btn btn-primary ']) !!}
+                 {!! Form::submit('Siguiente ',['class'=>'btn btn-primary ']) !!}
               </div>
 
                 {!! Form::close() !!}

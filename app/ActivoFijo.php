@@ -8,7 +8,7 @@ class ActivoFijo extends Model
 {
     protected $table = "tb_activofijo";
 
-    protected $fillable = ['cuentacatalogo_id', 'v_nombre', 'v_codigoactivo','f_fecha_adquisicion', 'v_serie', 'v_modelo', 'v_marca', 'v_estado', 'd_valor', 'v_ubicacion', 'v_vidautil', 'v_medida', 'v_materialdeconstruccion', 'v_condicionactivo', 'v_observaciones', 'v_trasladadoSN'];
+    protected $fillable = ['cuentacatalogo_id', 'v_nombre', 'v_codigoactivo','f_fecha_adquisicion', 'v_serie', 'v_modelo', 'v_marca', 'v_estado', 'd_valor', 'v_ubicacion', 'v_vidautil', 'v_medida', 'v_materialdeconstruccion', 'v_condicionactivo', 'v_observaciones','v_trasladadoSN', 'v_formaadquisicion', 'v_documento', 'v_estadoaf'];
 
     public function cuentacatalogo()
     {
@@ -20,8 +20,15 @@ class ActivoFijo extends Model
     	return $this->hasMany('App\TrasladosActivo');
 	}
 
-	public function descargos()
+//relacion muchos a muchos
+	  public function detalle_descargo()
     {
-    	return $this->hasMany('App\DescargosActivo');
-	}
+        return $this->belongsToMany(DescargosActivo::class,'tb_detallesolicituddescargo_activofijo','activofijo_id','solicitud_id')->withPivot('id','tipodescargo_id');
+        
+    }
+
+    public function activo_depreciacion()
+    {
+        return $this->hasMany('App\DepreciacionActivoFijo','activofijo_id');   
+     }
 }

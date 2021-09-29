@@ -376,7 +376,7 @@ var fecha=$('#f_asistenciaexcel').val();
 var rangofechas = fecha.split(" - ");//separo las fechas para mandarlas
 var fechadesde = rangofechas[0].split('/').reverse().join('-');
 var fechahasta = rangofechas[1].split('/').reverse().join('-');
- var id=$('#seccion_id option:selected').val(); 
+var id=$('#seccion_id option:selected').val(); 
 $('#modalfiltrorptasistenciaexcel').modal('hide');
 $('#btnasistenciaexcel').attr("href",'asistencia/'+fechadesde+'/'+fechahasta+'/'+id+'/excel');
 }); 

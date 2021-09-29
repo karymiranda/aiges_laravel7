@@ -128,7 +128,7 @@
                               <th>PARENTESCO</th>
                               <th>ENCARGADO</th>
                               <th>AUTORIZADO A RETIRAR AL ESTUDIANTE</th>
-                              <th>TELEFONO CASA</th>                                   
+                              <th>TELÉFONO CASA</th>                                   
                               <th>CELULAR</th>                
                              </thead>
                        <tbody>
@@ -421,7 +421,9 @@
 
      <table class="table table-bordered table-striped">
         <tbody>
-          <tr><td></td></tr>
+          <tr><td>
+            <h4 align="center">DATOS GENERALES</h4>
+          </td></tr>
 <tr>
     <td>
           <div class="col-sm-12" align="center">
@@ -508,7 +510,43 @@
 
           <tr>
           <td>
+
+            <div class="form-group">
+                {!! Form::label('lbedad', 'Edad',['class'=>'col-sm-4 control-label']) !!}
+                                                <div class="col-sm-5">
+                {!! Form::text('txtedad',$edad,['class'=>'form-control pull-right','id'=>'edad','placeholder'=>'Años','disabled']) !!}
+                                                </div>
+    </div>
+
+          </td> 
+          </tr>
+
+
+           <tr>
+          <td>
+       
 <div class="form-group">                                           
+                                                {!! Form::label('direccion', 'Dirección',['class'=>'col-sm-4 control-label']) !!}
+                                                <div class="col-sm-5">
+                                                {!! Form::textarea('v_direccion',$estudiante->v_direccion,['class'=>'form-control pull-right','rows'=>'2','placeholder'=>'Dirección de residencia','required','readonly']) !!}
+                                                </div>
+                </div>
+              
+          </td> 
+          </tr>
+ 
+        <tr>
+        <td>
+ 
+<h4 align="center">LUGAR Y FECHA DE NACIMIENTO</h4>
+
+</td> 
+</tr>
+
+           <tr>
+          <td>
+
+                <div class="form-group">                                           
              {!! Form::label('lblfec', 'Fecha de nacimiento',['class'=>'col-sm-4 control-label']) !!}
             <div class="col-sm-5">
               <div class="input-group date">
@@ -517,32 +555,7 @@
                   </div>
                </div>
              </div>
-          </td> 
-          </tr>
 
-
-           <tr>
-          <td>
-       
-              <div class="form-group">
-                {!! Form::label('lbedad', 'Edad',['class'=>'col-sm-4 control-label']) !!}
-                                                <div class="col-sm-5">
-                {!! Form::text('txtedad',$edad,['class'=>'form-control pull-right','id'=>'edad','placeholder'=>'Años','disabled']) !!}
-                                                </div>
-
-                                               
-              </div>
-          </td> 
-          </tr>
-
-           <tr>
-          <td>
-<div class="form-group">                                           
-                                                {!! Form::label('direccion', 'Dirección',['class'=>'col-sm-4 control-label']) !!}
-                                                <div class="col-sm-5">
-                                                {!! Form::textarea('v_direccion',$estudiante->v_direccion,['class'=>'form-control pull-right','rows'=>'2','placeholder'=>'Dirección de residencia','required','readonly']) !!}
-                                                </div>
-                </div>
           </td> 
           </tr>
 
@@ -568,6 +581,15 @@
           </div>
           </td> 
           </tr>
+
+
+        <tr>
+        <td>
+ 
+<h4 align="center">INFORMACIÓN DE CONTACTO</h4>
+
+</td> 
+</tr>
 
         <tr>
           <td>
@@ -610,8 +632,8 @@
 
           <tr>
           <td>
-<hr>
-<h4 align="center">SITUACION FAMILIAR</h4><hr>
+
+<h4 align="center">SITUACIÓN FAMILIAR</h4>
           </td> 
           </tr>
 
@@ -653,7 +675,7 @@
 
            <tr>
           <td>
- <h4 align="center">SITUACION ECLESIAL</h4><hr>
+ <h4 align="center">SITUACIÓN ECLESIAL</h4>
           </td> 
           </tr>
 
@@ -687,9 +709,8 @@
 
             <tr>
           <td>
-            <hr>
+ 
  <h4 align="center">DATOS DE INGRESO</h4>
-<hr>
           </td> 
           </tr>
 

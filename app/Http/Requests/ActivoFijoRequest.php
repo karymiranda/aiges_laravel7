@@ -28,7 +28,7 @@ class ActivoFijoRequest extends FormRequest
             'v_codigoactivo' => 'required|unique:tb_activofijo,v_codigoactivo,'.$this->id,
             'v_serie' => 'max:100',
             'v_modelo' => 'max:100',
-            'v_marca' => 'required|max:100',
+            'v_marca' => 'max:100',
             'v_ubicacion' => 'required|max:150',
             'v_medida' => 'max:50',
             'v_vidautil' => 'numeric|nullable',

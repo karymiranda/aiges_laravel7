@@ -51,8 +51,8 @@
                  {!! Form::label('periodo', 'Año académico ',['class'=>'col-sm-4 control-label']) !!}
                <div class="col-sm-5">
                 {!! Form::select('anio',$anios, null,['class'=>'form-control','id'=>'anio'])!!}
-              </div>
-          </div>
+                </div>
+                </div>
 
 
        <div class="form-group">
@@ -398,7 +398,7 @@ $('#asesor_id').val(value.seccion_empleado.v_nombres + " "+ value.seccion_emplea
 else
 {
 $('#turno_id').val(""); 
-$('#asesor_id').val("")
+$('#asesor_id').val("");
 }
 });//fin turno por seccion
 
@@ -409,7 +409,6 @@ $('#btnfamiliares').on('click', function(e){
   //alert('entra btn familiares');  
 var id=$('#estudiante_id').val();//saco el id del estudiante para buscar solo sus familiares
 var table=$('#tablaBusquedaauxiliar').DataTable();
-table.destroy();
    $('#tablaBusquedaauxiliar tbody').empty();//elimina la informacion de la tabla para recargar la info
 $.get('familiaresporestudiante/'+id,function(familiares){   
   $(familiares).each(function (key,value){

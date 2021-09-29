@@ -24,7 +24,7 @@ class GestionartrasladoactivofijoController extends Controller
                       ->whereRaw('t.id = r.traslado_id');
             })->whereRaw('t.v_estado = 1')->get();
             
-		foreach($traslados as $traslado)
+foreach($traslados as $traslado)
 	    {
 		    $formato = Carbon::createFromFormat('Y-m-d',$traslado->f_fechatraslado);
 		    $traslado->f_fechatraslado = $formato->format('d/m/Y');
@@ -39,7 +39,7 @@ class GestionartrasladoactivofijoController extends Controller
 
 	 public function creartraslado()
 	{
-		$activos = ActivoFijo::orderBy('v_codigoactivo','ASC')->where([['v_estado','=','1'],['v_trasladadoSN','=','N']])->get();
+		$activos = ActivoFijo::orderBy('v_codigoactivo','ASC')->where([['v_estadoaf','like','EXISTENTE'],['v_trasladadoSN','=','N']])->get();
 		$activos->each(function($activos){ 
 			$activos->cuentacatalogo;
 		});
@@ -55,6 +55,7 @@ class GestionartrasladoactivofijoController extends Controller
 		$traslado = new TrasladosActivo($Request->all());
 		$activo = ActivoFijo::find($traslado->activo_id);
 		$activo->v_trasladadoSN = 'S';
+		$activo->v_estadoaf = 'TRASLADADO';
 		$activo->save();
 		$formato = Carbon::createFromFormat('d/m/Y',$traslado->f_fechatraslado);
 		$traslado->f_fechatraslado = $formato->format('Y/m/d');
@@ -121,6 +122,7 @@ class GestionartrasladoactivofijoController extends Controller
 		$traslado = TrasladosActivo::find($id);
 		$activo = ActivoFijo::find($traslado->activo_id);
 		$activo->v_trasladadoSN = 'N';
+		$activo->v_estadoaf = 'EXISTENTE';
 		$activo->save();
 		$traslado->v_estado = 0;
 		$traslado->save();
@@ -139,13 +141,14 @@ class GestionartrasladoactivofijoController extends Controller
 		$formato = Carbon::createFromFormat('Y-m-d',$traslado->f_fechatraslado);
 		$traslado->f_fechatraslado = $formato->format('d/m/Y');
 		return view('admin.activofijo.traslados.agregarretorno')->with('traslado',$traslado);
-	}
+	} 
 
 	public function guardarretorno(RetornoActivoRequest $Request)
 	{
 		$traslado = TrasladosActivo::find($Request->traslado_id);
 		$activo = ActivoFijo::find($traslado->activo_id);
 		$activo->v_trasladadoSN = 'N';
+		$activo->v_estadoaf = 'EXISTENTE';
 		$activo->save();
 		$retorno = new RetornosActivo($Request->all());
 		$formato = Carbon::createFromFormat('d/m/Y',$retorno->fecha);
