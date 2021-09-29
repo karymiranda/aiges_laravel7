@@ -368,7 +368,8 @@ if ($request->hasfile('files'))
 		$solicitud->observaciones=$request->observaciones;
 		$solicitud->estado='APROBADA';
 		$file->move(public_path() . '\actasActivoFijo', $name);
-		dd($file);
+		$file->move('\actasActivoFijo', $name);
+		
 		$solicitud->save();
              
            }
