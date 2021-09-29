@@ -162,7 +162,8 @@ $('#btnGuardar').on('click', function(e){
             },
             success: function(data){
 //window.location.reload();
-window.location='/aiges/public/index.php/admin/listasolicitudesdescarga';
+//window.location='/aiges/public/index.php/admin/listasolicitudesdescarga';
+window.location='/public/index.php/admin/listasolicitudesdescarga';
         },
         })  
 });
