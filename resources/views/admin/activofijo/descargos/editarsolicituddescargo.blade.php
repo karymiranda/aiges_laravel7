@@ -165,7 +165,7 @@
   <!-- /.box-body -->
 
  <div class="box-footer" align="right"> 
-    <a href="#" id="btnModificar"  class="btn btn-primary">Modificar</a>
+    <a href="{{route('lista-solicitudes-descarga')}}" id="btnModificar"  class="btn btn-primary">Actualizar</a>
     <a href="{{route('lista-solicitudes-descarga')}}" id="btnCancelar" class="btn btn-default">Regresar</a>
   </div>
 {!! Form::close() !!}
