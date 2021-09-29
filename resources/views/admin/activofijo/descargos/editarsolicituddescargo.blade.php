@@ -222,8 +222,8 @@ $('#btnbuscar').on('click', function()
 var table=$('#tablaBusquedaauxiliar').DataTable();
 table.destroy();
 $('#tablaBusquedaauxiliar tbody').empty();
-$.get('/aiges/public/index.php/admin/listaactivos',function(activos)
-{  
+$.get('/admin/listaactivos',function(activos)
+{   
   $(activos).each(function (key,value)
   {
 $('#tablaBusquedaauxiliar').append('<tr><td>' + key+1 + '</td><td>' + value.v_codigoactivo + '</td><td>' + value.v_nombre +  '</td><td>' + '<a href="#" class="btn btn-success" onclick="seleccion('+value.id+",'"+value.v_codigoactivo+"','"+value.v_nombre+"','"+value.d_valor+"'"+');" data-dismiss="modal" title="Seleccionar"><i class="fa fa-check"></i></a>'+' </td></tr>');
