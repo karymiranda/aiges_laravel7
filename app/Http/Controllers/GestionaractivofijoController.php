@@ -309,6 +309,8 @@ if($request->valorrecuperacionSN=="SI")
 $res=DescargosActivo::orderBy('f_fechasolicitud')->with('descargo_detalle')->withCount(['descargo_detalle'=> function($q) use ($id){
 	$q->where('tb_detallesolicituddescargo_activofijo.solicitud_id','=',$id); }])->where('id',$id)->get();
 $motivo=TipoDescargoActivo::all()->pluck('v_descripcion','id');
+
+dd($res);
 return view('admin.activofijo.descargos.versolicituddescargo',compact('solicitud','res','motivo','origen'));
 	}
 
