@@ -368,9 +368,11 @@ if ($request->hasfile('files'))
 		$solicitud->observaciones=$request->observaciones;
 		$solicitud->estado='APROBADA';
 		$file->move(public_path() . '\actasActivoFijo', $name);
+		dd($file);
 		$solicitud->save();
              
            }
+
 
       Flash::success("Archivo subido exitosamente")->important();
 	return redirect()->route('lista-solicitudes-descarga');	
