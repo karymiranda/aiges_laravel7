@@ -97,7 +97,7 @@ desired effect
 
               <!-- Notifications Menu -->
           <li class="dropdown notifications-menu">           
-            <a href="https://www.facebook.com/Centro-Escolar-Catolico-Santa-M%C3%A1ria-del-camino-173803866027545" class="dropdown-toggle" title="facebook oficial" target="__blank">
+            <a href="https://www.facebook.com/CE-Cat%C3%B3lico-Santa-Mar%C3%ADa-101172601844867" class="dropdown-toggle" title="facebook oficial" target="__blank">
               <i class="fa fa-facebook-square"></i>
             </a>
           </li>
