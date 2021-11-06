@@ -102,7 +102,7 @@ desired effect
             </a>
           </li>
            <li class="dropdown notifications-menu">
-             <a href="http://santamariadelcamino.herokuapp.com/" class="dropdown-toggle"  title="Sitio web oficial" target="__blank"><i class="fa fa-wifi"></i><span class="label label-warning">WEB</span>
+             <a href="http://santamaria.edu.sv" class="dropdown-toggle"  title="Sitio web oficial" target="__blank"><i class="fa fa-wifi"></i><span class="label label-warning">WEB</span>
             </a>            
            </li> 
 
