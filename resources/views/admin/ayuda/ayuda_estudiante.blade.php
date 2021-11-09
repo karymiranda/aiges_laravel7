@@ -10,12 +10,12 @@
             <div class="box-body">
 
 
-                <div class="col-sm-8">
-                      <iframe src="../imagenes/recursosrpt/ayuda/help_estudiante.pdf" width="800" height="780" style="border: none;"></iframe>
+                <div class="col-sm-12">
+                      <iframe src="../imagenes/recursosrpt/ayuda/help_estudiante.pdf" width="100%" height="780" style="border: none;"></iframe>
                     
                 </div>
 
-            <div  class="col-sm-4">
+            <!--div  class="col-sm-4">
               <ul>
                 
          <h2 class="text-blue">¿En qué puedo ayudarte?</h2>
@@ -34,7 +34,7 @@
                   </ul>
                 
               </ul>
-            </div>
+            </div-->
           
         </div><!-- fin body--> 
 
