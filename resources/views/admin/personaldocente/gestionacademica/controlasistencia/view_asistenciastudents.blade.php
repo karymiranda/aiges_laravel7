@@ -58,7 +58,7 @@
     <div class="box-footer" align="right">
 
       <input class="btn btn-primary" type="submit" value="Guardar">
-      <a href="{{route('marcarasistencia_view')}}" class="btn btn-default">finalizar</a>
+      <a href="{{route('marcarasistencia_view')}}" class="btn btn-default">Finalizar</a>
     </div>
   </form>
 </div>

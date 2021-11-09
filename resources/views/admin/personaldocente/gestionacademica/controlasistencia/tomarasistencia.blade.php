@@ -178,7 +178,7 @@
     </div>
   </div>
   <div class="box-footer" align="right">                
-    <a href="{{route('listaasistencias')}}" class="btn btn-primary"><< Regresar</a>
+    <a href="{{route('listaasistencias')}}" class="btn btn-primary"> Regresar</a>
   </div>                                    
 </div>  
 

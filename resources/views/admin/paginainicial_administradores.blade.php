@@ -219,7 +219,7 @@
             <div class="icon">
               <i class="ion ion-ios-cloud-download-outline"></i>
             </div>
-            <a href="{{route('listasolicitudesmatricula')}}" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            <a href="{{route('listasolicitudesmatricula')}}" class="small-box-footer">Más información <i class="fa fa-arrow-circle-right"></i></a>
           </div>
         </div>
         <!-- ./col -->
