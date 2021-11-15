@@ -50,7 +50,7 @@
               <?php }else{ ?>
                 <a title="Trasladado" disabled='true' class="btn btn-warning"><i class="fa fa-truck"></i></a>
               <?php } ?>
-             
+               <a href="{{route('verhistorialdepreciacion', $activo->id)}}" title="Historial depreciación" class="btn btn-default"><i class="fa fa-hourglass-end"></i></a>
             </td>                   
           </tr>
           @endforeach

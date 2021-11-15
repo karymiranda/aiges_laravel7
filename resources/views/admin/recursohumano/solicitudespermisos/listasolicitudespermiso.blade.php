@@ -29,6 +29,7 @@
         <th>ACCIONES</th>
       </thead>
       <tbody>
+        
         @foreach($permisos as  $key => $permiso)
         <tr> 
             <td>{{$key+1}}</td> 

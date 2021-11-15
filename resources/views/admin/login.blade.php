@@ -78,6 +78,7 @@
                             <div class="form-bottom">
                                 <form role="form" action="{{ route('login') }}" method="POST" class="login-form">
                                      @csrf
+                                    
                                     <div class="form-group">
                                         <label class="sr-only" for="form-username">Username</label>
                         <input  id="name" type="text"name="name" class="form-username form-control" placeholder="Usuario" value="{{ old('name') }}" required autofocus>
