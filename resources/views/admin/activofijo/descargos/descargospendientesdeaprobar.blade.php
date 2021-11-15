@@ -1,5 +1,5 @@
 @extends('admin.menuprincipal')
-@section('tittle','Administración activo fijo/Solicitudes de descargo PENDIENTES DE APROBAR')
+@section('tittle','Administración activo fijo/Solicitudes de descargo')
 @section('content')
 
 <div class="box box-primary">
