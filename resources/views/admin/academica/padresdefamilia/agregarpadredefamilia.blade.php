@@ -174,7 +174,7 @@
             </div>        
                 
               <div class="box-footer" align="right">  
-              {!! Form::submit('Siguiente >>',['class'=>'btn btn-primary ']) !!}  
+              {!! Form::submit('Siguiente',['class'=>'btn btn-primary ']) !!}  
               <a href="{{route('listafamiliares')}}" class="btn btn-default">Cancelar</a>    
               </div>
 

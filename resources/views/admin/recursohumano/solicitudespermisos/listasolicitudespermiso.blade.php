@@ -34,8 +34,10 @@
             <td>{{$key+1}}</td> 
           <td>{{ $permiso->empleado->v_nombres . ' ' . $permiso->empleado->v_apellidos }}</td>
             <td>{{ $permiso->motivoPermiso->v_motivo }}</td>  
-          <td>{{ $permiso->f_desde }}</td>
-          <td>{{ $permiso->f_hasta}}</td>
+          <td>{{ date('d-M-y', strtotime($permiso->f_desde)) }} </td>
+
+          <td>{{ date('d-M-y', strtotime($permiso->f_hasta)) }}</td>
+
           <td>{{ $permiso->i_tiemposolicitado}}</td>   
            <td>{{ $permiso->i_horas}}</td>
             <td>{{ $permiso->i_minutos}}</td>                         

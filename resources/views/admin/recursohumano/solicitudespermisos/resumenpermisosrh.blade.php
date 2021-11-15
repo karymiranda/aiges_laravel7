@@ -30,6 +30,12 @@
         <th>MOTIVO</th>  
       </thead>
       <tbody>
+        @php 
+         $diasacum=0;
+         $horas=0;
+         $minutos=0;
+        @endphp
+
        @foreach($permisos as  $key => $permiso)         
          <tr> 
           <td>{{$key+1}}</td>          
@@ -46,15 +52,38 @@
           @else<td></td>@endif 
        
            
-          <td>{{$permiso->f_desde}}</td>  
-          <td>{{$permiso->f_hasta}}</td>   
+        <td>{{ date('d-M-y', strtotime($permiso->f_desde)) }}</td>  
+        <td>{{ date('d-M-y', strtotime($permiso->f_hasta)) }}</td>    
           <td>{{ $permiso->i_tiemposolicitado}}</td>   
           <td>{{ $permiso->i_horas}}</td>
           <td>{{ $permiso->i_minutos}}</td>           
           <td>{{ $permiso->motivoPermiso->v_motivo}}</td>
           </tr> 
+        @php 
+         $diasacum+=$permiso->i_tiemposolicitado;
+         $horas+=$permiso->i_horas;
+         $minutos+=$permiso->i_minutos;
+        @endphp
+
         @endforeach                   
       </tbody>
+       <tfoot>
+        <tr>
+            <th></th>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>Tiempo acumulado</td>
+            <td>{{$diasacum}}</td>
+            <td>{{$horas}}</td>
+            <td>{{$minutos}}</td>
+            <td></td>
+        </tr>
+    </tfoot>
+
     </table> 
   </div>
 

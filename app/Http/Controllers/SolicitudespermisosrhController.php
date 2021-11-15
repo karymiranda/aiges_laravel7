@@ -23,21 +23,21 @@ class SolicitudespermisosrhController extends Controller
       $q->where('estado', '=', '1'); 
     })->with('empleado')->with('motivoPermiso')->where('estado','!=','Denegada')->get();
     
-    foreach($permisos as $permiso)
-    {
+    /*foreach($permisos as $permiso)
+    { 
    $formato1 = Carbon::createFromFormat('Y-m-d',$permiso->f_desde);
     $permiso->f_desde = $formato1->format('d/m/Y');
 
     $formato2 = Carbon::createFromFormat('Y-m-d',$permiso->f_hasta);
     //$permiso->f_hasta = $formato2->format('d/m/Y');
-    }
+    }*/
 
 $asesor = Empleado::select(DB::raw('CONCAT(v_nombres," ",v_apellidos) as nombrecompleto'),'id')->orderBy('v_numeroexp','ASC')->where([['estado','=','1'],['v_numeroexp','!=','RH0000-0']])->pluck('nombrecompleto','id');
 
 
     return view('admin.recursohumano.solicitudespermisos.listasolicitudespermiso',compact('permisos','asesor'));
 	}
-
+ 
     public function versolicitud($id)
 	{
     $permiso = Permiso::find($id);
@@ -227,6 +227,7 @@ if($request->f_permisos!=null){
       $f_desde = $f_desde->format('Y-m-d');
       $f_hasta = $f_hasta->format('Y-m-d');
 
+
 $permisos=Permiso::orderBy('solicitante_id','ASC')->whereHas('empleado', function($q)
     {
       $q->where('estado',1); 
@@ -234,11 +235,13 @@ $permisos=Permiso::orderBy('solicitante_id','ASC')->whereHas('empleado', functio
     ->WhereBetween('f_desde',[$f_desde,$f_hasta])
     ->WhereBetween('f_hasta',[$f_desde,$f_hasta])
     ->get();
+//dd($permisos);
 
-if(!count($permisos)>0)
+/*if(!count($permisos)>0)
 {
 dd('No hay informacion para mostrar');
-}
+}*/
+
 
  foreach($permisos as $permiso)
     {
@@ -246,10 +249,10 @@ dd('No hay informacion para mostrar');
     $permiso->f_fechasolicitud = $formato->format('d/m/Y');
     }
     
-/*$empleados=Empleado::whereHas('permisos',function($q)use($f_desde,$f_hasta){
+$empleados=Empleado::whereHas('permisos',function($q)use($f_desde,$f_hasta){
  $q->WhereBetween('f_desde',[$f_desde,$f_hasta])
   ->WhereBetween('f_hasta',[$f_desde,$f_hasta]);
-})->where([['estado','1'],['v_numeroexp','!=','RH0000-0']])->get();*/
+})->where([['estado','1'],['v_numeroexp','!=','RH0000-0']])->get();
 //$permisoslista=$this->permisos($empleados,$f_desde,$f_hasta);
 //dd($permisoslista);
    

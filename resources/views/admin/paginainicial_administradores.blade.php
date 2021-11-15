@@ -463,10 +463,10 @@
         <!-- ./col -->
 
        
-        <div class="col-lg-3 col-xs-6">
+        <!--div class="col-lg-3 col-xs-6"-->
           <!-- small box -->
           <!--div class="small-box bg-aqua"-->
-          <div class="small-box bg-aqua">
+          <!--div class="small-box bg-aqua">
             <div class="inner">
                <h3><i class="fa fa-check-square-o"></i></h3>
 
@@ -477,7 +477,7 @@
             </div>
             <a href="#" class="small-box-footer">Más información <i class="fa fa-arrow-circle-right"></i></a>
           </div>
-        </div>
+        </div-->
         <!-- ./col -->
 <?php endif ?>
 

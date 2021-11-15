@@ -110,7 +110,7 @@ if ($request->opyfuncionamientoSN!=null) {
      $saldobono=Transaccionesbono::saldo($fondoactivobono->id);
      $saldobanco=Transaccionesbono::saldobancos($gasto->ciclocontable_id);
 
-       $rubros=Rubrogasto::where('estado','=','1')->pluck('descripcion','id');
+    $rubros=Rubrogasto::where('estado','=','1')->pluck('descripcion','id');
        return view('admin.bonoescolar.movimientodefondos.gastos.editargasto')->with('gasto',$gasto)->with('saldobono',$saldobono)->with('saldobanco',$saldobanco)->with('rubros',$rubros);
     }
 

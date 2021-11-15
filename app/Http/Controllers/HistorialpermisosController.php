@@ -21,6 +21,7 @@ class HistorialpermisosController extends Controller
 	    {
 	      $q->where('id', '=', Auth::user()->empleado->id); 
 	    })->with('motivoPermiso')->get();
+	    
 	    foreach($permisos as $permiso)
 	    {
 	    	$formato = Carbon::createFromFormat('Y-m-d',$permiso->f_fechasolicitud);

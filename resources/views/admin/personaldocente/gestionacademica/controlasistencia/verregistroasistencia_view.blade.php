@@ -59,7 +59,7 @@
       </div>  
     </div>
     <div class="box-footer" align="right"> 
-      <a href="{{route('marcarasistencia_view')}}" class="btn btn-default">regresar</a>
+      <a href="{{route('marcarasistencia_view')}}" class="btn btn-default">Regresar</a>
     </div>
   </form>
 </div>
